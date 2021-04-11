@@ -1,9 +1,14 @@
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
+import { HomePage } from './homepage/Homepage'
+
 function App() {
   return (
-    <div>
-      <h1>GWENTcards</h1>
-      <p>All about the Witcher 3 GWENT game</p>
-    </div>
+    <Router>
+      <div class="p-10 text-center">
+        <Route exact path="/" component={HomePage} />
+      </div>
+    </Router>
   )
 }
 
