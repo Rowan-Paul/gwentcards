@@ -5,7 +5,7 @@ import { HomePage } from './homepage/Homepage'
 function App() {
   return (
     <Router>
-      <div class="p-10 text-center">
+      <div className="p-10 text-center">
         <Route exact path="/" component={HomePage} />
       </div>
     </Router>
