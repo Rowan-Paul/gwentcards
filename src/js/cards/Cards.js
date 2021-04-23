@@ -16,7 +16,7 @@ function CardsUI(props) {
   return (
     <div>
       <h2>Cards ({props.amount})</h2>
-      <div className="grid lg:grid-cols-3">{cards}</div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3">{cards}</div>
     </div>
   )
 }

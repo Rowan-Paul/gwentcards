@@ -44,10 +44,6 @@ function CardUI(props) {
     return splitStr.join(' ')
   }
 
-  const divStyle = {
-    backgroundColor: '#e08617',
-  }
-
   // card from https://w3collective.com/card-component-tailwind-css/
   return (
     <div className="rounded md:my-5 bg-white shadow max-w-md min-w-full mx-auto border-2">
