@@ -5,33 +5,27 @@ function CardUI(props) {
   const plusIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 float-right mr-5 cursor-pointer"
-      fill="none"
+      height="24px"
       viewBox="0 0 24 24"
-      stroke="currentColor"
+      width="24px"
+      fill="#000000"
+      className="h-6 w-6 float-right mr-3 mb-5 cursor-pointer"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-      />
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
     </svg>
   )
   const heartIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 float-right mr-3 cursor-pointer"
-      fill="none"
+      height="24px"
       viewBox="0 0 24 24"
-      stroke="currentColor"
+      width="24px"
+      fill="#000000"
+      className="h-6 w-6 float-right mr-3 mb-5 cursor-pointer"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-      />
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" />
     </svg>
   )
 
@@ -50,26 +44,20 @@ function CardUI(props) {
     return splitStr.join(' ')
   }
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1)
-  }
-
   const divStyle = {
     backgroundColor: '#e08617',
   }
 
   // card from https://w3collective.com/card-component-tailwind-css/
   return (
-    <div className="rounded md:my-5 bg-white shadow max-w-md min-w-full mx-auto">
-      <header className="p-4">
-        <span
-          style={divStyle}
-          className="text-3xl text-white w-10 h-10 m-1 mr-3 float-left rounded-full"
-        >
-          {card.strength}
-        </span>
+    <div className="rounded md:my-5 bg-white shadow max-w-md min-w-full mx-auto border-2">
+      <header className="p-2">
         <h3 className="text-lg font-bold">{titleCase(card.name)}</h3>
-        <p className="text-sm text-gray-600">{titleCase(card.deck)}</p>
+        <p className="text-sm text-gray-600">
+          {titleCase(card.deck)}
+          <br></br> Strength: &nbsp;
+          {card.strength ? card.strength : '-'}
+        </p>
       </header>
 
       <section>
@@ -80,19 +68,15 @@ function CardUI(props) {
         />
         <p className="p-4">
           <span className="block">
-            {card.row ? 'Row: ' + titleCase(card.row) : ''}
+            Row: {card.row ? titleCase(card.row) : '-'}
           </span>
 
           <span className="block">
-            {card.effect ? 'Effect: ' + titleCase(card.effect) : ''}
+            Effect: {card.effect ? titleCase(card.effect) : '-'}
           </span>
 
           <span className="block">
-            {card.notes ? 'Notes: ' + capitalizeFirstLetter(card.notes) : ''}
-          </span>
-
-          <span className="block" key={Math.random()}>
-            {card.abilities ? 'Abilities: ' + abilities.toString() : ''}
+            Abilities: {card.abilities ? abilities.toString() : '-'}
           </span>
         </p>
       </section>
