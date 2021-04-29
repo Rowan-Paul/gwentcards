@@ -1,19 +1,20 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { fetchCards } from '../redux/cards/actions'
 import { Card } from './components/Card'
 
 function CardsUI(props) {
+  const [cards, setCards] = useState([])
   useEffect(() => {
     props.fetchCards()
     // eslint-disable-next-line
   }, [])
-
-  const cards = props.selected.map((card) => (
-    <Card card={card} key={card.name} />
-  ))
+  useEffect(() => {
+    setCards(props.selected.map((card) => <Card card={card} key={card.name} />))
+  }, [props.selected])
 
   function deckSelected(deck) {
+    setCards([])
     props.fetchCards(deck)
   }
 
