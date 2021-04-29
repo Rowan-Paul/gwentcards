@@ -6,7 +6,7 @@ import { Card } from './components/Card'
 function CardsUI(props) {
   const [cards, setCards] = useState([])
   const [page, setPage] = useState(0)
-  const [pageSize] = useState(20)
+  const [pageSize, setPageSize] = useState(20)
   const [pagination, setPagination] = useState([])
   const [deck, setDeck] = useState('')
   const [row, setRow] = useState('')
@@ -32,9 +32,9 @@ function CardsUI(props) {
     const tempArray = []
 
     for (let i = 0; i < pageAmount; i++) {
-      let classes = 'mr-5 cursor-pointer'
+      let classes = 'mr-5 cursor-pointer inline-block'
       if (i === page) {
-        classes = 'mr-5 cursor-pointer underline'
+        classes = 'mr-5 cursor-pointer inline-block underline'
       }
 
       tempArray.push(
@@ -81,12 +81,35 @@ function CardsUI(props) {
     props.fetchCards(deck, row, strength, abilities, e.target.value)
   }
 
+  const pageSizeSelected = (e) => {
+    setPageSize(e.target.value)
+    setPage(0)
+    props.fetchCards(deck, row, strength, abilities, effect)
+  }
+
   return (
     <div>
       <h2>Cards ({props.amount ? props.amount : '0'} cards)</h2>
 
       <div className="my-5 p-2 text-left grid md:grid-cols-3 lg:grid-cols-5">
-        <span className="mb-3 md:mb-5 lg:mb-0">
+        <span className="mb-3 md:mb-0 lg:mb-3">
+          <label htmlFor="pageSize" className="mr-5 font-bold">
+            Cards per page:
+          </label>
+          <select
+            name="pageSize"
+            id="pageSize"
+            className="border-2 min-w-full md:min-w-0"
+            onChange={pageSizeSelected}
+            defaultValue="20"
+          >
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </span>
+
+        <span className="mb-3 md:mb-0 lg:mb-3">
           <label htmlFor="deck" className="mr-5 font-bold">
             Deck:
           </label>
@@ -107,7 +130,7 @@ function CardsUI(props) {
           </select>
         </span>
 
-        <span className="mb-3 md:mb-5 lg:mb-0">
+        <span className="mb-3 md:mb-0 lg:mb-3">
           <label htmlFor="row" className="mr-5 font-bold">
             Row:
           </label>
@@ -126,7 +149,7 @@ function CardsUI(props) {
           </select>
         </span>
 
-        <span className="mb-3 md:mb-5 lg:mb-0">
+        <span className="mb-3 md:mb-0 lg:mb-3">
           <label htmlFor="strength" className="mr-5 font-bold">
             Strength:
           </label>
@@ -157,7 +180,7 @@ function CardsUI(props) {
         </span>
 
         {/* TODO: add choice for multiple abilities */}
-        <span className="mb-3 md:mb-0">
+        <span className="mb-3 md:mb-0 lg:mb-3">
           <label htmlFor="abilities" className="mr-5 font-bold">
             Abilities:
           </label>
@@ -178,7 +201,7 @@ function CardsUI(props) {
           </select>
         </span>
 
-        <span className="mb-0">
+        <span className="mb-3 md:mb-0 lg:mb-3">
           <label htmlFor="effect" className="mr-5 font-bold">
             Effect:
           </label>
