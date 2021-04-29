@@ -6,17 +6,37 @@ import { Card } from './components/Card'
 function CardsUI(props) {
   const [cards, setCards] = useState([])
   const [page, setPage] = useState(0)
-  const [pageSize, setPageSize] = useState(20)
+  const [pageSize] = useState(20)
+  const [pagination, setPagination] = useState([])
 
   useEffect(() => {
     props.fetchCards()
   }, [])
 
   useEffect(() => {
-    const selectedCards = pagenation(props.selected)
+    const selectedCards = getPage(props.selected)
 
     setCards(selectedCards.map((card) => <Card card={card} key={card.name} />))
-  }, [props.selected])
+  }, [props.selected, page])
+
+  useEffect(() => {
+    const pageAmount = Math.ceil(props.selected.length / pageSize)
+    const tempArray = []
+
+    for (let i = 0; i < pageAmount; i++) {
+      let classes = 'mr-5 cursor-pointer'
+      if (i === page) {
+        classes = 'mr-5 cursor-pointer underline'
+      }
+
+      tempArray.push(
+        <span onClick={(e) => setPage(i)} className={classes} key={`page${i}`}>
+          {i + 1}
+        </span>
+      )
+    }
+    setPagination(tempArray)
+  }, [props.selected.length, pageSize, page])
 
   const deckSelected = (e) => {
     const deck = e.target.value
@@ -25,7 +45,7 @@ function CardsUI(props) {
     props.fetchCards(deck)
   }
 
-  function pagenation(data) {
+  function getPage(data) {
     const startPage = page * pageSize
     const endPage = startPage + pageSize
 
@@ -61,6 +81,8 @@ function CardsUI(props) {
           ? 'Showing ' + cards.length + '/' + props.amount + ' cards'
           : 'No cards found'}
       </p>
+
+      <p>{pagination}</p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4">{cards}</div>
     </div>
