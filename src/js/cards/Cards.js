@@ -13,7 +13,8 @@ function CardsUI(props) {
     setCards(props.selected.map((card) => <Card card={card} key={card.name} />))
   }, [props.selected])
 
-  function deckSelected(deck) {
+  const deckSelected = (e) => {
+    const deck = e.target.value
     setCards([])
     props.fetchCards(deck)
   }
@@ -31,7 +32,7 @@ function CardsUI(props) {
           name="deck"
           id="deck"
           className="border-2"
-          onChange={(e) => deckSelected(e.target.value)}
+          onChange={deckSelected}
         >
           <option value="">All decks</option>
           <option value="nilfgaard">Nilfgaard</option>
