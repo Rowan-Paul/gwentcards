@@ -14,7 +14,10 @@ function CardsUI(props) {
   }, [])
 
   useEffect(() => {
-    const selectedCards = getPage(props.selected)
+    const startPage = page * pageSize
+    const endPage = startPage + pageSize
+
+    const selectedCards = props.selected.slice(startPage, endPage)
 
     setCards(selectedCards.map((card) => <Card card={card} key={card.name} />))
   }, [props.selected, page])
@@ -43,13 +46,6 @@ function CardsUI(props) {
     setCards([])
     setPage(0)
     props.fetchCards(deck)
-  }
-
-  function getPage(data) {
-    const startPage = page * pageSize
-    const endPage = startPage + pageSize
-
-    return data.slice(startPage, endPage)
   }
 
   return (
