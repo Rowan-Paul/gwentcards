@@ -2,42 +2,21 @@ import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { fetchCards } from '../redux/cards/actions'
 import { Card } from './components/Card'
-import ReactPaginate from 'react-paginate'
 
 function CardsUI(props) {
-  const [offset, setOffset] = useState(0)
-  const [data, setData] = useState([])
-  const [perPage] = useState(20)
-  const [pageCount, setPageCount] = useState(0)
-
+  const [cards, setCards] = useState([])
   useEffect(() => {
     props.fetchCards()
     // eslint-disable-next-line
   }, [])
-
-  const getData = async () => {
-    const data = props.selected
-    const slice = data.slice(offset, offset + perPage)
-    const postData = slice.map((card) => <Card card={card} key={card.name} />)
-    setData(postData)
-    setPageCount(Math.ceil(data.length / perPage))
-  }
-
-  const handlePageClick = (e) => {
-    const selectedPage = e.selected
-    setOffset(selectedPage + 1)
-  }
-
-  // const handleDeckSelected = (e) => {
-  //   const deck = e.target.value
-  //   console.log(deck)
-  //   props.fetchCards(deck)
-  // }
-
   useEffect(() => {
-    getData()
-    // eslint-disable-next-line
-  }, [offset, props.selected])
+    setCards(props.selected.map((card) => <Card card={card} key={card.name} />))
+  }, [props.selected])
+
+  function deckSelected(deck) {
+    setCards([])
+    props.fetchCards(deck)
+  }
 
   return (
     <div>
@@ -52,7 +31,7 @@ function CardsUI(props) {
           name="deck"
           id="deck"
           className="border-2"
-          // onChange={handleDeckSelected}
+          onChange={(e) => deckSelected(e.target.value)}
         >
           <option value="">All decks</option>
           <option value="nilfgaard">Nilfgaard</option>
@@ -65,24 +44,11 @@ function CardsUI(props) {
       </div>
       <p className="text-left text-sm mt-1">
         {props.amount
-          ? 'Showing ' + data.length + '/' + props.amount + ' cards'
+          ? 'Showing ' + cards.length + '/' + props.amount + ' cards'
           : 'No cards found'}
       </p>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4">{data}</div>
-      <ReactPaginate
-        previousLabel={'prev'}
-        nextLabel={'next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
-        containerClassName={'pagination'}
-        subContainerClassName={'pages pagination'}
-        activeClassName={'active'}
-      />
+      <div className="grid md:grid-cols-2 lg:grid-cols-4">{cards}</div>
     </div>
   )
 }
