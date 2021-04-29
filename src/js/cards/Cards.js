@@ -5,18 +5,31 @@ import { Card } from './components/Card'
 
 function CardsUI(props) {
   const [cards, setCards] = useState([])
+  const [page, setPage] = useState(0)
+  const [pageSize, setPageSize] = useState(20)
+
   useEffect(() => {
     props.fetchCards()
-    // eslint-disable-next-line
   }, [])
+
   useEffect(() => {
-    setCards(props.selected.map((card) => <Card card={card} key={card.name} />))
+    const selectedCards = pagenation(props.selected)
+
+    setCards(selectedCards.map((card) => <Card card={card} key={card.name} />))
   }, [props.selected])
 
   const deckSelected = (e) => {
     const deck = e.target.value
     setCards([])
+    setPage(0)
     props.fetchCards(deck)
+  }
+
+  function pagenation(data) {
+    const startPage = page * pageSize
+    const endPage = startPage + pageSize
+
+    return data.slice(startPage, endPage)
   }
 
   return (
