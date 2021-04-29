@@ -78,10 +78,10 @@ function CardUI(props) {
       </section>
 
       <footer className="p-4">
-        <span href="#" class="text-sm hover:underline mr-5 cursor-pointer">
+        <span href="#" className="text-sm hover:underline mr-5 cursor-pointer">
           Notes
         </span>
-        <span href="#" class="text-sm hover:underline cursor-pointer">
+        <span href="#" className="text-sm hover:underline cursor-pointer">
           Locations
         </span>
 
