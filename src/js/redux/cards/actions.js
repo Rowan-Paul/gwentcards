@@ -3,12 +3,26 @@ import * as types from './types'
 let api = 'http://localhost:3000/api/v1'
 
 // fetch cards
-export const fetchCards = (deck) => (dispatch) => {
+export const fetchCards = (deck, row, strength, abilities, effect) => (
+  dispatch
+) => {
   let url = `${api}/cards`
   let parameters = []
 
   if (deck) {
     parameters.push(`deck=${deck}`)
+  }
+  if (row) {
+    parameters.push(`row=${row}`)
+  }
+  if (strength) {
+    parameters.push(`strength=${strength}`)
+  }
+  if (abilities) {
+    parameters.push(`abilities=${abilities}`)
+  }
+  if (effect) {
+    parameters.push(`effect=${effect}`)
   }
 
   if (parameters.length > 0) {
