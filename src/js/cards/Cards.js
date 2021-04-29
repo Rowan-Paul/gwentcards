@@ -42,6 +42,11 @@ function CardsUI(props) {
           <option value="skellige">Skellige</option>
         </select>
       </div>
+      <p className="text-left text-sm mt-1">
+        {props.amount
+          ? 'Showing ' + cards.length + '/' + props.amount + ' cards'
+          : 'No cards found'}
+      </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4">{cards}</div>
     </div>
