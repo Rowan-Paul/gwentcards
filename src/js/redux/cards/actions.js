@@ -3,28 +3,28 @@ import * as types from './types'
 let api = 'http://localhost:3000/api/v1'
 
 // fetch cards
-export const fetchCards = (deck, row, strength, abilities, effect) => (
-  dispatch
-) => {
+export const fetchCards = (filters) => (dispatch) => {
   let url = `${api}/cards`
   let parameters = []
 
-  if (deck) {
-    parameters.push(`deck=${deck}`)
+  if (filters.deck.length > 0) {
+    parameters.push(`deck=${encodeURIComponent(filters.deck.toString())}`)
   }
-  if (row) {
-    parameters.push(`row=${row}`)
+  if (filters.row.length > 0) {
+    parameters.push(`row=${encodeURIComponent(filters.row.toString())}`)
   }
-  if (strength) {
-    parameters.push(`strength=${strength}`)
-  }
-  if (abilities) {
+  if (filters.strength.length > 0) {
     parameters.push(
-      `abilities=${encodeURIComponent(JSON.stringify(abilities))}`
+      `strength=${encodeURIComponent(filters.strength.toString())}`
     )
   }
-  if (effect) {
-    parameters.push(`effect=${effect}`)
+  if (filters.abilities.length > 0) {
+    parameters.push(
+      `abilities=${encodeURIComponent(filters.abilities.toString())}`
+    )
+  }
+  if (filters.effect.length > 0) {
+    parameters.push(`effect=${encodeURIComponent(filters.effect.toString())}`)
   }
 
   if (parameters.length > 0) {
