@@ -19,7 +19,9 @@ export const fetchCards = (deck, row, strength, abilities, effect) => (
     parameters.push(`strength=${strength}`)
   }
   if (abilities) {
-    parameters.push(`abilities=${abilities}`)
+    parameters.push(
+      `abilities=${encodeURIComponent(JSON.stringify(abilities))}`
+    )
   }
   if (effect) {
     parameters.push(`effect=${effect}`)

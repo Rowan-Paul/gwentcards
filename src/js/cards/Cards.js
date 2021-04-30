@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { fetchCards } from '../redux/cards/actions'
 import { Card } from './components/Card'
+import MultiSelect from 'react-multi-select-component'
 
 function CardsUI(props) {
   const [cards, setCards] = useState([])
@@ -11,8 +12,9 @@ function CardsUI(props) {
   const [deck, setDeck] = useState('')
   const [row, setRow] = useState('')
   const [strength, setStrength] = useState('')
-  const [abilities, setAbilities] = useState('')
+  const [abilities, setAbilities] = useState([])
   const [effect, setEffect] = useState('')
+  const [selected, setSelected] = useState([])
 
   useEffect(() => {
     props.fetchCards()
@@ -68,10 +70,20 @@ function CardsUI(props) {
   }
 
   const abilitiesSelected = (e) => {
-    setAbilities(e.target.value)
+    setSelected(e)
+    let elements = []
+    e.forEach((element) => {
+      const result = element.value
+      elements.push(result)
+    })
+
+    setAbilities(elements)
     setCards([])
     setPage(0)
-    props.fetchCards(deck, row, strength, e.target.value, effect)
+
+    console.log(elements.toString())
+
+    props.fetchCards(deck, row, strength, elements.toString(), effect)
   }
 
   const effectSelected = (e) => {
@@ -86,6 +98,15 @@ function CardsUI(props) {
     setPage(0)
     props.fetchCards(deck, row, strength, abilities, effect)
   }
+
+  const options = [
+    { label: 'Hero', value: 'hero' },
+    { label: 'Medic', value: 'medic' },
+    { label: 'Moral boost', value: 'morale boost' },
+    { label: 'Muster', value: 'muster' },
+    { label: 'Spy', value: 'spy' },
+    { label: 'Tight bond', value: 'tight bond' },
+  ]
 
   return (
     <div>
@@ -179,26 +200,20 @@ function CardsUI(props) {
           </select>
         </span>
 
-        {/* TODO: add choice for multiple abilities */}
         <span className="mb-3 md:mb-0 lg:mb-3">
           <label htmlFor="abilities" className="mr-5 font-bold">
             Abilities:
           </label>
-          <select
-            name="abilities"
-            id="abilities"
-            className="border-2 min-w-full md:min-w-0"
+
+          <MultiSelect
+            options={options}
+            value={selected}
             onChange={abilitiesSelected}
-          >
-            <option value="">All abilities</option>
-            <option value="agile">Agile</option>
-            <option value="hero">Hero</option>
-            <option value="medic">Medic</option>
-            <option value="morale boost">Morale Boost</option>
-            <option value="muster">Muster</option>
-            <option value="spy">Spy</option>
-            <option value="tight bond">Tight Bond</option>
-          </select>
+            labelledBy="Select"
+            hasSelectAll={false}
+            disableSearch={true}
+            className="inline-block border-2 min-w-full md:min-w-0"
+          />
         </span>
 
         <span className="mb-3 md:mb-0 lg:mb-3">
