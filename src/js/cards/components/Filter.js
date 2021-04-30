@@ -4,6 +4,10 @@ import MultiSelect from 'react-multi-select-component'
 function FilterUI(props) {
   const [selected, setSelected] = useState([])
 
+  if (props.reset && selected.length > 0) {
+    setSelected([])
+  }
+
   const handleOnChange = (e) => {
     setSelected(e)
 
@@ -26,7 +30,6 @@ function FilterUI(props) {
         options={props.options}
         value={selected}
         onChange={handleOnChange}
-        labelledBy={'Select ' + props.name}
         hasSelectAll={false}
         disableSearch={true}
         className="w-full"
