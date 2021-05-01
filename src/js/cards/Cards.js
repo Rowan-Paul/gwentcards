@@ -27,7 +27,7 @@ function CardsUI(props) {
 
   useEffect(() => {
     props.fetchCards(filters)
-  }, [filters, props])
+  }, [])
 
   useEffect(() => {
     const startPage = page * pageSize
