@@ -27,6 +27,7 @@ function CardsUI(props) {
 
   useEffect(() => {
     props.fetchCards(filters)
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
