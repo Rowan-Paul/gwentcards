@@ -1,6 +1,6 @@
 import * as types from './types'
 
-let api = 'http://localhost:3000/api/v1'
+let api = process.env.REACT_APP_API
 
 // fetch cards
 export const fetchCards = (filters) => (dispatch) => {
