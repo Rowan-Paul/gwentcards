@@ -46,7 +46,7 @@ function CardUI(props) {
 
   // card from https://w3collective.com/card-component-tailwind-css/
   return (
-    <div className="rounded md:my-5 bg-white shadow max-w-md min-w-full mx-auto border-2 motion-safe:animate-fadeIn">
+    <div className="rounded my-5 bg-white shadow max-w-md min-w-full mx-auto border-2 motion-safe:animate-fadeIn">
       <header className="p-2">
         <h3 className="text-lg font-bold">{titleCase(card.name)}</h3>
         <p className="text-sm text-gray-600">
