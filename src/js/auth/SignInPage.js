@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { connect } from 'react-redux'
 
 import { signIn } from '../redux/auth/actions'
@@ -66,12 +66,9 @@ function SignInPageUI(props) {
             Sign In
           </button>
 
-          <a
-            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            href="#"
-          >
+          <span className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
             Forgot Password?
-          </a>
+          </span>
         </div>
       </div>
     </div>
