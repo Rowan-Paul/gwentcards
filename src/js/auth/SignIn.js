@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { signIn } from '../redux/auth/actions'
 
-function SignInPageUI(props) {
+function SignInUI(props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -81,7 +81,4 @@ const mapDispatchToProps = (dispatch) => ({
   signIn: (username, password) => dispatch(signIn(username, password)),
 })
 
-export const SignInPage = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignInPageUI)
+export const SignIn = connect(mapStateToProps, mapDispatchToProps)(SignInUI)
