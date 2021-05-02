@@ -25,3 +25,16 @@ export const signIn = (username, password) => (dispatch) => {
       })
     )
 }
+
+// sign out
+export const signOut = () => (dispatch) => {
+  const url = `${api}/auth`
+
+  fetch(url, {
+    method: 'DELETE',
+  }).then(() =>
+    dispatch({
+      type: types.SIGNED_OUT,
+    })
+  )
+}

@@ -14,6 +14,9 @@ const reducer = (state = INITIAL_STATE, action) => {
         signedIn: true,
       }
 
+    case types.SIGNED_OUT:
+      return { INITIAL_STATE }
+
     default:
       return state
   }

@@ -75,10 +75,8 @@ function SignInUI(props) {
   )
 }
 
-const mapStateToProps = (state) => ({})
-
 const mapDispatchToProps = (dispatch) => ({
   signIn: (username, password) => dispatch(signIn(username, password)),
 })
 
-export const SignIn = connect(mapStateToProps, mapDispatchToProps)(SignInUI)
+export const SignIn = connect(null, mapDispatchToProps)(SignInUI)

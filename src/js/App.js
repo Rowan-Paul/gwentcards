@@ -1,13 +1,16 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { PublicRoute, PrivateRoute } from 'react-private-public-route'
 import { connect } from 'react-redux'
 
 import { Home } from './homepage/Home'
 import { SignIn } from './auth/SignIn'
+import { NavBar } from './components/NavBar'
+import { Signout } from './auth/SignOut'
 
 function AppUI(props) {
   return (
     <Router>
+      <NavBar />
       <div className="p-10 text-center">
         <PublicRoute exact path="/" component={Home} />
         <PrivateRoute
@@ -16,6 +19,13 @@ function AppUI(props) {
           redirect="/"
           path="/signin"
           component={SignIn}
+        />
+        <PrivateRoute
+          exact
+          isAuthenticated={props.signedIn}
+          redirect="/"
+          path="/signout"
+          component={Signout}
         />
       </div>
     </Router>
