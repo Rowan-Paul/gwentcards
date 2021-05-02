@@ -59,14 +59,16 @@ function CardsUI(props) {
   }, [props.selected.length, pageSize, page])
 
   const handleReset = () => {
-    setFilters({
+    const tempFilters = {
       deck: [],
       row: [],
       strength: [],
       abilities: [],
       effect: [],
-    })
+    }
+    setFilters(tempFilters)
     setReset(true)
+    props.fetchCards(tempFilters)
   }
 
   const handleFilterOnChange = (filter) => {
