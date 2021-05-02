@@ -3,11 +3,10 @@ import * as types from './types'
 let api = process.env.REACT_APP_API
 
 // sign in
-export const signIn = (username, email, password) => (dispatch) => {
+export const signIn = (username, password) => (dispatch) => {
   const url = `${api}/auth/signin`
   const body = {
     username: username,
-    email: email,
     password: password,
   }
 
