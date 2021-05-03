@@ -106,7 +106,7 @@ export const signUp = (username, email, password) => (dispatch) => {
         payload: response,
       })
     )
-    .catch(() => {
-      console.log('Failed to sign up')
+    .catch((err) => {
+      console.log('Failed to sign up',err)
     })
 }
