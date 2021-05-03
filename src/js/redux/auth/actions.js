@@ -17,13 +17,22 @@ export const signIn = (username, password) => (dispatch) => {
     },
     body: JSON.stringify(body),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status === 200) {
+        return response.json()
+      } else {
+        throw response.statusText
+      }
+    })
     .then((response) =>
       dispatch({
         type: types.SIGNED_IN,
         payload: response,
       })
     )
+    .catch(() => {
+      console.log('Failed to sign in')
+    })
 }
 
 // sign out
@@ -32,9 +41,38 @@ export const signOut = () => (dispatch) => {
 
   fetch(url, {
     method: 'DELETE',
-  }).then(() =>
-    dispatch({
-      type: types.SIGNED_OUT,
+  })
+    .then(() =>
+      dispatch({
+        type: types.SIGNED_OUT,
+      })
+    )
+    .catch(() => {
+      console.log('Failed to sign out')
     })
-  )
+}
+
+// verify
+export const verify = () => (dispatch) => {
+  const url = `${api}/auth`
+
+  fetch(url, {
+    method: 'GET',
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        return response.json()
+      } else {
+        throw response.statusText
+      }
+    })
+    .then((response) => {
+      dispatch({
+        type: types.SIGNED_IN,
+        payload: response,
+      })
+    })
+    .catch((err) => {
+      dispatch({ type: types.SIGNED_OUT })
+    })
 }

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { PublicRoute, PrivateRoute } from 'react-private-public-route'
 import { connect } from 'react-redux'
@@ -7,7 +8,13 @@ import { SignIn } from './auth/SignIn'
 import { NavBar } from './components/NavBar'
 import { Signout } from './auth/SignOut'
 
+import { verify } from './redux/auth/actions'
+
 function AppUI(props) {
+  useEffect(() => {
+    props.verify()
+  }, [])
+
   return (
     <Router>
       <NavBar />
@@ -36,4 +43,8 @@ const mapStateToProps = (state) => ({
   signedIn: state.auth.signedIn,
 })
 
-export const App = connect(mapStateToProps, null)(AppUI)
+const mapDispatchToProps = (dispatch) => ({
+  verify: () => dispatch(verify()),
+})
+
+export const App = connect(mapStateToProps, mapDispatchToProps)(AppUI)
