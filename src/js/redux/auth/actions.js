@@ -73,7 +73,7 @@ export const verify = () => (dispatch) => {
       })
     })
     .catch((err) => {
-      dispatch({ type: types.SIGNED_OUT })
+      dispatch(signOut())
     })
 }
 
