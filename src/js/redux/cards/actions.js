@@ -65,7 +65,22 @@ export const addUserCard = (card) => (dispatch, getState) => {
     })
     .then((response) =>
       dispatch({
-        type: types.ADDED_CARD,
+        type: types.ADDED_USER_CARD,
+        payload: response,
+      })
+    )
+}
+
+export const fetchUserCards = () => (dispatch) => {
+  let url = `${api}/users/cards`
+
+  fetch(url)
+    .then((response) => {
+      return response.json()
+    })
+    .then((response) =>
+      dispatch({
+        type: types.FETCHED_USER_CARDS,
         payload: response,
       })
     )
