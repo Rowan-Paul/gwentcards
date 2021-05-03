@@ -47,3 +47,26 @@ export const fetchCards = (filters) => (dispatch) => {
       })
     )
 }
+
+export const addUserCard = (card) => (dispatch, getState) => {
+  let url = `${api}/users/cards`
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      cards: [...getState().cards.userCards, card],
+    }),
+  })
+    .then((response) => {
+      return response.json()
+    })
+    .then((response) =>
+      dispatch({
+        type: types.ADDED_CARD,
+        payload: response,
+      })
+    )
+}

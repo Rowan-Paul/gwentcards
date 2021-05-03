@@ -3,6 +3,7 @@ import * as types from './types'
 const INITIAL_STATE = {
   amount: null,
   selected: [],
+  userCards: [],
 }
 
 const reducer = (state = INITIAL_STATE, action) => {

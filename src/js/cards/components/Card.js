@@ -1,3 +1,7 @@
+import { connect } from 'react-redux'
+
+import { addUserCard } from '../../redux/cards/actions'
+
 function CardUI(props) {
   const card = props.card
   let abilities = []
@@ -10,6 +14,7 @@ function CardUI(props) {
       width="24px"
       fill="#000000"
       className="h-6 w-6 float-right mr-3 mb-5 cursor-pointer"
+      onClick={() => props.addUserCard(card._id)}
     >
       <path d="M0 0h24v24H0V0z" fill="none" />
       <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
@@ -92,4 +97,10 @@ function CardUI(props) {
   )
 }
 
-export const Card = CardUI
+const mapStateToProps = (state) => ({})
+
+const mapDispatchToProps = (dispatch) => ({
+  addUserCard: (card) => dispatch(addUserCard(card)),
+})
+
+export const Card = connect(mapStateToProps, mapDispatchToProps)(CardUI)
