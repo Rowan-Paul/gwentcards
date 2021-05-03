@@ -4,14 +4,14 @@ let api = process.env.REACT_APP_API
 
 // sign in
 export const signIn = (username, password) => (dispatch) => {
-  const url = `${api}/auth/signin`
+  const url = `${api}/auth`
   const body = {
     username: username,
     password: password,
   }
 
   fetch(url, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
