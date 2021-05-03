@@ -7,12 +7,14 @@ import { Home } from './homepage/Home'
 import { SignIn } from './auth/SignIn'
 import { NavBar } from './components/NavBar'
 import { Signout } from './auth/SignOut'
+import { SignUp } from './auth/SignUp'
 
 import { verify } from './redux/auth/actions'
 
 function AppUI(props) {
   useEffect(() => {
     props.verify()
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -33,6 +35,13 @@ function AppUI(props) {
           redirect="/"
           path="/signout"
           component={Signout}
+        />
+        <PrivateRoute
+          exact
+          isAuthenticated={!props.signedIn}
+          redirect="/"
+          path="/signup"
+          component={SignUp}
         />
       </div>
     </Router>
