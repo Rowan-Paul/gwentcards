@@ -11,7 +11,7 @@ function ScrollToTopButtonUI() {
       if (window.pageYOffset > window.innerHeight * 0.75) {
         setScrollToTopClassName('w-10 h-10 fixed bottom-5 right-5')
       } else {
-        setScrollToTopClassName('none')
+        setScrollToTopClassName('hidden')
       }
     }
     return () => window.removeEventListener('scroll', window.onscroll)
