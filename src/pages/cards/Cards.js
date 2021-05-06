@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { CurrentPage } from '../../components/cards/CurrentPage'
 import { Filters } from '../../components/cards/Filters'
+import { Pagination } from '../../components/cards/Pagination'
 import { fetchCards } from '../../redux/cards/actions'
 
 function CardsUI(props) {
@@ -14,7 +15,9 @@ function CardsUI(props) {
   return (
     <div>
       <Filters />
+      <Pagination />
       <CurrentPage />
+      <Pagination />
     </div>
   )
 }

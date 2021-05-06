@@ -6,7 +6,7 @@ import { StrengthFilter } from './cardFilters/StrengthFilter'
 import { EffectFilter } from './cardFilters/EffectFilter'
 import { ResetFilters } from './cardFilters/ResetFilters'
 
-function FiltersUI(props) {
+function FiltersUI() {
   return (
     <div className="my-5 p-2 text-left grid md:grid-cols-3 lg:grid-cols-5">
       <PageSizeFilter />
