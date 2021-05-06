@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { setPageSize, fetchCards } from '../../redux/cards/actions'
+import { setPageSize, fetchCards } from '../../../redux/cards/actions'
 
 function PageSizeFilterUI(props) {
   const handleOnChange = (e) => {

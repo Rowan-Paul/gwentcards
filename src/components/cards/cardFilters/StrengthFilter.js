@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setFilters, fetchCards } from '../../redux/cards/actions'
+import { setFilters, fetchCards } from '../../../redux/cards/actions'
 import { Filter } from './Filter'
 
 function StrengthFilterUI(props) {

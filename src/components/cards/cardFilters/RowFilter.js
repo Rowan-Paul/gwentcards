@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
-import { setFilters, fetchCards } from '../../redux/cards/actions'
+import { setFilters, fetchCards } from '../../../redux/cards/actions'
 import { Filter } from './Filter'
 
-function DeckFilterUI(props) {
+function RowFilterUI(props) {
   const handleOnChange = (filter) => {
     let tempFilters = props.filters
     tempFilters[filter.name] = filter.values
@@ -13,15 +13,14 @@ function DeckFilterUI(props) {
 
   return (
     <Filter
-      name="deck"
+      name="row"
       handleOnChange={handleOnChange}
       options={[
-        { label: 'Nilfgaard', value: 'nilfgaard' },
-        { label: 'Monsters', value: 'monsters' },
-        { label: 'Neutral', value: 'neutral' },
-        { label: 'Northern Realms', value: 'northern realms' },
-        { label: "Scoia'tael", value: "scoia'tael" },
-        { label: 'Skellige', value: 'skellige' },
+        { label: 'Close', value: 'close' },
+        { label: 'Ranged', value: 'ranged' },
+        { label: 'Siege', value: 'siege' },
+        { label: 'Leader', value: 'leader' },
+        { label: 'Agile', value: 'agile' },
       ]}
       reset={props.reset}
     />
@@ -38,7 +37,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCards: () => dispatch(fetchCards()),
 })
 
-export const DeckFilter = connect(
+export const RowFilter = connect(
   mapStateToProps,
   mapDispatchToProps
-)(DeckFilterUI)
+)(RowFilterUI)

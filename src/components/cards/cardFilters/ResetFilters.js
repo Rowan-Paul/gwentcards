@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setReset, fetchCards } from '../../redux/cards/actions'
+import { setReset, fetchCards } from '../../../redux/cards/actions'
 
 function ResetFiltersUI(props) {
   const handleReset = () => {

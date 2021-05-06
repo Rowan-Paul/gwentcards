@@ -1,10 +1,10 @@
-import { PageSizeFilter } from '../../components/cardFilters/PageSizeFilter'
-import { DeckFilter } from '../../components/cardFilters/DeckFilter'
-import { AbilitiesFilter } from '../../components/cardFilters/AbilitiesFilter'
-import { RowFilter } from '../../components/cardFilters/RowFilter'
-import { StrengthFilter } from '../../components/cardFilters/StrengthFilter'
-import { EffectFilter } from '../../components/cardFilters/EffectFilter'
-import { ResetFilters } from '../../components/cardFilters/ResetFilters'
+import { PageSizeFilter } from './cardFilters/PageSizeFilter'
+import { DeckFilter } from './cardFilters/DeckFilter'
+import { AbilitiesFilter } from './cardFilters/AbilitiesFilter'
+import { RowFilter } from './cardFilters/RowFilter'
+import { StrengthFilter } from './cardFilters/StrengthFilter'
+import { EffectFilter } from './cardFilters/EffectFilter'
+import { ResetFilters } from './cardFilters/ResetFilters'
 
 function FiltersUI(props) {
   return (
