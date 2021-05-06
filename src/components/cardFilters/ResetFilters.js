@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
-import { setReset } from '../../redux/cards/actions'
+import { setReset, fetchCards } from '../../redux/cards/actions'
 
 function ResetFiltersUI(props) {
   const handleReset = () => {
     props.setReset(true)
+    props.fetchCards()
   }
 
   return (
@@ -43,6 +44,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setReset: (reset) => dispatch(setReset(reset)),
+  fetchCards: () => dispatch(fetchCards()),
 })
 
 export const ResetFilters = connect(

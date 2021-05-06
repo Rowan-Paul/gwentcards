@@ -45,6 +45,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     case types.RESET:
       return { ...state, reset: action.payload, filters: INITIAL_STATE.filters }
 
+    case types.REMOVED_CARDS:
+      return { ...state, selected: [] }
+
     default:
       return state
   }

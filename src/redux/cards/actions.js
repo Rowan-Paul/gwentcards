@@ -8,6 +8,10 @@ export const fetchCards = () => (dispatch, getState) => {
   let parameters = []
   const filters = getState().cards.filters
 
+  dispatch({
+    type: types.REMOVED_CARDS,
+  })
+
   if (filters.deck.length > 0) {
     parameters.push(`deck=${encodeURIComponent(filters.deck.toString())}`)
   }
@@ -110,4 +114,8 @@ export const setPage = (page) => {
 
 export const setReset = (reset) => {
   return { type: types.RESET, payload: reset }
+}
+
+export const removeCards = () => {
+  return { type: types.REMOVED_CARDS }
 }
