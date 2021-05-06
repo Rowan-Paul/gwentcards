@@ -21,6 +21,7 @@ jobs:
             cd /var/www/GWENTcards
             git fetch --all
             git reset --hard origin/main
+            git pull
             npm i
             npm run build
             pm2 restart gwentcards
