@@ -3,6 +3,7 @@ import * as types from './types'
 const INITIAL_STATE = {
   amount: null,
   selected: [],
+  userCards: [],
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -13,6 +14,13 @@ const reducer = (state = INITIAL_STATE, action) => {
         amount: action.payload.amount,
         selected: action.payload.cards,
       }
+
+    case types.ADDED_USER_CARD:
+      console.log(action.payload)
+      return { ...state, userCards: action.payload.cards }
+
+    case types.FETCHED_USER_CARDS:
+      return { ...state, userCards: action.payload.cards }
 
     default:
       return state

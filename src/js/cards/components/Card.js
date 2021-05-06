@@ -1,6 +1,22 @@
+import { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+
+import { addUserCard } from '../../redux/cards/actions'
+
 function CardUI(props) {
+  const [isCollected, setIsCollected] = useState(false)
   const card = props.card
   let abilities = []
+
+  useEffect(() => {
+    if (props.userCards.length > 0) {
+      props.userCards.forEach((userCard) => {
+        if (userCard._id === card._id) {
+          setIsCollected(true)
+        }
+      })
+    }
+  }, [card._id, props.userCards, props.signedIn])
 
   const plusIcon = (
     <svg
@@ -10,9 +26,23 @@ function CardUI(props) {
       width="24px"
       fill="#000000"
       className="h-6 w-6 float-right mr-3 mb-5 cursor-pointer"
+      onClick={() => props.addUserCard(card)}
     >
       <path d="M0 0h24v24H0V0z" fill="none" />
       <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+    </svg>
+  )
+  const collectedIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 0 24 24"
+      width="24px"
+      fill="#000000"
+      className="h-6 w-6 float-right mr-3 mb-5"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
     </svg>
   )
   const heartIcon = (
@@ -86,10 +116,19 @@ function CardUI(props) {
         </span>
 
         {heartIcon}
-        {plusIcon}
+        {isCollected ? collectedIcon : plusIcon}
       </footer>
     </div>
   )
 }
 
-export const Card = CardUI
+const mapStateToProps = (state) => ({
+  userCards: state.cards.userCards,
+  signedIn: state.auth.signedIn,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  addUserCard: (card) => dispatch(addUserCard(card)),
+})
+
+export const Card = connect(mapStateToProps, mapDispatchToProps)(CardUI)

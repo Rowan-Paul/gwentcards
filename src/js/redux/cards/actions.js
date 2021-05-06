@@ -46,4 +46,51 @@ export const fetchCards = (filters) => (dispatch) => {
         payload: response,
       })
     )
+    .catch((err) => {
+      console.log('Failed to fetch cards', err)
+    })
+}
+
+export const addUserCard = (card) => (dispatch, getState) => {
+  let url = `${api}/users/cards`
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      cards: [...getState().cards.userCards, card],
+    }),
+  })
+    .then((response) => {
+      return response.json()
+    })
+    .then((response) =>
+      dispatch({
+        type: types.ADDED_USER_CARD,
+        payload: response,
+      })
+    )
+    .catch((err) => {
+      console.log('Failed to add user card', err)
+    })
+}
+
+export const fetchUserCards = () => (dispatch) => {
+  let url = `${api}/users/cards`
+
+  fetch(url)
+    .then((response) => {
+      return response.json()
+    })
+    .then((response) =>
+      dispatch({
+        type: types.FETCHED_USER_CARDS,
+        payload: response,
+      })
+    )
+    .catch((err) => {
+      console.log('Failed to fetch user cards', err)
+    })
 }

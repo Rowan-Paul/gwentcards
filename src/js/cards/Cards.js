@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { fetchCards } from '../redux/cards/actions'
+import { fetchCards, fetchUserCards } from '../redux/cards/actions'
 import { Card } from './components/Card'
 
 import { DeckFilter } from './components/DeckFilter'
@@ -27,6 +27,7 @@ function CardsUI(props) {
 
   useEffect(() => {
     props.fetchCards(filters)
+    props.fetchUserCards()
     // eslint-disable-next-line
   }, [])
 
@@ -128,10 +129,12 @@ function CardsUI(props) {
 const mapStateToProps = (state) => ({
   selected: state.cards.selected,
   amount: state.cards.amount,
+  signedIn: state.auth.signedIn,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCards: (filters) => dispatch(fetchCards(filters)),
+  fetchUserCards: () => dispatch(fetchUserCards()),
 })
 
 export const Cards = connect(mapStateToProps, mapDispatchToProps)(CardsUI)

@@ -73,6 +73,7 @@ export const verify = () => (dispatch) => {
       })
     })
     .catch((err) => {
+      console.log('Failed to verify', err)
       dispatch(signOut())
     })
 }
@@ -107,6 +108,6 @@ export const signUp = (username, email, password) => (dispatch) => {
       })
     )
     .catch((err) => {
-      console.log('Failed to sign up',err)
+      console.log('Failed to sign up', err)
     })
 }
