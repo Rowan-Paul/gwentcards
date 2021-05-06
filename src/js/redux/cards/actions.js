@@ -46,6 +46,9 @@ export const fetchCards = (filters) => (dispatch) => {
         payload: response,
       })
     )
+    .catch((err) => {
+      console.log('Failed to fetch cards', err)
+    })
 }
 
 export const addUserCard = (card) => (dispatch, getState) => {
@@ -69,6 +72,9 @@ export const addUserCard = (card) => (dispatch, getState) => {
         payload: response,
       })
     )
+    .catch((err) => {
+      console.log('Failed to add user card', err)
+    })
 }
 
 export const fetchUserCards = () => (dispatch) => {
@@ -84,4 +90,7 @@ export const fetchUserCards = () => (dispatch) => {
         payload: response,
       })
     )
+    .catch((err) => {
+      console.log('Failed to fetch user cards', err)
+    })
 }

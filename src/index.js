@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux'
-import store from './js/redux/store'
+import { PersistGate } from 'redux-persist/lib/integration/react'
+import { persistor, store } from './js/redux/store'
 
 import { App } from './js/App'
 import './index.css'
@@ -10,11 +11,17 @@ import reportWebVitals from './reportWebVitals'
 
 require('dotenv').config()
 
+const LoadingView = () => {
+  return <p>Loading...</p>
+}
+
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <PersistGate loading={<LoadingView />} persistor={persistor}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 )

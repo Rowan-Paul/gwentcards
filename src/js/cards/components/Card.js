@@ -9,14 +9,12 @@ function CardUI(props) {
   let abilities = []
 
   useEffect(() => {
-    if (props.signedIn) {
-      if (props.userCards.length > 0) {
-        props.userCards.forEach((userCard) => {
-          if (userCard._id === card._id) {
-            setIsCollected(true)
-          }
-        })
-      }
+    if (props.userCards.length > 0) {
+      props.userCards.forEach((userCard) => {
+        if (userCard._id === card._id) {
+          setIsCollected(true)
+        }
+      })
     }
   }, [card._id, props.userCards, props.signedIn])
 
