@@ -34,7 +34,23 @@ function PaginationUI(props) {
     // eslint-disable-next-line
   }, [props.selected, props.pageSize, props.page])
 
-  return <p>{pagination}</p>
+  return (
+    <p>
+      <span
+        onClick={() => handleOnClick(props.page - 1)}
+        className="mr-5 cursor-pointer inline-block text-2xl"
+      >
+        &lt;
+      </span>
+      {pagination}
+      <span
+        onClick={() => handleOnClick(props.page + 1)}
+        className="mr-5 cursor-pointer inline-block text-2xl"
+      >
+        &gt;
+      </span>
+    </p>
+  )
 }
 
 const mapStateToProps = (state) => ({
