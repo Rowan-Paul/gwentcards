@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { CurrentPage } from '../../components/cards/CurrentPage'
 import { Filters } from '../../components/cards/Filters'
 import { Pagination } from '../../components/cards/Pagination'
-import { fetchCards } from '../../redux/cards/actions'
+import { fetchCards, fetchUserCards } from '../../redux/cards/actions'
 
 function CardsUI(props) {
   useEffect(() => {
     props.fetchCards()
+    props.fetchUserCards()
     // eslint-disable-next-line
   }, [props.filters, props.pageSize, props.reset])
 
@@ -30,6 +31,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCards: () => dispatch(fetchCards()),
+  fetchUserCards: () => dispatch(fetchUserCards()),
 })
 
 export const Cards = connect(mapStateToProps, mapDispatchToProps)(CardsUI)
