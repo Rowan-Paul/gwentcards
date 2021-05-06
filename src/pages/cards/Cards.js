@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { fetchCards, fetchUserCards } from '../redux/cards/actions'
-import { Card } from './components/Card'
+import { fetchCards, fetchUserCards } from '../../redux/cards/actions'
+import { Card } from '../../components/card/Card'
 
-import { DeckFilter } from './components/DeckFilter'
-import { PageSizeFilter } from './components/PageSizeFilter'
-import { AbilitiesFilter } from './components/AbilitiesFilter'
-import { RowFilter } from './components/RowFilter'
-import { StrengthFilter } from './components/StrengthFilter'
-import { EffectFilter } from './components/EffectFilter'
-import { ResetFilters } from './components/ResetFilters'
+import { DeckFilter } from '../../components/cardFilters/DeckFilter'
+import { PageSizeFilter } from '../../components/cardFilters/PageSizeFilter'
+import { AbilitiesFilter } from '../../components/cardFilters/AbilitiesFilter'
+import { RowFilter } from '../../components/cardFilters/RowFilter'
+import { StrengthFilter } from '../../components/cardFilters/StrengthFilter'
+import { EffectFilter } from '../../components/cardFilters/EffectFilter'
+import { ResetFilters } from '../../components/cardFilters/ResetFilters'
 
 function CardsUI(props) {
   const [cards, setCards] = useState([])

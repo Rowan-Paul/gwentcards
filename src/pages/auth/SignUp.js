@@ -2,14 +2,19 @@ import { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { signIn } from '../redux/auth/actions'
+import { signUp } from '../../redux/auth/actions'
 
-function SignInUI(props) {
+function SignUpUI(props) {
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value)
+  }
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
   }
 
   const handlePasswordChange = (e) => {
@@ -17,7 +22,7 @@ function SignInUI(props) {
   }
 
   const handleLogin = () => {
-    props.signIn(username, password)
+    props.signUp(username, email, password)
   }
 
   return (
@@ -37,8 +42,23 @@ function SignInUI(props) {
             className="shadow appearance-none border rounded w-full py-2 px-3"
             id="username"
             type="text"
-            placeholder="Fill in username or email..."
             onChange={handleUsernameChange}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            className="text-left ml-5 block text-gray-500 text-sm font-bold mb-2"
+            htmlFor="email"
+          >
+            Email
+          </label>
+
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3"
+            id="email"
+            type="email"
+            onChange={handleEmailChange}
           />
         </div>
 
@@ -68,10 +88,10 @@ function SignInUI(props) {
           </button>
 
           <Link
-            to="/signup"
+            to="/signin"
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
           >
-            No account?
+            Have an account??
           </Link>
         </div>
       </div>
@@ -80,7 +100,8 @@ function SignInUI(props) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  signIn: (username, password) => dispatch(signIn(username, password)),
+  signUp: (username, email, password) =>
+    dispatch(signUp(username, email, password)),
 })
 
-export const SignIn = connect(null, mapDispatchToProps)(SignInUI)
+export const SignUp = connect(null, mapDispatchToProps)(SignUpUI)
