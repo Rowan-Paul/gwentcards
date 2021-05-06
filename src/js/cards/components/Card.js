@@ -9,7 +9,7 @@ function CardUI(props) {
   let abilities = []
 
   useEffect(() => {
-    if (userCards) {
+    if (props.userCards) {
       if (props.userCards.length > 0) {
         props.userCards.forEach((userCard) => {
           if (userCard._id === card._id) {
