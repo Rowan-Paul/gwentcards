@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
-import { Card } from '../card/Card'
+import { Card } from './Card'
 
 function CurrentPageUI(props) {
   const [cards, setCards] = useState([])
