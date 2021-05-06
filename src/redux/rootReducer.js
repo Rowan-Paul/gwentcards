@@ -1,10 +1,18 @@
 import { combineReducers } from 'redux'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 import { cardsReducer } from './cards/reducer'
 import { authReducer } from './auth/reducer'
 
+const cardsPersistConfig = {
+  key: 'cards',
+  storage: storage,
+  blacklist: ['filters, pageSize, page, reset'],
+}
+
 const rootReducer = combineReducers({
-  cards: cardsReducer,
+  cards: persistReducer(cardsPersistConfig, cardsReducer),
   auth: authReducer,
 })
 
