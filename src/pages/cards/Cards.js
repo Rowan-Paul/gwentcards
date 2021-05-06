@@ -13,7 +13,7 @@ function CardsUI(props) {
   }, [props.filters, props.pageSize, props.reset])
 
   return (
-    <div>
+    <div id="cards">
       <Filters />
       <Pagination />
       <CurrentPage />

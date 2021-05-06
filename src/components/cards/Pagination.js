@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setPage } from '../../redux/cards/actions'
+import { HashLink } from 'react-router-hash-link'
 
 function PaginationUI(props) {
   const [pagination, setPagination] = useState([])
@@ -21,13 +22,15 @@ function PaginationUI(props) {
         }
 
         tempArray.push(
-          <span
-            onClick={() => handleOnClick(i)}
-            className={classes}
-            key={`page${i}`}
-          >
-            {i + 1}
-          </span>
+          <HashLink smooth to="#cards">
+            <span
+              onClick={() => handleOnClick(i)}
+              className={classes}
+              key={`page${i}`}
+            >
+              {i + 1}
+            </span>
+          </HashLink>
         )
       }
       setPagination(tempArray)
