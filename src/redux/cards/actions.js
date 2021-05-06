@@ -107,3 +107,7 @@ export const setFilters = (filters) => {
 export const setPage = (page) => {
   return { type: types.PAGE_SET, payload: page }
 }
+
+export const setReset = (reset) => {
+  return { type: types.RESET, payload: reset }
+}

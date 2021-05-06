@@ -1,8 +1,15 @@
+import { connect } from 'react-redux'
+import { setReset } from '../../redux/cards/actions'
+
 function ResetFiltersUI(props) {
+  const handleReset = () => {
+    props.setReset(true)
+  }
+
   return (
     <span
       className="mb-3 md:mb-0 lg:mb-3 grid-row-auto place-self-center"
-      onClick={props.handleReset}
+      onClick={handleReset}
     >
       <button className="text-white px-4 w-auto h-10 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
         <svg
@@ -30,4 +37,15 @@ function ResetFiltersUI(props) {
   )
 }
 
-export const ResetFilters = ResetFiltersUI
+const mapStateToProps = (state) => ({
+  reset: state.cards.reset,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  setReset: (reset) => dispatch(setReset(reset)),
+})
+
+export const ResetFilters = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResetFiltersUI)
