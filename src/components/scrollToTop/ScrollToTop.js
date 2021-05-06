@@ -3,7 +3,7 @@ import { HashLink } from 'react-router-hash-link'
 
 function ScrollToTopButtonUI() {
   const [scrollToTopClassName, setScrollToTopClassName] = useState(
-    'w-20 invisible h-20 fixed bottom-5 right-5'
+    'w-20 hidden h-20 fixed bottom-5 right-5'
   )
 
   useEffect(() => {
