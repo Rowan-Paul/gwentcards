@@ -8,7 +8,7 @@ import { authReducer } from './auth/reducer'
 const cardsPersistConfig = {
   key: 'cards',
   storage: storage,
-  blacklist: ['filters, pageSize, page, reset'],
+  blacklist: ['filters, page, reset'],
 }
 
 const rootReducer = combineReducers({

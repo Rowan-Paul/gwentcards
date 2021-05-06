@@ -17,7 +17,7 @@ function PageSizeFilterUI(props) {
         id="pageSize"
         className="border-2 w-full px-2 h-10"
         onChange={handleOnChange}
-        defaultValue="20"
+        defaultValue={props.pageSize}
       >
         <option value="10">10</option>
         <option value="20">20</option>
@@ -27,7 +27,9 @@ function PageSizeFilterUI(props) {
   )
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+  pageSize: state.cards.pageSize,
+})
 
 const mapDispatchToProps = (dispatch) => ({
   setPageSize: (size) => dispatch(setPageSize(size)),
