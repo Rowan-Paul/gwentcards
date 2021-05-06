@@ -22,12 +22,8 @@ function PaginationUI(props) {
         }
 
         tempArray.push(
-          <HashLink smooth to="#cards">
-            <span
-              onClick={() => handleOnClick(i)}
-              className={classes}
-              key={`page${i}`}
-            >
+          <HashLink smooth to="#cards" key={`page${i}`}>
+            <span onClick={() => handleOnClick(i)} className={classes}>
               {i + 1}
             </span>
           </HashLink>
