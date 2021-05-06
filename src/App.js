@@ -20,7 +20,7 @@ function AppUI(props) {
   return (
     <Router>
       <NavBar />
-      <div className="p-10 text-center">
+      <div className="p-10 text-center" id="top">
         <PublicRoute exact path="/" component={HomePage} />
         <PrivateRoute
           exact

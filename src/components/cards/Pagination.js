@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setPage } from '../../redux/cards/actions'
+import { HashLink } from 'react-router-hash-link'
 
 function PaginationUI(props) {
   const [pagination, setPagination] = useState([])
@@ -21,13 +22,11 @@ function PaginationUI(props) {
         }
 
         tempArray.push(
-          <span
-            onClick={() => handleOnClick(i)}
-            className={classes}
-            key={`page${i}`}
-          >
-            {i + 1}
-          </span>
+          <HashLink smooth to="#cards" key={`page${i}`}>
+            <span onClick={() => handleOnClick(i)} className={classes}>
+              {i + 1}
+            </span>
+          </HashLink>
         )
       }
       setPagination(tempArray)
@@ -35,7 +34,23 @@ function PaginationUI(props) {
     // eslint-disable-next-line
   }, [props.selected, props.pageSize, props.page])
 
-  return <p>{pagination}</p>
+  return (
+    <p>
+      <span
+        onClick={() => handleOnClick(props.page - 1)}
+        className="mr-5 cursor-pointer inline-block text-2xl"
+      >
+        &lt;
+      </span>
+      {pagination}
+      <span
+        onClick={() => handleOnClick(props.page + 1)}
+        className="mr-5 cursor-pointer inline-block text-2xl"
+      >
+        &gt;
+      </span>
+    </p>
+  )
 }
 
 const mapStateToProps = (state) => ({
