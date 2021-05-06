@@ -3,9 +3,14 @@ import * as types from './types'
 let api = process.env.REACT_APP_API
 
 // fetch cards
-export const fetchCards = (filters) => (dispatch) => {
+export const fetchCards = () => (dispatch, getState) => {
   let url = `${api}/cards`
   let parameters = []
+  const filters = getState().cards.filters
+
+  dispatch({
+    type: types.REMOVED_CARDS,
+  })
 
   if (filters.deck.length > 0) {
     parameters.push(`deck=${encodeURIComponent(filters.deck.toString())}`)
@@ -93,4 +98,24 @@ export const fetchUserCards = () => (dispatch) => {
     .catch((err) => {
       console.log('Failed to fetch user cards', err)
     })
+}
+
+export const setPageSize = (size) => {
+  return { type: types.PAGE_SIZE_SET, payload: size }
+}
+
+export const setFilters = (filters) => {
+  return { type: types.FILTERS_SET, payload: filters }
+}
+
+export const setPage = (page) => {
+  return { type: types.PAGE_SET, payload: page }
+}
+
+export const setReset = (reset) => {
+  return { type: types.RESET, payload: reset }
+}
+
+export const removeCards = () => {
+  return { type: types.REMOVED_CARDS }
 }

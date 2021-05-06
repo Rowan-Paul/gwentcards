@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Cards } from '../cards/Cards'
 
-function HomeUI() {
+function HomePageUI() {
   return (
     <Fragment>
       <h1>GWENTcards</h1>
@@ -11,4 +11,4 @@ function HomeUI() {
   )
 }
 
-export const Home = HomeUI
+export const HomePage = HomePageUI

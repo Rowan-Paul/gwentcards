@@ -3,11 +3,11 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { PublicRoute, PrivateRoute } from 'react-private-public-route'
 import { connect } from 'react-redux'
 
-import { Home } from './homepage/Home'
-import { SignIn } from './auth/SignIn'
-import { NavBar } from './components/NavBar'
-import { Signout } from './auth/SignOut'
-import { SignUp } from './auth/SignUp'
+import { HomePage } from './pages/homepage/HomePage'
+import { NavBar } from './components/navBar/NavBar'
+import { SignIn } from './pages/auth/SignIn'
+import { Signout } from './pages/auth/SignOut'
+import { SignUp } from './pages/auth/SignUp'
 
 import { verify } from './redux/auth/actions'
 
@@ -21,7 +21,7 @@ function AppUI(props) {
     <Router>
       <NavBar />
       <div className="p-10 text-center">
-        <PublicRoute exact path="/" component={Home} />
+        <PublicRoute exact path="/" component={HomePage} />
         <PrivateRoute
           exact
           isAuthenticated={!props.signedIn}

@@ -1,10 +1,20 @@
+import { connect } from 'react-redux'
+import { setFilters, fetchCards } from '../../../redux/cards/actions'
 import { Filter } from './Filter'
 
 function StrengthFilterUI(props) {
+  const handleOnChange = (filter) => {
+    let tempFilters = props.filters
+    tempFilters[filter.name] = filter.values
+
+    props.setFilters(tempFilters)
+    props.fetchCards()
+  }
+
   return (
     <Filter
       name="strength"
-      handleOnChange={props.handleFilterOnChange}
+      handleOnChange={handleOnChange}
       options={[
         { label: '1', value: '1' },
         { label: '2', value: '2' },
@@ -27,4 +37,17 @@ function StrengthFilterUI(props) {
   )
 }
 
-export const StrengthFilter = StrengthFilterUI
+const mapStateToProps = (state) => ({
+  filters: state.cards.filters,
+  reset: state.cards.reset,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  setFilters: (filters) => dispatch(setFilters(filters)),
+  fetchCards: () => dispatch(fetchCards()),
+})
+
+export const StrengthFilter = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StrengthFilterUI)

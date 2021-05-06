@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { signOut } from '../redux/auth/actions'
+import { signOut } from '../../redux/auth/actions'
 
 function SignoutUI(props) {
   useEffect(() => {

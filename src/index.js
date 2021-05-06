@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
-import { persistor, store } from './js/redux/store'
+import { persistor, store } from './redux/store'
 
-import { App } from './js/App'
+import { App } from './App'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 
