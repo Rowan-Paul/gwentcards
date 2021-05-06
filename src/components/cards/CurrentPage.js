@@ -7,8 +7,10 @@ function CurrentPageUI(props) {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
-    const startPage = props.page * props.pageSize
-    const endPage = startPage + props.pageSize
+    const pageSize = parseInt(props.pageSize)
+
+    const startPage = props.page * pageSize
+    const endPage = startPage + pageSize
 
     const selectedCards = props.selected.slice(startPage, endPage)
 
