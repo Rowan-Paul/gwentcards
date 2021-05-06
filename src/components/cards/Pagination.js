@@ -32,6 +32,7 @@ function PaginationUI(props) {
       }
       setPagination(tempArray)
     }
+    // eslint-disable-next-line
   }, [props.selected, props.pageSize, props.page])
 
   return <p>{pagination}</p>
