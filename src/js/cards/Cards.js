@@ -41,23 +41,29 @@ function CardsUI(props) {
   }, [props.selected, page, pageSize])
 
   useEffect(() => {
-    const pageAmount = Math.ceil(props.selected.length / pageSize)
-    const tempArray = []
+    if (props.selected) {
+      const pageAmount = Math.ceil(props.selected.length / pageSize)
+      const tempArray = []
 
-    for (let i = 0; i < pageAmount; i++) {
-      let classes = 'mr-5 cursor-pointer inline-block'
-      if (i === page) {
-        classes = 'mr-5 cursor-pointer inline-block underline'
+      for (let i = 0; i < pageAmount; i++) {
+        let classes = 'mr-5 cursor-pointer inline-block'
+        if (i === page) {
+          classes = 'mr-5 cursor-pointer inline-block underline'
+        }
+
+        tempArray.push(
+          <span
+            onClick={(e) => setPage(i)}
+            className={classes}
+            key={`page${i}`}
+          >
+            {i + 1}
+          </span>
+        )
       }
-
-      tempArray.push(
-        <span onClick={(e) => setPage(i)} className={classes} key={`page${i}`}>
-          {i + 1}
-        </span>
-      )
+      setPagination(tempArray)
     }
-    setPagination(tempArray)
-  }, [props.selected.length, pageSize, page])
+  }, [props.selected, pageSize, page])
 
   const handleReset = () => {
     const tempFilters = {
