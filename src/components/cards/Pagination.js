@@ -5,6 +5,8 @@ import { HashLink } from 'react-router-hash-link'
 
 function PaginationUI(props) {
   const [pagination, setPagination] = useState([])
+  const [previousPage, setPreviousPage] = useState([])
+  const [nextPage, setNextPage] = useState([])
 
   const handleOnClick = (page) => {
     props.setPage(page)
@@ -30,29 +32,45 @@ function PaginationUI(props) {
         )
       }
       setPagination(tempArray)
+
+      if (props.page === 0) {
+        setPreviousPage([])
+      } else {
+        setPreviousPage(
+          <HashLink
+            smooth
+            to="#cards"
+            onClick={() => handleOnClick(props.page - 1)}
+            className="mr-5 cursor-pointer inline-block text-2xl no-underline"
+          >
+            &lt;
+          </HashLink>
+        )
+      }
+
+      if (props.page === pageAmount - 1) {
+        setNextPage([])
+      } else {
+        setNextPage(
+          <HashLink
+            smooth
+            to="#cards"
+            onClick={() => handleOnClick(props.page + 1)}
+            className="mr-5 cursor-pointer inline-block text-2xl"
+          >
+            &gt;
+          </HashLink>
+        )
+      }
     }
     // eslint-disable-next-line
   }, [props.selected, props.pageSize, props.page])
 
   return (
     <p>
-      <HashLink
-        smooth
-        to="#cards"
-        onClick={() => handleOnClick(props.page - 1)}
-        className="mr-5 cursor-pointer inline-block text-2xl"
-      >
-        &lt;
-      </HashLink>
+      {previousPage}
       {pagination}
-      <HashLink
-        smooth
-        to="#cards"
-        onClick={() => handleOnClick(props.page + 1)}
-        className="mr-5 cursor-pointer inline-block text-2xl"
-      >
-        &gt;
-      </HashLink>
+      {nextPage}
     </p>
   )
 }
