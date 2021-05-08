@@ -36,19 +36,23 @@ function PaginationUI(props) {
 
   return (
     <p>
-      <span
+      <HashLink
+        smooth
+        to="#cards"
         onClick={() => handleOnClick(props.page - 1)}
         className="mr-5 cursor-pointer inline-block text-2xl"
       >
         &lt;
-      </span>
+      </HashLink>
       {pagination}
-      <span
+      <HashLink
+        smooth
+        to="#cards"
         onClick={() => handleOnClick(props.page + 1)}
         className="mr-5 cursor-pointer inline-block text-2xl"
       >
         &gt;
-      </span>
+      </HashLink>
     </p>
   )
 }
