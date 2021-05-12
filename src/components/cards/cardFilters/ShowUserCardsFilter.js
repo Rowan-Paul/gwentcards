@@ -41,6 +41,7 @@ function ShowUserCardsFilterUI(props) {
         checkedIcon={false}
         boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
         activeBoxShadow="0px 0px 1px 5px rgba(0, 0, 0, 0.2)"
+        disabled={props.filters.hideUserCards}
         height={20}
         width={48}
         className="w-full my-2 mx-5"

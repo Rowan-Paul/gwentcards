@@ -39,7 +39,22 @@ const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, pageSize: action.payload }
 
     case types.FILTERS_SET:
-      return { ...state, filters: action.payload, page: 0, reset: false }
+      // const newState = {...state, byID:{...state.byID, [action.id]: {...state.byID[action.id], text: action.text}}};
+
+      return {
+        ...state,
+        filters: {
+          deck: action.payload.deck,
+          row: action.payload.row,
+          strength: action.payload.strength,
+          abilities: action.payload.abilities,
+          effect: action.payload.effect,
+          hideUserCards: action.payload.hideUserCards,
+          showUserCards: action.payload.showUserCards,
+        },
+        page: 0,
+        reset: false,
+      }
 
     case types.PAGE_SET:
       return { ...state, page: action.payload }
