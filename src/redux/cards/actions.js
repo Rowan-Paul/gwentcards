@@ -59,42 +59,65 @@ export const fetchCards = () => (dispatch, getState) => {
 export const addUserCard = (card) => (dispatch, getState) => {
   let url = `${api}/users/cards`
 
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      cards: [...getState().cards.userCards, card],
-    }),
-  })
-    .then((response) => {
-      return response.json()
+  if (getState().auth.signedIn) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cards: [...getState().cards.userCards, card],
+      }),
     })
-    .then((response) =>
-      dispatch({
-        type: types.ADDED_USER_CARD,
-        payload: response,
+      .then((response) => {
+        return response.json()
       })
-    )
-    .catch((err) => {
-      console.log('Failed to add user card', err)
+      .then((response) =>
+        dispatch({
+          type: types.ADDED_USER_CARD,
+          payload: response,
+        })
+      )
+      .catch((err) => {
+        console.log('Failed to add user card', err)
+      })
+  } else {
+    let cards = getState().cards.userCards
+
+    if (getState().cards.userCards?.length < 1) {
+      cards = []
+    }
+
+    dispatch({
+      type: types.ADDED_USER_CARD,
+      payload: { cards: [...cards, card] },
     })
+  }
 }
 
-export const fetchUserCards = () => (dispatch) => {
+export const fetchUserCards = () => (dispatch, getState) => {
   let url = `${api}/users/cards`
 
   fetch(url)
     .then((response) => {
       return response.json()
     })
-    .then((response) =>
+    .then((response) => {
+      let cards = response.cards
+
+      if (response.cards === undefined || response.cards?.length < 1) {
+        if (getState().cards.userCards?.length > 0) {
+          cards = getState().cards.userCards
+        } else {
+          cards = []
+        }
+      }
+
       dispatch({
         type: types.FETCHED_USER_CARDS,
-        payload: response,
+        payload: cards,
       })
-    )
+    })
     .catch((err) => {
       console.log('Failed to fetch user cards', err)
     })

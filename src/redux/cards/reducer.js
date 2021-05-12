@@ -31,7 +31,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, userCards: action.payload.cards }
 
     case types.FETCHED_USER_CARDS:
-      return { ...state, userCards: action.payload.cards }
+      return { ...state, userCards: action.payload }
 
     case types.PAGE_SIZE_SET:
       return { ...state, pageSize: action.payload }
