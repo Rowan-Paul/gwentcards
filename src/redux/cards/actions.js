@@ -45,12 +45,36 @@ export const fetchCards = () => (dispatch, getState) => {
     .then((response) => {
       return response.json()
     })
-    .then((response) =>
-      dispatch({
-        type: types.FETCHED_CARDS,
-        payload: response,
-      })
-    )
+    .then((response) => {
+      if (filters.hideUserCards) {
+        let cardNames = []
+        let cards = []
+
+        getState().cards.userCards.forEach((card) => {
+          cardNames.push(card.name)
+        })
+        response.cards.forEach((card) => {
+          if (cardNames.includes(card.name)) {
+            cards.push(card)
+          }
+        })
+
+        const newResponse = {
+          amount: cards.length,
+          cards: [...cards],
+        }
+
+        dispatch({
+          type: types.FETCHED_CARDS,
+          payload: newResponse,
+        })
+      } else {
+        dispatch({
+          type: types.FETCHED_CARDS,
+          payload: response,
+        })
+      }
+    })
     .catch((err) => {
       console.log('Failed to fetch cards', err)
     })
@@ -168,4 +192,8 @@ export const setReset = (reset) => {
 
 export const removeCards = () => {
   return { type: types.REMOVED_CARDS }
+}
+
+export const setUserCardsFilter = (state) => {
+  return { type: types.USER_CARDS_FILTER_SET, payload: state }
 }

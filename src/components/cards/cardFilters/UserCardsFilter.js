@@ -1,12 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Switch from 'react-switch'
+import { connect } from 'react-redux'
+
+import { setFilters, fetchCards } from '../../../redux/cards/actions'
 
 function UserCardsFilterUI(props) {
   const [checked, setChecked] = useState(false)
 
   const handleChange = () => {
+    let tempFilters = props.filters
+    tempFilters.hideUserCards = !checked
+
+    props.setFilters(tempFilters)
     setChecked(!checked)
+    props.fetchCards()
   }
+
+  useEffect(() => {
+    setChecked(props.filters.hideUserCards)
+  })
 
   return (
     <span className="mb-3 md:mb-0 lg:mb-3 p-3">
@@ -31,4 +43,17 @@ function UserCardsFilterUI(props) {
   )
 }
 
-export const UserCardsFilter = UserCardsFilterUI
+const mapStateToProps = (state) => ({
+  filters: state.cards.filters,
+  reset: state.cards.reset,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  setFilters: (filters) => dispatch(setFilters(filters)),
+  fetchCards: () => dispatch(fetchCards()),
+})
+
+export const UserCardsFilter = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserCardsFilterUI)

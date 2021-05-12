@@ -10,6 +10,7 @@ const INITIAL_STATE = {
     strength: [],
     abilities: [],
     effect: [],
+    hideUserCards: false,
   },
   pageSize: 20,
   page: 0,
