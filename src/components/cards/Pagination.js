@@ -13,55 +13,53 @@ function PaginationUI(props) {
   }
 
   useEffect(() => {
-    if (props.selected) {
-      const pageAmount = Math.ceil(props.selected.length / props.pageSize)
-      const tempArray = []
+    const pageAmount = Math.ceil(props.selected?.length / props.pageSize)
+    const tempArray = []
 
-      for (let i = 0; i < pageAmount; i++) {
-        let classes = 'mr-5 cursor-pointer inline-block'
-        if (i === props.page) {
-          classes = 'mr-5 cursor-pointer inline-block underline'
-        }
-
-        tempArray.push(
-          <HashLink smooth to="#cards" key={`page${i}`}>
-            <span onClick={() => handleOnClick(i)} className={classes}>
-              {i + 1}
-            </span>
-          </HashLink>
-        )
-      }
-      setPagination(tempArray)
-
-      if (props.page === 0) {
-        setPreviousPage([])
-      } else {
-        setPreviousPage(
-          <HashLink
-            smooth
-            to="#cards"
-            onClick={() => handleOnClick(props.page - 1)}
-            className="mr-5 cursor-pointer inline-block text-2xl no-underline"
-          >
-            &lt;
-          </HashLink>
-        )
+    for (let i = 0; i < pageAmount; i++) {
+      let classes = 'mr-5 cursor-pointer inline-block'
+      if (i === props.page) {
+        classes = 'mr-5 cursor-pointer inline-block underline'
       }
 
-      if (props.page === pageAmount - 1) {
-        setNextPage([])
-      } else {
-        setNextPage(
-          <HashLink
-            smooth
-            to="#cards"
-            onClick={() => handleOnClick(props.page + 1)}
-            className="mr-5 cursor-pointer inline-block text-2xl"
-          >
-            &gt;
-          </HashLink>
-        )
-      }
+      tempArray.push(
+        <HashLink smooth to="#cards" key={`page${i}`}>
+          <span onClick={() => handleOnClick(i)} className={classes}>
+            {i + 1}
+          </span>
+        </HashLink>
+      )
+    }
+    setPagination(tempArray)
+
+    if (props.page === 0) {
+      setPreviousPage([])
+    } else {
+      setPreviousPage(
+        <HashLink
+          smooth
+          to="#cards"
+          onClick={() => handleOnClick(props.page - 1)}
+          className="mr-5 cursor-pointer inline-block text-2xl no-underline"
+        >
+          &lt;
+        </HashLink>
+      )
+    }
+
+    if (props.page === pageAmount - 1 || pageAmount < 1) {
+      setNextPage([])
+    } else {
+      setNextPage(
+        <HashLink
+          smooth
+          to="#cards"
+          onClick={() => handleOnClick(props.page + 1)}
+          className="mr-5 cursor-pointer inline-block text-2xl"
+        >
+          &gt;
+        </HashLink>
+      )
     }
     // eslint-disable-next-line
   }, [props.selected, props.pageSize, props.page])
