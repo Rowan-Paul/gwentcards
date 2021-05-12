@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { PublicRoute, PrivateRoute } from 'react-private-public-route'
 import { connect } from 'react-redux'
 
-import { HomePage } from './pages/homepage/HomePage'
+import { HomePage } from './pages/homePage/HomePage'
 import { NavBar } from './components/navBar/NavBar'
 import { SignIn } from './pages/auth/SignIn'
 import { Signout } from './pages/auth/SignOut'

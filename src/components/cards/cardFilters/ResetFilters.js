@@ -32,7 +32,7 @@ function ResetFiltersUI(props) {
             </g>
           </g>
         </svg>
-        <span>Reset</span>
+        <span>Reset Filters</span>
       </button>
     </span>
   )

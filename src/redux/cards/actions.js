@@ -45,12 +45,58 @@ export const fetchCards = () => (dispatch, getState) => {
     .then((response) => {
       return response.json()
     })
-    .then((response) =>
-      dispatch({
-        type: types.FETCHED_CARDS,
-        payload: response,
-      })
-    )
+    .then((response) => {
+      if (filters.hideUserCards) {
+        let cardNames = []
+        let cards = []
+
+        getState().cards.userCards.forEach((card) => {
+          cardNames.push(card.name)
+        })
+        response.cards.forEach((card) => {
+          if (!cardNames.includes(card.name)) {
+            cards.push(card)
+          }
+        })
+
+        const newResponse = {
+          amount: cards.length,
+          cards: [...cards],
+        }
+
+        dispatch({
+          type: types.FETCHED_CARDS,
+          payload: newResponse,
+        })
+      } else if (filters.showUserCards) {
+        let cardNames = []
+        let cards = []
+
+        getState().cards.userCards.forEach((card) => {
+          cardNames.push(card.name)
+        })
+        response.cards.forEach((card) => {
+          if (cardNames.includes(card.name)) {
+            cards.push(card)
+          }
+        })
+
+        const newResponse = {
+          amount: cards.length,
+          cards: [...cards],
+        }
+
+        dispatch({
+          type: types.FETCHED_CARDS,
+          payload: newResponse,
+        })
+      } else {
+        dispatch({
+          type: types.FETCHED_CARDS,
+          payload: response,
+        })
+      }
+    })
     .catch((err) => {
       console.log('Failed to fetch cards', err)
     })
@@ -59,42 +105,92 @@ export const fetchCards = () => (dispatch, getState) => {
 export const addUserCard = (card) => (dispatch, getState) => {
   let url = `${api}/users/cards`
 
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      cards: [...getState().cards.userCards, card],
-    }),
-  })
-    .then((response) => {
-      return response.json()
+  if (getState().auth.signedIn) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cards: [card],
+      }),
     })
-    .then((response) =>
-      dispatch({
-        type: types.ADDED_USER_CARD,
-        payload: response,
+      .then((response) => {
+        return response.json()
       })
-    )
-    .catch((err) => {
-      console.log('Failed to add user card', err)
+      .then((response) =>
+        dispatch({
+          type: types.ADDED_USER_CARD,
+          payload: response,
+        })
+      )
+      .catch((err) => {
+        console.log('Failed to add user card', err)
+      })
+  } else {
+    let cards = getState().cards.userCards
+
+    if (getState().cards.userCards?.length < 1) {
+      cards = []
+    }
+
+    dispatch({
+      type: types.ADDED_USER_CARD,
+      payload: { cards: [...cards, card] },
     })
+  }
 }
 
-export const fetchUserCards = () => (dispatch) => {
+export const fetchUserCards = () => (dispatch, getState) => {
   let url = `${api}/users/cards`
 
   fetch(url)
     .then((response) => {
       return response.json()
     })
-    .then((response) =>
+    .then((response) => {
+      let cards = response.cards
+
+      // if the user has no cards
+      if (response.cards === undefined || response.cards?.length < 1) {
+        //if there are cards in the state
+        if (getState().cards.userCards?.length > 0) {
+          cards = getState().cards.userCards
+        } else {
+          cards = []
+        }
+        // if the logged in user has cards, but there are also cards in the state
+      } else if (getState().cards.userCards?.length > 0) {
+        let oldCards = []
+        let newCards = []
+
+        cards.forEach((card) => {
+          oldCards.push(card.name)
+        })
+        getState().cards.userCards.forEach((card) => {
+          if (!oldCards.includes(card.name)) {
+            newCards.push(card)
+          }
+        })
+
+        cards = [...cards, ...newCards]
+
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            cards: newCards,
+          }),
+        }).catch((e) => console.log('Failed to fetch user cards'))
+      }
+
       dispatch({
         type: types.FETCHED_USER_CARDS,
-        payload: response,
+        payload: cards,
       })
-    )
+    })
     .catch((err) => {
       console.log('Failed to fetch user cards', err)
     })

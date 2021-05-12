@@ -9,14 +9,12 @@ function CardUI(props) {
   let abilities = []
 
   useEffect(() => {
-    if (props.userCards) {
-      if (props.userCards.length > 0) {
-        props.userCards.forEach((userCard) => {
-          if (userCard._id === card._id) {
-            setIsCollected(true)
-          }
-        })
-      }
+    if (props.userCards?.length > 0) {
+      props.userCards.forEach((userCard) => {
+        if (userCard._id === card._id) {
+          setIsCollected(true)
+        }
+      })
     }
   }, [card._id, props.userCards, props.signedIn])
 
@@ -61,11 +59,9 @@ function CardUI(props) {
     </svg>
   )
 
-  if (card.abilities) {
-    card.abilities.forEach((ability) => {
-      abilities.push(titleCase(ability))
-    })
-  }
+  card.abilities?.forEach((ability) => {
+    abilities.push(titleCase(ability))
+  })
 
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(' ')

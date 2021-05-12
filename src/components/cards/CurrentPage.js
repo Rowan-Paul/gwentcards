@@ -12,9 +12,9 @@ function CurrentPageUI(props) {
     const startPage = props.page * pageSize
     const endPage = startPage + pageSize
 
-    const selectedCards = props.selected.slice(startPage, endPage)
+    const selectedCards = props.selected?.slice(startPage, endPage)
 
-    setCards(selectedCards.map((card) => <Card card={card} key={card.name} />))
+    setCards(selectedCards?.map((card) => <Card card={card} key={card.name} />))
   }, [props.selected, props.page, props.pageSize])
 
   return (
