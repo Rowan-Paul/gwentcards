@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { setFilters, fetchCards } from '../../../redux/cards/actions'
 
-function UserCardsFilterUI(props) {
+function HideUserCardsFilterUI(props) {
   const [checked, setChecked] = useState(false)
 
   const handleChange = () => {
@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCards: () => dispatch(fetchCards()),
 })
 
-export const UserCardsFilter = connect(
+export const HideUserCardsFilter = connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserCardsFilterUI)
+)(HideUserCardsFilterUI)

@@ -11,6 +11,7 @@ const INITIAL_STATE = {
     abilities: [],
     effect: [],
     hideUserCards: false,
+    showUserCards: false,
   },
   pageSize: 20,
   page: 0,
