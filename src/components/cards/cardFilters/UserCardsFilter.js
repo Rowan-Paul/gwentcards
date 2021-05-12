@@ -18,7 +18,7 @@ function UserCardsFilterUI(props) {
 
   useEffect(() => {
     setChecked(props.filters.hideUserCards)
-  })
+  }, [props.filters.hideUserCards, props.reset])
 
   return (
     <span className="mb-3 md:mb-0 lg:mb-3 p-3">

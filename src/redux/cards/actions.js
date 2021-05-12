@@ -54,7 +54,7 @@ export const fetchCards = () => (dispatch, getState) => {
           cardNames.push(card.name)
         })
         response.cards.forEach((card) => {
-          if (cardNames.includes(card.name)) {
+          if (!cardNames.includes(card.name)) {
             cards.push(card)
           }
         })
