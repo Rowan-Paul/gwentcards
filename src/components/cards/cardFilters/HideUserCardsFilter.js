@@ -17,8 +17,15 @@ function HideUserCardsFilterUI(props) {
   }
 
   useEffect(() => {
-    setChecked(props.filters.hideUserCards)
-  }, [props.filters.hideUserCards, props.reset])
+    if (props.reset) {
+      let tempFilters = props.filters
+      tempFilters.hideUserCards = false
+
+      props.setFilters(tempFilters)
+      setChecked(false)
+      props.fetchCards()
+    }
+  }, [props])
 
   return (
     <span className="mb-3 md:mb-0 lg:mb-3 p-3">
@@ -37,7 +44,7 @@ function HideUserCardsFilterUI(props) {
         height={20}
         width={48}
         className="w-full my-2 mx-5"
-        id="material-switch"
+        id="hideusercards"
       />
     </span>
   )
