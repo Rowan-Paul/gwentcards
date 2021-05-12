@@ -66,7 +66,7 @@ export const addUserCard = (card) => (dispatch, getState) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        cards: [...getState().cards.userCards, card],
+        cards: [card],
       }),
     })
       .then((response) => {
@@ -105,12 +105,39 @@ export const fetchUserCards = () => (dispatch, getState) => {
     .then((response) => {
       let cards = response.cards
 
+      // if the user has no cards
       if (response.cards === undefined || response.cards?.length < 1) {
+        //if there are cards in the state
         if (getState().cards.userCards?.length > 0) {
           cards = getState().cards.userCards
         } else {
           cards = []
         }
+        // if the logged in user has cards, but there are also cards in the state
+      } else if (getState().cards.userCards?.length > 0) {
+        let oldCards = []
+        let newCards = []
+
+        cards.forEach((card) => {
+          oldCards.push(card.name)
+        })
+        getState().cards.userCards.forEach((card) => {
+          if (!oldCards.includes(card.name)) {
+            newCards.push(card)
+          }
+        })
+
+        cards = [...cards, ...newCards]
+
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            cards: newCards,
+          }),
+        }).catch((e) => console.log('Failed to fetch user cards'))
       }
 
       dispatch({
