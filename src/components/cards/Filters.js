@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
-import { PageSizeFilter } from './cardFilters/PageSizeFilter'
-import { DeckFilter } from './cardFilters/DeckFilter'
-import { AbilitiesFilter } from './cardFilters/AbilitiesFilter'
-import { RowFilter } from './cardFilters/RowFilter'
-import { StrengthFilter } from './cardFilters/StrengthFilter'
-import { EffectFilter } from './cardFilters/EffectFilter'
-import { ResetFilters } from './cardFilters/ResetFilters'
-import { ShowUserCardsFilter } from './cardFilters/ShowUserCardsFilter'
-import { HideUserCardsFilter } from './cardFilters/HideUserCardsFilter'
+import { PageSizeFilter } from './card-filters/PageSizeFilter'
+import { DeckFilter } from './card-filters/DeckFilter'
+import { AbilitiesFilter } from './card-filters/AbilitiesFilter'
+import { RowFilter } from './card-filters/RowFilter'
+import { StrengthFilter } from './card-filters/StrengthFilter'
+import { EffectFilter } from './card-filters/EffectFilter'
+import { ResetFilters } from './card-filters/ResetFilters'
+import { ShowUserCardsFilter } from './card-filters/ShowUserCardsFilter'
+import { HideUserCardsFilter } from './card-filters/HideUserCardsFilter'
 
 function FiltersUI() {
   const downArrow = (

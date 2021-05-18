@@ -1,4 +1,4 @@
-import { ScrollToTopButton } from '../../components/scrollToTop/ScrollToTop'
+import { ScrollToTopButton } from '../../components/scroll-to-top/ScrollToTop'
 import { Cards } from '../cards/Cards'
 
 function HomePageUI() {

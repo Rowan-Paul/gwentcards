@@ -4,7 +4,8 @@ import { PublicRoute, PrivateRoute } from 'react-private-public-route'
 import { connect } from 'react-redux'
 
 import { HomePage } from './pages/homepage/HomePage'
-import { NavBar } from './components/navBar/NavBar'
+import { NavBar } from './components/navbar/NavBar'
+import { Footer } from './components/footer/Footer'
 import { SignIn } from './pages/auth/SignIn'
 import { Signout } from './pages/auth/SignOut'
 import { SignUp } from './pages/auth/SignUp'
@@ -20,7 +21,10 @@ function AppUI(props) {
   return (
     <Router>
       <NavBar />
-      <div className="p-10 text-center" id="top">
+      <div
+        className="p-10 text-center flex flex-col min-h-screen justify-between"
+        id="top"
+      >
         <PublicRoute exact path="/" component={HomePage} />
         <PrivateRoute
           exact
@@ -43,6 +47,7 @@ function AppUI(props) {
           path="/signup"
           component={SignUp}
         />
+        <Footer />
       </div>
     </Router>
   )
