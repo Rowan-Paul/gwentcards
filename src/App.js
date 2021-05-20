@@ -4,7 +4,7 @@ import { PublicRoute, PrivateRoute } from 'react-private-public-route'
 import { connect } from 'react-redux'
 
 import { HomePage } from './pages/homepage/HomePage'
-import { NavBar } from './components/navbar/NavBar'
+import { NavBar } from './components/navigation/NavBar'
 import { Footer } from './components/footer/Footer'
 import { SignIn } from './pages/auth/SignIn'
 import { Signout } from './pages/auth/SignOut'
