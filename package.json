@@ -20,7 +20,11 @@
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "@tailwindcss/postcss7-compat": "^2.1.0",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^8.2.10",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.0"
   },
   "scripts": {
     "start": "craco start",
@@ -46,11 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.1.0",
-    "autoprefixer": "^9.8.6",
-    "postcss": "^8.2.10",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.0"
   }
 }
