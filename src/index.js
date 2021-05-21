@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import { Provider } from 'react-redux'
+import { CloudinaryContext } from 'cloudinary-react'
 
 import { App } from './App'
 import store from './redux/store'
@@ -14,7 +14,9 @@ require('dotenv').config()
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <CloudinaryContext cloudName="dfhclt0o2">
+        <App />
+      </CloudinaryContext>
     </React.StrictMode>
   </Provider>,
   document.getElementById('root')
