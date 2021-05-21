@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import Img from 'react-cloudinary-lazy-image'
 
 import { addUserCard } from '../../redux/cards/actions'
 
@@ -85,10 +86,14 @@ function CardUI(props) {
       </header>
 
       <section>
-        <img
-          className="mx-auto"
-          alt={'Image of ' + card.name}
-          src="https://via.placeholder.com/205x387"
+        <Img
+          cloudName={'dfhclt0o2'}
+          imageName={'/gwentcards/' + encodeURIComponent(card.name)}
+          fixed={{
+            width: 205,
+            height: 387,
+          }}
+          alt={'Card with ' + card.name}
         />
         <p className="p-4">
           <span className="block">
