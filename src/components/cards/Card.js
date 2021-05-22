@@ -87,7 +87,7 @@ function CardUI(props) {
 
       <section>
         <Image
-          public-id={'/gwentcards/' + encodeURIComponent(card.name) + '.png'}
+          public-id={'/gwentcards/' + encodeURIComponent(card.name)}
           width="205"
           height="387"
           fetchFormat="auto"
