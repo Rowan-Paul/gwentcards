@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Image } from 'cloudinary-react'
 
 import { addUserCard } from '../../redux/cards/actions'
 
@@ -85,10 +86,15 @@ function CardUI(props) {
       </header>
 
       <section>
-        <img
-          className="mx-auto"
-          alt={'Image of ' + card.name}
-          src="https://via.placeholder.com/205x387"
+        <Image
+          public-id={'/gwentcards/' + encodeURIComponent(card.name)}
+          width="205"
+          height="387"
+          fetchFormat="auto"
+          crop="scale"
+          loading="lazy"
+          alt={'Card with ' + card.name}
+          style={{ margin: 'auto' }}
         />
         <p className="p-4">
           <span className="block">

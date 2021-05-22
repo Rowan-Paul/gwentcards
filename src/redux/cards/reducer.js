@@ -39,8 +39,6 @@ const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, pageSize: action.payload }
 
     case types.FILTERS_SET:
-      // const newState = {...state, byID:{...state.byID, [action.id]: {...state.byID[action.id], text: action.text}}};
-
       return {
         ...state,
         filters: {
@@ -60,7 +58,20 @@ const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, page: action.payload }
 
     case types.RESET:
-      return { ...state, reset: action.payload, filters: INITIAL_STATE.filters }
+      return {
+        ...state,
+        reset: action.payload,
+        page: 0,
+        filters: {
+          deck: [],
+          row: [],
+          strength: [],
+          abilities: [],
+          effect: [],
+          hideUserCards: false,
+          showUserCards: false,
+        },
+      }
 
     case types.REMOVED_CARDS:
       return { ...state, selected: [] }
