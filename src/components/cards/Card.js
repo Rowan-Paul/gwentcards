@@ -126,10 +126,7 @@ function CardUI(props) {
         {heartIcon}
         {isCollected ? collectedIcon : plusIcon}
       </footer>
-      <LocationsModal
-        position={props.showLocationModal}
-        locations={card.locations}
-      />
+      <LocationsModal card={card} />
     </div>
   )
 }

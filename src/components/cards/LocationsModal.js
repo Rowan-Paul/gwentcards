@@ -5,17 +5,16 @@ import { setLocationModal } from '../../redux/cards/actions'
 function LocationsModalUI(props) {
   let locations = []
 
-  props.locations.forEach((location) => {
-    console.log(location)
+  props.card.locations.forEach((location) => {
     locations.push(
-      <p key={Math.random().toString(36).substr(2, 9)}>{location.type}</p>
+      <p key={Math.random().toString(36).substr(2, 9)}>Type: {location.type}</p>
     )
   })
 
   return (
     <div
       className={`${
-        props.position ? 'fixed' : 'hidden'
+        props.showLocationModal ? 'fixed' : 'hidden'
       } z-10 inset-0 overflow-y-auto`}
       aria-labelledby="modal-title"
       role="dialog"
