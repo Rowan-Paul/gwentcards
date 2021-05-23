@@ -14,7 +14,7 @@ require('dotenv').config()
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <CloudinaryContext cloudName="dfhclt0o2">
+      <CloudinaryContext cloudName={process.env.REACT_APP_CLOUDINARY_ID}>
         <App />
       </CloudinaryContext>
     </React.StrictMode>
