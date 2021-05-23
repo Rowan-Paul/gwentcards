@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'cloudinary-react'
 
-import { addUserCard } from '../../redux/cards/actions'
+import { addUserCard, setLocationModal } from '../../redux/cards/actions'
+import { LocationsModal } from './LocationsModal'
 
 function CardUI(props) {
   const [isCollected, setIsCollected] = useState(false)
@@ -112,16 +113,23 @@ function CardUI(props) {
       </section>
 
       <footer className="p-4">
-        <span href="#" className="text-sm hover:underline mr-5 cursor-pointer">
+        <span className="text-sm hover:underline mr-5 cursor-pointer">
           Notes
         </span>
-        <span href="#" className="text-sm hover:underline cursor-pointer">
+        <span
+          className="text-sm hover:underline cursor-pointer"
+          onClick={() => props.setLocationModal()}
+        >
           Locations
         </span>
 
         {heartIcon}
         {isCollected ? collectedIcon : plusIcon}
       </footer>
+      <LocationsModal
+        position={props.showLocationModal}
+        locations={card.locations}
+      />
     </div>
   )
 }
@@ -129,10 +137,12 @@ function CardUI(props) {
 const mapStateToProps = (state) => ({
   userCards: state.cards.userCards,
   signedIn: state.auth.signedIn,
+  showLocationModal: state.cards.showLocationModal,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   addUserCard: (card) => dispatch(addUserCard(card)),
+  setLocationModal: () => dispatch(setLocationModal()),
 })
 
 export const Card = connect(mapStateToProps, mapDispatchToProps)(CardUI)

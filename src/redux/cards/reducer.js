@@ -16,6 +16,7 @@ const INITIAL_STATE = {
   pageSize: 20,
   page: 0,
   reset: false,
+  showLocationModal: false,
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -75,6 +76,9 @@ const reducer = (state = INITIAL_STATE, action) => {
 
     case types.REMOVED_CARDS:
       return { ...state, selected: [] }
+
+    case types.SET_LOCATION_MODAL:
+      return { ...state, showLocationModal: !state.showLocationModal }
 
     default:
       return state
