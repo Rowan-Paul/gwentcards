@@ -10,6 +10,18 @@ function CardUI(props) {
   const [locationsCollected, setLocationsCollected] = useState(0)
   const [locationsAmount, setLocationsAmount] = useState(0)
 
+  const placeIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 0 24 24"
+      width="24px"
+      fill="#000000"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+    </svg>
+  )
   const heartIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +54,12 @@ function CardUI(props) {
     })
 
     setLocationsCollected(amount)
-  }, [props.collectedCards, card.locations, locationsCollected])
+  }, [
+    props.collectedCards,
+    card.locations,
+    locationsCollected,
+    locationsAmount,
+  ])
 
   return (
     <span>
@@ -91,14 +108,17 @@ function CardUI(props) {
           <span className="text-sm hover:underline mr-5 cursor-pointer">
             Notes
           </span>
-          <span
-            className="text-sm hover:underline cursor-pointer"
-            onClick={() => setShowLocationModal(!showLocationModal)}
-          >
-            Locations ({locationsCollected + '/' + locationsAmount})
-          </span>
 
           {heartIcon}
+          <span
+            className="h-6 w-6 float-right mr-5 mb-5 relative text-sm hover:underline cursor-pointer"
+            onClick={() => setShowLocationModal(!showLocationModal)}
+          >
+            {placeIcon}
+            <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-0.5 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded">
+              {locationsCollected + '/' + locationsAmount}
+            </span>
+          </span>
         </footer>
       </div>
     </span>
