@@ -22,6 +22,9 @@ function LocationsModalUI(props) {
         <td>{titleCase(location.territory ? location.territory : '')}</td>
         <td>{titleCase(location.location ? location.location : '')}</td>
         <td>{titleCase(location.character ? location.character : '')}</td>
+        <td>
+          <input type="checkbox" id="scales" name="scales"></input>
+        </td>
       </tr>
     )
   })
@@ -48,6 +51,7 @@ function LocationsModalUI(props) {
               <td>Territory</td>
               <td>Location</td>
               <td>Character</td>
+              <td>Collected</td>
             </tr>
           </thead>
           <tbody>{locations}</tbody>
