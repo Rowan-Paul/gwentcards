@@ -46,10 +46,60 @@ export const fetchCards = () => (dispatch, getState) => {
       return response.json()
     })
     .then((response) => {
-      dispatch({
-        type: types.FETCHED_CARDS,
-        payload: response,
-      })
+      if (filters.showCollectedCards) {
+        let cards = []
+
+        response.cards.forEach((card) => {
+          card.locations.forEach((location) => {
+            if (
+              getState().cards.collectedCards.includes(location._id) &&
+              !cards.includes(card)
+            ) {
+              cards.push(card)
+            }
+          })
+        })
+
+        const newResponse = {
+          amount: cards.length,
+          cards: [...cards],
+        }
+
+        dispatch({
+          type: types.FETCHED_CARDS,
+          payload: newResponse,
+        })
+      } else if (filters.hideCollectedCards) {
+        let cards = response.cards
+
+        response.cards.forEach((card) => {
+          card.locations.forEach((location) => {
+            if (getState().cards.collectedCards.includes(location._id)) {
+              // remove card from cards
+              for (var i = 0; i < cards.length; i++) {
+                if (cards[i]._id === card._id) {
+                  cards.splice(i, 1)
+                }
+              }
+            }
+          })
+        })
+
+        const newResponse = {
+          amount: cards.length,
+          cards: [...cards],
+        }
+
+        dispatch({
+          type: types.FETCHED_CARDS,
+          payload: newResponse,
+        })
+      } else {
+        dispatch({
+          type: types.FETCHED_CARDS,
+          payload: response,
+        })
+      }
     })
     .catch((err) => {
       console.log('Failed to fetch cards', err)
