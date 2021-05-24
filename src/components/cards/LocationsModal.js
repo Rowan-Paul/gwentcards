@@ -1,4 +1,5 @@
-import { titleCase, randomId } from '../../utils'
+import { randomId } from '../../utils'
+import { Location } from './Location'
 
 function LocationsModalUI(props) {
   const crossIcon = (
@@ -17,15 +18,14 @@ function LocationsModalUI(props) {
 
   props.card.locations.forEach((location) => {
     locations.push(
-      <tr key={randomId()}>
-        <td>{titleCase(location.type)}</td>
-        <td>{titleCase(location.territory ? location.territory : '')}</td>
-        <td>{titleCase(location.location ? location.location : '')}</td>
-        <td>{titleCase(location.character ? location.character : '')}</td>
-        <td>
-          <input type="checkbox" id="scales" name="scales"></input>
-        </td>
-      </tr>
+      <Location
+        id={location._id}
+        type={location.type}
+        territory={location.territory}
+        location={location.location}
+        character={location.character}
+        key={randomId()}
+      />
     )
   })
 
