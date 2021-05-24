@@ -116,7 +116,7 @@ export const fetchCollectedCards = () => (dispatch, getState) => {
       if (response.amount > 0) {
         dispatch({ type: types.FETCHED_COLLECTED_CARDS, payload: response })
       } else {
-        throw 'No collected cards'
+        throw new Error('No collected cards')
       }
     })
     .catch((error) => {
@@ -141,7 +141,7 @@ export const collectCard = (card) => (dispatch, getState) => {
       if (response.amount > 0) {
         dispatch({ type: types.COLLECTED_CARD, payload: response })
       } else {
-        throw 'Not logged in'
+        throw new Error('Not logged in')
       }
     })
     .catch((error) => {
