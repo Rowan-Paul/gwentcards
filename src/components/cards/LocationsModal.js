@@ -1,5 +1,6 @@
 import { randomId } from '../../utils'
 import { Location } from './Location'
+import { LocationMobile } from './LocationMobile'
 
 function LocationsModalUI(props) {
   const crossIcon = (
@@ -15,10 +16,21 @@ function LocationsModalUI(props) {
     </svg>
   )
   let locations = []
+  let locationsMobile = []
 
   props.card.locations.forEach((location) => {
     locations.push(
       <Location
+        id={location._id}
+        type={location.type}
+        territory={location.territory}
+        location={location.location}
+        character={location.character}
+        key={randomId()}
+      />
+    )
+    locationsMobile.push(
+      <LocationMobile
         id={location._id}
         type={location.type}
         territory={location.territory}
@@ -33,7 +45,7 @@ function LocationsModalUI(props) {
     <div
       className={`${
         props.showLocationModal ? 'fixed' : 'hidden'
-      } inset-0 mx-5 lg:mx-72 my-20 p-5 overflow-auto rounded bg-white shadow border-2 z-40`}
+      } inset-0 mx-5 lg:mx-72 my-10 p-5 overflow-auto rounded bg-white shadow border-2 z-40`}
     >
       <span
         className="block text-center ml-5 float-right cursor-pointer sticky top-0 right-0"
@@ -44,7 +56,8 @@ function LocationsModalUI(props) {
 
       <div className="block p-5">
         <h1 className="mb-5">Locations</h1>
-        <table className="table-auto my-0 mx-auto">
+        <p>View all locations of the {props.card?.name} card</p>
+        <table className="hidden md:block table-auto my-0 mx-auto">
           <thead>
             <tr className="bg-black text-white">
               <td>Type</td>
@@ -56,6 +69,7 @@ function LocationsModalUI(props) {
           </thead>
           <tbody>{locations}</tbody>
         </table>
+        <span className="block md:hidden">{locationsMobile}</span>
       </div>
     </div>
   )

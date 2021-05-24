@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { titleCase } from '../../utils'
 import { collectCard } from '../../redux/cards/actions'
 
-function LocationUI(props) {
+function LocationMobileUI(props) {
   const [isCollected, setIsCollected] = useState(false)
   const plusIcon = (
     <svg
@@ -41,13 +41,43 @@ function LocationUI(props) {
   }, [props.id, props.collectedCards])
 
   return (
-    <tr>
-      <td>{titleCase(props.type)}</td>
-      <td>{titleCase(props.territory ? props.territory : '')}</td>
-      <td>{titleCase(props.location ? props.location : '')}</td>
-      <td>{titleCase(props.character ? props.character : '')}</td>
-      <td>{isCollected ? collectedIcon : plusIcon}</td>
-    </tr>
+    <div className="block md:hidden rounded my-5 bg-white shadow  mx-auto border-2 z-0">
+      <header className="p-2">Location</header>
+
+      <section className="text-left p-5">
+        <p>
+          <span className="font-bold">Type: </span>
+          <br></br>
+          {titleCase(props.type)}
+        </p>
+
+        <p>
+          <span className={`${props.territory ? '' : 'hidden'} font-bold`}>
+            Territory:{' '}
+          </span>
+          <br></br>
+          {titleCase(props.territory ? props.territory : '')}
+        </p>
+
+        <p>
+          <span className={`${props.location ? '' : 'hidden'} font-bold`}>
+            Location:{' '}
+          </span>
+          <br></br>
+          {titleCase(props.location ? props.location : '')}
+        </p>
+
+        <p>
+          <span className={`${props.character ? '' : 'hidden'} font-bold`}>
+            Character:{' '}
+          </span>
+          <br></br>
+          {titleCase(props.character ? props.character : '')}
+        </p>
+
+        <p>{isCollected ? collectedIcon : plusIcon}</p>
+      </section>
+    </div>
   )
 }
 
@@ -59,4 +89,7 @@ const mapDispatchToProps = (dispatch) => ({
   collectCard: (card) => dispatch(collectCard(card)),
 })
 
-export const Location = connect(mapStateToProps, mapDispatchToProps)(LocationUI)
+export const LocationMobile = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LocationMobileUI)
