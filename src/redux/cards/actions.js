@@ -70,19 +70,21 @@ export const fetchCards = () => (dispatch, getState) => {
           payload: newResponse,
         })
       } else if (filters.hideCollectedCards) {
-        let cards = response.cards
+        let cards = []
+        let toRemove = []
 
         response.cards.forEach((card) => {
           card.locations.forEach((location) => {
             if (getState().cards.collectedCards.includes(location._id)) {
-              // remove card from cards
-              for (var i = 0; i < cards.length; i++) {
-                if (cards[i]._id === card._id) {
-                  cards.splice(i, 1)
-                }
-              }
+              toRemove.push(card._id)
             }
           })
+        })
+
+        response.cards.forEach((card) => {
+          if (!toRemove.includes(card._id)) {
+            cards.push(card)
+          }
         })
 
         const newResponse = {
