@@ -1,3 +1,5 @@
+import { titleCase, randomId } from '../../utils'
+
 function LocationsModalUI(props) {
   const crossIcon = (
     <svg
@@ -15,7 +17,12 @@ function LocationsModalUI(props) {
 
   props.card.locations.forEach((location) => {
     locations.push(
-      <p key={Math.random().toString(36).substr(2, 9)}>Type: {location.type}</p>
+      <tr key={randomId()}>
+        <td>{titleCase(location.type)}</td>
+        <td>{titleCase(location.territory ? location.territory : '')}</td>
+        <td>{titleCase(location.location ? location.location : '')}</td>
+        <td>{titleCase(location.character ? location.character : '')}</td>
+      </tr>
     )
   })
 
@@ -33,8 +40,18 @@ function LocationsModalUI(props) {
       </span>
 
       <div className="block p-5">
-        <h1>Locations</h1>
-        {locations}
+        <h1 className="mb-5">Locations</h1>
+        <table className="table-auto my-0 mx-auto">
+          <thead>
+            <tr className="bg-black text-white">
+              <td>Type</td>
+              <td>Territory</td>
+              <td>Location</td>
+              <td>Character</td>
+            </tr>
+          </thead>
+          <tbody>{locations}</tbody>
+        </table>
       </div>
     </div>
   )
