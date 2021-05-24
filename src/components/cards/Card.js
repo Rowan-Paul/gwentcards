@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'cloudinary-react'
 
@@ -7,6 +7,9 @@ import { titleCase } from '../../utils'
 
 function CardUI(props) {
   const [showLocationModal, setShowLocationModal] = useState(false)
+  const [locationsCollected, setLocationsCollected] = useState(0)
+  const [locationsAmount, setLocationsAmount] = useState(0)
+
   const heartIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,6 +30,19 @@ function CardUI(props) {
   card.abilities?.forEach((ability) => {
     abilities.push(titleCase(ability))
   })
+
+  useEffect(() => {
+    setLocationsAmount(card.locations?.length)
+    let amount = 0
+
+    card.locations.forEach((location) => {
+      if (props.collectedCards.includes(location._id)) {
+        amount++
+      }
+    })
+
+    setLocationsCollected(amount)
+  }, [props.collectedCards, card.locations, locationsCollected])
 
   return (
     <span>
@@ -79,7 +95,7 @@ function CardUI(props) {
             className="text-sm hover:underline cursor-pointer"
             onClick={() => setShowLocationModal(!showLocationModal)}
           >
-            Locations
+            Locations ({locationsCollected + '/' + locationsAmount})
           </span>
 
           {heartIcon}
@@ -89,7 +105,9 @@ function CardUI(props) {
   )
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+  collectedCards: state.cards.collectedCards,
+})
 
 const mapDispatchToProps = (dispatch) => ({})
 
