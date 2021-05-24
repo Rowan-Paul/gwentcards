@@ -1,7 +1,3 @@
-import { connect } from 'react-redux'
-
-import { setLocationModal } from '../../redux/cards/actions'
-
 function LocationsModalUI(props) {
   const crossIcon = (
     <svg
@@ -27,7 +23,7 @@ function LocationsModalUI(props) {
     <div
       className={`${
         props.showLocationModal ? 'fixed' : 'hidden'
-      } inset-0 mx-5 lg:mx-72 my-20 p-5 overflow-auto rounded bg-white shadow border-2`}
+      } inset-0 mx-5 lg:mx-72 my-20 p-5 overflow-auto rounded bg-white shadow border-2 z-40`}
     >
       <span
         className="block text-center ml-5 float-right cursor-pointer sticky top-0 right-0"
@@ -44,15 +40,4 @@ function LocationsModalUI(props) {
   )
 }
 
-const mapStateToProps = (state) => ({
-  showLocationModal: state.cards.showLocationModal,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  setLocationModal: () => dispatch(setLocationModal()),
-})
-
-export const LocationsModal = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LocationsModalUI)
+export const LocationsModal = LocationsModalUI

@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'cloudinary-react'
 
-import { addUserCard, setLocationModal } from '../../redux/cards/actions'
+import { addUserCard } from '../../redux/cards/actions'
 import { LocationsModal } from './LocationsModal'
 
 function CardUI(props) {
   const [isCollected, setIsCollected] = useState(false)
+  const [showLocationModal, setShowLocationModal] = useState(false)
+
   const card = props.card
   let abilities = []
 
@@ -74,72 +76,75 @@ function CardUI(props) {
     return splitStr.join(' ')
   }
 
-  // card from https://w3collective.com/card-component-tailwind-css/
   return (
-    <div className="rounded my-5 bg-white shadow max-w-md min-w-full mx-auto border-2 motion-safe:animate-fadeIn">
-      <header className="p-2">
-        <h3 className="text-lg font-bold">{titleCase(card.name)}</h3>
-        <p className="text-sm text-gray-600">
-          {titleCase(card.deck)}
-          <br></br> Strength: &nbsp;
-          {card.strength ? card.strength : '-'}
-        </p>
-      </header>
+    <span>
+      <LocationsModal
+        showLocationModal={showLocationModal}
+        setLocationModal={() => setShowLocationModal(!showLocationModal)}
+        card={card}
+      />
+      <div className="relative rounded my-5 bg-white shadow max-w-md min-w-full mx-auto border-2 z-0">
+        <header className="p-2">
+          <h3 className="text-lg font-bold">{titleCase(card.name)}</h3>
+          <p className="text-sm text-gray-600">
+            {titleCase(card.deck)}
+            <br></br> Strength: &nbsp;
+            {card.strength ? card.strength : '-'}
+          </p>
+        </header>
 
-      <section>
-        <Image
-          public-id={'/gwentcards/' + encodeURIComponent(card.name)}
-          width="205"
-          height="387"
-          fetchFormat="auto"
-          crop="scale"
-          loading="lazy"
-          alt={'Card with ' + card.name}
-          style={{ margin: 'auto' }}
-        />
-        <p className="p-4">
-          <span className="block">
-            Row: {card.row ? titleCase(card.row) : '-'}
+        <section>
+          <Image
+            public-id={'/gwentcards/' + encodeURIComponent(card.name)}
+            width="205"
+            height="387"
+            fetchFormat="auto"
+            crop="scale"
+            loading="lazy"
+            alt={'Card with ' + card.name}
+            style={{ margin: 'auto' }}
+          />
+          <p className="p-4">
+            <span className="block">
+              Row: {card.row ? titleCase(card.row) : '-'}
+            </span>
+
+            <span className="block">
+              Effect: {card.effect ? titleCase(card.effect) : '-'}
+            </span>
+
+            <span className="block">
+              Abilities: {card.abilities ? abilities.toString() : '-'}
+            </span>
+          </p>
+        </section>
+
+        <footer className="p-4">
+          <span className="text-sm hover:underline mr-5 cursor-pointer">
+            Notes
+          </span>
+          <span
+            className="text-sm hover:underline cursor-pointer"
+            onClick={() => setShowLocationModal(!showLocationModal)}
+          >
+            Locations
           </span>
 
-          <span className="block">
-            Effect: {card.effect ? titleCase(card.effect) : '-'}
-          </span>
-
-          <span className="block">
-            Abilities: {card.abilities ? abilities.toString() : '-'}
-          </span>
-        </p>
-      </section>
-
-      <footer className="p-4">
-        <span className="text-sm hover:underline mr-5 cursor-pointer">
-          Notes
-        </span>
-        <span
-          className="text-sm hover:underline cursor-pointer"
-          onClick={() => props.setLocationModal()}
-        >
-          Locations
-        </span>
-
-        {heartIcon}
-        {isCollected ? collectedIcon : plusIcon}
-      </footer>
-      <LocationsModal card={card} />
-    </div>
+          {heartIcon}
+          {isCollected ? collectedIcon : plusIcon}
+        </footer>
+      </div>
+    </span>
   )
 }
 
 const mapStateToProps = (state) => ({
   userCards: state.cards.userCards,
   signedIn: state.auth.signedIn,
-  showLocationModal: state.cards.showLocationModal,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   addUserCard: (card) => dispatch(addUserCard(card)),
-  setLocationModal: () => dispatch(setLocationModal()),
 })
 
 export const Card = connect(mapStateToProps, mapDispatchToProps)(CardUI)

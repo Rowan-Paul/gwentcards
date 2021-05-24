@@ -37,9 +37,4 @@ const mapStateToProps = (state) => ({
   amount: state.cards.amount,
 })
 
-const mapDispatchToProps = (dispatch) => ({})
-
-export const CurrentPage = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CurrentPageUI)
+export const CurrentPage = connect(mapStateToProps, null)(CurrentPageUI)

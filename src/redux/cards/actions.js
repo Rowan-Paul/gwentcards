@@ -215,7 +215,3 @@ export const setReset = (reset) => {
 export const removeCards = () => {
   return { type: types.REMOVED_CARDS }
 }
-
-export const setLocationModal = () => {
-  return { type: types.SET_LOCATION_MODAL }
-}
