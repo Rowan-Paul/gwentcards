@@ -3,7 +3,12 @@ import { connect } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
 function FooterUI(props) {
-  const noFooterPages = ['/signin', '/signup', '/remove-account']
+  const noFooterPages = [
+    '/signin',
+    '/signup',
+    '/remove-account',
+    '/reset-password',
+  ]
   const location = useLocation()
 
   if (noFooterPages.includes(location.pathname)) {

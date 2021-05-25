@@ -24,7 +24,7 @@ function SignInUI(props) {
     <div className="mt-20">
       <h1>Sign in</h1>
 
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
+      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-auto md:max-w-sm">
         <div className="mb-4">
           <label
             className="text-left ml-5 block text-gray-500 text-sm font-bold mb-2"
@@ -58,9 +58,9 @@ function SignInUI(props) {
           />
         </div>
 
-        <div className="grid lg:grid-cols-10 gap-5 justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-7 justify-items-center">
           <button
-            className="col-span-6 md:justify-self-start text-white bg-blue-500 hover:bg-blue-800 font-bold py-2 px-4 rounded "
+            className="md:col-span-3 md:justify-self-start text-white bg-blue-500 hover:bg-blue-800 font-bold py-2 px-4 rounded "
             type="button"
             onClick={handleLogin}
           >
@@ -69,13 +69,13 @@ function SignInUI(props) {
 
           <Link
             to="/reset-password"
-            className="col-span-2 font-bold text-sm text-blue-500 hover:text-blue-800"
+            className="mt-5 md:mt-0 md:col-span-2 font-bold text-sm text-blue-500 hover:text-blue-800"
           >
             Forgot Password?
           </Link>
           <Link
             to="/signup"
-            className="col-span-2 font-bold text-sm text-blue-500 hover:text-blue-800"
+            className="md:col-span-2 font-bold text-sm text-blue-500 hover:text-blue-800"
           >
             No account?
           </Link>
