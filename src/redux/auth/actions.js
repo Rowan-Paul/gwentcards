@@ -130,7 +130,6 @@ export const resetPasswordRequest = (username) => (dispatch) => {
       if (response.status === 201) {
         dispatch({
           type: types.RESET_MAIL_SENT,
-          payload: response,
         })
       } else {
         throw response.statusText
@@ -160,7 +159,35 @@ export const resetPassword = (token, password) => (dispatch) => {
       if (response.status === 201) {
         dispatch({
           type: types.PASSWORD_CHANGED,
-          payload: response,
+        })
+      } else {
+        throw response.statusText
+      }
+    })
+    .catch((err) => {
+      console.log('Failed to update password', err)
+    })
+}
+
+// remove account
+export const removeAccount = (username, password) => (dispatch) => {
+  const url = `${api}/auth/account`
+  const body = {
+    username: username,
+    password: password,
+  }
+
+  fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        dispatch({
+          type: types.DELETED_ACCOUNT,
         })
       } else {
         throw response.statusText

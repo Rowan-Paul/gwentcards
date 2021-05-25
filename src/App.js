@@ -10,6 +10,7 @@ import { SignIn } from './pages/auth/SignIn'
 import { Signout } from './pages/auth/SignOut'
 import { SignUp } from './pages/auth/SignUp'
 import { ResetPassword } from './pages/auth/ResetPassword'
+import { RemoveAccount } from './pages/auth/RemoveAccount'
 
 import { verify } from './redux/auth/actions'
 
@@ -54,6 +55,13 @@ function AppUI(props) {
           redirect="/"
           path="/reset-password"
           component={ResetPassword}
+        />
+        <PrivateRoute
+          exact
+          isAuthenticated={props.signedIn}
+          redirect="/signin"
+          path="/remove-account"
+          component={RemoveAccount}
         />
         <Footer />
       </div>

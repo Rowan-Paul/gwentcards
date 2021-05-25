@@ -23,6 +23,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     case types.RESET_MAIL_SENT:
       return { ...state }
 
+    case types.DELETED_ACCOUNT:
+      return INITIAL_STATE
+
     default:
       return state
   }
