@@ -111,3 +111,117 @@ export const signUp = (username, email, password) => (dispatch) => {
       console.log('Failed to sign up', err)
     })
 }
+
+// reset password -- send email
+export const resetPasswordRequest = (username) => (dispatch) => {
+  const url = `${api}/auth/reset`
+  const body = {
+    username: username,
+  }
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        dispatch({
+          type: types.RESET_MAIL_SENT,
+        })
+      } else {
+        throw response.statusText
+      }
+    })
+    .catch((err) => {
+      console.log('Failed to request reset mail', err)
+    })
+}
+
+// reset password
+export const resetPassword = (token, password) => (dispatch) => {
+  const url = `${api}/auth/reset`
+  const body = {
+    token: token,
+    password: password,
+  }
+
+  fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        dispatch({
+          type: types.PASSWORD_CHANGED,
+        })
+      } else {
+        throw response.statusText
+      }
+    })
+    .catch((err) => {
+      console.log('Failed to update password', err)
+    })
+}
+
+// remove account
+export const removeAccount = (username, password) => (dispatch) => {
+  const url = `${api}/auth/account`
+  const body = {
+    username: username,
+    password: password,
+  }
+
+  fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        dispatch({
+          type: types.DELETED_ACCOUNT,
+        })
+      } else {
+        throw response.statusText
+      }
+    })
+    .catch((err) => {
+      console.log('Failed to update password', err)
+    })
+}
+
+// verify email
+export const verifyEmail = (token) => (dispatch) => {
+  const url = `${api}/auth/account/verify`
+  const body = {
+    token: token,
+  }
+
+  fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        dispatch({
+          type: types.VERIFIED_EMAIL,
+        })
+      } else {
+        throw response.statusText
+      }
+    })
+    .catch((err) => {
+      console.log('Failed to verify email', err)
+    })
+}

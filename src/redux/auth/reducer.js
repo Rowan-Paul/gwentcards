@@ -17,6 +17,18 @@ const reducer = (state = INITIAL_STATE, action) => {
     case types.SIGNED_OUT:
       return INITIAL_STATE
 
+    case types.PASSWORD_CHANGED:
+      return { ...state }
+
+    case types.RESET_MAIL_SENT:
+      return { ...state }
+
+    case types.DELETED_ACCOUNT:
+      return INITIAL_STATE
+
+    case types.VERIFIED_EMAIL:
+      return { ...state }
+
     default:
       return state
   }
