@@ -58,9 +58,9 @@ function SignInUI(props) {
           />
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="grid  grid-cols-3 md:grid-cols-10 gap-5 justify-items-center">
           <button
-            className="text-white bg-blue-500 hover:bg-blue-800 font-bold py-2 px-4 rounded"
+            className="col-span-6 md:justify-self-start text-white bg-blue-500 hover:bg-blue-800 font-bold py-2 px-4 rounded "
             type="button"
             onClick={handleLogin}
           >
@@ -68,8 +68,14 @@ function SignInUI(props) {
           </button>
 
           <Link
+            to="/forgot-password"
+            className="col-span-2 font-bold text-sm text-blue-500 hover:text-blue-800"
+          >
+            Forgot Password?
+          </Link>
+          <Link
             to="/signup"
-            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+            className="col-span-2 font-bold text-sm text-blue-500 hover:text-blue-800"
           >
             No account?
           </Link>
