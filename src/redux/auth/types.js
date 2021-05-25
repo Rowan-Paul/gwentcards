@@ -1,2 +1,4 @@
 export const SIGNED_IN = 'SIGNED_IN'
 export const SIGNED_OUT = 'SIGNED_OUT'
+export const PASSWORD_CHANGED = 'PASSWORD_CHANGED'
+export const RESET_MAIL_SENT = 'RESET_MAIL_SENT'

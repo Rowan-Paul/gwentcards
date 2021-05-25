@@ -22,7 +22,7 @@ function SignInUI(props) {
 
   return (
     <div className="mt-20">
-      <h1>Login</h1>
+      <h1>Sign in</h1>
 
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
         <div className="mb-4">
@@ -58,7 +58,7 @@ function SignInUI(props) {
           />
         </div>
 
-        <div className="grid  grid-cols-3 md:grid-cols-10 gap-5 justify-items-center">
+        <div className="grid lg:grid-cols-10 gap-5 justify-items-center">
           <button
             className="col-span-6 md:justify-self-start text-white bg-blue-500 hover:bg-blue-800 font-bold py-2 px-4 rounded "
             type="button"
@@ -68,7 +68,7 @@ function SignInUI(props) {
           </button>
 
           <Link
-            to="/forgot-password"
+            to="/reset-password"
             className="col-span-2 font-bold text-sm text-blue-500 hover:text-blue-800"
           >
             Forgot Password?

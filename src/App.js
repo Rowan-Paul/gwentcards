@@ -9,6 +9,7 @@ import { Footer } from './components/footer/Footer'
 import { SignIn } from './pages/auth/SignIn'
 import { Signout } from './pages/auth/SignOut'
 import { SignUp } from './pages/auth/SignUp'
+import { ResetPassword } from './pages/auth/ResetPassword'
 
 import { verify } from './redux/auth/actions'
 
@@ -46,6 +47,13 @@ function AppUI(props) {
           redirect="/"
           path="/signup"
           component={SignUp}
+        />
+        <PrivateRoute
+          exact
+          isAuthenticated={!props.signedIn}
+          redirect="/"
+          path="/reset-password"
+          component={ResetPassword}
         />
         <Footer />
       </div>
