@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 
 import { setFilters, fetchCards } from '../../../redux/cards/actions'
 
-function HideUserCardsFilterUI(props) {
+function HideCollectedCardsFilterUI(props) {
   const [checked, setChecked] = useState(false)
 
   const handleChange = () => {
     let tempFilters = props.filters
-    tempFilters.hideUserCards = !checked
+    tempFilters.hideCollectedCards = !checked
 
     props.setFilters(tempFilters)
     setChecked(!checked)
@@ -19,7 +19,7 @@ function HideUserCardsFilterUI(props) {
   useEffect(() => {
     if (props.reset) {
       let tempFilters = props.filters
-      tempFilters.hideUserCards = false
+      tempFilters.hideCollectedCards = false
 
       props.setFilters(tempFilters)
       setChecked(false)
@@ -41,11 +41,11 @@ function HideUserCardsFilterUI(props) {
         checkedIcon={false}
         boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
         activeBoxShadow="0px 0px 1px 5px rgba(0, 0, 0, 0.2)"
-        disabled={props.filters.showUserCards}
+        disabled={props.filters.showCollectedCards}
         height={20}
         width={48}
         className="w-full my-2 mx-5"
-        id="hideusercards"
+        id="hideCollectedcards"
       />
     </span>
   )
@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCards: () => dispatch(fetchCards()),
 })
 
-export const HideUserCardsFilter = connect(
+export const HideCollectedCardsFilter = connect(
   mapStateToProps,
   mapDispatchToProps
-)(HideUserCardsFilterUI)
+)(HideCollectedCardsFilterUI)

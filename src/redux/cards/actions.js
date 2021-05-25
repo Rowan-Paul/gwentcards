@@ -46,17 +46,18 @@ export const fetchCards = () => (dispatch, getState) => {
       return response.json()
     })
     .then((response) => {
-      if (filters.hideUserCards) {
-        let cardNames = []
+      if (filters.showCollectedCards) {
         let cards = []
 
-        getState().cards.userCards.forEach((card) => {
-          cardNames.push(card.name)
-        })
         response.cards.forEach((card) => {
-          if (!cardNames.includes(card.name)) {
-            cards.push(card)
-          }
+          card.locations.forEach((location) => {
+            if (
+              getState().cards.collectedCards.includes(location._id) &&
+              !cards.includes(card)
+            ) {
+              cards.push(card)
+            }
+          })
         })
 
         const newResponse = {
@@ -68,15 +69,20 @@ export const fetchCards = () => (dispatch, getState) => {
           type: types.FETCHED_CARDS,
           payload: newResponse,
         })
-      } else if (filters.showUserCards) {
-        let cardNames = []
+      } else if (filters.hideCollectedCards) {
         let cards = []
+        let toRemove = []
 
-        getState().cards.userCards.forEach((card) => {
-          cardNames.push(card.name)
-        })
         response.cards.forEach((card) => {
-          if (cardNames.includes(card.name)) {
+          card.locations.forEach((location) => {
+            if (getState().cards.collectedCards.includes(location._id)) {
+              toRemove.push(card._id)
+            }
+          })
+        })
+
+        response.cards.forEach((card) => {
+          if (!toRemove.includes(card._id)) {
             cards.push(card)
           }
         })
@@ -102,97 +108,47 @@ export const fetchCards = () => (dispatch, getState) => {
     })
 }
 
-export const addUserCard = (card) => (dispatch, getState) => {
-  let url = `${api}/users/cards`
-
-  if (getState().auth.signedIn) {
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        cards: [card],
-      }),
-    })
-      .then((response) => {
-        return response.json()
-      })
-      .then((response) =>
-        dispatch({
-          type: types.ADDED_USER_CARD,
-          payload: response,
-        })
-      )
-      .catch((err) => {
-        console.log('Failed to add user card', err)
-      })
-  } else {
-    let cards = getState().cards.userCards
-
-    if (getState().cards.userCards?.length < 1) {
-      cards = []
-    }
-
-    dispatch({
-      type: types.ADDED_USER_CARD,
-      payload: { cards: [...cards, card] },
-    })
-  }
-}
-
-export const fetchUserCards = () => (dispatch, getState) => {
+// fetch collect card
+export const fetchCollectedCards = () => (dispatch, getState) => {
   let url = `${api}/users/cards`
 
   fetch(url)
+    .then((response) => response.json())
     .then((response) => {
-      return response.json()
-    })
-    .then((response) => {
-      let cards = response.cards
-
-      // if the user has no cards
-      if (response.cards === undefined || response.cards?.length < 1) {
-        //if there are cards in the state
-        if (getState().cards.userCards?.length > 0) {
-          cards = getState().cards.userCards
-        } else {
-          cards = []
-        }
-        // if the logged in user has cards, but there are also cards in the state
-      } else if (getState().cards.userCards?.length > 0) {
-        let oldCards = []
-        let newCards = []
-
-        cards.forEach((card) => {
-          oldCards.push(card.name)
-        })
-        getState().cards.userCards.forEach((card) => {
-          if (!oldCards.includes(card.name)) {
-            newCards.push(card)
-          }
-        })
-
-        cards = [...cards, ...newCards]
-
-        fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            cards: newCards,
-          }),
-        }).catch((e) => console.log('Failed to fetch user cards'))
+      if (response.amount > 0) {
+        dispatch({ type: types.FETCHED_COLLECTED_CARDS, payload: response })
+      } else {
+        throw new Error('No collected cards')
       }
-
-      dispatch({
-        type: types.FETCHED_USER_CARDS,
-        payload: cards,
-      })
     })
-    .catch((err) => {
-      console.log('Failed to fetch user cards', err)
+    .catch((error) => {
+      console.log('Failed to fetch collected cards', error)
+    })
+}
+
+// collect card
+export const collectCard = (card) => (dispatch, getState) => {
+  let url = `${api}/users/cards`
+  const data = { collected: [...getState().cards.collectedCards, card] }
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.amount > 0) {
+        dispatch({ type: types.COLLECTED_CARD, payload: response })
+      } else {
+        throw new Error('Not logged in')
+      }
+    })
+    .catch((error) => {
+      console.log('Failed to collect card', error)
+      dispatch({ type: types.COLLECTED_CARD, payload: data })
     })
 }
 

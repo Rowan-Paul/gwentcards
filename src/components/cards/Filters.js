@@ -7,8 +7,8 @@ import { RowFilter } from './card-filters/RowFilter'
 import { StrengthFilter } from './card-filters/StrengthFilter'
 import { EffectFilter } from './card-filters/EffectFilter'
 import { ResetFilters } from './card-filters/ResetFilters'
-import { ShowUserCardsFilter } from './card-filters/ShowUserCardsFilter'
-import { HideUserCardsFilter } from './card-filters/HideUserCardsFilter'
+import { ShowCollectedCardsFilter } from './card-filters/ShowCollectedCardsFilter'
+import { HideCollectedCardsFilter } from './card-filters/HideCollectedCardsFilter'
 
 function FiltersUI() {
   const downArrow = (
@@ -69,8 +69,8 @@ function FiltersUI() {
         <RowFilter />
         <StrengthFilter />
         <EffectFilter />
-        <ShowUserCardsFilter />
-        <HideUserCardsFilter />
+        <ShowCollectedCardsFilter />
+        <HideCollectedCardsFilter />
 
         <ResetFilters />
       </div>

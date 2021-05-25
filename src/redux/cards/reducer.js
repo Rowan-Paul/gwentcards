@@ -3,15 +3,15 @@ import * as types from './types'
 const INITIAL_STATE = {
   amount: null,
   selected: [],
-  userCards: [],
+  collectedCards: [],
   filters: {
     deck: [],
     row: [],
     strength: [],
     abilities: [],
     effect: [],
-    hideUserCards: false,
-    showUserCards: false,
+    hideCollectedCards: false,
+    showCollectedCards: false,
   },
   pageSize: 20,
   page: 0,
@@ -29,11 +29,11 @@ const reducer = (state = INITIAL_STATE, action) => {
         page: 0,
       }
 
-    case types.ADDED_USER_CARD:
-      return { ...state, userCards: action.payload.cards }
+    case types.COLLECTED_CARD:
+      return { ...state, collectedCards: action.payload.collected }
 
-    case types.FETCHED_USER_CARDS:
-      return { ...state, userCards: action.payload }
+    case types.FETCHED_COLLECTED_CARDS:
+      return { ...state, collectedCards: action.payload.collected }
 
     case types.PAGE_SIZE_SET:
       return { ...state, pageSize: action.payload }
@@ -47,8 +47,8 @@ const reducer = (state = INITIAL_STATE, action) => {
           strength: action.payload.strength,
           abilities: action.payload.abilities,
           effect: action.payload.effect,
-          hideUserCards: action.payload.hideUserCards,
-          showUserCards: action.payload.showUserCards,
+          hideCollectedCards: action.payload.hideCollectedCards,
+          showCollectedCards: action.payload.showCollectedCards,
         },
         page: 0,
         reset: false,
@@ -68,8 +68,8 @@ const reducer = (state = INITIAL_STATE, action) => {
           strength: [],
           abilities: [],
           effect: [],
-          hideUserCards: false,
-          showUserCards: false,
+          hideCollectedCards: false,
+          showCollectedCards: false,
         },
       }
 

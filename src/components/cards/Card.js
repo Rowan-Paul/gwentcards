@@ -2,48 +2,24 @@ import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'cloudinary-react'
 
-import { addUserCard } from '../../redux/cards/actions'
+import { LocationsModal } from './LocationsModal'
+import { titleCase } from '../../utils'
 
 function CardUI(props) {
-  const [isCollected, setIsCollected] = useState(false)
-  const card = props.card
-  let abilities = []
+  const [showLocationModal, setShowLocationModal] = useState(false)
+  const [locationsCollected, setLocationsCollected] = useState(0)
+  const [locationsAmount, setLocationsAmount] = useState(0)
 
-  useEffect(() => {
-    if (props.userCards?.length > 0) {
-      props.userCards.forEach((userCard) => {
-        if (userCard._id === card._id) {
-          setIsCollected(true)
-        }
-      })
-    }
-  }, [card._id, props.userCards, props.signedIn])
-
-  const plusIcon = (
+  const placeIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
       viewBox="0 0 24 24"
       width="24px"
       fill="#000000"
-      className="h-6 w-6 float-right mr-3 mb-5 cursor-pointer"
-      onClick={() => props.addUserCard(card)}
-    >
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-    </svg>
-  )
-  const collectedIcon = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 0 24 24"
-      width="24px"
-      fill="#000000"
-      className="h-6 w-6 float-right mr-3 mb-5"
     >
       <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
     </svg>
   )
   const heartIcon = (
@@ -60,79 +36,99 @@ function CardUI(props) {
     </svg>
   )
 
+  const card = props.card
+  let abilities = []
+
   card.abilities?.forEach((ability) => {
     abilities.push(titleCase(ability))
   })
 
-  function titleCase(str) {
-    var splitStr = str.toLowerCase().split(' ')
-    for (var i = 0; i < splitStr.length; i++) {
-      splitStr[i] =
-        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1)
-    }
-    return splitStr.join(' ')
-  }
+  useEffect(() => {
+    setLocationsAmount(card.locations?.length)
+    let amount = 0
 
-  // card from https://w3collective.com/card-component-tailwind-css/
+    card.locations.forEach((location) => {
+      if (props.collectedCards.includes(location._id)) {
+        amount++
+      }
+    })
+
+    setLocationsCollected(amount)
+  }, [
+    props.collectedCards,
+    card.locations,
+    locationsCollected,
+    locationsAmount,
+  ])
+
   return (
-    <div className="rounded my-5 bg-white shadow max-w-md min-w-full mx-auto border-2 motion-safe:animate-fadeIn">
-      <header className="p-2">
-        <h3 className="text-lg font-bold">{titleCase(card.name)}</h3>
-        <p className="text-sm text-gray-600">
-          {titleCase(card.deck)}
-          <br></br> Strength: &nbsp;
-          {card.strength ? card.strength : '-'}
-        </p>
-      </header>
+    <span>
+      <LocationsModal
+        showLocationModal={showLocationModal}
+        setLocationModal={() => setShowLocationModal(!showLocationModal)}
+        card={card}
+      />
+      <div className="relative rounded my-5 bg-white shadow max-w-md min-w-full mx-auto border-2 z-0">
+        <header className="p-2">
+          <h3 className="text-lg font-bold">{titleCase(card.name)}</h3>
+          <p className="text-sm text-gray-600">
+            {titleCase(card.deck)}
+            <br></br> Strength: &nbsp;
+            {card.strength ? card.strength : '-'}
+          </p>
+        </header>
 
-      <section>
-        <Image
-          public-id={'/gwentcards/' + encodeURIComponent(card.name)}
-          width="205"
-          height="387"
-          fetchFormat="auto"
-          crop="scale"
-          loading="lazy"
-          alt={'Card with ' + card.name}
-          style={{ margin: 'auto' }}
-        />
-        <p className="p-4">
-          <span className="block">
-            Row: {card.row ? titleCase(card.row) : '-'}
+        <section>
+          <Image
+            public-id={'/gwentcards/' + encodeURIComponent(card.name)}
+            width="205"
+            height="387"
+            fetchFormat="auto"
+            crop="scale"
+            loading="lazy"
+            alt={'Card with ' + card.name}
+            style={{ margin: 'auto' }}
+          />
+          <p className="p-4">
+            <span className="block">
+              Row: {card.row ? titleCase(card.row) : '-'}
+            </span>
+
+            <span className="block">
+              Effect: {card.effect ? titleCase(card.effect) : '-'}
+            </span>
+
+            <span className="block">
+              Abilities: {card.abilities ? abilities.toString() : '-'}
+            </span>
+          </p>
+        </section>
+
+        <footer className="p-4">
+          <span className="text-sm hover:underline mr-5 cursor-pointer">
+            Notes
           </span>
 
-          <span className="block">
-            Effect: {card.effect ? titleCase(card.effect) : '-'}
+          {heartIcon}
+          <span
+            className="h-6 w-6 float-right mr-5 mb-5 relative text-sm hover:underline cursor-pointer"
+            onClick={() => setShowLocationModal(!showLocationModal)}
+          >
+            {placeIcon}
+            <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-0.5 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded">
+              {locationsCollected + '/' + locationsAmount}
+            </span>
           </span>
-
-          <span className="block">
-            Abilities: {card.abilities ? abilities.toString() : '-'}
-          </span>
-        </p>
-      </section>
-
-      <footer className="p-4">
-        <span href="#" className="text-sm hover:underline mr-5 cursor-pointer">
-          Notes
-        </span>
-        <span href="#" className="text-sm hover:underline cursor-pointer">
-          Locations
-        </span>
-
-        {heartIcon}
-        {isCollected ? collectedIcon : plusIcon}
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </span>
   )
 }
 
 const mapStateToProps = (state) => ({
-  userCards: state.cards.userCards,
-  signedIn: state.auth.signedIn,
+  collectedCards: state.cards.collectedCards,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  addUserCard: (card) => dispatch(addUserCard(card)),
-})
+const mapDispatchToProps = (dispatch) => ({})
 
 export const Card = connect(mapStateToProps, mapDispatchToProps)(CardUI)
