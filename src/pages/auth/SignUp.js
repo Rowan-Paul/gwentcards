@@ -27,7 +27,7 @@ function SignUpUI(props) {
 
   return (
     <div className="mt-20">
-      <h1>Login</h1>
+      <h1>Sign up</h1>
 
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
         <div className="mb-4">
@@ -84,7 +84,7 @@ function SignUpUI(props) {
             type="button"
             onClick={handleLogin}
           >
-            Sign In
+            Sign Up
           </button>
 
           <Link

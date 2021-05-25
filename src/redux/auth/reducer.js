@@ -26,6 +26,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     case types.DELETED_ACCOUNT:
       return INITIAL_STATE
 
+    case types.VERIFIED_EMAIL:
+      return { ...state }
+
     default:
       return state
   }

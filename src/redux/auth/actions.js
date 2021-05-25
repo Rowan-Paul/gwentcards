@@ -197,3 +197,31 @@ export const removeAccount = (username, password) => (dispatch) => {
       console.log('Failed to update password', err)
     })
 }
+
+// verify email
+export const verifyEmail = (token) => (dispatch) => {
+  const url = `${api}/auth/account/verify`
+  const body = {
+    token: token,
+  }
+
+  fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        dispatch({
+          type: types.VERIFIED_EMAIL,
+        })
+      } else {
+        throw response.statusText
+      }
+    })
+    .catch((err) => {
+      console.log('Failed to verify email', err)
+    })
+}
