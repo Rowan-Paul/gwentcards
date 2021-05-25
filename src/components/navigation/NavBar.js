@@ -17,6 +17,4 @@ const mapStateToProps = (state) => ({
   signedIn: state.auth.signedIn,
 })
 
-const mapDispatchToProps = (dispatch) => ({})
-
-export const NavBar = connect(mapStateToProps, mapDispatchToProps)(NavBarUI)
+export const NavBar = connect(mapStateToProps, null)(NavBarUI)

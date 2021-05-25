@@ -1,8 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
-function FooterUI() {
-  const noFooterPages = ['/signin', '/signup']
+function FooterUI(props) {
+  const noFooterPages = ['/signin', '/signup', '/remove-account']
   const location = useLocation()
 
   if (noFooterPages.includes(location.pathname)) {
@@ -23,12 +24,21 @@ function FooterUI() {
             Backend repository
           </a>
         </span>
+
         <span className="col-span-5 md:col-span-1 md:col-end-5">
-          <Link to="/remove-account">Remove account</Link>
+          {props.signedIn ? (
+            <Link to="/remove-account">Remove account</Link>
+          ) : (
+            <Link to="/signup">Create account</Link>
+          )}
         </span>
       </footer>
     )
   }
 }
 
-export const Footer = FooterUI
+const mapStateToProps = (state) => ({
+  signedIn: state.auth.signedIn,
+})
+
+export const Footer = connect(mapStateToProps, null)(FooterUI)
