@@ -13,6 +13,7 @@ function VerifyEmailUI(props) {
     } else {
       props.history.push('/signin')
     }
+    // eslint-disable-next-line
   }, [])
 
   return (
