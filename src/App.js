@@ -66,8 +66,8 @@ function AppUI(props) {
           component={RemoveAccount}
         />
         <PublicRoute exact path="/verify-account" component={VerifyEmail} />
-        <Footer />
         <Notice />
+        <Footer />
       </div>
     </Router>
   )

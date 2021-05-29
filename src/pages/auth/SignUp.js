@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -8,6 +8,7 @@ function SignUpUI(props) {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [notice, setNotice] = useState('')
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value)
@@ -24,6 +25,12 @@ function SignUpUI(props) {
   const handleLogin = () => {
     props.signUp(username, email, password)
   }
+
+  useEffect(() => {
+    if (props.notice?.type === 'auth') {
+      setNotice(props.notice?.message)
+    }
+  }, [props.notice.type, props.notice.message])
 
   return (
     <div className="mt-20">
@@ -62,7 +69,7 @@ function SignUpUI(props) {
           />
         </div>
 
-        <div className="mb-6">
+        <div className="mb-1">
           <label
             className="text-left ml-5 block text-gray-500 text-sm font-bold mb-2"
             htmlFor="password"
@@ -77,6 +84,8 @@ function SignUpUI(props) {
             onChange={handlePasswordChange}
           />
         </div>
+
+        <span className="text-red-600 mb-6">{notice}</span>
 
         <div className="flex items-center justify-between">
           <button
@@ -99,9 +108,13 @@ function SignUpUI(props) {
   )
 }
 
+const mapStateToProps = (state) => ({
+  notice: state.main.notice,
+})
+
 const mapDispatchToProps = (dispatch) => ({
   signUp: (username, email, password) =>
     dispatch(signUp(username, email, password)),
 })
 
-export const SignUp = connect(null, mapDispatchToProps)(SignUpUI)
+export const SignUp = connect(mapStateToProps, mapDispatchToProps)(SignUpUI)
