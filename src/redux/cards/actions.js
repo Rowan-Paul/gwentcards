@@ -1,4 +1,5 @@
 import * as types from './types'
+import { removeItemOnce } from '../../utils'
 
 let api = process.env.REACT_APP_API
 
@@ -149,6 +150,35 @@ export const collectCard = (card) => (dispatch, getState) => {
     .catch((error) => {
       console.log('Failed to collect card', error)
       dispatch({ type: types.COLLECTED_CARD, payload: data })
+    })
+}
+
+// uncollect card
+export const uncollectCard = (card) => (dispatch, getState) => {
+  let url = `${api}/users/cards`
+  const data = { card }
+
+  fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        let newArray = []
+        if (getState().cards.collectedCards?.length > 1) {
+          newArray = removeItemOnce(getState().cards.collectedCards, card)
+        }
+
+        dispatch({ type: types.UNCOLLECTED_CARD, payload: newArray })
+      } else {
+        throw new Error('Not logged in maybe')
+      }
+    })
+    .catch((error) => {
+      console.log('Failed to uncollect card', error)
     })
 }
 
