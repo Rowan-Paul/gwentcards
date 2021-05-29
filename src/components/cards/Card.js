@@ -48,7 +48,7 @@ function CardUI(props) {
     let amount = 0
 
     card.locations.forEach((location) => {
-      if (props.collectedCards.includes(location._id)) {
+      if (props.collectedCards?.includes(location._id)) {
         amount++
       }
     })

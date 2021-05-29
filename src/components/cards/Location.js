@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { titleCase } from '../../utils'
-import { collectCard } from '../../redux/cards/actions'
+import { collectCard, uncollectCard } from '../../redux/cards/actions'
 
 function LocationUI(props) {
   const [isCollected, setIsCollected] = useState(false)
@@ -27,7 +27,8 @@ function LocationUI(props) {
       viewBox="0 0 24 24"
       width="24px"
       fill="#000000"
-      className="mx-auto my-0"
+      className="mx-auto my-0 cursor-pointer"
+      onClick={() => props.uncollectCard(props.id)}
     >
       <path d="M0 0h24v24H0z" fill="none" />
       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
@@ -57,6 +58,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   collectCard: (card) => dispatch(collectCard(card)),
+  uncollectCard: (card) => dispatch(uncollectCard(card)),
 })
 
 export const Location = connect(mapStateToProps, mapDispatchToProps)(LocationUI)

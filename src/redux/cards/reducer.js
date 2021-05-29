@@ -32,6 +32,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     case types.COLLECTED_CARD:
       return { ...state, collectedCards: action.payload.collected }
 
+    case types.UNCOLLECTED_CARD:
+      return { ...state, collectedCards: [...action.payload] }
+
     case types.FETCHED_COLLECTED_CARDS:
       return { ...state, collectedCards: action.payload.collected }
 
