@@ -1,0 +1,1 @@
+export const ADDED_NOTICE = 'ADDED_NOTICE'

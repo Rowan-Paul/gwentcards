@@ -12,6 +12,7 @@ import { SignUp } from './pages/auth/SignUp'
 import { ResetPassword } from './pages/auth/ResetPassword'
 import { RemoveAccount } from './pages/auth/RemoveAccount'
 import { VerifyEmail } from './pages/auth/VerifyEmail'
+import { Notice } from './components/notice/Notice'
 
 import { verify } from './redux/auth/actions'
 
@@ -24,6 +25,7 @@ function AppUI(props) {
   return (
     <Router>
       <NavBar />
+      <Notice />
       <div
         className="p-10 text-center flex flex-col min-h-screen justify-between"
         id="top"
