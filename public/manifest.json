@@ -1,5 +1,6 @@
 {
   "short_name": "GWENT",
+  "description": "All about the Witcher 3 GWENT game",
   "name": "GWENTcards",
   "icons": [
     {
