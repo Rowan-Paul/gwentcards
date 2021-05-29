@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { removeAccount } from '../../redux/auth/actions'
@@ -6,6 +6,7 @@ import { removeAccount } from '../../redux/auth/actions'
 function RemoveAccountUI(props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [notice, setNotice] = useState('')
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value)
@@ -18,6 +19,12 @@ function RemoveAccountUI(props) {
   const handleRemoveAccount = () => {
     props.removeAccount(username, password)
   }
+
+  useEffect(() => {
+    if (props.notice?.type === 'auth') {
+      setNotice(props.notice?.message)
+    }
+  }, [props.notice.type, props.notice.message])
 
   return (
     <div className="mt-20">
@@ -41,7 +48,7 @@ function RemoveAccountUI(props) {
           />
         </div>
 
-        <div className="mb-6">
+        <div className="mb-1">
           <label
             className="text-left ml-5 block text-gray-500 text-sm font-bold mb-2"
             htmlFor="password"
@@ -57,6 +64,8 @@ function RemoveAccountUI(props) {
           />
         </div>
 
+        <span className="text-red-600 mb-6">{notice}</span>
+
         <div className="grid lg:grid-cols-10 gap-5 justify-items-center">
           <button
             className="col-span-6 md:justify-self-start text-white bg-blue-500 hover:bg-blue-800 font-bold py-2 px-4 rounded "
@@ -71,9 +80,16 @@ function RemoveAccountUI(props) {
   )
 }
 
+const mapStateToProps = (state) => ({
+  notice: state.main.notice,
+})
+
 const mapDispatchToProps = (dispatch) => ({
   removeAccount: (username, password) =>
     dispatch(removeAccount(username, password)),
 })
 
-export const RemoveAccount = connect(null, mapDispatchToProps)(RemoveAccountUI)
+export const RemoveAccount = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RemoveAccountUI)

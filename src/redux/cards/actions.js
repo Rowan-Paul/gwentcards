@@ -1,5 +1,6 @@
 import * as types from './types'
 import { removeItemOnce } from '../../utils'
+import { setNotice } from '../main/actions'
 
 let api = process.env.REACT_APP_API
 
@@ -105,12 +106,12 @@ export const fetchCards = () => (dispatch, getState) => {
       }
     })
     .catch((err) => {
-      console.log('Failed to fetch cards', err)
+      dispatch(setNotice({ message: 'Failed to fetch cards', type: 'error' }))
     })
 }
 
 // fetch collect card
-export const fetchCollectedCards = () => (dispatch, getState) => {
+export const fetchCollectedCards = () => (dispatch) => {
   let url = `${api}/users/cards`
 
   fetch(url)
@@ -122,8 +123,8 @@ export const fetchCollectedCards = () => (dispatch, getState) => {
         throw new Error('No collected cards')
       }
     })
-    .catch((error) => {
-      console.log('Failed to fetch collected cards', error)
+    .catch((err) => {
+      console.log('Failed to fetch collected cards')
     })
 }
 
@@ -143,13 +144,14 @@ export const collectCard = (card) => (dispatch, getState) => {
     .then((response) => {
       if (response.amount > 0) {
         dispatch({ type: types.COLLECTED_CARD, payload: response })
+        dispatch(setNotice({ message: 'Collected card', type: 'success' }))
       } else {
         throw new Error('Not logged in')
       }
     })
-    .catch((error) => {
-      console.log('Failed to collect card', error)
+    .catch((err) => {
       dispatch({ type: types.COLLECTED_CARD, payload: data })
+      dispatch(setNotice({ message: 'Card saved locally', type: 'success' }))
     })
 }
 
@@ -173,12 +175,13 @@ export const uncollectCard = (card) => (dispatch, getState) => {
         }
 
         dispatch({ type: types.UNCOLLECTED_CARD, payload: newArray })
+        dispatch(setNotice({ message: 'Removed card', type: 'success' }))
       } else {
-        throw new Error('Not logged in maybe')
+        throw new Error('Not logged in')
       }
     })
-    .catch((error) => {
-      console.log('Failed to uncollect card', error)
+    .catch((err) => {
+      dispatch(setNotice({ message: 'Failed to remove cards', type: 'error' }))
     })
 }
 

@@ -10,6 +10,7 @@ function VerifyEmailUI(props) {
     const parsed = queryString.parse(props.location.search)
     if (parsed.token) {
       props.verifyEmail(parsed.token)
+      props.history.push('/')
     } else {
       props.history.push('/signin')
     }

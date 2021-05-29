@@ -1,4 +1,5 @@
 import * as types from './types'
+import { setNotice } from '../main/actions'
 
 let api = process.env.REACT_APP_API
 
@@ -31,7 +32,9 @@ export const signIn = (username, password) => (dispatch) => {
       })
     )
     .catch(() => {
-      console.log('Failed to sign in')
+      dispatch(
+        setNotice({ message: 'Email and/or password incorrect', type: 'auth' })
+      )
     })
 }
 
@@ -48,7 +51,7 @@ export const signOut = () => (dispatch) => {
       })
     )
     .catch(() => {
-      console.log('Failed to sign out')
+      dispatch(setNotice({ message: 'Failed to sign out', type: 'auth' }))
     })
 }
 
@@ -72,8 +75,7 @@ export const verify = () => (dispatch) => {
         payload: response,
       })
     })
-    .catch((err) => {
-      console.log('Failed to verify', err)
+    .catch(() => {
       dispatch(signOut())
     })
 }
@@ -107,8 +109,13 @@ export const signUp = (username, email, password) => (dispatch) => {
         payload: response,
       })
     )
-    .catch((err) => {
-      console.log('Failed to sign up', err)
+    .catch(() => {
+      dispatch(
+        setNotice({
+          message: 'You must enter a unique username and email',
+          type: 'auth',
+        })
+      )
     })
 }
 
@@ -131,12 +138,17 @@ export const resetPasswordRequest = (username) => (dispatch) => {
         dispatch({
           type: types.RESET_MAIL_SENT,
         })
+        dispatch(
+          setNotice({ message: 'Send email to email address', type: 'success' })
+        )
       } else {
         throw response.statusText
       }
     })
-    .catch((err) => {
-      console.log('Failed to request reset mail', err)
+    .catch(() => {
+      dispatch(
+        setNotice({ message: 'No account known with that email', type: 'auth' })
+      )
     })
 }
 
@@ -160,12 +172,16 @@ export const resetPassword = (token, password) => (dispatch) => {
         dispatch({
           type: types.PASSWORD_CHANGED,
         })
+
+        dispatch(setNotice({ message: 'Password updated', type: 'auth' }))
       } else {
         throw response.statusText
       }
     })
-    .catch((err) => {
-      console.log('Failed to update password', err)
+    .catch(() => {
+      dispatch(
+        setNotice({ message: 'Failed to update password', type: 'auth' })
+      )
     })
 }
 
@@ -189,12 +205,20 @@ export const removeAccount = (username, password) => (dispatch) => {
         dispatch({
           type: types.DELETED_ACCOUNT,
         })
+        dispatch(
+          setNotice({
+            message: 'Deleted account',
+            type: 'success',
+          })
+        )
       } else {
         throw response.statusText
       }
     })
-    .catch((err) => {
-      console.log('Failed to update password', err)
+    .catch(() => {
+      dispatch(
+        setNotice({ message: 'Email and/or password incorrect', type: 'auth' })
+      )
     })
 }
 
@@ -217,11 +241,18 @@ export const verifyEmail = (token) => (dispatch) => {
         dispatch({
           type: types.VERIFIED_EMAIL,
         })
+
+        dispatch(
+          setNotice({
+            message: 'Email has been verified',
+            type: 'success',
+          })
+        )
       } else {
         throw response.statusText
       }
     })
-    .catch((err) => {
-      console.log('Failed to verify email', err)
+    .catch(() => {
+      dispatch(setNotice({ message: 'Failed to verify email', type: 'error' }))
     })
 }
