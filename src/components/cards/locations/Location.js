@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { titleCase } from '../../utils'
-import { collectCard, uncollectCard } from '../../redux/cards/actions'
+import { titleCase } from '../../../utils'
+import { collectCard, uncollectCard } from '../../../redux/cards/actions'
 
 function LocationUI(props) {
   const [isCollected, setIsCollected] = useState(false)
