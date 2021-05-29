@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import { PublicRoute, PrivateRoute } from 'react-private-public-route'
 import { connect } from 'react-redux'
 
@@ -30,44 +30,46 @@ function AppUI(props) {
         className="p-10 text-center flex flex-col min-h-screen justify-between"
         id="top"
       >
-        <PublicRoute exact path="/" component={HomePage} />
-        <PrivateRoute
-          exact
-          isAuthenticated={!props.signedIn}
-          redirect="/"
-          path="/signin"
-          component={SignIn}
-        />
-        <PrivateRoute
-          exact
-          isAuthenticated={props.signedIn}
-          redirect="/"
-          path="/signout"
-          component={Signout}
-        />
-        <PrivateRoute
-          exact
-          isAuthenticated={!props.signedIn}
-          redirect="/"
-          path="/signup"
-          component={SignUp}
-        />
-        <PrivateRoute
-          exact
-          isAuthenticated={!props.signedIn}
-          redirect="/"
-          path="/reset-password"
-          component={ResetPassword}
-        />
-        <PrivateRoute
-          exact
-          isAuthenticated={props.signedIn}
-          redirect="/signin"
-          path="/remove-account"
-          component={RemoveAccount}
-        />
-        <PublicRoute exact path="/verify-account" component={VerifyEmail} />
-        <PublicRoute component={NotFound} />
+        <Switch>
+          <PublicRoute exact path="/" component={HomePage} />
+          <PrivateRoute
+            exact
+            isAuthenticated={!props.signedIn}
+            redirect="/"
+            path="/signin"
+            component={SignIn}
+          />
+          <PrivateRoute
+            exact
+            isAuthenticated={props.signedIn}
+            redirect="/"
+            path="/signout"
+            component={Signout}
+          />
+          <PrivateRoute
+            exact
+            isAuthenticated={!props.signedIn}
+            redirect="/"
+            path="/signup"
+            component={SignUp}
+          />
+          <PrivateRoute
+            exact
+            isAuthenticated={!props.signedIn}
+            redirect="/"
+            path="/reset-password"
+            component={ResetPassword}
+          />
+          <PrivateRoute
+            exact
+            isAuthenticated={props.signedIn}
+            redirect="/signin"
+            path="/remove-account"
+            component={RemoveAccount}
+          />
+          <PublicRoute exact path="/verify-account" component={VerifyEmail} />
+          <PublicRoute component={NotFound} />
+        </Switch>
         <Notice />
         <Footer />
       </div>
