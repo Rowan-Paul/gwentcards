@@ -8,6 +8,7 @@ function FooterUI(props) {
     '/signup',
     '/remove-account',
     '/reset-password',
+    '/verify-account',
   ]
   const location = useLocation()
 

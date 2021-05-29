@@ -2,16 +2,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 function NavBarUI(props) {
-  const noFooterPages = [
-    '/signin',
-    '/signup',
-    '/remove-account',
-    '/reset-password',
-    '/verify-account',
-  ]
   const location = useLocation()
 
-  if (noFooterPages.includes(location.pathname)) {
+  if (location.pathname !== '/') {
     return (
       <div className="absolute py-2 px-5 w-full">
         <Link to="/">Home</Link>
