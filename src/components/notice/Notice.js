@@ -4,23 +4,20 @@ import { connect } from 'react-redux'
 import { setNotice } from '../../redux/main/actions'
 
 function NoticeUI(props) {
-  const [color, setColor] = useState('')
-  const [position, setPosition] = useState('')
+  const [className, setClassName] = useState('')
 
   useEffect(() => {
     switch (props.notice.type) {
       case 'error':
-        setPosition('fixed')
-        setColor('bg-red-400')
+        setClassName('bg-red-400')
         break
 
       case 'success':
-        setPosition('fixed')
-        setColor('bg-green-400')
+        setClassName('fixed bg-green-400')
         break
 
       default:
-        setPosition('hidden')
+        setClassName('hidden')
         break
     }
 
@@ -39,7 +36,7 @@ function NoticeUI(props) {
 
   return (
     <div
-      className={`${color} ${position} border m-2 md:m-10 p-4 overflow-hidden bottom-0 cursor-pointer`}
+      className={`${className} border m-2 md:m-10 p-4 overflow-hidden bottom-0 cursor-pointer z-50`}
       onClick={() => props.setNotice({})}
     >
       <span className="block text-center float-left">

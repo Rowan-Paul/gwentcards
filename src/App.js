@@ -25,7 +25,6 @@ function AppUI(props) {
   return (
     <Router>
       <NavBar />
-      <Notice />
       <div
         className="p-10 text-center flex flex-col min-h-screen justify-between"
         id="top"
@@ -68,6 +67,7 @@ function AppUI(props) {
         />
         <PublicRoute exact path="/verify-account" component={VerifyEmail} />
         <Footer />
+        <Notice />
       </div>
     </Router>
   )
