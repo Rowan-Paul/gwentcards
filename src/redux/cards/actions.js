@@ -48,6 +48,8 @@ export const fetchCards = () => (dispatch, getState) => {
       return response.json()
     })
     .then((response) => {
+      localStorage.setItem('cards', JSON.stringify(response))
+
       if (filters.showCollectedCards) {
         let cards = []
 
@@ -105,8 +107,17 @@ export const fetchCards = () => (dispatch, getState) => {
         })
       }
     })
-    .catch((err) => {
-      dispatch(setNotice({ message: 'Failed to fetch cards', type: 'error' }))
+    .catch(() => {
+      dispatch({
+        type: types.FETCHED_CARDS,
+        payload: JSON.parse(localStorage.getItem('cards')) || {},
+      })
+      dispatch(
+        setNotice({
+          message: 'Failed to fetch cards, showing cached cards',
+          type: 'error',
+        })
+      )
     })
 }
 
@@ -149,7 +160,7 @@ export const collectCard = (card) => (dispatch, getState) => {
         throw new Error('Not logged in')
       }
     })
-    .catch((err) => {
+    .catch(() => {
       dispatch({ type: types.COLLECTED_CARD, payload: data })
       dispatch(setNotice({ message: 'Card saved locally', type: 'success' }))
     })
@@ -180,7 +191,7 @@ export const uncollectCard = (card) => (dispatch, getState) => {
         throw new Error('Not logged in')
       }
     })
-    .catch((err) => {
+    .catch(() => {
       dispatch(setNotice({ message: 'Failed to remove cards', type: 'error' }))
     })
 }
