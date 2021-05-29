@@ -15,6 +15,7 @@ import { VerifyEmail } from './pages/auth/VerifyEmail'
 import { Notice } from './components/notice/Notice'
 
 import { verify } from './redux/auth/actions'
+import { NotFound } from './pages/404/NotFound'
 
 function AppUI(props) {
   useEffect(() => {
@@ -66,6 +67,7 @@ function AppUI(props) {
           component={RemoveAccount}
         />
         <PublicRoute exact path="/verify-account" component={VerifyEmail} />
+        <PublicRoute component={NotFound} />
         <Notice />
         <Footer />
       </div>
