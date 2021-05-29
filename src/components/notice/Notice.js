@@ -9,7 +9,7 @@ function NoticeUI(props) {
   useEffect(() => {
     switch (props.notice.type) {
       case 'error':
-        setClassName('bg-red-400')
+        setClassName('fixed bg-red-400')
         break
 
       case 'success':

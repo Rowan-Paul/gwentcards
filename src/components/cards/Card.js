@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'cloudinary-react'
 
-import { LocationsModal } from './LocationsModal'
+import { LocationsModal } from './locations/LocationsModal'
 import { titleCase } from '../../utils'
 
 function CardUI(props) {

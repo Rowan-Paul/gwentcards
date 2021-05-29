@@ -1,4 +1,4 @@
-import { randomId } from '../../utils'
+import { randomId } from '../../../utils'
 import { Location } from './Location'
 import { LocationMobile } from './LocationMobile'
 
