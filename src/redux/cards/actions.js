@@ -123,26 +123,40 @@ export const fetchCards = () => (dispatch, getState) => {
 
 // fetch collect card
 export const fetchCollectedCards = () => (dispatch) => {
-  let url = `${api}/users/cards`
+  const url = `${api}/users/cards`
 
   fetch(url)
     .then((response) => response.json())
     .then((response) => {
       if (response.amount > 0) {
+        localStorage.setItem(
+          'collectedCards',
+          JSON.stringify(response.collected)
+        )
         dispatch({ type: types.FETCHED_COLLECTED_CARDS, payload: response })
       } else {
         throw new Error('No collected cards')
       }
     })
-    .catch((err) => {
-      console.log('Failed to fetch collected cards')
+    .catch(() => {
+      console.log('Failed to fetch collected cards, showing cache')
+      dispatch({
+        type: types.FETCHED_COLLECTED_CARDS,
+        payload: {
+          collected: JSON.parse(localStorage.getItem('collectedCards')) || [],
+        },
+      })
     })
 }
 
 // collect card
 export const collectCard = (card) => (dispatch, getState) => {
-  let url = `${api}/users/cards`
-  const data = { collected: [...getState().cards.collectedCards, card] }
+  const url = `${api}/users/cards`
+  let data = { collected: [card] }
+  if (getState().cards.collectedCards.length > 0) {
+    data = { collected: [...getState().cards.collectedCards, card] }
+  }
+  localStorage.setItem('collectedCards', JSON.stringify(data.collected))
 
   fetch(url, {
     method: 'POST',
@@ -168,8 +182,14 @@ export const collectCard = (card) => (dispatch, getState) => {
 
 // uncollect card
 export const uncollectCard = (card) => (dispatch, getState) => {
-  let url = `${api}/users/cards`
+  const url = `${api}/users/cards`
   const data = { card }
+
+  let newArray = []
+  if (getState().cards.collectedCards?.length > 1) {
+    newArray = removeItemOnce(getState().cards.collectedCards, card)
+  }
+  localStorage.setItem('collectedCards', JSON.stringify(newArray))
 
   fetch(url, {
     method: 'DELETE',
@@ -180,11 +200,6 @@ export const uncollectCard = (card) => (dispatch, getState) => {
   })
     .then((response) => {
       if (response.status === 201) {
-        let newArray = []
-        if (getState().cards.collectedCards?.length > 1) {
-          newArray = removeItemOnce(getState().cards.collectedCards, card)
-        }
-
         dispatch({ type: types.UNCOLLECTED_CARD, payload: newArray })
         dispatch(setNotice({ message: 'Removed card', type: 'success' }))
       } else {
@@ -192,7 +207,16 @@ export const uncollectCard = (card) => (dispatch, getState) => {
       }
     })
     .catch(() => {
-      dispatch(setNotice({ message: 'Failed to remove cards', type: 'error' }))
+      dispatch(
+        setNotice({
+          message: 'Failed to remove cards, but did save locally',
+          type: 'error',
+        })
+      )
+      dispatch({
+        type: types.UNCOLLECTED_CARD,
+        payload: newArray,
+      })
     })
 }
 
