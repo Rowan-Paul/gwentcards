@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { setPage } from '../../redux/cards/actions'
 import { HashLink } from 'react-router-hash-link'
+import { setPage } from '../../redux/cards/actions'
 
 function PaginationUI(props) {
   const [pagination, setPagination] = useState([])
@@ -61,7 +61,6 @@ function PaginationUI(props) {
         </HashLink>
       )
     }
-    // eslint-disable-next-line
   }, [props.selected, props.pageSize, props.page])
 
   return (

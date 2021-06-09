@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { titleCase } from '../../../utils'
@@ -48,7 +48,7 @@ function LocationMobileUI(props) {
       <section className="text-left p-5">
         <p>
           <span className="font-bold">Type: </span>
-          <br></br>
+          <br />
           {titleCase(props.type)}
         </p>
 
@@ -56,7 +56,7 @@ function LocationMobileUI(props) {
           <span className={`${props.territory ? '' : 'hidden'} font-bold`}>
             Territory:{' '}
           </span>
-          <br></br>
+          <br />
           {titleCase(props.territory ? props.territory : '')}
         </p>
 
@@ -64,7 +64,7 @@ function LocationMobileUI(props) {
           <span className={`${props.location ? '' : 'hidden'} font-bold`}>
             Location:{' '}
           </span>
-          <br></br>
+          <br />
           {titleCase(props.location ? props.location : '')}
         </p>
 
@@ -72,7 +72,7 @@ function LocationMobileUI(props) {
           <span className={`${props.character ? '' : 'hidden'} font-bold`}>
             Character:{' '}
           </span>
-          <br></br>
+          <br />
           {titleCase(props.character ? props.character : '')}
         </p>
 

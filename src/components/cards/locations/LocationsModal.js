@@ -1,3 +1,4 @@
+import React from 'react'
 import { randomId } from '../../../utils'
 import { Location } from './Location'
 import { LocationMobile } from './LocationMobile'
@@ -15,8 +16,8 @@ function LocationsModalUI(props) {
       <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
     </svg>
   )
-  let locations = []
-  let locationsMobile = []
+  const locations = []
+  const locationsMobile = []
 
   props.card.locations.forEach((location) => {
     locations.push(
@@ -56,7 +57,10 @@ function LocationsModalUI(props) {
 
       <div className="block p-5">
         <h1 className="mb-5">Locations</h1>
-        <p>View all locations of the {props.card?.name} card</p>
+        <p>
+          View all locations of the
+          {props.card?.name} card
+        </p>
         <table className="hidden md:table table-auto my-0 mx-auto">
           <thead>
             <tr className="bg-black text-white">

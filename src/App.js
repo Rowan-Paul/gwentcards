@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import { PublicRoute, PrivateRoute } from 'react-private-public-route'
 import { connect } from 'react-redux'
@@ -20,7 +20,6 @@ import { NotFound } from './pages/404/NotFound'
 function AppUI(props) {
   useEffect(() => {
     props.verify()
-    // eslint-disable-next-line
   }, [])
 
   return (

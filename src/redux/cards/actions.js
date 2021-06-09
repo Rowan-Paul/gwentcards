@@ -2,13 +2,13 @@ import * as types from './types'
 import { removeItemOnce } from '../../utils'
 import { setNotice } from '../main/actions'
 
-let api = process.env.REACT_APP_API
+const api = process.env.REACT_APP_API
 
 // fetch cards
 export const fetchCards = () => (dispatch, getState) => {
   let url = `${api}/cards`
-  let parameters = []
-  const filters = getState().cards.filters
+  const parameters = []
+  const { filters } = getState().cards
 
   dispatch({
     type: types.REMOVED_CARDS,
@@ -22,12 +22,12 @@ export const fetchCards = () => (dispatch, getState) => {
   }
   if (filters.strength.length > 0) {
     parameters.push(
-      `strength=${encodeURIComponent(filters.strength.toString())}`
+      `strength=${encodeURIComponent(filters.strength.toString())}`,
     )
   }
   if (filters.abilities.length > 0) {
     parameters.push(
-      `abilities=${encodeURIComponent(filters.abilities.toString())}`
+      `abilities=${encodeURIComponent(filters.abilities.toString())}`,
     )
   }
   if (filters.effect.length > 0) {
@@ -37,27 +37,25 @@ export const fetchCards = () => (dispatch, getState) => {
   if (parameters.length > 0) {
     url += `/card?${parameters[0]}`
     if (parameters.length > 1) {
-      for (var i = 1; i < parameters.length; i++) {
+      for (let i = 1; i < parameters.length; i++) {
         url += `&${parameters[i]}`
       }
     }
   }
 
   fetch(url)
-    .then((response) => {
-      return response.json()
-    })
+    .then((response) => response.json())
     .then((response) => {
       localStorage.setItem('cards', JSON.stringify(response))
 
       if (filters.showCollectedCards) {
-        let cards = []
+        const cards = []
 
         response.cards.forEach((card) => {
           card.locations.forEach((location) => {
             if (
-              getState().cards.collectedCards.includes(location._id) &&
-              !cards.includes(card)
+              getState().cards.collectedCards.includes(location._id)
+              && !cards.includes(card)
             ) {
               cards.push(card)
             }
@@ -74,8 +72,8 @@ export const fetchCards = () => (dispatch, getState) => {
           payload: newResponse,
         })
       } else if (filters.hideCollectedCards) {
-        let cards = []
-        let toRemove = []
+        const cards = []
+        const toRemove = []
 
         response.cards.forEach((card) => {
           card.locations.forEach((location) => {
@@ -116,7 +114,7 @@ export const fetchCards = () => (dispatch, getState) => {
         setNotice({
           message: 'Failed to fetch cards, showing cached cards',
           type: 'error',
-        })
+        }),
       )
     })
 }
@@ -131,7 +129,7 @@ export const fetchCollectedCards = () => (dispatch) => {
       if (response.amount > 0) {
         localStorage.setItem(
           'collectedCards',
-          JSON.stringify(response.collected)
+          JSON.stringify(response.collected),
         )
         dispatch({ type: types.FETCHED_COLLECTED_CARDS, payload: response })
       } else {
@@ -211,7 +209,7 @@ export const uncollectCard = (card) => (dispatch, getState) => {
         setNotice({
           message: 'Failed to remove cards, but did save locally',
           type: 'error',
-        })
+        }),
       )
       dispatch({
         type: types.UNCOLLECTED_CARD,
@@ -220,22 +218,12 @@ export const uncollectCard = (card) => (dispatch, getState) => {
     })
 }
 
-export const setPageSize = (size) => {
-  return { type: types.PAGE_SIZE_SET, payload: size }
-}
+export const setPageSize = (size) => ({ type: types.PAGE_SIZE_SET, payload: size })
 
-export const setFilters = (filters) => {
-  return { type: types.FILTERS_SET, payload: filters }
-}
+export const setFilters = (filters) => ({ type: types.FILTERS_SET, payload: filters })
 
-export const setPage = (page) => {
-  return { type: types.PAGE_SET, payload: page }
-}
+export const setPage = (page) => ({ type: types.PAGE_SET, payload: page })
 
-export const setReset = (reset) => {
-  return { type: types.RESET, payload: reset }
-}
+export const setReset = (reset) => ({ type: types.RESET, payload: reset })
 
-export const removeCards = () => {
-  return { type: types.REMOVED_CARDS }
-}
+export const removeCards = () => ({ type: types.REMOVED_CARDS })

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { Card } from './Card'
@@ -21,7 +21,7 @@ function CurrentPageUI(props) {
     <div>
       <p className="text-left text-sm mt-1">
         {props.amount
-          ? 'Showing ' + cards.length + '/' + props.amount + ' cards'
+          ? `Showing ${cards.length}/${props.amount} cards`
           : 'No cards found'}
       </p>
       <div className="grid md:grid-cols-2 lg:grid-cols-4">{cards}</div>

@@ -4,8 +4,8 @@
  * @returns String with capitalised words
  */
 function titleCase(str) {
-  var splitStr = str.toLowerCase().split(' ')
-  for (var i = 0; i < splitStr.length; i++) {
+  const splitStr = str.toLowerCase().split(' ')
+  for (let i = 0; i < splitStr.length; i++) {
     splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1)
   }
   return splitStr.join(' ')
@@ -26,7 +26,7 @@ function randomId() {
  * @returns Array minus value
  */
 function removeItemOnce(arr, value) {
-  var index = arr.indexOf(value)
+  const index = arr.indexOf(value)
   if (index > -1) {
     arr.splice(index, 1)
   }

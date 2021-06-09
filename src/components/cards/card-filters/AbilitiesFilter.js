@@ -1,3 +1,4 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import { setFilters, fetchCards } from '../../../redux/cards/actions'
 import { Filter } from './Filter'

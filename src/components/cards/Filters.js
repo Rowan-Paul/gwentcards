@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import { PageSizeFilter } from './card-filters/PageSizeFilter'
 import { DeckFilter } from './card-filters/DeckFilter'
@@ -57,7 +57,8 @@ function FiltersUI() {
         className="block cursor-pointer underline md:hidden"
         onClick={handleOnClick}
       >
-        {arrow}Filters
+        {arrow}
+        Filters
       </p>
       <div
         className={`my-5 p-2 text-left md:grid md:grid-cols-3 lg:grid-cols-5 ${display}`}

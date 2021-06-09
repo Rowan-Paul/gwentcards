@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import MultiSelect from 'react-multi-select-component'
 
 function FilterUI(props) {
@@ -11,9 +11,9 @@ function FilterUI(props) {
   const handleOnChange = (e) => {
     setSelected(e)
 
-    let selectedValues = []
+    const selectedValues = []
     e.forEach((element) => {
-      const value = element.value
+      const { value } = element
       selectedValues.push(value)
     })
 
@@ -31,7 +31,7 @@ function FilterUI(props) {
         value={selected}
         onChange={handleOnChange}
         hasSelectAll={false}
-        disableSearch={true}
+        disableSearch
         className="w-full"
       />
     </span>

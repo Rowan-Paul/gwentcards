@@ -1,14 +1,14 @@
 import * as types from './types'
 import { setNotice } from '../main/actions'
 
-let api = process.env.REACT_APP_API
+const api = process.env.REACT_APP_API
 
 // sign in
 export const signIn = (username, password) => (dispatch) => {
   const url = `${api}/auth`
   const body = {
-    username: username,
-    password: password,
+    username,
+    password,
   }
 
   fetch(url, {
@@ -21,19 +21,16 @@ export const signIn = (username, password) => (dispatch) => {
     .then((response) => {
       if (response.status === 200) {
         return response.json()
-      } else {
-        throw response.statusText
       }
+      throw response.statusText
     })
-    .then((response) =>
-      dispatch({
-        type: types.SIGNED_IN,
-        payload: response,
-      })
-    )
+    .then((response) => dispatch({
+      type: types.SIGNED_IN,
+      payload: response,
+    }))
     .catch(() => {
       dispatch(
-        setNotice({ message: 'Email and/or password incorrect', type: 'auth' })
+        setNotice({ message: 'Email and/or password incorrect', type: 'auth' }),
       )
     })
 }
@@ -45,11 +42,9 @@ export const signOut = () => (dispatch) => {
   fetch(url, {
     method: 'DELETE',
   })
-    .then(() =>
-      dispatch({
-        type: types.SIGNED_OUT,
-      })
-    )
+    .then(() => dispatch({
+      type: types.SIGNED_OUT,
+    }))
     .catch(() => {
       dispatch(setNotice({ message: 'Failed to sign out', type: 'auth' }))
     })
@@ -65,9 +60,8 @@ export const verify = () => (dispatch) => {
     .then((response) => {
       if (response.status === 200) {
         return response.json()
-      } else {
-        throw response.statusText
       }
+      throw response.statusText
     })
     .then((response) => {
       dispatch({
@@ -84,9 +78,9 @@ export const verify = () => (dispatch) => {
 export const signUp = (username, email, password) => (dispatch) => {
   const url = `${api}/auth`
   const body = {
-    username: username,
-    email: email,
-    password: password,
+    username,
+    email,
+    password,
   }
 
   fetch(url, {
@@ -99,22 +93,19 @@ export const signUp = (username, email, password) => (dispatch) => {
     .then((response) => {
       if (response.status === 201) {
         return response.json()
-      } else {
-        throw response.statusText
       }
+      throw response.statusText
     })
-    .then((response) =>
-      dispatch({
-        type: types.SIGNED_IN,
-        payload: response,
-      })
-    )
+    .then((response) => dispatch({
+      type: types.SIGNED_IN,
+      payload: response,
+    }))
     .catch(() => {
       dispatch(
         setNotice({
           message: 'You must enter a unique username and email',
           type: 'auth',
-        })
+        }),
       )
     })
 }
@@ -123,7 +114,7 @@ export const signUp = (username, email, password) => (dispatch) => {
 export const resetPasswordRequest = (username) => (dispatch) => {
   const url = `${api}/auth/reset`
   const body = {
-    username: username,
+    username,
   }
 
   fetch(url, {
@@ -139,7 +130,7 @@ export const resetPasswordRequest = (username) => (dispatch) => {
           type: types.RESET_MAIL_SENT,
         })
         dispatch(
-          setNotice({ message: 'Send email to email address', type: 'success' })
+          setNotice({ message: 'Send email to email address', type: 'success' }),
         )
       } else {
         throw response.statusText
@@ -147,7 +138,7 @@ export const resetPasswordRequest = (username) => (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        setNotice({ message: 'No account known with that email', type: 'auth' })
+        setNotice({ message: 'No account known with that email', type: 'auth' }),
       )
     })
 }
@@ -156,8 +147,8 @@ export const resetPasswordRequest = (username) => (dispatch) => {
 export const resetPassword = (token, password) => (dispatch) => {
   const url = `${api}/auth/reset`
   const body = {
-    token: token,
-    password: password,
+    token,
+    password,
   }
 
   fetch(url, {
@@ -180,7 +171,7 @@ export const resetPassword = (token, password) => (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        setNotice({ message: 'Failed to update password', type: 'auth' })
+        setNotice({ message: 'Failed to update password', type: 'auth' }),
       )
     })
 }
@@ -189,8 +180,8 @@ export const resetPassword = (token, password) => (dispatch) => {
 export const removeAccount = (username, password) => (dispatch) => {
   const url = `${api}/auth/account`
   const body = {
-    username: username,
-    password: password,
+    username,
+    password,
   }
 
   fetch(url, {
@@ -209,7 +200,7 @@ export const removeAccount = (username, password) => (dispatch) => {
           setNotice({
             message: 'Deleted account',
             type: 'success',
-          })
+          }),
         )
       } else {
         throw response.statusText
@@ -217,7 +208,7 @@ export const removeAccount = (username, password) => (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        setNotice({ message: 'Email and/or password incorrect', type: 'auth' })
+        setNotice({ message: 'Email and/or password incorrect', type: 'auth' }),
       )
     })
 }
@@ -226,7 +217,7 @@ export const removeAccount = (username, password) => (dispatch) => {
 export const verifyEmail = (token) => (dispatch) => {
   const url = `${api}/auth/account/verify`
   const body = {
-    token: token,
+    token,
   }
 
   fetch(url, {
@@ -246,7 +237,7 @@ export const verifyEmail = (token) => (dispatch) => {
           setNotice({
             message: 'Email has been verified',
             type: 'success',
-          })
+          }),
         )
       } else {
         throw response.statusText

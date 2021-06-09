@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'cloudinary-react'
 
@@ -36,8 +36,8 @@ function CardUI(props) {
     </svg>
   )
 
-  const card = props.card
-  let abilities = []
+  const { card } = props
+  const abilities = []
 
   card.abilities?.forEach((ability) => {
     abilities.push(titleCase(ability))
@@ -73,20 +73,20 @@ function CardUI(props) {
           <h3 className="text-lg font-bold">{titleCase(card.name)}</h3>
           <p className="text-sm text-gray-600">
             {titleCase(card.deck)}
-            <br></br> Strength: &nbsp;
+            <br /> Strength: &nbsp;
             {card.strength ? card.strength : '-'}
           </p>
         </header>
 
         <section>
           <Image
-            public-id={'/gwentcards/' + encodeURIComponent(card.name)}
+            public-id={`/gwentcards/${encodeURIComponent(card.name)}`}
             width="205"
             height="387"
             fetchFormat="auto"
             crop="scale"
             loading="lazy"
-            alt={'Card with ' + card.name}
+            alt={`Card with ${card.name}`}
             style={{ margin: 'auto' }}
           />
           <p className="p-4">
@@ -116,7 +116,7 @@ function CardUI(props) {
           >
             {placeIcon}
             <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-0.5 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded">
-              {locationsCollected + '/' + locationsAmount}
+              {`${locationsCollected}/${locationsAmount}`}
             </span>
           </span>
         </footer>
@@ -129,6 +129,4 @@ const mapStateToProps = (state) => ({
   collectedCards: state.cards.collectedCards,
 })
 
-const mapDispatchToProps = (dispatch) => ({})
-
-export const Card = connect(mapStateToProps, mapDispatchToProps)(CardUI)
+export const Card = connect(mapStateToProps, null)(CardUI)

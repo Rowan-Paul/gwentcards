@@ -1,10 +1,11 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import { setFilters, fetchCards } from '../../../redux/cards/actions'
 import { Filter } from './Filter'
 
 function DeckFilterUI(props) {
   const handleOnChange = (filter) => {
-    let tempFilters = props.filters
+    const tempFilters = props.filters
     tempFilters[filter.name] = filter.values
 
     props.setFilters(tempFilters)
