@@ -20,7 +20,6 @@ export const signIn = (username, password) => {
       body: JSON.stringify(body),
     })
       .then((response) => {
-        console.log('response', response)
         if (response?.status === 200) {
           return response.json()
         }
@@ -32,6 +31,9 @@ export const signIn = (username, password) => {
           payload: response,
         })
       )
+      .catch(() => {
+        dispatch(setNotice({ message: 'Failed to sign in', type: 'auth' }))
+      })
 }
 
 // sign out
