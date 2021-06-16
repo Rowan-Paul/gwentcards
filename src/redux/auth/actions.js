@@ -20,15 +20,11 @@ export const signIn = (username, password) => {
       body: JSON.stringify(body),
     })
       .then((response) => {
-        if (
-          response?.status === 200 ||
-          response?.status === 400 ||
-          response?.status === 401 ||
-          response?.status === 500
-        ) {
-          throw response.statusText
+        console.log('response', response)
+        if (response?.status === 200) {
+          return response.json()
         }
-        return response.json()
+        throw response.statusText
       })
       .then((response) =>
         dispatch({

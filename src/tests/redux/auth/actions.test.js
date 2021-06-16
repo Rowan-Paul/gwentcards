@@ -31,6 +31,7 @@ describe('Auth actions', () => {
 
     const mResponse = {
       json: jest.fn().mockResolvedValueOnce(expectedResponse),
+      status: 200,
     }
     global.fetch = jest.fn().mockResolvedValueOnce(mResponse)
 
