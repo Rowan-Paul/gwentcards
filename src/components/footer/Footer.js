@@ -32,7 +32,7 @@ function FooterUI(props) {
         </a>
       </span>
       <span>
-        <a href="https://github.com/Rowan-Paul/gwentcards">
+        <a href="https://github.com/Rowan-Paul/gwentapi">
           Backend repository
         </a>
       </span>
