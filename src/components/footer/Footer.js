@@ -22,7 +22,7 @@ function FooterUI(props) {
         {' '}
         {new Date().getFullYear()}
         {' '}
-        Rowan Paul Flynn
+        <a href="https://rowanpaulflynn.com/">Rowan Paul Flynn</a>
         {' '}
         <br />
       </span>
