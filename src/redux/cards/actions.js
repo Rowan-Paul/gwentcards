@@ -22,12 +22,12 @@ export const fetchCards = () => (dispatch, getState) => {
   }
   if (filters.strength.length > 0) {
     parameters.push(
-      `strength=${encodeURIComponent(filters.strength.toString())}`,
+      `strength=${encodeURIComponent(filters.strength.toString())}`
     )
   }
   if (filters.abilities.length > 0) {
     parameters.push(
-      `abilities=${encodeURIComponent(filters.abilities.toString())}`,
+      `abilities=${encodeURIComponent(filters.abilities.toString())}`
     )
   }
   if (filters.effect.length > 0) {
@@ -54,8 +54,8 @@ export const fetchCards = () => (dispatch, getState) => {
         response.cards.forEach((card) => {
           card.locations.forEach((location) => {
             if (
-              getState().cards.collectedCards.includes(location._id)
-              && !cards.includes(card)
+              getState().cards.collectedCards.includes(location._id) &&
+              !cards.includes(card)
             ) {
               cards.push(card)
             }
@@ -114,37 +114,38 @@ export const fetchCards = () => (dispatch, getState) => {
         setNotice({
           message: 'Failed to fetch cards, showing cached cards',
           type: 'error',
-        }),
+        })
       )
     })
 }
 
 // fetch collect card
-export const fetchCollectedCards = () => (dispatch) => {
+export const fetchCollectedCards = () => {
   const url = `${api}/users/cards`
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.amount > 0) {
-        localStorage.setItem(
-          'collectedCards',
-          JSON.stringify(response.collected),
-        )
-        dispatch({ type: types.FETCHED_COLLECTED_CARDS, payload: response })
-      } else {
-        throw new Error('No collected cards')
-      }
-    })
-    .catch(() => {
-      console.log('Failed to fetch collected cards, showing cache')
-      dispatch({
-        type: types.FETCHED_COLLECTED_CARDS,
-        payload: {
-          collected: JSON.parse(localStorage.getItem('collectedCards')) || [],
-        },
+  return (dispatch) =>
+    fetch(url)
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.amount > 0) {
+          localStorage.setItem(
+            'collectedCards',
+            JSON.stringify(response.collected)
+          )
+          dispatch({ type: types.FETCHED_COLLECTED_CARDS, payload: response })
+        } else {
+          throw new Error('No collected cards')
+        }
       })
-    })
+      .catch(() => {
+        console.log('Failed to fetch collected cards, showing cache')
+        dispatch({
+          type: types.FETCHED_COLLECTED_CARDS,
+          payload: {
+            collected: JSON.parse(localStorage.getItem('collectedCards')) || [],
+          },
+        })
+      })
 }
 
 // collect card
@@ -209,7 +210,7 @@ export const uncollectCard = (card) => (dispatch, getState) => {
         setNotice({
           message: 'Failed to remove cards, but did save locally',
           type: 'error',
-        }),
+        })
       )
       dispatch({
         type: types.UNCOLLECTED_CARD,
@@ -218,9 +219,15 @@ export const uncollectCard = (card) => (dispatch, getState) => {
     })
 }
 
-export const setPageSize = (size) => ({ type: types.PAGE_SIZE_SET, payload: size })
+export const setPageSize = (size) => ({
+  type: types.PAGE_SIZE_SET,
+  payload: size,
+})
 
-export const setFilters = (filters) => ({ type: types.FILTERS_SET, payload: filters })
+export const setFilters = (filters) => ({
+  type: types.FILTERS_SET,
+  payload: filters,
+})
 
 export const setPage = (page) => ({ type: types.PAGE_SET, payload: page })
 
