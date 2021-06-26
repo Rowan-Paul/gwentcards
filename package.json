@@ -26,8 +26,8 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test --watchAll=false",
-    "coverage": "craco test --watchAll=false --collectCoverage --collectCoverageFrom=**/src/redux/**/*js",
+    "test": "craco test --watchAll=false --slowTestThreshold=10",
+    "coverage": "craco test --watchAll=false --collectCoverage --collectCoverageFrom=**/src/redux/**/*js --slowTestThreshold=10",
     "eject": "react-scripts eject",
     "lint": "eslint ./ --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix"
