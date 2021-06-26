@@ -6,6 +6,6 @@ The API that gets used is available in the [Rowan-Paul/gwentapi](https://github.
 
 ## Installation
 
-You can run this app locally by running `npm install` and then `npm start`.
+You can run this app locally by running `npm install` and then `npm start`. There are redux action and reducer tests which can be run by running `npm test` in your terminal. You can get the coverage of the files by running `npm run coverage`.
 
-The app also has ESLint and Prettier configurations from @imaginary-cloud. You can run the linter by running ``npm run lint`` and fix the errors by running ``npm run lint:fix``.
+The app also has ESLint and Prettier configurations from @imaginary-cloud. You can run the linter by running `npm run lint` and fix the errors by running `npm run lint:fix`.
