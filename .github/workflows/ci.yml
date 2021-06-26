@@ -22,5 +22,6 @@ jobs:
             git fetch --all
             git reset --hard origin/main
             npm i
+            npm test
             npm run build
             pm2 restart gwentcards
