@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { CurrentPage } from '../../components/cards/CurrentPage'
@@ -10,7 +10,6 @@ function CardsUI(props) {
   useEffect(() => {
     props.fetchCards()
     props.fetchCollectedCards()
-    // eslint-disable-next-line
   }, [props.filters, props.pageSize, props.reset])
 
   return (

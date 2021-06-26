@@ -1,3 +1,4 @@
+import React from 'react'
 import { ScrollToTopButton } from '../../components/scroll-to-top/ScrollToTop'
 import { Cards } from '../cards/Cards'
 

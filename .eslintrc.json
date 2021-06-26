@@ -1,0 +1,27 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": ["prettier", "prettier/react", "plugin:react/recommended"],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 12,
+		"sourceType": "module"
+	},
+	"plugins": ["react"],
+	"rules": {
+		"no-unused-vars": "warn",
+		"react/jsx-uses-react": "warn",
+		"react/jsx-uses-vars": "warn",
+		"no-console": "off",
+		"linebreak-style": "off",
+		"semi": ["warn", "never"],
+		"no-tabs": "off",
+		"no-trailing-spaces": "warn",
+		"no-extra-parens": "off",
+		"react/prop-types": "off"
+	}
+}

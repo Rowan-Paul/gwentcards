@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import queryString from 'query-string'
@@ -14,7 +14,6 @@ function VerifyEmailUI(props) {
     } else {
       props.history.push('/signin')
     }
-    // eslint-disable-next-line
   }, [])
 
   return (

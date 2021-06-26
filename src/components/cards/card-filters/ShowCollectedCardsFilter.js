@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Switch from 'react-switch'
 import { connect } from 'react-redux'
 
@@ -8,7 +8,7 @@ function ShowCollectedCardsFilterUI(props) {
   const [checked, setChecked] = useState(false)
 
   const handleChange = () => {
-    let tempFilters = props.filters
+    const tempFilters = props.filters
     tempFilters.showCollectedCards = !checked
 
     props.setFilters(tempFilters)
@@ -18,7 +18,7 @@ function ShowCollectedCardsFilterUI(props) {
 
   useEffect(() => {
     if (props.reset) {
-      let tempFilters = props.filters
+      const tempFilters = props.filters
       tempFilters.hideCollectedCards = false
 
       props.setFilters(tempFilters)
