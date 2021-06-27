@@ -187,7 +187,11 @@ function ListViewUI(props) {
   }, [props.selected, props.collectedCards])
 
   return (
-    <div className="text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div
+      className={`${
+        props.filters.listView ? 'inherit' : 'hidden'
+      } text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5`}
+    >
       <div>
         <h3>Nilfgaard ({nilfgaard.length})</h3>
         {nilfgaard}
@@ -219,6 +223,7 @@ function ListViewUI(props) {
 const mapStateToProps = (state) => ({
   selected: state.cards.selected,
   collectedCards: state.cards.collectedCards,
+  filters: state.cards.filters,
 })
 
 const mapDispatchToProps = (dispatch) => ({

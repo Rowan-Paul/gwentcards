@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { GridView } from '../../components/cards/GridView'
+import { ListView } from '../../components/cards/ListView'
 import { Filters } from '../../components/cards/Filters'
 import { fetchCards, fetchCollectedCards } from '../../redux/cards/actions'
 
@@ -15,6 +16,7 @@ function CardsUI(props) {
     <div id="cards">
       <Filters />
       <GridView />
+      <ListView />
     </div>
   )
 }

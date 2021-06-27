@@ -9,6 +9,7 @@ import { EffectFilter } from './card-filters/EffectFilter'
 import { ResetFilters } from './card-filters/ResetFilters'
 import { ShowCollectedCardsFilter } from './card-filters/ShowCollectedCardsFilter'
 import { HideCollectedCardsFilter } from './card-filters/HideCollectedCardsFilter'
+import { ListViewSwitch } from './card-filters/ListViewSwitch'
 
 function FiltersUI() {
   const downArrow = (
@@ -74,6 +75,8 @@ function FiltersUI() {
         <HideCollectedCardsFilter />
 
         <ResetFilters />
+
+        <ListViewSwitch />
       </div>
     </div>
   )

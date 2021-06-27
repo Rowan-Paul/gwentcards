@@ -19,7 +19,7 @@ function GridViewUI(props) {
   }, [props.selected, props.page, props.pageSize])
 
   return (
-    <Fragment>
+    <div className={`${props.filters?.listView ? 'hidden' : 'inherit'}`}>
       <Pagination />
       <div>
         <p className="text-left text-sm mt-1">
@@ -30,7 +30,7 @@ function GridViewUI(props) {
         <div className="grid md:grid-cols-2 lg:grid-cols-4">{cards}</div>
       </div>
       <Pagination />
-    </Fragment>
+    </div>
   )
 }
 
@@ -40,6 +40,7 @@ const mapStateToProps = (state) => ({
   page: state.cards.page,
   reset: state.cards.reset,
   amount: state.cards.amount,
+  filters: state.cards.filters,
 })
 
 export const GridView = connect(mapStateToProps, null)(GridViewUI)
