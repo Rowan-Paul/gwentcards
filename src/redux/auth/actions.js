@@ -102,13 +102,31 @@ export const signUp = (username, email, password) => {
         }
         throw response.statusText
       })
-      .then((response) =>
+      .then((response) => {
         dispatch({
           type: types.SIGNED_IN,
           payload: response,
         })
-      )
-      .catch(() => {
+        dispatch(
+          setNotice({
+            message: 'Check your email for verification mail',
+            type: 'success',
+          })
+        )
+      })
+      .catch((error) => {
+        if (error === "Couldn't send email, but did make an account") {
+          dispatch({
+            type: types.SIGNED_IN,
+            payload: response,
+          })
+          dispatch(
+            setNotice({
+              message: error,
+              type: 'error',
+            })
+          )
+        }
         dispatch(
           setNotice({
             message: 'You must enter a unique username and email',
