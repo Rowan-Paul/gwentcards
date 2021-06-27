@@ -10,6 +10,7 @@ function ListViewUI(props) {
   const [northernRealms, setNorthernRealms] = useState([])
   const [monsters, setMonsters] = useState([])
   const [scoiatael, setScoiatael] = useState([])
+  const [neutral, setNeutral] = useState([])
 
   useEffect(() => {
     if (cards.length !== props.selected?.length) {
@@ -18,6 +19,7 @@ function ListViewUI(props) {
       setNorthernRealms([])
       setMonsters([])
       setScoiatael([])
+      setNeutral([])
 
       props.selected.forEach((card) => {
         let tempLocations = []
@@ -44,7 +46,7 @@ function ListViewUI(props) {
             case 'nilfgaard':
               setNilfgaard((oldArray) => [
                 ...oldArray,
-                <div key={cardName + randomId}>
+                <div key={cardName + randomId()} className="mb-2 last:mb-0">
                   <input
                     type="checkbox"
                     id={cardName}
@@ -57,7 +59,7 @@ function ListViewUI(props) {
                         ? props.uncollectCard(card._id)
                         : props.collectCard(card._id)
                     }
-                    className="mr-2 mb-2"
+                    className="mr-2"
                   />
                   <label htmlFor={cardName}>{titleCase(cardName)}</label>
                 </div>,
@@ -67,13 +69,20 @@ function ListViewUI(props) {
             case "scoia'tael":
               setScoiatael((oldArray) => [
                 ...oldArray,
-                <div key={cardName + randomId}>
+                <div key={cardName + randomId()} className="mb-2 last:mb-0">
                   <input
                     type="checkbox"
                     id={cardName}
                     name={cardName}
-                    defaultChecked={false}
-                    className="mr-2 mb-2"
+                    checked={
+                      props.collectedCards?.includes(card._id) ? true : false
+                    }
+                    onChange={() =>
+                      props.collectedCards?.includes(card._id)
+                        ? props.uncollectCard(card._id)
+                        : props.collectCard(card._id)
+                    }
+                    className="mr-2"
                   />
                   <label htmlFor={cardName}>{titleCase(cardName)}</label>
                 </div>,
@@ -83,13 +92,20 @@ function ListViewUI(props) {
             case 'skellige':
               setSkellige((oldArray) => [
                 ...oldArray,
-                <div key={cardName + randomId}>
+                <div key={cardName + randomId()} className="mb-2 last:mb-0">
                   <input
                     type="checkbox"
                     id={cardName}
                     name={cardName}
-                    defaultChecked={false}
-                    className="mr-2 mb-2"
+                    checked={
+                      props.collectedCards?.includes(card._id) ? true : false
+                    }
+                    onChange={() =>
+                      props.collectedCards?.includes(card._id)
+                        ? props.uncollectCard(card._id)
+                        : props.collectCard(card._id)
+                    }
+                    className="mr-2"
                   />
                   <label htmlFor={cardName}>{titleCase(cardName)}</label>
                 </div>,
@@ -99,13 +115,20 @@ function ListViewUI(props) {
             case 'monsters':
               setMonsters((oldArray) => [
                 ...oldArray,
-                <div key={cardName + randomId}>
+                <div key={cardName + randomId()} className="mb-2 last:mb-0">
                   <input
                     type="checkbox"
                     id={cardName}
                     name={cardName}
-                    defaultChecked={false}
-                    className="mr-2 mb-2"
+                    checked={
+                      props.collectedCards?.includes(card._id) ? true : false
+                    }
+                    onChange={() =>
+                      props.collectedCards?.includes(card._id)
+                        ? props.uncollectCard(card._id)
+                        : props.collectCard(card._id)
+                    }
+                    className="mr-2"
                   />
                   <label htmlFor={cardName}>{titleCase(cardName)}</label>
                 </div>,
@@ -115,13 +138,43 @@ function ListViewUI(props) {
             case 'northern realms':
               setNorthernRealms((oldArray) => [
                 ...oldArray,
-                <div key={cardName + randomId}>
+                <div key={cardName + randomId()} className="mb-2 last:mb-0">
                   <input
                     type="checkbox"
                     id={cardName}
                     name={cardName}
-                    defaultChecked={false}
-                    className="mr-2 mb-2"
+                    checked={
+                      props.collectedCards?.includes(card._id) ? true : false
+                    }
+                    onChange={() =>
+                      props.collectedCards?.includes(card._id)
+                        ? props.uncollectCard(card._id)
+                        : props.collectCard(card._id)
+                    }
+                    className="mr-2"
+                  />
+                  <label htmlFor={cardName}>{titleCase(cardName)}</label>
+                </div>,
+              ])
+              break
+
+            case 'neutral':
+              setNeutral((oldArray) => [
+                ...oldArray,
+                <div key={cardName + randomId()} className="mb-2 last:mb-0">
+                  <input
+                    type="checkbox"
+                    id={cardName}
+                    name={cardName}
+                    checked={
+                      props.collectedCards?.includes(card._id) ? true : false
+                    }
+                    onChange={() =>
+                      props.collectedCards?.includes(card._id)
+                        ? props.uncollectCard(card._id)
+                        : props.collectCard(card._id)
+                    }
+                    className="mr-2"
                   />
                   <label htmlFor={cardName}>{titleCase(cardName)}</label>
                 </div>,
@@ -154,6 +207,10 @@ function ListViewUI(props) {
       <div>
         <h3>Northern Realms ({northernRealms.length})</h3>
         {northernRealms}
+      </div>
+      <div>
+        <h3>Neutral ({neutral.length})</h3>
+        {neutral}
       </div>
     </div>
   )
