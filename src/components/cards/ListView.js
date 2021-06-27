@@ -12,6 +12,12 @@ function ListViewUI(props) {
 
   useEffect(() => {
     if (cards.length !== props.selected?.length) {
+      setNilfgaard([])
+      setSkellige([])
+      setNorthernRealms([])
+      setMonsters([])
+      setScoiatael([])
+
       props.selected.forEach((card) => {
         let tempLocations = []
         card.locations.forEach((location) => {
@@ -35,7 +41,6 @@ function ListViewUI(props) {
 
           switch (card.deck) {
             case 'nilfgaard':
-              //oldArray => [...oldArray, newElement]
               setNilfgaard((oldArray) => [
                 ...oldArray,
                 <div key={cardName + randomId}>
