@@ -75,6 +75,7 @@ const reducer = (state = INITIAL_STATE, action) => {
           effect: [],
           hideCollectedCards: false,
           showCollectedCards: false,
+          listView: state.filters.listView,
         },
       }
 
