@@ -1,8 +1,8 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
-import { Card } from './Card'
-import { Pagination } from './Pagination'
+import { Card } from '../../components/cards/Card'
+import { Pagination } from '../../components/cards/Pagination'
 
 function GridViewUI(props) {
   const [cards, setCards] = useState([])

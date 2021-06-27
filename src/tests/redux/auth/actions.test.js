@@ -135,6 +135,13 @@ describe('Auth actions', () => {
           token: TOKEN,
         },
       },
+      {
+        type: 'ADDED_NOTICE',
+        payload: {
+          message: 'Check your email for verification mail',
+          type: 'success',
+        },
+      },
     ]
 
     return store

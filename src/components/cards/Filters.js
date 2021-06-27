@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
-import { PageSizeFilter } from './card-filters/PageSizeFilter'
-import { DeckFilter } from './card-filters/DeckFilter'
-import { AbilitiesFilter } from './card-filters/AbilitiesFilter'
-import { RowFilter } from './card-filters/RowFilter'
-import { StrengthFilter } from './card-filters/StrengthFilter'
-import { EffectFilter } from './card-filters/EffectFilter'
-import { ResetFilters } from './card-filters/ResetFilters'
-import { ShowCollectedCardsFilter } from './card-filters/ShowCollectedCardsFilter'
-import { HideCollectedCardsFilter } from './card-filters/HideCollectedCardsFilter'
-import { ListViewSwitch } from './card-filters/ListViewSwitch'
+import { PageSizeFilter } from './filters/PageSizeFilter'
+import { DeckFilter } from './filters/DeckFilter'
+import { AbilitiesFilter } from './filters/AbilitiesFilter'
+import { RowFilter } from './filters/RowFilter'
+import { StrengthFilter } from './filters/StrengthFilter'
+import { EffectFilter } from './filters/EffectFilter'
+import { ResetFilters } from './filters/ResetFilters'
+import { ShowCollectedCardsFilter } from './filters/ShowCollectedCardsFilter'
+import { HideCollectedCardsFilter } from './filters/HideCollectedCardsFilter'
+import { ListViewSwitch } from './ListViewSwitch'
 
 function FiltersUI() {
   const downArrow = (
@@ -54,6 +54,10 @@ function FiltersUI() {
 
   return (
     <div>
+      <div className="my-5 p-2 text-left md:grid md:grid-cols-3 lg:grid-cols-5">
+        <PageSizeFilter />
+        <ListViewSwitch />
+      </div>
       <p
         className="block cursor-pointer underline md:hidden"
         onClick={handleOnClick}
@@ -64,8 +68,6 @@ function FiltersUI() {
       <div
         className={`my-5 p-2 text-left md:grid md:grid-cols-3 lg:grid-cols-5 ${display}`}
       >
-        <PageSizeFilter />
-
         <DeckFilter />
         <AbilitiesFilter />
         <RowFilter />
@@ -75,8 +77,6 @@ function FiltersUI() {
         <HideCollectedCardsFilter />
 
         <ResetFilters />
-
-        <ListViewSwitch />
       </div>
     </div>
   )

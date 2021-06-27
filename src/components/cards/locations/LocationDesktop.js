@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { titleCase } from '../../../utils'
 import { collectCard, uncollectCard } from '../../../redux/cards/actions'
 
-function LocationUI(props) {
+function LocationDesktopUI(props) {
   const [isCollected, setIsCollected] = useState(false)
   const plusIcon = (
     <svg
@@ -61,4 +61,7 @@ const mapDispatchToProps = (dispatch) => ({
   uncollectCard: (card) => dispatch(uncollectCard(card)),
 })
 
-export const Location = connect(mapStateToProps, mapDispatchToProps)(LocationUI)
+export const LocationDesktop = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LocationDesktopUI)

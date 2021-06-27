@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { GridView } from '../../components/cards/GridView'
-import { ListView } from '../../components/cards/ListView'
+import { GridView } from './GridView'
+import { ListView } from './ListView'
 import { Filters } from '../../components/cards/Filters'
 import { fetchCards, fetchCollectedCards } from '../../redux/cards/actions'
 

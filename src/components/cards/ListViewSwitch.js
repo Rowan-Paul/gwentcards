@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Switch from 'react-switch'
 import { connect } from 'react-redux'
 
-import { setFilters } from '../../../redux/cards/actions'
+import { setFilters } from '../../redux/cards/actions'
 
 function ListViewSwitchUI(props) {
   const [checked, setChecked] = useState(false)
@@ -18,7 +18,7 @@ function ListViewSwitchUI(props) {
   return (
     <span className="mb-3 md:mb-0 lg:mb-3 p-3">
       <label htmlFor="ListViewSwitch" className="mr-5 font-bold">
-        View as list or grid
+        View as list
       </label>
 
       <Switch
