@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { titleCase, randomId } from '../../utils'
+import { collectCard, uncollectCard } from '../../redux/cards/actions'
 
 function ListViewUI(props) {
   const [nilfgaard, setNilfgaard] = useState([])
@@ -48,7 +49,14 @@ function ListViewUI(props) {
                     type="checkbox"
                     id={cardName}
                     name={cardName}
-                    defaultChecked={false}
+                    checked={
+                      props.collectedCards?.includes(card._id) ? true : false
+                    }
+                    onChange={() =>
+                      props.collectedCards?.includes(card._id)
+                        ? props.uncollectCard(card._id)
+                        : props.collectCard(card._id)
+                    }
                     className="mr-2 mb-2"
                   />
                   <label htmlFor={cardName}>{titleCase(cardName)}</label>
@@ -123,7 +131,7 @@ function ListViewUI(props) {
         })
       })
     }
-  }, [props.selected])
+  }, [props.selected, props.collectedCards])
 
   return (
     <div className="text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -153,6 +161,12 @@ function ListViewUI(props) {
 
 const mapStateToProps = (state) => ({
   selected: state.cards.selected,
+  collectedCards: state.cards.collectedCards,
 })
 
-export const ListView = connect(mapStateToProps, null)(ListViewUI)
+const mapDispatchToProps = (dispatch) => ({
+  collectCard: (card) => dispatch(collectCard(card)),
+  uncollectCard: (card) => dispatch(uncollectCard(card)),
+})
+
+export const ListView = connect(mapStateToProps, mapDispatchToProps)(ListViewUI)
