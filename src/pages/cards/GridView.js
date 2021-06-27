@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
-import { Card } from './Card'
+import { Card } from '../../components/cards/Card'
+import { Pagination } from '../../components/cards/Pagination'
 
-function CurrentPageUI(props) {
+function GridViewUI(props) {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
@@ -18,13 +19,17 @@ function CurrentPageUI(props) {
   }, [props.selected, props.page, props.pageSize])
 
   return (
-    <div>
-      <p className="text-left text-sm mt-1">
-        {props.amount
-          ? `Showing ${cards.length}/${props.amount} cards`
-          : 'No cards found'}
-      </p>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4">{cards}</div>
+    <div className={`${props.filters?.listView ? 'hidden' : 'inherit'}`}>
+      <Pagination />
+      <div>
+        <p className="text-left text-sm mt-1">
+          {props.amount
+            ? `Showing ${cards.length}/${props.amount} cards`
+            : 'No cards found'}
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4">{cards}</div>
+      </div>
+      <Pagination />
     </div>
   )
 }
@@ -35,6 +40,7 @@ const mapStateToProps = (state) => ({
   page: state.cards.page,
   reset: state.cards.reset,
   amount: state.cards.amount,
+  filters: state.cards.filters,
 })
 
-export const CurrentPage = connect(mapStateToProps, null)(CurrentPageUI)
+export const GridView = connect(mapStateToProps, null)(GridViewUI)

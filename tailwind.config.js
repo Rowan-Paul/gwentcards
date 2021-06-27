@@ -32,6 +32,7 @@ module.exports = {
     extend: {
       animation: ['motion-safe'],
     },
+    margin: ['last'],
   },
   plugins: [],
 }

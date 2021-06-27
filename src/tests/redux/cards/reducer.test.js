@@ -2,11 +2,6 @@ import { cardsReducer } from '../../../redux/cards/reducer'
 import * as types from '../../../redux/cards/types'
 
 describe('Cards reducer', () => {
-  const USERNAME = 'RPF'
-  const PASSWORD = 'password'
-  const EMAIL = 'mail@example.com'
-  const TOKEN =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJwZmx5bm44MEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InJwZiIsImlhdCI6MTYyMzI0MTM4MywiZXhwIjo0MjE1MjQxMzgzfQ.tNTRrfISkm5NYX7UHWXNUkOJ-6TCRdkdoxzZkOBaU18'
   const INITIAL_STATE = {
     amount: null,
     selected: [],
@@ -19,6 +14,7 @@ describe('Cards reducer', () => {
       effect: [],
       hideCollectedCards: false,
       showCollectedCards: false,
+      listView: false,
     },
     pageSize: 20,
     page: 0,
@@ -105,6 +101,7 @@ describe('Cards reducer', () => {
         effect: ['twelve'],
         hideCollectedCards: true,
         showCollectedCards: false,
+        listView: false,
       },
     }
 
@@ -117,6 +114,7 @@ describe('Cards reducer', () => {
         effect: dispatchedData.payload.effect,
         hideCollectedCards: dispatchedData.payload.hideCollectedCards,
         showCollectedCards: dispatchedData.payload.showCollectedCards,
+        listView: false,
       },
       page: 0,
       reset: false,

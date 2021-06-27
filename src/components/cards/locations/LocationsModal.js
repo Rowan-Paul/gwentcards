@@ -1,6 +1,6 @@
 import React from 'react'
 import { randomId } from '../../../utils'
-import { Location } from './Location'
+import { LocationDesktop } from './LocationDesktop'
 import { LocationMobile } from './LocationMobile'
 
 function LocationsModalUI(props) {
@@ -21,7 +21,7 @@ function LocationsModalUI(props) {
 
   props.card.locations.forEach((location) => {
     locations.push(
-      <Location
+      <LocationDesktop
         id={location._id}
         type={location.type}
         territory={location.territory}
