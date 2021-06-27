@@ -15,6 +15,11 @@ function CardsUI(props) {
   return (
     <div id="cards">
       <Filters />
+      <p className="text-xl">
+        You have collected{' '}
+        {props.collectedCards ? props.collectedCards?.length : '0'} out of{' '}
+        {props.amount ? props.amount : '0'} selected cards.
+      </p>
       <GridView />
       <ListView />
     </div>
@@ -25,6 +30,8 @@ const mapStateToProps = (state) => ({
   selected: state.cards.selected,
   filters: state.cards.filters,
   pageSize: state.cards.pageSize,
+  amount: state.cards.amount,
+  collectedCards: state.cards.collectedCards,
 })
 
 const mapDispatchToProps = (dispatch) => ({

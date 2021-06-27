@@ -11,6 +11,12 @@ function ListViewUI(props) {
   const [monsters, setMonsters] = useState([])
   const [scoiatael, setScoiatael] = useState([])
   const [neutral, setNeutral] = useState([])
+  const [collectedScoiatael, setCollectedScoiatael] = useState(0)
+  const [collectedNilfgaard, setCollectedNilfgaard] = useState(0)
+  const [collectedNorthernRealms, setCollectedNorthernRealms] = useState(0)
+  const [collectedMonsters, setCollectedMonsters] = useState(0)
+  const [collectedSkellige, setCollectedSkellige] = useState(0)
+  const [collectedNeutral, setCollectedNeutral] = useState(0)
 
   useEffect(() => {
     if (cards.length !== props.selected?.length) {
@@ -20,10 +26,16 @@ function ListViewUI(props) {
       setMonsters([])
       setScoiatael([])
       setNeutral([])
+      setCollectedScoiatael(0)
+      setCollectedNilfgaard(0)
+      setCollectedNorthernRealms(0)
+      setCollectedMonsters(0)
+      setCollectedSkellige(0)
+      setCollectedNeutral(0)
 
       props.selected.forEach((card) => {
-        let tempLocations = []
         card.locations.forEach((location) => {
+          let tempLocations = []
           // Creates a cardname with a # at the end
           // if there is already a card with that name
           // and no location for the card
@@ -44,6 +56,10 @@ function ListViewUI(props) {
 
           switch (card.deck) {
             case 'nilfgaard':
+              if (props.collectedCards?.includes(location._id)) {
+                setCollectedNilfgaard(collectedNilfgaard + 1)
+              }
+
               setNilfgaard((oldArray) => [
                 ...oldArray,
                 <div key={cardName + randomId()} className="mb-2 last:mb-0">
@@ -52,12 +68,14 @@ function ListViewUI(props) {
                     id={cardName}
                     name={cardName}
                     checked={
-                      props.collectedCards?.includes(card._id) ? true : false
+                      props.collectedCards?.includes(location._id)
+                        ? true
+                        : false
                     }
                     onChange={() =>
-                      props.collectedCards?.includes(card._id)
-                        ? props.uncollectCard(card._id)
-                        : props.collectCard(card._id)
+                      props.collectedCards?.includes(location._id)
+                        ? props.uncollectCard(location._id)
+                        : props.collectCard(location._id)
                     }
                     className="mr-2"
                   />
@@ -67,6 +85,10 @@ function ListViewUI(props) {
               break
 
             case "scoia'tael":
+              if (props.collectedCards?.includes(location._id)) {
+                setCollectedScoiatael(collectedScoiatael + 1)
+              }
+
               setScoiatael((oldArray) => [
                 ...oldArray,
                 <div key={cardName + randomId()} className="mb-2 last:mb-0">
@@ -75,12 +97,14 @@ function ListViewUI(props) {
                     id={cardName}
                     name={cardName}
                     checked={
-                      props.collectedCards?.includes(card._id) ? true : false
+                      props.collectedCards?.includes(location._id)
+                        ? true
+                        : false
                     }
                     onChange={() =>
-                      props.collectedCards?.includes(card._id)
-                        ? props.uncollectCard(card._id)
-                        : props.collectCard(card._id)
+                      props.collectedCards?.includes(location._id)
+                        ? props.uncollectCard(location._id)
+                        : props.collectCard(location._id)
                     }
                     className="mr-2"
                   />
@@ -90,6 +114,10 @@ function ListViewUI(props) {
               break
 
             case 'skellige':
+              if (props.collectedCards?.includes(location._id)) {
+                setCollectedSkellige(collectedSkellige + 1)
+              }
+
               setSkellige((oldArray) => [
                 ...oldArray,
                 <div key={cardName + randomId()} className="mb-2 last:mb-0">
@@ -98,12 +126,14 @@ function ListViewUI(props) {
                     id={cardName}
                     name={cardName}
                     checked={
-                      props.collectedCards?.includes(card._id) ? true : false
+                      props.collectedCards?.includes(location._id)
+                        ? true
+                        : false
                     }
                     onChange={() =>
-                      props.collectedCards?.includes(card._id)
-                        ? props.uncollectCard(card._id)
-                        : props.collectCard(card._id)
+                      props.collectedCards?.includes(location._id)
+                        ? props.uncollectCard(location._id)
+                        : props.collectCard(location._id)
                     }
                     className="mr-2"
                   />
@@ -113,6 +143,10 @@ function ListViewUI(props) {
               break
 
             case 'monsters':
+              if (props.collectedCards?.includes(location._id)) {
+                setCollectedMonsters(collectedMonsters + 1)
+              }
+
               setMonsters((oldArray) => [
                 ...oldArray,
                 <div key={cardName + randomId()} className="mb-2 last:mb-0">
@@ -121,12 +155,14 @@ function ListViewUI(props) {
                     id={cardName}
                     name={cardName}
                     checked={
-                      props.collectedCards?.includes(card._id) ? true : false
+                      props.collectedCards?.includes(location._id)
+                        ? true
+                        : false
                     }
                     onChange={() =>
-                      props.collectedCards?.includes(card._id)
-                        ? props.uncollectCard(card._id)
-                        : props.collectCard(card._id)
+                      props.collectedCards?.includes(location._id)
+                        ? props.uncollectCard(location._id)
+                        : props.collectCard(location._id)
                     }
                     className="mr-2"
                   />
@@ -136,6 +172,10 @@ function ListViewUI(props) {
               break
 
             case 'northern realms':
+              if (props.collectedCards?.includes(location._id)) {
+                setCollectedNorthernRealms(collectedMonsters + 1)
+              }
+
               setNorthernRealms((oldArray) => [
                 ...oldArray,
                 <div key={cardName + randomId()} className="mb-2 last:mb-0">
@@ -144,12 +184,14 @@ function ListViewUI(props) {
                     id={cardName}
                     name={cardName}
                     checked={
-                      props.collectedCards?.includes(card._id) ? true : false
+                      props.collectedCards?.includes(location._id)
+                        ? true
+                        : false
                     }
                     onChange={() =>
-                      props.collectedCards?.includes(card._id)
-                        ? props.uncollectCard(card._id)
-                        : props.collectCard(card._id)
+                      props.collectedCards?.includes(location._id)
+                        ? props.uncollectCard(location._id)
+                        : props.collectCard(location._id)
                     }
                     className="mr-2"
                   />
@@ -159,6 +201,10 @@ function ListViewUI(props) {
               break
 
             case 'neutral':
+              if (props.collectedCards?.includes(location._id)) {
+                setCollectedNeutral(collectedNeutral + 1)
+              }
+
               setNeutral((oldArray) => [
                 ...oldArray,
                 <div key={cardName + randomId()} className="mb-2 last:mb-0">
@@ -167,12 +213,14 @@ function ListViewUI(props) {
                     id={cardName}
                     name={cardName}
                     checked={
-                      props.collectedCards?.includes(card._id) ? true : false
+                      props.collectedCards?.includes(location._id)
+                        ? true
+                        : false
                     }
                     onChange={() =>
-                      props.collectedCards?.includes(card._id)
-                        ? props.uncollectCard(card._id)
-                        : props.collectCard(card._id)
+                      props.collectedCards?.includes(location._id)
+                        ? props.uncollectCard(location._id)
+                        : props.collectCard(location._id)
                     }
                     className="mr-2"
                   />
@@ -187,34 +235,44 @@ function ListViewUI(props) {
   }, [props.selected, props.collectedCards])
 
   return (
-    <div
-      className={`${
-        props.filters.listView ? 'inherit' : 'hidden'
-      } text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5`}
-    >
-      <div>
-        <h3>Nilfgaard ({nilfgaard.length})</h3>
-        {nilfgaard}
-      </div>
-      <div>
-        <h3>Scoia&apos;tael ({scoiatael.length})</h3>
-        {scoiatael}
-      </div>
-      <div>
-        <h3>Skellige ({skellige.length})</h3>
-        {skellige}
-      </div>
-      <div>
-        <h3>Monsters ({monsters.length})</h3>
-        {monsters}
-      </div>
-      <div>
-        <h3>Northern Realms ({northernRealms.length})</h3>
-        {northernRealms}
-      </div>
-      <div>
-        <h3>Neutral ({neutral.length})</h3>
-        {neutral}
+    <div>
+      <p className="text-left text-sm mt-1">
+        {props.amount ? `Showing ${props.amount} cards` : 'No cards found'}
+      </p>
+      <div
+        className={`${
+          props.filters.listView ? 'inherit' : 'hidden'
+        } text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5`}
+      >
+        <div>
+          <h3>Nilfgaard ({`${collectedNilfgaard}/${nilfgaard.length}`})</h3>
+          {nilfgaard}
+        </div>
+        <div>
+          <h3>
+            Scoia&apos;tael ({`${collectedScoiatael}/${scoiatael.length}`})
+          </h3>
+          {scoiatael}
+        </div>
+        <div>
+          <h3>Skellige ({`${collectedSkellige}/${skellige.length}`})</h3>
+          {skellige}
+        </div>
+        <div>
+          <h3>Monsters ({`${collectedMonsters}/${monsters.length}`})</h3>
+          {monsters}
+        </div>
+        <div>
+          <h3>
+            Northern Realms (
+            {`${collectedNorthernRealms}/${northernRealms.length}`})
+          </h3>
+          {northernRealms}
+        </div>
+        <div>
+          <h3>Neutral ({`${collectedNeutral}/${neutral.length}`})</h3>
+          {neutral}
+        </div>
       </div>
     </div>
   )
@@ -224,6 +282,7 @@ const mapStateToProps = (state) => ({
   selected: state.cards.selected,
   collectedCards: state.cards.collectedCards,
   filters: state.cards.filters,
+  amount: state.cards.amount,
 })
 
 const mapDispatchToProps = (dispatch) => ({
