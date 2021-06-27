@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { CurrentPage } from '../../components/cards/CurrentPage'
+import { GridView } from '../../components/cards/GridView'
 import { Filters } from '../../components/cards/Filters'
-import { Pagination } from '../../components/cards/Pagination'
 import { fetchCards, fetchCollectedCards } from '../../redux/cards/actions'
 
 function CardsUI(props) {
@@ -15,9 +14,7 @@ function CardsUI(props) {
   return (
     <div id="cards">
       <Filters />
-      <Pagination />
-      <CurrentPage />
-      <Pagination />
+      <GridView />
     </div>
   )
 }
