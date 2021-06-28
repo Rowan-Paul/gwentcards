@@ -21,4 +21,4 @@ In order to run the application locally, you need the following env variables in
 
 ## Contribute
 
-If you want to contribute, have a question or suggestion feel free to open an issue using one of the templates.
+If you want to contribute, have a question or suggestion feel free to open an [issue](https://github.com/Rowan-Paul/GWENTcards/issues/new/choose) using one of the templates or start a [discussion](https://github.com/Rowan-Paul/GWENTcards/discussions).
