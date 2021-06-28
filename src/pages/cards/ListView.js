@@ -34,8 +34,8 @@ function ListViewUI(props) {
       setCollectedNeutral(0)
 
       props.selected.forEach((card) => {
+        let tempLocations = []
         card.locations.forEach((location) => {
-          let tempLocations = []
           // Creates a cardname with a # at the end
           // if there is already a card with that name
           // and no location for the card
