@@ -33,6 +33,9 @@ export const fetchCards = () => (dispatch, getState) => {
   if (filters.effect.length > 0) {
     parameters.push(`effect=${encodeURIComponent(filters.effect.toString())}`)
   }
+  if (filters.dlc.length > 0) {
+    parameters.push(`dlc=${encodeURIComponent(filters.dlc.toString())}`)
+  }
 
   if (parameters.length > 0) {
     url += `/card?${parameters[0]}`

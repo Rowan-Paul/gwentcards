@@ -15,6 +15,7 @@ describe('Cards reducer', () => {
       hideCollectedCards: false,
       showCollectedCards: false,
       listView: false,
+      dlc: [],
     },
     pageSize: 20,
     page: 0,
@@ -102,6 +103,7 @@ describe('Cards reducer', () => {
         hideCollectedCards: true,
         showCollectedCards: false,
         listView: false,
+        dlc: [],
       },
     }
 
@@ -115,6 +117,7 @@ describe('Cards reducer', () => {
         hideCollectedCards: dispatchedData.payload.hideCollectedCards,
         showCollectedCards: dispatchedData.payload.showCollectedCards,
         listView: false,
+        dlc: [],
       },
       page: 0,
       reset: false,
