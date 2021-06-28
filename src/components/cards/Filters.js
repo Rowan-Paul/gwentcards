@@ -10,6 +10,7 @@ import { ResetFilters } from './filters/ResetFilters'
 import { ShowCollectedCardsFilter } from './filters/ShowCollectedCardsFilter'
 import { HideCollectedCardsFilter } from './filters/HideCollectedCardsFilter'
 import { ListViewSwitch } from './ListViewSwitch'
+import { DLCFilter } from './filters/DLCFilter'
 
 function FiltersUI() {
   const downArrow = (
@@ -75,6 +76,7 @@ function FiltersUI() {
         <EffectFilter />
         <ShowCollectedCardsFilter />
         <HideCollectedCardsFilter />
+        <DLCFilter />
 
         <ResetFilters />
       </div>

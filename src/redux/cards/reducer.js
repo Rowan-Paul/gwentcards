@@ -13,6 +13,7 @@ const INITIAL_STATE = {
     hideCollectedCards: false,
     showCollectedCards: false,
     listView: false,
+    dlc: [],
   },
   pageSize: 20,
   page: 0,
@@ -54,6 +55,7 @@ const reducer = (state = INITIAL_STATE, action) => {
           hideCollectedCards: action.payload.hideCollectedCards,
           showCollectedCards: action.payload.showCollectedCards,
           listView: action.payload.listView,
+          dlc: action.payload.dlc,
         },
         page: 0,
         reset: false,
@@ -76,6 +78,7 @@ const reducer = (state = INITIAL_STATE, action) => {
           hideCollectedCards: false,
           showCollectedCards: false,
           listView: state.filters?.listView,
+          dlc: [],
         },
       }
 
