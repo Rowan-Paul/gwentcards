@@ -92,9 +92,8 @@ function CardUI(props) {
         </section>
 
         <footer className="p-4">
-          <span className="text-sm hover:underline mr-5 cursor-pointer">
-            Notes
-          </span>
+          <span>&nbsp;</span>
+          {/**Aligns the locations correctly */}
 
           <span
             className="h-6 w-6 float-right mr-5 mb-5 relative text-sm hover:underline cursor-pointer"

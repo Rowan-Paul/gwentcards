@@ -58,12 +58,16 @@ function LocationsModalUI(props) {
             <div className="sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <h3
-                  className="text-lg leading-6 font-medium text-gray-900"
+                  className="text-lg leading-6 font-medium text-gray-900 mb-3"
                   id="modal-title"
                 >
                   Locations for {titleCase(props.card.name)}
                 </h3>
                 <div className="mt-2">
+                  <p className={props.card.notes ? '' : 'hidden'}>
+                    <span className="font-bold">Notes:</span>{' '}
+                    {props.card.notes ? props.card.notes : ''}
+                  </p>
                   <table className="hidden md:table table-auto my-0 mx-auto">
                     <thead>
                       <tr className="bg-black text-white">
