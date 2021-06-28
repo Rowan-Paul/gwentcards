@@ -151,9 +151,13 @@ export const fetchCollectedCards = () => {
 // collect card
 export const collectCard = (card) => (dispatch, getState) => {
   const url = `${api}/users/cards`
+  const offlineQueue = JSON.parse(localStorage.getItem('offlineCards')) || []
+
   let data = { collected: [card] }
   if (getState().cards.collectedCards.length > 0) {
-    data = { collected: [...getState().cards.collectedCards, card] }
+    data = {
+      collected: [...getState().cards.collectedCards, ...offlineQueue, card],
+    }
   }
   localStorage.setItem('collectedCards', JSON.stringify(data.collected))
 
@@ -167,6 +171,8 @@ export const collectCard = (card) => (dispatch, getState) => {
     .then((response) => response.json())
     .then((response) => {
       if (response.amount > 0) {
+        localStorage.removeItem('offlineCards')
+
         dispatch({ type: types.COLLECTED_CARD, payload: response })
         dispatch(setNotice({ message: 'Collected card', type: 'success' }))
       } else {
@@ -174,6 +180,11 @@ export const collectCard = (card) => (dispatch, getState) => {
       }
     })
     .catch(() => {
+      localStorage.setItem(
+        'offlineCards',
+        JSON.stringify([...offlineQueue, card])
+      )
+
       dispatch({ type: types.COLLECTED_CARD, payload: data })
       dispatch(setNotice({ message: 'Card saved locally', type: 'success' }))
     })
@@ -183,10 +194,17 @@ export const collectCard = (card) => (dispatch, getState) => {
 export const uncollectCard = (card) => (dispatch, getState) => {
   const url = `${api}/users/cards`
   const data = { card }
+  const offlineQueue =
+    JSON.parse(localStorage.getItem('offlineUncollected')) || []
 
   let newArray = []
   if (getState().cards.collectedCards?.length > 1) {
     newArray = removeItemOnce(getState().cards.collectedCards, card)
+  }
+  if (offlineQueue.length > 0) {
+    offlineQueue.forEach((element) => {
+      newArray = removeItemOnce(getState().cards.collectedCards, element)
+    })
   }
   localStorage.setItem('collectedCards', JSON.stringify(newArray))
 
@@ -199,6 +217,8 @@ export const uncollectCard = (card) => (dispatch, getState) => {
   })
     .then((response) => {
       if (response.status === 201) {
+        localStorage.removeItem('offlineUncollected')
+
         dispatch({ type: types.UNCOLLECTED_CARD, payload: newArray })
         dispatch(setNotice({ message: 'Removed card', type: 'success' }))
       } else {
@@ -206,6 +226,11 @@ export const uncollectCard = (card) => (dispatch, getState) => {
       }
     })
     .catch(() => {
+      localStorage.setItem(
+        'offlineUncollected',
+        JSON.stringify([...offlineQueue, card])
+      )
+
       dispatch(
         setNotice({
           message: 'Failed to remove cards, but did save locally',
