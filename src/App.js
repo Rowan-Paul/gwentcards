@@ -20,6 +20,20 @@ import { NotFound } from './pages/404/NotFound'
 function AppUI(props) {
   useEffect(() => {
     props.verify()
+
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches &&
+      localStorage.theme !== 'light'
+    ) {
+      localStorage.theme = 'dark'
+    }
+
+    if (localStorage.theme === 'dark') {
+      document.querySelector('html').classList.add('dark')
+    } else {
+      document.querySelector('html').classList.remove('dark')
+    }
   }, [])
 
   return (

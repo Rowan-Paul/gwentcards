@@ -16,7 +16,7 @@ function PageSizeFilterUI(props) {
       <select
         name="pageSize"
         id="pageSize"
-        className="border-2 w-full px-2 h-10"
+        className="text-black border-2 w-full px-2 h-10"
         onChange={handleOnChange}
         defaultValue={props.pageSize}
       >

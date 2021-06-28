@@ -20,7 +20,7 @@ function VerifyEmailUI(props) {
     <div className="mt-20">
       <h1>Thank you</h1>
 
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
+      <div className="text-black bg-white shadow-md rounded px-8 pt-6 pb-8 my-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
         <p>For verifying your email with us.</p>
         <Link to="/">Go to the homepage</Link>
       </div>

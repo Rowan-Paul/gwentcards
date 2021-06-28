@@ -32,7 +32,7 @@ function FilterUI(props) {
         onChange={handleOnChange}
         hasSelectAll={false}
         disableSearch
-        className="w-full"
+        className=" text-black w-full"
       />
     </span>
   )

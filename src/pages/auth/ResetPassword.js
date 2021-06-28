@@ -37,7 +37,7 @@ function ResetPasswordUI(props) {
       <div className="mt-20">
         <h1>Reset password</h1>
 
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
+        <div className="text-black bg-white shadow-md rounded px-8 pt-6 pb-8 my-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
           <p>Fill in a new password.</p>
 
           <div className="mb-6">
@@ -56,7 +56,7 @@ function ResetPasswordUI(props) {
             />
           </div>
 
-          <div className="grid  grid-cols-3 md:grid-cols-10 gap-5 justify-items-center">
+          <div className="grid grid-cols-3 md:grid-cols-10 gap-5 justify-items-center">
             <button
               className="col-span-6 md:justify-self-start text-white bg-blue-500 hover:bg-blue-800 font-bold py-2 px-4 rounded "
               type="button"
@@ -73,7 +73,7 @@ function ResetPasswordUI(props) {
     <div className="mt-20">
       <h1>Reset password</h1>
 
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
+      <div className="text-black bg-white shadow-md rounded px-8 pt-6 pb-8 my-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
         <p>
           Fill in your email or username that belongs to your account. We will
           send you a link to reset your password.
