@@ -16,25 +16,10 @@ function FooterUI(props) {
     return ''
   }
   return (
-    <footer className="grid grid-cols-1 md:grid-cols-6 text-left md:text-center">
-      <span className="md:col-span-6">
-        Copyright &copy;
-        {' '}
-        {new Date().getFullYear()}
-        {' '}
-        <a href="https://rowanpaulflynn.com/">Rowan Paul Flynn</a>
-        {' '}
-        <br />
-      </span>
-      <span className="md:col-start-2">
-        <a href="https://github.com/Rowan-Paul/gwentcards">
-          Frontend repository
-        </a>
-      </span>
-      <span>
-        <a href="https://github.com/Rowan-Paul/gwentapi">
-          Backend repository
-        </a>
+    <footer className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <span className="md:col-span-4">
+        Copyright &copy; {new Date().getFullYear()}{' '}
+        <a href="https://rowanpaulflynn.com/">Rowan Paul Flynn</a> <br />
       </span>
 
       <span>
@@ -45,8 +30,17 @@ function FooterUI(props) {
         )}
       </span>
 
-      <span className="md:col-end-6">
+      <span className="">
         <a href="mailto:contact@rowanpaulflynn.com">Contact us</a>
+      </span>
+
+      <span className="">
+        <a href="https://github.com/Rowan-Paul/gwentcards">
+          Frontend repository
+        </a>
+      </span>
+      <span>
+        <a href="https://github.com/Rowan-Paul/gwentapi">Backend repository</a>
       </span>
     </footer>
   )

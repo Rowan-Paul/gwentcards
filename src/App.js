@@ -11,11 +11,12 @@ import { Signout } from './pages/auth/SignOut'
 import { SignUp } from './pages/auth/SignUp'
 import { ResetPassword } from './pages/auth/ResetPassword'
 import { RemoveAccount } from './pages/auth/RemoveAccount'
+import { NotFound } from './pages/404/NotFound'
 import { VerifyEmail } from './pages/auth/VerifyEmail'
-import { Notice } from './components/notice/Notice'
+import { AboutPage } from './pages/about/AboutPage'
 
 import { verify } from './redux/auth/actions'
-import { NotFound } from './pages/404/NotFound'
+import { Notice } from './components/notice/Notice'
 
 function AppUI(props) {
   useEffect(() => {
@@ -45,6 +46,7 @@ function AppUI(props) {
       >
         <Switch>
           <PublicRoute exact path="/" component={HomePage} />
+          <PublicRoute exact path="/about" component={AboutPage} />
           <PrivateRoute
             exact
             isAuthenticated={!props.signedIn}

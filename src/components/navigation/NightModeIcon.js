@@ -37,8 +37,8 @@ function NightModeIconUI() {
   }
 
   return (
-    <span className="absolute float-left cursor-pointer">
-      <div className="block text-center p-4" onClick={changeTheme}>
+    <span className="cursor-pointer">
+      <div className="block text-center p-1" onClick={changeTheme}>
         {nightMode ? lightbulbIcon : moonIcon}
       </div>
     </span>
