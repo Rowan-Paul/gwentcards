@@ -10,9 +10,9 @@ function NavBarUI(props) {
   if (location.pathname !== '/') {
     return (
       <div>
-        <NightModeIcon />
-        <div className="absolute py-2 pr-5 pl-16 w-full">
+        <div className="absolute py-2 px-5 w-full">
           <Link to="/">Home</Link>
+
           {props.signedIn ? (
             <Link to="/signout" className="float-right">
               Sign out
@@ -23,8 +23,11 @@ function NavBarUI(props) {
             </Link>
           )}
           <Link to="/about" className="float-right mr-2">
-            ABout
+            About
           </Link>
+          <span className="float-right mr-2">
+            <NightModeIcon />
+          </span>
         </div>
       </div>
     )
