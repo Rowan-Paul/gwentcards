@@ -1,6 +1,6 @@
 # GWENTcards
 
-https://github.com/Rowan-Paul/GWENTcards/actions/workflows/ci.yml/badge.svg
+![Workflow badge](https://github.com/Rowan-Paul/GWENTcards/actions/workflows/ci.yml/badge.svg)
 
 This is a project based upon http://www.gwentcards.com/ made using MongoDB, Express, React and NodeJS. The idea is to get feature parity with the original site on a faster, responsive website
 
