@@ -22,6 +22,9 @@ function NavBarUI(props) {
               Sign In
             </Link>
           )}
+          <Link to="/about" className="float-right mr-2">
+            ABout
+          </Link>
         </div>
       </div>
     )
@@ -30,6 +33,9 @@ function NavBarUI(props) {
     <div>
       <NightModeIcon />
       <div className="absolute top-0 right-0 my-2 mx-5">
+        <Link to="/about" className="mr-2">
+          About
+        </Link>
         {props.signedIn ? (
           <Link to="/signout">Sign out</Link>
         ) : (

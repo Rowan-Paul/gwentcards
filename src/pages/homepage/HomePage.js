@@ -5,8 +5,8 @@ import { Cards } from '../cards/Cards'
 function HomePageUI() {
   return (
     <div>
-      <h1>GWENTcards</h1>
-      <p>All about the Witcher 3 GWENT game</p>
+      <h1 className="mb-0">GWENTcards</h1>
+      <p className="italic mt-0">All about the Witcher 3 GWENT game</p>
       <Cards />
       <ScrollToTopButton />
     </div>
