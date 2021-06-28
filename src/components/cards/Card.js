@@ -55,7 +55,7 @@ function CardUI(props) {
         setLocationModal={() => setShowLocationModal(!showLocationModal)}
         card={card}
       />
-      <div className="relative rounded my-5 bg-white shadow max-w-md min-w-full mx-auto border-2 z-0">
+      <div className="dark:bg-gray-400 dark:text-black relative rounded my-5 bg-white shadow max-w-md min-w-full mx-auto border-2 z-0">
         <header className="p-2">
           <h3 className="text-lg font-bold">{titleCase(card.name)}</h3>
           <p className="text-sm text-gray-600">

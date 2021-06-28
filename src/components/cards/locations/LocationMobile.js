@@ -42,36 +42,28 @@ function LocationMobileUI(props) {
   }, [props.id, props.collectedCards])
 
   return (
-    <div className="block md:hidden rounded my-5 bg-white shadow  mx-auto border-2 z-0">
-      <header className="p-2">Location</header>
-
-      <section className="text-left p-5">
+    <div className="min-w-full md:hidden rounded my-5 bg-white dark:bg-gray-400 shadow  mx-auto border-2 z-0">
+      <section className="min-w-full text-left p-5">
         <p>
           <span className="font-bold">Type: </span>
           <br />
           {titleCase(props.type)}
         </p>
 
-        <p>
-          <span className={`${props.territory ? '' : 'hidden'} font-bold`}>
-            Territory:{' '}
-          </span>
+        <p className={`${props.territory ? '' : 'hidden'}`}>
+          <span className="font-bold">Territory: </span>
           <br />
           {titleCase(props.territory ? props.territory : '')}
         </p>
 
-        <p>
-          <span className={`${props.location ? '' : 'hidden'} font-bold`}>
-            Location:{' '}
-          </span>
+        <p className={`${props.location ? '' : 'hidden'}`}>
+          <span className="font-bold">Location: </span>
           <br />
           {titleCase(props.location ? props.location : '')}
         </p>
 
-        <p>
-          <span className={`${props.character ? '' : 'hidden'} font-bold`}>
-            Character:{' '}
-          </span>
+        <p className={`${props.character ? '' : 'hidden'}`}>
+          <span className="font-bold">Character: </span>
           <br />
           {titleCase(props.character ? props.character : '')}
         </p>

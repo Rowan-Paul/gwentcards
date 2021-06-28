@@ -30,7 +30,7 @@ function RemoveAccountUI(props) {
     <div className="mt-20">
       <h1>Remove account</h1>
 
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
+      <div className="text-black bg-white shadow-md rounded px-8 pt-6 pb-8 my-4 flex flex-col mx-auto md:w-1/2 lg:w-1/4">
         <div className="mb-4">
           <label
             className="text-left ml-5 block text-gray-500 text-sm font-bold mb-2"

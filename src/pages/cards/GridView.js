@@ -27,7 +27,7 @@ function GridViewUI(props) {
             ? `Showing ${cards.length}/${props.amount} cards`
             : 'No cards found'}
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4">{cards}</div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">{cards}</div>
       </div>
       <Pagination />
     </div>
