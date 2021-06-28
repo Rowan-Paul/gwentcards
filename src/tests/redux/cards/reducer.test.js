@@ -152,6 +152,8 @@ describe('Cards reducer', () => {
         effect: [],
         hideCollectedCards: false,
         showCollectedCards: false,
+        listView: undefined,
+        dlc: [],
       },
     })
   })
