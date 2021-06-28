@@ -54,34 +54,33 @@ function ListViewUI(props) {
             }`
           }
 
+          const newArray = [
+            <div key={cardName + randomId()} className="mb-2 last:mb-0">
+              <input
+                type="checkbox"
+                id={cardName}
+                name={cardName}
+                checked={
+                  props.collectedCards?.includes(location._id) ? true : false
+                }
+                onChange={() =>
+                  props.collectedCards?.includes(location._id)
+                    ? props.uncollectCard(location._id)
+                    : props.collectCard(location._id)
+                }
+                className="mr-2"
+              />
+              <label htmlFor={cardName}>{titleCase(cardName)}</label>
+            </div>,
+          ]
+
           switch (card.deck) {
             case 'nilfgaard':
               if (props.collectedCards?.includes(location._id)) {
                 setCollectedNilfgaard(collectedNilfgaard + 1)
               }
 
-              setNilfgaard((oldArray) => [
-                ...oldArray,
-                <div key={cardName + randomId()} className="mb-2 last:mb-0">
-                  <input
-                    type="checkbox"
-                    id={cardName}
-                    name={cardName}
-                    checked={
-                      props.collectedCards?.includes(location._id)
-                        ? true
-                        : false
-                    }
-                    onChange={() =>
-                      props.collectedCards?.includes(location._id)
-                        ? props.uncollectCard(location._id)
-                        : props.collectCard(location._id)
-                    }
-                    className="mr-2"
-                  />
-                  <label htmlFor={cardName}>{titleCase(cardName)}</label>
-                </div>,
-              ])
+              setNilfgaard((oldArray) => [...oldArray, ...newArray])
               break
 
             case "scoia'tael":
@@ -89,28 +88,7 @@ function ListViewUI(props) {
                 setCollectedScoiatael(collectedScoiatael + 1)
               }
 
-              setScoiatael((oldArray) => [
-                ...oldArray,
-                <div key={cardName + randomId()} className="mb-2 last:mb-0">
-                  <input
-                    type="checkbox"
-                    id={cardName}
-                    name={cardName}
-                    checked={
-                      props.collectedCards?.includes(location._id)
-                        ? true
-                        : false
-                    }
-                    onChange={() =>
-                      props.collectedCards?.includes(location._id)
-                        ? props.uncollectCard(location._id)
-                        : props.collectCard(location._id)
-                    }
-                    className="mr-2"
-                  />
-                  <label htmlFor={cardName}>{titleCase(cardName)}</label>
-                </div>,
-              ])
+              setScoiatael((oldArray) => [...oldArray, ...newArray])
               break
 
             case 'skellige':
@@ -118,28 +96,7 @@ function ListViewUI(props) {
                 setCollectedSkellige(collectedSkellige + 1)
               }
 
-              setSkellige((oldArray) => [
-                ...oldArray,
-                <div key={cardName + randomId()} className="mb-2 last:mb-0">
-                  <input
-                    type="checkbox"
-                    id={cardName}
-                    name={cardName}
-                    checked={
-                      props.collectedCards?.includes(location._id)
-                        ? true
-                        : false
-                    }
-                    onChange={() =>
-                      props.collectedCards?.includes(location._id)
-                        ? props.uncollectCard(location._id)
-                        : props.collectCard(location._id)
-                    }
-                    className="mr-2"
-                  />
-                  <label htmlFor={cardName}>{titleCase(cardName)}</label>
-                </div>,
-              ])
+              setSkellige((oldArray) => [...oldArray, ...newArray])
               break
 
             case 'monsters':
@@ -147,28 +104,7 @@ function ListViewUI(props) {
                 setCollectedMonsters(collectedMonsters + 1)
               }
 
-              setMonsters((oldArray) => [
-                ...oldArray,
-                <div key={cardName + randomId()} className="mb-2 last:mb-0">
-                  <input
-                    type="checkbox"
-                    id={cardName}
-                    name={cardName}
-                    checked={
-                      props.collectedCards?.includes(location._id)
-                        ? true
-                        : false
-                    }
-                    onChange={() =>
-                      props.collectedCards?.includes(location._id)
-                        ? props.uncollectCard(location._id)
-                        : props.collectCard(location._id)
-                    }
-                    className="mr-2"
-                  />
-                  <label htmlFor={cardName}>{titleCase(cardName)}</label>
-                </div>,
-              ])
+              setMonsters((oldArray) => [...oldArray, ...newArray])
               break
 
             case 'northern realms':
@@ -176,28 +112,7 @@ function ListViewUI(props) {
                 setCollectedNorthernRealms(collectedMonsters + 1)
               }
 
-              setNorthernRealms((oldArray) => [
-                ...oldArray,
-                <div key={cardName + randomId()} className="mb-2 last:mb-0">
-                  <input
-                    type="checkbox"
-                    id={cardName}
-                    name={cardName}
-                    checked={
-                      props.collectedCards?.includes(location._id)
-                        ? true
-                        : false
-                    }
-                    onChange={() =>
-                      props.collectedCards?.includes(location._id)
-                        ? props.uncollectCard(location._id)
-                        : props.collectCard(location._id)
-                    }
-                    className="mr-2"
-                  />
-                  <label htmlFor={cardName}>{titleCase(cardName)}</label>
-                </div>,
-              ])
+              setNorthernRealms((oldArray) => [...oldArray, ...newArray])
               break
 
             case 'neutral':
@@ -205,28 +120,7 @@ function ListViewUI(props) {
                 setCollectedNeutral(collectedNeutral + 1)
               }
 
-              setNeutral((oldArray) => [
-                ...oldArray,
-                <div key={cardName + randomId()} className="mb-2 last:mb-0">
-                  <input
-                    type="checkbox"
-                    id={cardName}
-                    name={cardName}
-                    checked={
-                      props.collectedCards?.includes(location._id)
-                        ? true
-                        : false
-                    }
-                    onChange={() =>
-                      props.collectedCards?.includes(location._id)
-                        ? props.uncollectCard(location._id)
-                        : props.collectCard(location._id)
-                    }
-                    className="mr-2"
-                  />
-                  <label htmlFor={cardName}>{titleCase(cardName)}</label>
-                </div>,
-              ])
+              setNeutral((oldArray) => [...oldArray, ...newArray])
               break
           }
         })
