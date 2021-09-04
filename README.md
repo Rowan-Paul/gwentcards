@@ -2,6 +2,8 @@
 
 ![Workflow badge](https://github.com/Rowan-Paul/GWENTcards/actions/workflows/ci.yml/badge.svg)
 
+![Uptime](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rowan-paul/uptime/master/api/gwent-cards/uptime.json)
+
 This is a project based upon http://www.gwentcards.com/ made using MongoDB, Express, React and NodeJS. The idea is to get feature parity with the original site on a faster, responsive website. The site is currently live over on https://gwentcards.net and gets build and deployed automatically everytime there is a push on the main branch.
 
 The API that gets used is available in the [Rowan-Paul/gwentapi](https://github.com/Rowan-Paul/gwentapi) repository.
