@@ -25,7 +25,7 @@ const Card = ({ image, name, deck, strength, row }: ICardProps): JSX.Element => 
 
 const DesktopCard = ({ image, name, deck, strength, row }: ICardProps) => {
   return (
-    <div className="bg-gradient-to-r from-cyan-400 to-blue-400 hidden md:block p-3">
+    <div className="bg-gradient-to-r from-cyan-400 to-blue-400 hidden md:block p-3 drop-shadow-md">
       <div className="md:grid grid-cols-6 justify-center items-center gap-8">
         <div>
           <Image src={image} alt={`${name} card`} width="75" height="142" />
@@ -42,7 +42,7 @@ const DesktopCard = ({ image, name, deck, strength, row }: ICardProps) => {
 
 const MobileCard = ({ image, name, deck, strength, row }: ICardProps) => {
   return (
-    <div className="bg-gradient-to-r from-cyan-400 to-blue-400 md:hidden p-3">
+    <div className="bg-gradient-to-r from-cyan-400 to-blue-400 md:hidden p-3 drop-shadow-md">
       <div className="grid grid-cols-4 justify-center items-center gap-4">
         <div>
           <Image src={image} alt={`${name} card`} width="75" height="142" />
