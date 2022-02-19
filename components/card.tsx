@@ -3,9 +3,9 @@ import Image from 'next/image';
 interface ICardProps {
   image: string;
   name: string;
-  deck: "scoia'tael";
-  strength: number;
-  row: 'close' | 'agile' | 'ranged';
+  deck: "Scoia'tael";
+  strength?: number;
+  row: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
 }
 
 interface IColumnProps {
@@ -32,7 +32,7 @@ const DesktopCard = ({ image, name, deck, strength, row }: ICardProps) => {
         </div>
         <Column type="Card" value={name} span={2} />
         <Column type="Deck" value={deck} />
-        <Column type="Strength" value={strength} />
+        {strength && <Column type="Strength" value={strength} />}
         <Column type="Row" value={row} />
       </div>
       <CollectButton />
@@ -52,7 +52,7 @@ const MobileCard = ({ image, name, deck, strength, row }: ICardProps) => {
           <Column type="Deck" value={deck} />
         </div>
         <div className="flex flex-col gap-2">
-          <Column type="Strength" value={strength} />
+          {strength && <Column type="Strength" value={strength} />}
           <Column type="Row" value={row} />
         </div>
       </div>
@@ -63,7 +63,9 @@ const MobileCard = ({ image, name, deck, strength, row }: ICardProps) => {
 
 const CollectButton = () => {
   return (
-    <button className="text-center w-full bg-indigo-400 drop-shadow-lg p-2 my-2 hover:bg-indigo-300">Collect</button>
+    <button className="text-center w-full bg-purple-500 drop-shadow-lg p-2 my-2 hover:bg-indigo-600 hover:text-white">
+      Collect
+    </button>
   );
 };
 
