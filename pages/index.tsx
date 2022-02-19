@@ -16,15 +16,12 @@ const Home: NextPage = () => {
 
     return json;
   };
-  const getCollectedData = async () => {
-    const res = await fetch('/api/users/me/cards');
-    const json = await res.json();
-
-    if (!json?.collected || json?.collected?.length < 1) {
-      throw new Error('Collected request failed or no results');
+  const getCollectedData = () => {
+    try {
+      return JSON.parse(localStorage.collected);
+    } catch {
+      return { collected: [] };
     }
-
-    return json;
   };
 
   const cardsQuery = useQuery<IGetCardsResponse, Error>(['cards'], getCardsData, {

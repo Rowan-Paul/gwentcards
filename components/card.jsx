@@ -37,14 +37,11 @@ const Button = ({ id }) => {
   const queryClient = useQueryClient();
 
   const getData = async () => {
-    const res = await fetch('/api/users/me/cards');
-    const json = await res.json();
-
-    if (!json?.collected || json?.collected?.length < 1) {
-      throw new Error('Collected request failed or no results');
+    try {
+      return JSON.parse(localStorage.collected);
+    } catch {
+      return { collected: [] };
     }
-
-    return json;
   };
 
   const { data } = useQuery('collected', getData, {
@@ -52,13 +49,9 @@ const Button = ({ id }) => {
   });
 
   const mutation = useMutation(
-    () =>
-      fetch(`/api/users/me/cards/${id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }),
+    () => {
+      localStorage.setItem('collected', JSON.stringify({ collected: ['BD489DAC-5EE8-40EE-AE0A-F6D79CB58E63'] }));
+    },
     {
       onMutate: async (text) => {
         await queryClient.cancelQueries('collected');
@@ -70,7 +63,7 @@ const Button = ({ id }) => {
 
         return previousValue;
       },
-      onError: (err, variables, previousValue) => queryClient.setQueryData('todos', previousValue),
+      onError: (err, variables, previousValue) => queryClient.setQueryData('collected', previousValue),
       onSettled: () => {
         queryClient.invalidateQueries('collected');
       }
