@@ -72,7 +72,17 @@ const Button = ({ id }: IButtonProps) => {
   const mutation = useMutation(
     // @ts-ignore
     () => {
-      localStorage.setItem('collected', JSON.stringify({ collected: [...data?.collected, id] }));
+      if (data?.collected.includes(id)) {
+        const newCollected = data.collected;
+        const index = newCollected.indexOf(id);
+        if (index !== -1) {
+          newCollected.splice(index, 1);
+        }
+
+        localStorage.setItem('collected', JSON.stringify({ collected: [...newCollected] }));
+      } else {
+        localStorage.setItem('collected', JSON.stringify({ collected: [...data?.collected, id] }));
+      }
     },
     {
       onMutate: async (text) => {
