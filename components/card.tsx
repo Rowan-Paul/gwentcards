@@ -1,7 +1,28 @@
 import Image from 'next/image';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
-const Card = ({ card }) => {
+interface ICardProps {
+  card: {
+    id: string;
+    image: string;
+    name: string;
+    deck: "Scoia'tael";
+    strength?: number;
+    row: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
+  };
+}
+
+interface IColumnProps {
+  type: string;
+  value: string | number;
+  span?: number;
+}
+
+interface IButtonProps {
+  id: string;
+}
+
+const Card = ({ card }: ICardProps) => {
   const { id, image, name, deck, strength, row } = card;
 
   return (
@@ -33,7 +54,7 @@ const Card = ({ card }) => {
   );
 };
 
-const Button = ({ id }) => {
+const Button = ({ id }: IButtonProps) => {
   const queryClient = useQueryClient();
 
   const getData = async () => {
@@ -49,6 +70,7 @@ const Button = ({ id }) => {
   });
 
   const mutation = useMutation(
+    // @ts-ignore
     () => {
       localStorage.setItem('collected', JSON.stringify({ collected: [...data?.collected, id] }));
     },
@@ -57,7 +79,7 @@ const Button = ({ id }) => {
         await queryClient.cancelQueries('collected');
         const previousValue = queryClient.getQueryData('collected');
 
-        queryClient.setQueryData('collected', (old) => ({
+        queryClient.setQueryData('collected', (old: any) => ({
           collected: [...old?.collected, text]
         }));
 
@@ -74,6 +96,7 @@ const Button = ({ id }) => {
     <button
       className="text-center w-full bg-purple-500 drop-shadow-lg p-2 my-2 hover:bg-indigo-600 text-white"
       onClick={() => {
+        // @ts-ignore
         mutation.mutate({ id: id });
       }}
     >
@@ -82,7 +105,7 @@ const Button = ({ id }) => {
   );
 };
 
-const Column = ({ type, value, span }) => {
+const Column = ({ type, value, span }: IColumnProps) => {
   return (
     <div className={`flex flex-col col-span-${span || 1}`}>
       <span className="font-bold">{type}</span>
