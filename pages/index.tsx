@@ -6,28 +6,41 @@ import type { NextPage } from 'next';
 import { IGetCardsResponse } from './api/cards';
 
 const Home: NextPage = () => {
-  const getData = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cards`);
+  const getCardsData = async () => {
+    const res = await fetch(`/api/cards`);
     const json = await res.json();
 
     if (!json?.cards || json?.cards?.length < 1) {
-      throw new Error('Request failed or no results');
+      throw new Error('Cards request failed or no results');
+    }
+
+    return json;
+  };
+  const getCollectedData = async () => {
+    const res = await fetch('/api/users/me/cards');
+    const json = await res.json();
+
+    if (!json?.collected || json?.collected?.length < 1) {
+      throw new Error('Collected request failed or no results');
     }
 
     return json;
   };
 
-  const { isLoading, isError, data } = useQuery<IGetCardsResponse, Error>(['cards'], getData, {
+  const cardsQuery = useQuery<IGetCardsResponse, Error>(['cards'], getCardsData, {
+    refetchOnWindowFocus: false
+  });
+  const collectedQuery = useQuery('collected', getCollectedData, {
     refetchOnWindowFocus: false
   });
 
-  if (isError) return <>Something went wrong...</>;
-  if (isLoading || !data) return <>Loading cards...</>;
+  if (collectedQuery.isError || cardsQuery.isError) return <>Something went wrong...</>;
+  if (collectedQuery.isLoading || cardsQuery.isLoading || !cardsQuery.data) return <>Loading cards...</>;
 
   return (
     <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 m-2 md:m-10">
-      {data?.cards?.map((c) => {
-        return <Card key={c.id} image={c.image} name={c.name} deck={c.deck} strength={c.strength} row={c.row} />;
+      {cardsQuery.data?.cards?.map((c) => {
+        return <Card key={c.id} card={c} />;
       })}
     </div>
   );
