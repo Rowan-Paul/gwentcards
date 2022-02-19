@@ -4,6 +4,7 @@ import Card from '../components/Card';
 
 import type { NextPage } from 'next';
 import { IGetCardsResponse } from './api/cards';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
   const getCardsData = async () => {
@@ -35,11 +36,17 @@ const Home: NextPage = () => {
   if (collectedQuery.isLoading || cardsQuery.isLoading || !cardsQuery.data) return <>Loading cards...</>;
 
   return (
-    <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 m-2 md:m-10">
-      {cardsQuery.data?.cards?.map((c) => {
-        return <Card key={c.id} card={c} />;
-      })}
-    </div>
+    <>
+      <Head>
+        <title>GWENTcards</title>
+      </Head>
+
+      <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 m-2 md:m-10">
+        {cardsQuery.data?.cards?.map((c) => {
+          return <Card key={c.id} card={c} />;
+        })}
+      </div>
+    </>
   );
 };
 
