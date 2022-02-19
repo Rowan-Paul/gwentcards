@@ -50,7 +50,7 @@ const Button = ({ id }) => {
 
   const mutation = useMutation(
     () => {
-      localStorage.setItem('collected', JSON.stringify({ collected: ['BD489DAC-5EE8-40EE-AE0A-F6D79CB58E63'] }));
+      localStorage.setItem('collected', JSON.stringify({ collected: [...data?.collected, id] }));
     },
     {
       onMutate: async (text) => {
