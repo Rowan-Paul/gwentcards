@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import Card from '../components/ard';
+import Card from '../components/Card';
 
 import type { NextPage } from 'next';
 import { IGetCardsResponse } from './api/cards';
