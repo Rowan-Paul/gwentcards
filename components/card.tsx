@@ -72,7 +72,7 @@ const CollectButton = () => {
         setCollected(!collected);
       }}
     >
-      {collected ? '☑️Collected' : 'Collect'}
+      {collected ? '✅Collected' : 'Collect'}
     </button>
   );
 };
