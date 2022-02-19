@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useState } from 'react';
 
 interface ICardProps {
   image: string;
@@ -62,9 +63,16 @@ const MobileCard = ({ image, name, deck, strength, row }: ICardProps) => {
 };
 
 const CollectButton = () => {
+  const [collected, setCollected] = useState(false);
+
   return (
-    <button className="text-center w-full bg-purple-500 drop-shadow-lg p-2 my-2 hover:bg-indigo-600 hover:text-white">
-      Collect
+    <button
+      className="text-center w-full bg-purple-500 drop-shadow-lg p-2 my-2 hover:bg-indigo-600 hover:text-white"
+      onClick={() => {
+        setCollected(!collected);
+      }}
+    >
+      {collected ? '☑️Collected' : 'Collect'}
     </button>
   );
 };
