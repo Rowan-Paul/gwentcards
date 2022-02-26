@@ -43,7 +43,17 @@ const Home: NextPage = () => {
       throw new Error('Cards request failed or no results');
     }
 
-    return { cards: [...scoiatael?.cards, ...monsters?.cards] };
+    return {
+      cards: [...scoiatael?.cards, ...monsters?.cards].sort(function (a, b) {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      })
+    };
   };
   const getCollectedData = () => {
     try {
