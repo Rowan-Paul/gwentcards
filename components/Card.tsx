@@ -1,4 +1,4 @@
-import ExportedImage from "next-image-export-optimizer";
+import Image from 'next/image';
 import CollectButton from './CollectButton';
 
 interface ICardProps {
@@ -25,7 +25,7 @@ const Card = ({ card }: ICardProps) => {
     <div className="bg-gradient-to-r from-cyan-400 to-blue-400 p-3 drop-shadow-md">
       <div className="hidden md:grid grid-cols-6 justify-center items-center gap-8">
         <div>
-          <ExportedImage src={image} alt={`${name} card`} width="75" height="142" />
+          <Image src={image} alt={`${name} card`} width="75" height="142" />
         </div>
         <Column type="Card" value={name} span={2} />
         <Column type="Deck" value={deck} />
@@ -34,7 +34,7 @@ const Card = ({ card }: ICardProps) => {
       </div>
       <div className="grid md:hidden grid-cols-4 justify-center items-center gap-4">
         <div>
-          <ExportedImage src={image} alt={`${name} card`} width="75" height="142" />
+          <Image src={image} alt={`${name} card`} width="75" height="142" />
         </div>
         <div className="flex flex-col gap-2 col-span-2">
           <Column type="Card" value={name} />
