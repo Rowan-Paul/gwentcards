@@ -54,6 +54,8 @@ const Card = ({ card }: ICardProps) => {
   useEffect(() => {
     if (showImage) {
       document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
     }
   }, [showImage]);
 
