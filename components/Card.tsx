@@ -30,7 +30,7 @@ const Card = ({ card }: ICardProps) => {
         <Column type="Card" value={name} span={2} />
         <Column type="Deck" value={deck} />
         {strength && <Column type="Strength" value={strength} />}
-        <Column type="Row" value={row} />
+        <Column type="Row" value={row.charAt(0).toUpperCase() + row.slice(1)} />
       </div>
       <div className="grid md:hidden grid-cols-4 justify-center items-center gap-4">
         <div>
@@ -42,7 +42,7 @@ const Card = ({ card }: ICardProps) => {
         </div>
         <div className="flex flex-col gap-2">
           {strength && <Column type="Strength" value={strength} />}
-          <Column type="Row" value={row} />
+          <Column type="Row" value={row.charAt(0).toUpperCase() + row.slice(1)} />
         </div>
       </div>
       <CollectButton id={id} />
