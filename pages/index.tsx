@@ -3,12 +3,37 @@ import { useQuery } from 'react-query';
 import Card from '../components/Card';
 
 import type { NextPage } from 'next';
-import { IGetCardsResponse } from './api/cards';
 import Head from 'next/head';
+
+interface ICards {
+  cards: ICard[];
+}
+
+interface ICard {
+  id: string;
+  image: string;
+  name: string;
+  deck: "Scoia'tael";
+  strength?: number;
+  row: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
+  locations?: any;
+  notes?: any;
+  abilities?: any[];
+  isDLC?: any;
+  expansion?: any;
+  effect?: any;
+}
 
 const Home: NextPage = () => {
   const getCardsData = async () => {
-    const res = await fetch(`/api/cards`);
+    const res = await fetch('scoiatael.json'
+      , {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }
+    );
     const json = await res.json();
 
     if (!json?.cards || json?.cards?.length < 1) {
@@ -25,7 +50,7 @@ const Home: NextPage = () => {
     }
   };
 
-  const cardsQuery = useQuery<IGetCardsResponse, Error>(['cards'], getCardsData, {
+  const cardsQuery = useQuery<ICards, Error>(['cards'], getCardsData, {
     refetchOnWindowFocus: false
   });
   const collectedQuery = useQuery('collected', getCollectedData, {
