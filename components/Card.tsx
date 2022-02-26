@@ -6,7 +6,7 @@ interface ICardProps {
     id: string;
     image: string;
     name: string;
-    deck: "Scoia'tael";
+    deck: "Scoia'tael" | 'Monsters';
     strength?: number;
     row: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
   };

@@ -13,7 +13,7 @@ interface ICard {
   id: string;
   image: string;
   name: string;
-  deck: "Scoia'tael";
+  deck: "Scoia'tael" | 'Monsters';
   strength?: number;
   row: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
   locations?: any;
@@ -26,21 +26,24 @@ interface ICard {
 
 const Home: NextPage = () => {
   const getCardsData = async () => {
-    const res = await fetch('scoiatael.json'
-      , {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
+    const scoiatael = await fetch('/scoiatael.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
       }
-    );
-    const json = await res.json();
+    }).then((data) => data.json());
+    const monsters = await fetch('/monsters.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    }).then((data) => data.json());
 
-    if (!json?.cards || json?.cards?.length < 1) {
+    if (!scoiatael?.cards || scoiatael?.cards?.length < 1 || !monsters?.cards || monsters?.cards?.length < 1) {
       throw new Error('Cards request failed or no results');
     }
 
-    return json;
+    return { cards: [...scoiatael?.cards, ...monsters?.cards] };
   };
   const getCollectedData = () => {
     try {
