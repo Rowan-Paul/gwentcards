@@ -4,6 +4,22 @@ interface IButtonProps {
   id: string;
 }
 
+function setCards(data: any, id: any) {
+  if (data?.collected.includes(id)) {
+    const newCollected = data.collected;
+    const index = newCollected.indexOf(id);
+    if (index !== -1) {
+      newCollected.splice(index, 1);
+    }
+
+    localStorage.setItem('collected', JSON.stringify({ collected: [...newCollected] }));
+    return data
+  } else {
+    localStorage.setItem('collected', JSON.stringify({ collected: [...data?.collected, id] }));
+    return data
+  }
+}
+
 const CollectButton = ({ id }: IButtonProps) => {
   const queryClient = useQueryClient();
 
@@ -20,20 +36,7 @@ const CollectButton = ({ id }: IButtonProps) => {
   });
 
   const mutation = useMutation(
-    // @ts-ignore
-    () => {
-      if (data?.collected.includes(id)) {
-        const newCollected = data.collected;
-        const index = newCollected.indexOf(id);
-        if (index !== -1) {
-          newCollected.splice(index, 1);
-        }
-
-        localStorage.setItem('collected', JSON.stringify({ collected: [...newCollected] }));
-      } else {
-        localStorage.setItem('collected', JSON.stringify({ collected: [...data?.collected, id] }));
-      }
-    },
+    id => setCards(data, id),
     {
       onMutate: async (text) => {
         await queryClient.cancelQueries('collected');
@@ -45,19 +48,21 @@ const CollectButton = ({ id }: IButtonProps) => {
 
         return previousValue;
       },
-      onError: (err, variables, previousValue) => queryClient.setQueryData('collected', previousValue),
+      onError: (err, variables, previousValue) => {
+        queryClient.setQueryData('collected', previousValue)
+      },
       onSettled: () => {
-        queryClient.invalidateQueries('collected');
-      }
+        queryClient.invalidateQueries(['collected'])
+      },
     }
-  );
+  )
 
   return (
     <button
       className="text-center w-full bg-purple-500 drop-shadow-lg p-2 my-2 hover:bg-indigo-600 text-white"
       onClick={() => {
-        // @ts-ignore
-        mutation.mutate({ id: id });
+        //@ts-ignore
+        mutation.mutate(id);
       }}
     >
       {data?.collected.includes(id) ? '✅Collected' : 'Collect'}
