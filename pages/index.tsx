@@ -3,6 +3,8 @@ import Head from 'next/head';
 
 import type { NextPage } from 'next';
 import Card from '../components/Card';
+import ExpandedImage from '../components/ExpandedImage';
+import { useState } from 'react';
 
 interface ICards {
   cards: ICard[];
@@ -24,71 +26,9 @@ interface ICard {
 }
 
 const Home: NextPage = () => {
-  const getCardsData = async () => {
-    const scoiatael = await fetch('/scoiatael.json', {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      }
-    }).then((data) => data.json());
-    const monsters = await fetch('/monsters.json', {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      }
-    }).then((data) => data.json());
-    const neutral = await fetch('/neutral.json', {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      }
-    }).then((data) => data.json());
-    const nilfgaard = await fetch('/nilfgaard.json', {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      }
-    }).then((data) => data.json());
-    const northernRealms = await fetch('/northern-realms.json', {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      }
-    }).then((data) => data.json());
+  const [imageCard, setImageCard] = useState('');
+  const [showImage, setShowImage] = useState(false);
 
-    if (
-      !monsters?.cards ||
-      monsters?.cards?.length < 1 ||
-      !neutral?.cards ||
-      neutral?.cards?.length < 1 ||
-      !nilfgaard?.cards ||
-      nilfgaard?.cards?.length < 1 ||
-      !northernRealms?.cards ||
-      northernRealms?.cards?.length < 1 ||
-      !scoiatael?.cards ||
-      scoiatael?.cards?.length < 1
-    ) {
-      throw new Error('Cards request failed or no results');
-    }
-
-    return {
-      cards: [
-        ...scoiatael?.cards,
-        ...monsters?.cards,
-        ...neutral?.cards,
-        ...nilfgaard?.cards,
-        ...northernRealms?.cards
-      ].sort(function (a, b) {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-        return 0;
-      })
-    };
-  };
   const getCollectedData = () => {
     try {
       return JSON.parse(localStorage.collected);
@@ -97,7 +37,7 @@ const Home: NextPage = () => {
     }
   };
 
-  const cardsQuery = useQuery<ICards, Error>(['cards'], getCardsData, {
+  const cardsQuery = useQuery<ICards, Error>(['cards'], fetchCards, {
     refetchOnWindowFocus: false
   });
   const collectedQuery = useQuery('collected', getCollectedData, {
@@ -114,13 +54,89 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+      <ExpandedImage image={imageCard} showImage={showImage} setShowImage={() => setShowImage(!showImage)} />
+      <div className="p-10 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
         {cardsQuery.data?.cards?.map((c) => {
-          return <Card key={c.id} card={c} />;
+          return (
+            <Card
+              key={c.id}
+              card={c}
+              setImage={(img: string) => {
+                setImageCard(img);
+                setShowImage(true);
+              }}
+            />
+          );
         })}
       </div>
     </>
   );
+};
+
+const fetchCards = async (): Promise<ICards> => {
+  const scoiatael = await fetch('/scoiatael.json', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  }).then((data) => data.json());
+  const monsters = await fetch('/monsters.json', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  }).then((data) => data.json());
+  const neutral = await fetch('/neutral.json', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  }).then((data) => data.json());
+  const nilfgaard = await fetch('/nilfgaard.json', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  }).then((data) => data.json());
+  const northernRealms = await fetch('/northern-realms.json', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  }).then((data) => data.json());
+
+  if (
+    !monsters?.cards ||
+    monsters?.cards?.length < 1 ||
+    !neutral?.cards ||
+    neutral?.cards?.length < 1 ||
+    !nilfgaard?.cards ||
+    nilfgaard?.cards?.length < 1 ||
+    !northernRealms?.cards ||
+    northernRealms?.cards?.length < 1 ||
+    !scoiatael?.cards ||
+    scoiatael?.cards?.length < 1
+  ) {
+    throw new Error('Cards request failed or no results');
+  }
+
+  return {
+    cards: [
+      ...scoiatael?.cards,
+      ...monsters?.cards,
+      ...neutral?.cards,
+      ...nilfgaard?.cards,
+      ...northernRealms?.cards
+    ].sort(function (a, b) {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    })
+  };
 };
 
 export default Home;

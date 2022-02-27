@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
 
 import CollectButton from './CollectButton';
 
@@ -12,6 +11,7 @@ interface ICardProps {
     strength?: number;
     row?: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
   };
+  setImage: any;
 }
 
 interface IColumnProps {
@@ -20,51 +20,14 @@ interface IColumnProps {
   span?: number;
 }
 
-const Card = ({ card }: ICardProps) => {
+const Card = ({ card, setImage }: ICardProps) => {
   const { id, image, name, deck, strength, row } = card;
-  const [showImage, setShowImage] = useState(false);
-  const wrapperRef: any = useRef(null);
-
-  const escFunction = useCallback(
-    (event) => {
-      if (event.key === 'Escape' && showImage) {
-        setShowImage(false);
-      }
-    },
-    [showImage]
-  );
-
-  const handleClickOutside = useCallback(
-    (event) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target) && showImage) {
-        setShowImage(false);
-      }
-    },
-    [showImage]
-  );
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', escFunction, false);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', escFunction, false);
-    };
-  }, [wrapperRef, handleClickOutside, escFunction]);
-
-  useEffect(() => {
-    if (showImage) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [showImage]);
 
   return (
     <>
       <div className="bg-gradient-to-r from-cyan-400 to-blue-400 p-3 drop-shadow-md">
         <div className="hidden md:grid grid-cols-6 justify-center items-center gap-8">
-          <div onClick={() => setShowImage(true)}>
+          <div onClick={() => setImage(image)}>
             <Image src={image} alt={`${name} card`} width="75" height="142" />
           </div>
           <Column type="Card" value={name} span={2} />
@@ -73,7 +36,7 @@ const Card = ({ card }: ICardProps) => {
           {row && <Column type="Row" value={row.charAt(0).toUpperCase() + row.slice(1)} />}
         </div>
         <div className="grid md:hidden grid-cols-4 justify-center items-center gap-4">
-          <div onClick={() => setShowImage(true)}>
+          <div onClick={() => setImage(image)}>
             <Image src={image} alt={`${name} card`} width="75" height="142" />
           </div>
           <div className="flex flex-col gap-2 col-span-2">
@@ -86,14 +49,6 @@ const Card = ({ card }: ICardProps) => {
           </div>
         </div>
         <CollectButton id={id} />
-      </div>
-      <div
-        className={showImage ? 'fixed backdrop-blur w-screen h-screen z-40' : 'hidden'}
-        onKeyPress={() => setShowImage(false)}
-      >
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" ref={wrapperRef}>
-          <Image src={image} alt={`${name} card`} width="250" height="500" />
-        </div>
       </div>
     </>
   );
