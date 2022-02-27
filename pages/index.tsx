@@ -49,6 +49,12 @@ const Home: NextPage = () => {
         Accept: 'application/json'
       }
     }).then((data) => data.json());
+    const northernRealms = await fetch('/northern-realms.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    }).then((data) => data.json());
 
     if (
       !scoiatael?.cards ||
@@ -58,13 +64,21 @@ const Home: NextPage = () => {
       !neutral?.cards ||
       neutral?.cards?.length < 1 ||
       !nilfgaard?.cards ||
-      nilfgaard?.cards?.length < 1
+      nilfgaard?.cards?.length < 1 ||
+      !northernRealms?.cards ||
+      northernRealms?.cards?.length < 1
     ) {
       throw new Error('Cards request failed or no results');
     }
 
     return {
-      cards: [...scoiatael?.cards, ...monsters?.cards, ...neutral?.cards, ...nilfgaard?.cards].sort(function (a, b) {
+      cards: [
+        ...scoiatael?.cards,
+        ...monsters?.cards,
+        ...neutral?.cards,
+        ...nilfgaard?.cards,
+        ...northernRealms?.cards
+      ].sort(function (a, b) {
         if (a.name < b.name) {
           return -1;
         }
@@ -100,8 +114,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="m-2 md:m-10">
-        <span>Total cards: {cardsQuery.data?.cards?.length}</span>
+      <div className="">
         <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
           {cardsQuery.data?.cards?.map((c) => {
             return <Card key={c.id} card={c} />;
