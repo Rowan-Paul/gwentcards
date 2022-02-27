@@ -65,7 +65,7 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
           mutation.mutate({ id: id });
         }}
       >
-        {data?.collected.includes(id) ? `✅ Collected` : `Collect ${location}`}
+        {data?.collected.includes(id) ? `✅` : `${location}`}
       </div>
       <div className="flex py-2 px-3 hover:bg-indigo-600" onClick={() => setShowLocations()}>
         <Image src="/open.svg" alt="Open location modal" width="12" height="12" />

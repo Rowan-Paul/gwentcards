@@ -81,7 +81,7 @@ const Row = ({ type, value }: IRowProps): JSX.Element => {
     <div className="md:flex gap-8 mb-2">
       <span className="font-bold">{type} </span>
       <br className="md:hidden"></br>
-      <span className=" ml-auto">{value}</span>
+      <span className=" ml-auto text-right">{value}</span>
     </div>
   );
 };
