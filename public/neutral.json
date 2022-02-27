@@ -28,7 +28,7 @@
       "locations": [
         {
           "type": "quest",
-          "location": "won after completing gwent: big city players"
+          "location": "Won after completing GWENT: Big City Players"
         }
       ],
       "abilities": ["Hero"]
@@ -50,27 +50,27 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crossroads inn",
-          "character": "innkeeper"
+          "territory": "Velen",
+          "location": "Crossroads Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "lindenvale",
-          "character": "merchant"
+          "territory": "Velen",
+          "location": "Lindenvale",
+          "character": "Merchant"
         },
         {
           "type": "buy",
-          "territory": "novigrad or velen",
-          "location": "passiflora or circus camp near carstenm",
-          "character": "innkeeper or trader"
+          "territory": "Novigrad or Velen",
+          "location": "Passiflora or circus camp near Carstenm",
+          "character": "Innkeeper or trader"
         },
         {
           "type": "buy",
           "territory": "novigrad",
-          "location": "the alchemy inn, oxenfurt",
-          "character": "stjepan"
+          "location": "The Alchemy Inn, Oxenfurt",
+          "character": "Stjepan"
         }
       ],
       "effect": "commander's horn",
@@ -82,7 +82,7 @@
       "name": "Cow",
       "deck": "Neutral",
       "row": "ranged",
-      "locations": [{ "type": "win", "territory": "velen", "location": "a barn, brunwich" }],
+      "locations": [{ "type": "win", "territory": "Velen", "location": "A barn, Brunwich" }],
       "effect": "summon avenger",
       "isDLC": true,
       "expansion": "hearts of stone"
@@ -96,9 +96,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "vegelbud estate",
-          "character": "quest a matter of life and death"
+          "territory": "Novigrad",
+          "location": "Vegelbud estate",
+          "character": "Quest A Matter of Life and Death"
         }
       ],
       "effect": "commander's horn"
@@ -111,21 +111,21 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "white orchard",
-          "location": "white orchard tavern",
-          "character": "innkeeperess or trader outside"
+          "territory": "White Orchard",
+          "location": "White Orchard tavern",
+          "character": "Innkeeperess or trader outside"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crow's perch",
-          "character": "quartermasters baron's store"
+          "territory": "Velen",
+          "location": "Crow's Perch",
+          "character": "Quartermasters Baron's store"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "seven cats inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Seven Cats Inn",
+          "character": "Innkeeper"
         }
       ],
       "effect": "decoy"
@@ -140,9 +140,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "white orchard",
-          "location": "white orchard tavern",
-          "character": "innkeeperess or trader outside"
+          "territory": "White Orchard",
+          "location": "White Orchard tavern",
+          "character": "Innkeeperess or trader outside"
         }
       ]
     },
@@ -156,9 +156,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "velen",
-          "location": "auction house",
-          "character": "hilbert (quest open sesame!)"
+          "territory": "Velen",
+          "location": "Auction house",
+          "character": "Hilbert (quest Open Sesame!)"
         }
       ],
       "abilities": ["Muster"],
@@ -175,21 +175,21 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "upper mill",
-          "character": "dula kh'amanni"
+          "territory": "Velen",
+          "location": "Upper mill",
+          "character": "Dula Kh'amanni"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "circus camp near carsten",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Circus camp near Carsten",
+          "character": "Trader"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "circus camp near carsten",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Circus camp near Carsten",
+          "character": "Trader"
         }
       ],
       "abilities": ["Muster"],
@@ -206,9 +206,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "seven cats inn",
-          "character": "thaler (quest: gwent: playing thaler)"
+          "territory": "Novigrad",
+          "location": "Seven Cats Inn",
+          "character": "Thaler (quest: GWENT: Playing Thaler)"
         }
       ],
       "abilities": ["Hero"]
@@ -232,9 +232,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "skellige",
-          "location": "gedyneith, ard skellig",
-          "character": "gremist (quest gwent: skellige style)"
+          "territory": "Skellige",
+          "location": "Gedyneith, ard Skellig",
+          "character": "Gremist (quest GWENT: Skellige Style)"
         }
       ],
       "abilities": ["Hero", "spy"],
@@ -251,8 +251,8 @@
         {
           "type": "win",
           "territory": "novigrad",
-          "location": "shani's house",
-          "character": "shani or shani's house if she's left"
+          "location": "Shani's house",
+          "character": "Shani or Shani's house if she's left"
         }
       ],
       "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed.",
@@ -274,14 +274,14 @@
         {
           "type": "buy",
           "territory": "skellige",
-          "location": "the new port, kaer trolde harbor, spikeroog",
-          "character": "jonas the innkeeper"
+          "location": "The New Port, Kaer Trolde harbor, Spikeroog",
+          "character": "Jonas the Innkeeper"
         },
         {
           "type": "buy",
           "territory": "skellige",
-          "location": "urialla harbor, an skellig",
-          "character": "innkeeper"
+          "location": "Urialla harbor, an Skellig",
+          "character": "Innkeeper"
         }
       ],
       "effect": "scorch"
@@ -294,21 +294,21 @@
       "locations": [
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "tourney grounds",
-          "character": "barber"
+          "territory": "Toussaint",
+          "location": "Tourney grounds",
+          "character": "Barber"
         },
         {
           "type": "win",
           "territory": "  toussaint",
-          "location": "tourney grounds",
+          "location": "Tourney grounds",
           "character": "armorer"
         },
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "san sebastian (east side of beauclair)",
-          "character": "butcher"
+          "territory": "Toussaint",
+          "location": "San Sebastian (east side of Beauclair)",
+          "character": "Butcher"
         }
       ],
       "effect": "weather",
@@ -330,7 +330,7 @@
       "deck": "Neutral",
       "row": "close",
       "strength": 7,
-      "locations": [{ "type": "quest", "character": "lambert (quest: gwent: old pals)" }]
+      "locations": [{ "type": "quest", "character": "Lambert (quest: GWENT: Pld Pals)" }]
     },
     {
       "id": "5bb73675-e9dc-4f0e-b97a-4fed50bd9c80",
@@ -342,9 +342,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "hierach square",
-          "character": "vimme vivaldi (quest: gwent: big city players)"
+          "territory": "Novigrad",
+          "location": "Hierach Square",
+          "character": "vimme Vivaldi (quest: GWENT: Big City Players)"
         }
       ]
     },
@@ -369,8 +369,8 @@
         {
           "type": "quest",
           "territory": "novigrad",
-          "location": "the alchemy inn, oxenfurt",
-          "character": "stjepan (quest: gwent: playing innkeeps)"
+          "location": "The Alchemy Inn, Oxenfurt",
+          "character": "Stjepan (quest: GWENT: Playing Innkeeps)"
         }
       ],
       "abilities": ["Hero", "Medic"]
@@ -385,9 +385,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "white orchard",
-          "location": "white orchard tavern",
-          "character": "scholar or under the hanged man's tree"
+          "territory": "White Orchard",
+          "location": "White Orchard tavern",
+          "character": "Scholar or under the hanged man's tree"
         }
       ]
     }

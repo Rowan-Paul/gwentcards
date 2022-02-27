@@ -10,9 +10,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crow's perch",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Crow's Perch",
+          "character": "Trader"
         }
       ]
     },
@@ -35,18 +35,18 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "claywich village",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Claywich Village",
+          "character": "Trader"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "lindenvale",
-          "character": "merchant"
+          "territory": "Velen",
+          "location": "Lindenvale",
+          "character": "Merchant"
         }
       ],
-      "notes": "the claywich trader needs to be rescued first"
+      "notes": "the claywich Trader needs to be rescued first"
     },
     {
       "id": "c25330e6-64db-45ec-9aad-ab096f3872bd",
@@ -67,9 +67,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crow's perch",
-          "character": "quartermasters baron's store"
+          "territory": "Velen",
+          "location": "Crow's Perch",
+          "character": "Quartermasters Baron's store"
         }
       ]
     },
@@ -82,9 +82,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crossroad inn",
-          "character": "innkeeper"
+          "territory": "Velen",
+          "location": "Crossroad Inn",
+          "character": "Innkeeper"
         }
       ],
       "notes": "emperor of nilfgaard: look at 3 random cards from your opponent's hand."
@@ -107,9 +107,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "near carsten (nw) and west from vegelbud residence",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Near Carsten (NW) and west from Vegelbud residence",
+          "character": "Trader"
         }
       ],
       "notes": "invader of the north: abilities that restore a unit to the battlefield restore a randomly-chosen unit. affects both players.",
@@ -125,9 +125,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "passiflora",
-          "character": "sasha (quest high stakes)"
+          "territory": "Novigrad",
+          "location": "Passiflora",
+          "character": "Sasha (quest High Stakes)"
         }
       ],
       "notes": "the relentless: draw a card from your opponent's discard pile."
@@ -141,7 +141,7 @@
       "locations": [
         {
           "type": "quest",
-          "location": "won after completing gwent: skellige style"
+          "location": "Won after completing GWENT: Skellige Style"
         }
       ],
       "notes": "the white flame: cancel your opponent's leader abilities."
@@ -157,18 +157,18 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "lindenvale",
-          "character": "merchant"
+          "territory": "Velen",
+          "location": "Lindenvale",
+          "character": "Merchant"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "claywhich village",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Claywich Village",
+          "character": "Trader"
         }
       ],
-      "notes": "the merchant needs to be rescued first"
+      "notes": "the Merchant needs to be rescued first"
     },
     {
       "id": "035f58e3-3032-40a2-9d40-42b3cfcc8ba1",
@@ -180,8 +180,8 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "caesar bilzen's house (quest a dangerous game)"
+          "territory": "Novigrad",
+          "location": "Caesar Bilzen's house (quest A Dangerous Game)"
         }
       ]
     },
@@ -195,9 +195,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "lindenvale",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Lindenvale",
+          "character": "Trader"
         }
       ]
     },
@@ -212,27 +212,27 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crow's perch",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Crow's Perch",
+          "character": "Trader"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crossroads inn",
-          "character": "innkeeper"
+          "territory": "Velen",
+          "location": "Crossroads Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "seven cats inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Seven Cats Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "cunny of the goose",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Cunny of the Goose",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -247,9 +247,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "oreton",
-          "character": "boatbuilder"
+          "territory": "Velen",
+          "location": "Oreton",
+          "character": "Boatbuilder"
         }
       ]
     },
@@ -264,9 +264,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crow's perch",
-          "character": "quartermasters baron's store"
+          "territory": "Velen",
+          "location": "Crow's Perch",
+          "character": "Quartermasters Baron's store"
         }
       ]
     },
@@ -280,9 +280,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "midcopse",
-          "character": "shopkeeper"
+          "territory": "Velen",
+          "location": "Midcopse",
+          "character": "Shopkeeper"
         }
       ]
     },
@@ -297,9 +297,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "passiflora",
-          "character": "marquise serenity (quest gwent: big city players)"
+          "territory": "Novigrad",
+          "location": "Passiflora",
+          "character": "Marquise Serenity (quest GWENT: Big City Players)"
         }
       ]
     },
@@ -314,21 +314,21 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crow's perch",
-          "character": "quartermasters baron's store"
+          "territory": "Velen",
+          "location": "Crow's Perch",
+          "character": "Quartermasters Baron's store"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crossroad inn",
-          "character": "innkeeper"
+          "territory": "Velen",
+          "location": "Crossroad Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crow's perch",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Crow's Perch",
+          "character": "Trader"
         }
       ]
     },
@@ -342,12 +342,12 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "claywich village",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Claywich Village",
+          "character": "Trader"
         }
       ],
-      "notes": "the claywich trader needs to be rescued first"
+      "notes": "the claywich Trader needs to be rescued first"
     },
     {
       "id": "95519a11-18a3-46f4-bfbc-3d978d7838b4",
@@ -359,12 +359,12 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "lindenvale",
-          "character": "merchant"
+          "territory": "Velen",
+          "location": "Lindenvale",
+          "character": "Merchant"
         }
       ],
-      "notes": "the claywich trader needs to be rescued first"
+      "notes": "the claywich Trader needs to be rescued first"
     },
     {
       "id": "2e6fb264-289e-4728-8de8-8473dca670cf",
@@ -404,15 +404,15 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crossroad inn",
-          "character": "innkeeper"
+          "territory": "Velen",
+          "location": "Crossroad Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
+          "territory": "Novigrad",
           "location": "golden sturgeon",
-          "character": "innkeeper"
+          "character": "Innkeeper"
         }
       ]
     },
@@ -427,9 +427,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "novigrad or velen",
-          "location": "golden sturgeon or circus camp",
-          "character": "innkeeper or trader"
+          "territory": "Novigrad or Velen",
+          "location": "Golden Sturgeon or circus camp",
+          "character": "Innkeeper or Trader"
         }
       ]
     },
@@ -453,12 +453,12 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "claywich village",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Claywich Village",
+          "character": "Trader"
         }
       ],
-      "notes": "the claywich trader needs to be rescued first"
+      "notes": "the claywich Trader needs to be rescued first"
     },
     {
       "id": "ab67ef7c-97c8-4f99-bc46-1c6098b6f89e",
@@ -471,9 +471,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "kingfisher inn",
-          "character": "olivier (quest gwent: playing innkeeps)"
+          "territory": "Novigrad",
+          "location": "Kingfisher Inn",
+          "character": "Olivier (quest GWENT: Playing Innkeeps)"
         }
       ]
     },
@@ -516,15 +516,15 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "cunny of the goose",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Cunny of the Goose",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "seven cats inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Seven Cats Inn",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -538,9 +538,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "crow's perch",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Crow's Perch",
+          "character": "Trader"
         }
       ]
     }

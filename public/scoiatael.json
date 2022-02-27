@@ -10,9 +10,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "novigrad or velen",
-          "location": "golden sturgeon or circus camp near carsten",
-          "character": "innkeeper or trader"
+          "territory": "Novigrad or Velen",
+          "location": "Golden Sturgeon or circus camp near Carsten",
+          "character": "Innkeeper or trader"
         }
       ],
       "notes": "agile: can be placed in either the close combat or the ranged combat 'row'. cannot be moved once placed."
@@ -46,9 +46,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "novigrad or velen",
-          "location": "passiflora or circus camp near carstenm",
-          "character": "innkeeper or trader"
+          "territory": "Novigrad or Velen",
+          "location": "Passiflora or circus camp near Carsten",
+          "character": "Innkeeper or trader"
         }
       ]
     },
@@ -62,17 +62,17 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "golden sturgeon",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Golden Sturgeon",
+          "character": "Innkeeper"
         },
         { "type": "random" },
         { "type": "random" },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "circus camp near carsten",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Circus camp near Carsten",
+          "character": "Trader"
         }
       ],
       "notes": "agile: can be placed in either the close combat or the ranged combat 'row'. cannot be moved once placed."
@@ -89,9 +89,9 @@
         { "type": "random" },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "the alchemy inn, oxenfurt",
-          "character": "stjepan"
+          "territory": "Novigrad",
+          "location": "The Alchemy Inn, Oxenfurt",
+          "character": "Stjepan"
         }
       ]
     },
@@ -106,9 +106,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "rosemary and thyme",
-          "character": "zoltan (quest gwent: old pals)"
+          "territory": "Novigrad",
+          "location": "Rosemary and Thyme",
+          "character": "Zoltan (quest GWENT: Old Pals)"
         }
       ]
     },
@@ -125,9 +125,9 @@
         { "type": "random" },
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "urialla village, an skellig",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Urialla village, an Skellig",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -150,9 +150,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "cunny of the goose",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Cunny of the Goose",
+          "character": "Innkeeper"
         }
       ],
       "notes": "daisy of the valley: draw an extra card at the beginning of the battle."
@@ -166,9 +166,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "upper mill",
-          "character": "dula kh'amanni"
+          "territory": "Velen",
+          "location": "Upper mill",
+          "character": "Dula Kh'amanni"
         }
       ],
       "notes": "hope of the aen seidhe: move agile units to whichever valid row maximizes their strength (don't move units already in optimal row).",
@@ -193,9 +193,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "passiflora",
-          "character": "finneas (quest high stakes)"
+          "territory": "Novigrad",
+          "location": "Passiflora",
+          "character": "Finneas (quest High Stakes)"
         }
       ],
       "notes": "queen of dol blathanna: destroy your enemy's strongest close combat unit(s) if the combined strength of all his or her close combat units is 10 or more."
@@ -209,7 +209,7 @@
       "locations": [
         {
           "type": "quest",
-          "location": "won after completing gwent: big city players"
+          "location": "Won after completing GWENT: Big City Players"
         }
       ],
       "notes": "the beautiful: doubles the strength of all your ranged combat units (unless a commander's horn is also present on that row)."
@@ -226,21 +226,21 @@
         { "type": "random" },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "cunny of the goose",
-          "character": "innkeep"
+          "territory": "Novigrad",
+          "location": "Cunny of the Goose",
+          "character": "Innkeep"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "kingfisher inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Kingfisher Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "circus camp near carsten",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Circus camp near Carsten",
+          "character": "Trader"
         }
       ]
     },
@@ -256,21 +256,21 @@
         { "type": "random" },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "kingfisher inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Kingfisher Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "seven cats inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Seven Cats Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "circus camp near carsten",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Circus camp near Carsten",
+          "character": "Trader"
         }
       ]
     },
@@ -291,7 +291,7 @@
       "deck": "Scoia'tael",
       "row": "ranged",
       "strength": 10,
-      "locations": [{ "type": "quest", "location": "won after completing shock therapy" }]
+      "locations": [{ "type": "quest", "location": "Won after completing Shock Therapy" }]
     },
     {
       "id": "DE3C0C25-EC12-44D3-8C33-2D23577EA169",
@@ -304,8 +304,8 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "zed's house (quest a dangerous game)"
+          "territory": "Novigrad",
+          "location": "Zed's house (Quest a Dangerous Game)"
         }
       ]
     },
@@ -320,39 +320,39 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "circus camp near carsten",
-          "character": "trader"
+          "territory": "Velen",
+          "location": "Circus camp near Carsten",
+          "character": "Trader"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "passiflora",
-          "character": "marquise serenity"
+          "territory": "Novigrad",
+          "location": "Passiflora",
+          "character": "Marquise Serenity"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "the alchemy inn, oxenfurt",
-          "character": "stjepan"
+          "territory": "Novigrad",
+          "location": "The Alchemy Inn, Oxenfurt",
+          "character": "Stjepan"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "golden sturgeon",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Golden Sturgeon",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "seven cats inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Seven Cats Inn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "kingfisher inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Kingfisher Inn",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -367,9 +367,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "vegelbud estate",
-          "character": "quest a matter of life and death"
+          "territory": "Novigrad",
+          "location": "Vegelbud estate",
+          "character": "Quest A Matter of Life and Death"
         }
       ]
     },
@@ -392,9 +392,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "novigrad",
-          "location": "temerian resistance camp",
-          "character": "vernon roche (quest gwent: old pals)"
+          "territory": "Novigrad",
+          "location": "Temerian resistance camp",
+          "character": "Vernon Roche (quest GWENT: Old Pals)"
         }
       ]
     },
@@ -408,9 +408,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "velen",
-          "location": "circus camp near carsten",
-          "character": "merchant"
+          "territory": "Velen",
+          "location": "Circus camp near Carsten",
+          "character": "Merchant"
         }
       ],
       "effect": "scorch",
@@ -425,7 +425,7 @@
       "deck": "Scoia'tael",
       "row": "ranged",
       "strength": 10,
-      "locations": [{ "type": "quest", "location": "won after completing shock therapy" }]
+      "locations": [{ "type": "quest", "location": "Won after completing Shock Therapy" }]
     },
     {
       "id": "A2E74B29-1C7E-4580-A8E5-C67F250B9FBA",
@@ -438,15 +438,15 @@
         { "type": "random" },
         {
           "type": "buy",
-          "territory": "novigrad",
+          "territory": "Novigrad",
           "location": "the alchemy inn, oxenfurt",
           "character": "stjepan"
         },
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "kingfisher inn",
-          "character": "innkeeper"
+          "territory": "Novigrad",
+          "location": "Kingfisher Inn",
+          "character": "Innkeeper"
         }
       ],
       "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed."
@@ -461,9 +461,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "skellige",
-          "location": "kaer trolde harbor",
-          "character": "sjusta the tailor"
+          "territory": "Skellige",
+          "location": "Kaer Trolde harbor",
+          "character": "Sjusta the Tailor"
         }
       ],
       "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed."
@@ -478,15 +478,15 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "novigrad",
-          "location": "the alchemy inn, oxenfurt",
-          "character": "stjepan"
+          "territory": "Novigrad",
+          "location": "The Alchemy Inn, Oxenfurt",
+          "character": "Stjepan"
         },
         {
           "type": "buy",
-          "territory": "novigrad or velen",
-          "location": "kingfisher inn or circus camp near carsten",
-          "character": "innkeeper or trader"
+          "territory": "Novigrad or Velen",
+          "location": "Kingfisher Inn or Circus camp near Carsten",
+          "character": "Innkeeper or trader"
         }
       ],
       "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed."

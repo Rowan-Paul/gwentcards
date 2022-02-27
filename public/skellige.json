@@ -45,9 +45,9 @@
       "locations": [
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "barrel and bung inn, flovile",
-          "character": "innkeep"
+          "territory": "Toussaint",
+          "location": "Barrel and Bung Inn, Flovile",
+          "character": "Innkeep"
         }
       ],
       "abilities": ["Hero"],
@@ -66,9 +66,9 @@
         { "type": "base deck" },
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "castel ravello vineyard",
-          "character": "herbalist"
+          "territory": "Toussaint",
+          "location": "Castel Ravello vineyard",
+          "character": "Herbalist"
         }
       ],
       "isDLC": true,
@@ -84,9 +84,9 @@
       "locations": [
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "shop next to grandmaster smith shop (east of the pheasantry)",
-          "character": "merchant"
+          "territory": "Toussaint",
+          "location": "Shop next to grandmaster smith shop (east of the Pheasantry)",
+          "character": "Merchant"
         }
       ],
       "effect": "scorch",
@@ -104,13 +104,13 @@
         { "type": "base deck" },
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "the cockatrice inn",
-          "character": "innkeep"
+          "territory": "Toussaint",
+          "location": "The Cockatrice Inn",
+          "character": "Innkeep"
         },
         {
           "type": "win",
-          "territory": "toussaint",
+          "territory": "Toussaint",
           "location": "francollarts",
           "character": "armorer"
         }
@@ -173,9 +173,9 @@
       "locations": [
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "pheasantry",
-          "character": "innkeep"
+          "territory": "Toussaint",
+          "location": "Pheasantry",
+          "character": "Innkeep"
         }
       ],
       "effect": "commander's horn",
@@ -192,9 +192,9 @@
       "locations": [
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "the scarlet cardinal inn, francollarts",
-          "character": "innkeepress"
+          "territory": "Toussaint",
+          "location": "The Scarlet Cardinal Inn, Francollarts",
+          "character": "Innkeepress"
         }
       ],
       "abilities": ["Hero"],
@@ -233,9 +233,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "toussaint",
-          "location": "the pheasantry, hauteville",
-          "character": "ducal camerlengo (quest: gwent: turn, turn, tournament)"
+          "territory": "Toussaint",
+          "location": "The Pheasantry, Hauteville",
+          "character": "Ducal Cmerlengo (quest: GWENT: Turn, Turn, Tournament)"
         }
       ],
       "notes": "units only lose half their strength in bad weather conditions.",
@@ -254,7 +254,7 @@
         { "type": "base deck" },
         {
           "type": "win",
-          "territory": "toussaint",
+          "territory": "Toussaint",
           "location": "alchemy shop north of the pheasantry",
           "character": "perfumery merchant"
         }
@@ -285,15 +285,15 @@
         { "type": "base deck" },
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "east of grandmaster smith in beauclair",
-          "character": "herbalist"
+          "territory": "Toussaint",
+          "location": "East of grandmaster smith in Beauclair",
+          "character": "Herbalist"
         },
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "the belles of beauclair inkeep, san sebastian",
-          "character": "madame"
+          "territory": "Toussaint",
+          "location": "The Belles of Beauclair innkeep, San Sebastian",
+          "character": "Madame"
         }
       ],
       "isDLC": true,
@@ -309,9 +309,9 @@
       "locations": [
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "adder and jewels winery",
-          "character": "innkeep"
+          "territory": "Toussaint",
+          "location": "Adder and Jewels winery",
+          "character": "Innkeep"
         }
       ],
       "abilities": ["morale boost"],
@@ -353,9 +353,9 @@
         { "type": "base deck" },
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "tourney grounds",
-          "character": "innkeep"
+          "territory": "Toussaint",
+          "location": "Tourney Grounds",
+          "character": "Innkeep"
         }
       ],
       "abilities": ["Tight Bond"],
@@ -373,15 +373,15 @@
         { "type": "base deck" },
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "tourney grounds",
-          "character": "blacksmith"
+          "territory": "Toussaint",
+          "location": "Tourney Grounds",
+          "character": "Blacksmith"
         },
         {
           "type": "win",
-          "territory": "toussaint",
-          "location": "tailor's workshop, beauclair market",
-          "character": "pierre"
+          "territory": "Toussaint",
+          "location": "Tailor's workshop, Beauclair market",
+          "character": "Pierre"
         }
       ],
       "isDLC": true,

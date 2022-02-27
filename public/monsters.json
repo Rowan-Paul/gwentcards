@@ -48,9 +48,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "the new port, kaer trolde harbor, spikeroog",
-          "character": "jonas the innkeeper"
+          "territory": "Skellige",
+          "location": "The New Port, Kaer Trolde harbor, Spikeroog",
+          "character": "Jonas the Innkeeper"
         }
       ]
     },
@@ -94,9 +94,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "velen",
-          "location": "benek",
-          "character": "seer (old sage)"
+          "territory": "Velen",
+          "location": "Benek",
+          "character": "Seer (old sage)"
         }
       ]
     },
@@ -111,9 +111,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "arinbjorn",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Arinbjorn",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -128,9 +128,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "skellige",
-          "location": "kaer trolde, ard skellige",
-          "character": "crach an craite"
+          "territory": "Skellige",
+          "location": "Kaer Trolde, ard Skellige",
+          "character": "Crach an Craite"
         }
       ]
     },
@@ -144,9 +144,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "the new port, kaer trolde harbor, spikeroog",
-          "character": "jonas the innkeeper"
+          "territory": "Skellige",
+          "location": "The New Port, Kaer Trolde harbor, Spikeroog",
+          "character": "Jonas the Innkeeper"
         }
       ]
     },
@@ -159,9 +159,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "velen",
-          "location": "upper mill",
-          "character": " dulla kh'amanni"
+          "territory": "Velen",
+          "location": "Upper mill",
+          "character": "Dulla Kh'amanni"
         }
       ],
       "notes": "doubles the strength of all spy cards (affects both players).",
@@ -177,9 +177,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "velen",
-          "location": "novigrad",
-          "character": "count tybalt (quest high stakes)"
+          "territory": "Velen",
+          "location": "Novigrad",
+          "character": "Count Tybalt (quest high stakes)"
         }
       ],
       "notes": "restore a card from your discard pile to your hand."
@@ -193,9 +193,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "the new port, kaer trolde harbor, spikeroog",
-          "character": "jonas the innkeeper"
+          "territory": "Skellige",
+          "location": "The New Port, Kaer Trolde harbor, Spikeroog",
+          "character": "Jonas the Innkeeper"
         }
       ],
       "notes": "double the strength of all your close combat units (unless a commander's horn is also present on that row)."
@@ -209,7 +209,7 @@
       "locations": [
         {
           "type": "quest",
-          "location": "won after completing gwent: velen players"
+          "location": "Won after completing GWENT: Velen players"
         }
       ],
       "notes": "discard 2 card and draw 1 card of your choice from your deck."
@@ -233,9 +233,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "arinbjorn",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Arinbjorn",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -258,9 +258,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "svorlag, spikeroog",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Svorlag, Spikeroog",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -304,9 +304,9 @@
         { "type": "random" },
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "harviken tavern, faroe",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Harviken tavern, Faroe",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -338,9 +338,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "harviken tavern, faroe",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Harviken tavern, Faroe",
+          "character": "Innkeeper"
         }
       ],
       "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed."
@@ -355,9 +355,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "svorlag, spikeroog",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Svorlag, Spikeroog",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -393,9 +393,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "skellige",
-          "location": "gedyneith, ard skellig",
-          "character": "ermion"
+          "territory": "Skellige",
+          "location": "Gedyneith, ard Skellig",
+          "character": "Ermion"
         }
       ]
     },
@@ -410,15 +410,15 @@
         { "type": "random" },
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "harviken, faroe",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Harviken, Faroe",
+          "character": "Innkeeper"
         },
         {
           "type": "quest",
-          "territory": "skellige",
-          "location": "trottheim",
-          "character": "hammonds corpse"
+          "territory": "Skellige",
+          "location": "Trottheim",
+          "character": "Hammonds Corpse"
         }
       ]
     },
@@ -438,7 +438,7 @@
       "deck": "Monsters",
       "row": "ranged",
       "strength": 7,
-      "locations": [{ "type": "win", "territory": "velen", "character": "olgierd von everec" }],
+      "locations": [{ "type": "win", "territory": "Velen", "character": "Olgierd von Everec" }],
       "effect": "scorch",
       "isDLC": true,
       "expansion": "hearts of stone"
@@ -455,8 +455,8 @@
         {
           "type": "quest",
           "territory": "novigrad or toussaint",
-          "location": "vegelbud estate or temple cementary",
-          "character": "quest a matter of life and death or removing louis body in till death do you part"
+          "location": "Vegelbud estate or temple cementary",
+          "character": "Quest A Matter of Life and Death or removing Louis body in Till Death Do You Part"
         }
       ]
     },
@@ -471,9 +471,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "svorlag, spikeroog",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Svorlag, Spikeroog",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -488,9 +488,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "harviken tavern, faroe",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Harviken tavern, Faroe",
+          "character": "Innkeeper"
         }
       ]
     },
@@ -515,9 +515,9 @@
       "locations": [
         {
           "type": "quest",
-          "territory": "skellige",
-          "location": "kaer muire, ard skellig",
-          "character": "jarl madman lugos"
+          "territory": "Skellige",
+          "location": "Kaer Muire, ard Skellig",
+          "character": "Jarl Madman Lugos"
         }
       ]
     },
@@ -531,9 +531,9 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "urialla village, an skellig",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Urialla Village, an Skellig",
+          "character": "Innkeeper"
         }
       ]
     },
