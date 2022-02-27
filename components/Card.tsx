@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import { ICard } from '../pages';
 import CollectButton from './CollectButton';
 
 interface ICardProps {
@@ -12,6 +11,26 @@ interface IColumnProps {
   type: string;
   value: string | number;
   span?: number;
+}
+
+export interface ICard {
+  id: string;
+  image: string;
+  name: string;
+  deck: "Scoia'tael" | 'Monsters';
+  strength?: number;
+  row?: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
+  locations: {
+    type: string;
+    location?: string;
+    territory?: string;
+    character?: string;
+  }[];
+  notes?: any;
+  abilities?: any[];
+  isDLC?: boolean;
+  expansion?: 'hearts of stone' | 'blood and wine';
+  effect?: 'scorch' | 'weather' | "commander's horn" | 'summon avenger' | 'berserker' | 'mardroeme';
 }
 
 const Card = ({ card, setImage }: ICardProps): JSX.Element => {
@@ -46,15 +65,19 @@ const Card = ({ card, setImage }: ICardProps): JSX.Element => {
           </div>
           <div className="ml-auto">
             {isDLC && expansion === 'blood and wine' ? (
-              <Image src="/blood-and-wine.png" alt="Blood and wine icon" width="64" height="64" />
+              <Image src="/blood-and-wine.png" alt="Blood and wine icon" width="72" height="72" />
             ) : (
               expansion === 'hearts of stone' && (
-                <Image src="/hearts-of-stone.png" alt="Hearts of stone icon" width="64" height="64" />
+                <Image src="/hearts-of-stone.png" alt="Hearts of stone icon" width="72" height="72" />
               )
             )}
           </div>
         </div>
-        <CollectButton id={id} />
+        <div className="flex gap-4">
+          {locations.map((l: any, i: number) => (
+            <CollectButton key={`${id}-${i}`} id={id + i} location={`${i + 1}`} />
+          ))}
+        </div>
       </div>
     </>
   );

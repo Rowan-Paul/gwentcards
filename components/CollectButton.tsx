@@ -2,9 +2,10 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 interface IButtonProps {
   id: string;
+  location: string;
 }
 
-const CollectButton = ({ id }: IButtonProps): JSX.Element => {
+const CollectButton = ({ id, location }: IButtonProps): JSX.Element => {
   const queryClient = useQueryClient();
 
   const getData = async () => {
@@ -60,7 +61,7 @@ const CollectButton = ({ id }: IButtonProps): JSX.Element => {
         mutation.mutate({ id: id });
       }}
     >
-      {data?.collected.includes(id) ? '✅Collected' : 'Collect'}
+      {data?.collected.includes(id) ? `✅Collected` : `Collect #${location}`}
     </button>
   );
 };

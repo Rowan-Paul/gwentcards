@@ -2,26 +2,11 @@ import { useQuery } from 'react-query';
 import Head from 'next/head';
 import { useState } from 'react';
 
-import Card from '../components/Card';
+import Card, { ICard } from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
 
 interface ICards {
   cards: ICard[];
-}
-
-export interface ICard {
-  id: string;
-  image: string;
-  name: string;
-  deck: "Scoia'tael" | 'Monsters';
-  strength?: number;
-  row?: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
-  locations?: any;
-  notes?: any;
-  abilities?: any[];
-  isDLC?: boolean;
-  expansion?: 'hearts of stone' | 'blood and wine';
-  effect?: 'scorch' | 'weather' | "commander's horn" | 'summon avenger' | 'berserker' | 'mardroeme';
 }
 
 const Home = (): JSX.Element => {
