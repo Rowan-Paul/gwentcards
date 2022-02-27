@@ -4,7 +4,7 @@ interface IButtonProps {
   id: string;
 }
 
-const CollectButton = ({ id }: IButtonProps) => {
+const CollectButton = ({ id }: IButtonProps): JSX.Element => {
   const queryClient = useQueryClient();
 
   const getData = async () => {

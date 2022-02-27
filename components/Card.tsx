@@ -20,7 +20,7 @@ interface IColumnProps {
   span?: number;
 }
 
-const Card = ({ card, setImage }: ICardProps) => {
+const Card = ({ card, setImage }: ICardProps): JSX.Element => {
   const { id, image, name, deck, strength, row } = card;
 
   return (

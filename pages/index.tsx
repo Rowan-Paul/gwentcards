@@ -1,10 +1,9 @@
 import { useQuery } from 'react-query';
 import Head from 'next/head';
+import { useState } from 'react';
 
-import type { NextPage } from 'next';
 import Card from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
-import { useState } from 'react';
 
 interface ICards {
   cards: ICard[];
@@ -25,7 +24,7 @@ interface ICard {
   effect?: any;
 }
 
-const Home: NextPage = () => {
+const Home = (): JSX.Element => {
   const [imageCard, setImageCard] = useState('');
   const [showImage, setShowImage] = useState(false);
 
