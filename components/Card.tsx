@@ -1,16 +1,10 @@
 import Image from 'next/image';
 
+import { ICard } from '../pages';
 import CollectButton from './CollectButton';
 
 interface ICardProps {
-  card: {
-    id: string;
-    image: string;
-    name: string;
-    deck: "Scoia'tael" | 'Monsters';
-    strength?: number;
-    row?: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
-  };
+  card: ICard;
   setImage: any;
 }
 
@@ -21,31 +15,43 @@ interface IColumnProps {
 }
 
 const Card = ({ card, setImage }: ICardProps): JSX.Element => {
-  const { id, image, name, deck, strength, row } = card;
+  const { id, image, name, deck, strength, row, locations, notes, abilities, isDLC, expansion, effect } = card;
 
   return (
     <>
       <div className="bg-gradient-to-r from-cyan-400 to-blue-400 p-3 drop-shadow-md">
-        <div className="hidden md:grid grid-cols-6 justify-center items-center gap-8">
+        <div className="flex gap-8">
           <div onClick={() => setImage(image)} className="cursor-pointer">
             <Image src={image} alt={`${name} card`} width="75" height="142" />
           </div>
-          <Column type="Card" value={name} span={2} />
-          <Column type="Deck" value={deck} />
-          {strength && <Column type="Strength" value={strength} />}
-          {row && <Column type="Row" value={row.charAt(0).toUpperCase() + row.slice(1)} />}
-        </div>
-        <div className="grid md:hidden grid-cols-4 justify-center items-center gap-4">
-          <div onClick={() => setImage(image)} className="cursor-pointer">
-            <Image src={image} alt={`${name} card`} width="75" height="142" />
+          <div>
+            <div className="font-bold h-12">{name}</div>
+            <div>{deck} deck</div>
+            {strength ? <div>{strength} strength</div> : <div className="italic text-sm h-6">No strength</div>}
+            {row ? (
+              <div>{row.charAt(0).toUpperCase() + row.slice(1)} row</div>
+            ) : (
+              <div className="italic text-sm h-6">Not on a row</div>
+            )}
+            {effect ? (
+              <div>{effect.charAt(0).toUpperCase() + effect.slice(1)} effect</div>
+            ) : (
+              <div className="italic text-sm h-6">No effects</div>
+            )}
+            {abilities ? (
+              <div>Abilities: {abilities.toString()}</div>
+            ) : (
+              <div className="italic text-sm h-6">No abilities</div>
+            )}
           </div>
-          <div className="flex flex-col gap-2 col-span-2">
-            <Column type="Card" value={name} />
-            <Column type="Deck" value={deck} />
-          </div>
-          <div className="flex flex-col gap-2">
-            {strength && <Column type="Strength" value={strength} />}
-            {row && <Column type="Row" value={row.charAt(0).toUpperCase() + row.slice(1)} />}
+          <div className="ml-auto">
+            {isDLC && expansion === 'blood and wine' ? (
+              <Image src="/blood-and-wine.png" alt="Blood and wine icon" width="64" height="64" />
+            ) : (
+              expansion === 'hearts of stone' && (
+                <Image src="/hearts-of-stone.png" alt="Hearts of stone icon" width="64" height="64" />
+              )
+            )}
           </div>
         </div>
         <CollectButton id={id} />

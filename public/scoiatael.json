@@ -98,7 +98,7 @@
     {
       "id": "5A0D1F3F-3F15-4B64-807C-B14A214D0B78",
       "image": "/images/eithne.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Eithné",
       "deck": "Scoia'tael",
       "row": "ranged",
@@ -115,7 +115,7 @@
     {
       "id": "39C4D32F-1B9D-4BA5-98F3-2DE797F8AA9C",
       "image": "/images/elven-skirmisher.png",
-      "abilities": ["muster"],
+      "abilities": ["Muster"],
       "name": "Elven Skirmisher",
       "deck": "Scoia'tael",
       "row": "ranged",
@@ -217,7 +217,7 @@
     {
       "id": "D43CB3B1-0491-41FE-84D8-F76D5584FB4B",
       "image": "/images/havekar-healer.png",
-      "abilities": ["medic"],
+      "abilities": ["Medic"],
       "name": "Havekar Healer",
       "deck": "Scoia'tael",
       "row": "ranged",
@@ -247,7 +247,7 @@
     {
       "id": "7975F9C3-B1FD-4C17-8DF5-0A382674AACF",
       "image": "/images/havekar-smuggler.png",
-      "abilities": ["muster"],
+      "abilities": ["Muster"],
       "name": "Havekar Smuggler",
       "deck": "Scoia'tael",
       "row": "close",
@@ -286,7 +286,7 @@
     {
       "id": "D79CF906-ECE0-405A-8CCC-18A7A43626CE",
       "image": "/images/iorveth.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Iorveth",
       "deck": "Scoia'tael",
       "row": "ranged",
@@ -296,7 +296,7 @@
     {
       "id": "DE3C0C25-EC12-44D3-8C33-2D23577EA169",
       "image": "/images/isengrim-faoiltiarna.png",
-      "abilities": ["hero", "morale boost"],
+      "abilities": ["Hero", "morale boost"],
       "name": "Isengrim Faoiltiarna",
       "deck": "Scoia'tael",
       "row": "close",
@@ -312,7 +312,7 @@
     {
       "id": "81C34C21-6C0C-4D3C-8B67-8779E89C3902",
       "image": "/images/mahakaman-defender.png",
-      "abilities": ["muster"],
+      "abilities": ["Muster"],
       "name": "Mahakaman Defender",
       "deck": "Scoia'tael",
       "row": "close",
@@ -420,7 +420,7 @@
     {
       "id": "DF3AE767-FC5A-4783-BB65-7D8150A70420",
       "image": "/images/toruviel.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Toruviel",
       "deck": "Scoia'tael",
       "row": "ranged",

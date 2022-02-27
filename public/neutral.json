@@ -31,7 +31,7 @@
           "location": "won after completing gwent: big city players"
         }
       ],
-      "abilities": ["hero"]
+      "abilities": ["Hero"]
     },
     {
       "id": "13a1e4a7-30e2-40cb-9437-4fa287c42897",
@@ -161,7 +161,7 @@
           "character": "hilbert (quest open sesame!)"
         }
       ],
-      "abilities": ["muster"],
+      "abilities": ["Muster"],
       "isDLC": true,
       "expansion": "hearts of stone"
     },
@@ -192,7 +192,7 @@
           "character": "trader"
         }
       ],
-      "abilities": ["muster"],
+      "abilities": ["Muster"],
       "isDLC": true,
       "expansion": "hearts of stone"
     },
@@ -211,7 +211,7 @@
           "character": "thaler (quest: gwent: playing thaler)"
         }
       ],
-      "abilities": ["hero"]
+      "abilities": ["Hero"]
     },
     {
       "id": "6fdd2c57-adc7-4cca-a9cd-0d5cd9502b1f",
@@ -237,7 +237,7 @@
           "character": "gremist (quest gwent: skellige style)"
         }
       ],
-      "abilities": ["hero", "spy"],
+      "abilities": ["Hero", "spy"],
       "notes": "after completing practicum in advanced alchemy"
     },
     {
@@ -373,7 +373,7 @@
           "character": "stjepan (quest: gwent: playing innkeeps)"
         }
       ],
-      "abilities": ["hero", "medic"]
+      "abilities": ["Hero", "Medic"]
     },
     {
       "id": "b5d95498-24b8-43b5-a0d1-dfb3fccacdb4",

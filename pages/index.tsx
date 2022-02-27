@@ -9,7 +9,7 @@ interface ICards {
   cards: ICard[];
 }
 
-interface ICard {
+export interface ICard {
   id: string;
   image: string;
   name: string;
@@ -19,9 +19,9 @@ interface ICard {
   locations?: any;
   notes?: any;
   abilities?: any[];
-  isDLC?: any;
-  expansion?: any;
-  effect?: any;
+  isDLC?: boolean;
+  expansion?: 'hearts of stone' | 'blood and wine';
+  effect?: 'scorch' | 'weather' | "commander's horn" | 'summon avenger' | 'berserker' | 'mardroeme';
 }
 
 const Home = (): JSX.Element => {

@@ -149,7 +149,7 @@
     {
       "id": "cb93a4f4-94eb-459e-8789-aa4bf86e293b",
       "image": "/images/etolian-auxiliary-archers.png",
-      "abilities": ["medic"],
+      "abilities": ["Medic"],
       "name": "Etolian Auxiliary Archers",
       "deck": "Nilfgaard",
       "row": "ranged",
@@ -204,7 +204,7 @@
     {
       "id": "ed507d0d-a119-41ae-83f4-c9b11905031f",
       "image": "/images/impera-brigade-guard.png",
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "name": "Impera Brigade Guard",
       "deck": "Nilfgaard",
       "row": "close",
@@ -239,7 +239,7 @@
     {
       "id": "ec2b7041-4ccf-4cb7-905e-a100f67612c2",
       "image": "/images/letho-of-gulet.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Letho of Gulet",
       "deck": "Nilfgaard",
       "row": "close",
@@ -256,7 +256,7 @@
     {
       "id": "90c81f5d-2aca-4899-a8c8-c841aca22b20",
       "image": "/images/menno-coehoorn.png",
-      "abilities": ["hero", "medic"],
+      "abilities": ["Hero", "Medic"],
       "name": "Menno Coehoorn",
       "deck": "Nilfgaard",
       "row": "close",
@@ -289,7 +289,7 @@
     {
       "id": "34de95f1-9338-4828-86eb-d5879e296f8b",
       "image": "/images/morvran-voorhis.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Morvran Voorhis",
       "deck": "Nilfgaard",
       "row": "siege",
@@ -306,7 +306,7 @@
     {
       "id": "160c34f4-0894-4b61-9837-cbd0c25a1b40",
       "image": "/images/nausicaa-cavalry-rider.png",
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "name": "Nausicaa Cavalry Rider",
       "deck": "Nilfgaard",
       "row": "close",
@@ -419,7 +419,7 @@
     {
       "id": "64c3dbe2-5976-465e-a66c-454201812639",
       "image": "/images/siege-technician.png",
-      "abilities": ["medic"],
+      "abilities": ["Medic"],
       "name": "Siege Technician",
       "deck": "Nilfgaard",
       "row": "siege",
@@ -463,7 +463,7 @@
     {
       "id": "ab67ef7c-97c8-4f99-bc46-1c6098b6f89e",
       "image": "/images/tibor-eggebracht.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Tibor Eggebracht",
       "deck": "Nilfgaard",
       "row": "ranged",
@@ -508,7 +508,7 @@
     {
       "id": "c52d8638-3b04-402e-9522-8e7a5210bbb2",
       "image": "/images/young-emmisary.png",
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "name": "Young Emmisary",
       "deck": "Nilfgaard",
       "row": "close",

@@ -20,7 +20,7 @@
       "row": "close",
       "strength": 2,
       "locations": [{ "type": "base deck" }],
-      "abilities": ["medic"],
+      "abilities": ["Medic"],
       "isDLC": true,
       "expansion": "blood and wine"
     },
@@ -50,7 +50,7 @@
           "character": "innkeep"
         }
       ],
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "isDLC": true,
       "expansion": "blood and wine"
     },
@@ -115,7 +115,7 @@
           "character": "armorer"
         }
       ],
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "isDLC": true,
       "expansion": "blood and wine"
     },
@@ -138,7 +138,7 @@
       "row": "close",
       "strength": 6,
       "locations": [{ "type": "base deck" }],
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "isDLC": true,
       "expansion": "blood and wine"
     },
@@ -197,7 +197,7 @@
           "character": "innkeepress"
         }
       ],
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "effect": "mardroeme",
       "isDLC": true,
       "expansion": "blood and wine"
@@ -210,7 +210,7 @@
       "row": "ranged",
       "strength": 10,
       "locations": [{ "type": "base deck" }],
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "isDLC": true,
       "expansion": "blood and wine"
     },
@@ -259,7 +259,7 @@
           "character": "perfumery merchant"
         }
       ],
-      "abilities": ["muster"],
+      "abilities": ["Muster"],
       "isDLC": true,
       "expansion": "blood and wine"
     },
@@ -358,7 +358,7 @@
           "character": "innkeep"
         }
       ],
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "isDLC": true,
       "expansion": "blood and wine"
     },

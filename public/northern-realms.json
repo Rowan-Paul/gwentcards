@@ -12,7 +12,7 @@
     {
       "id": "e4f7c030-a5fc-478c-be47-908bc8479413",
       "image": "/images/blue-stripes-commando.png",
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "name": "Blue Stripes Commando",
       "deck": "Northern Realms",
       "row": "close",
@@ -31,7 +31,7 @@
     {
       "id": "46f867b5-c59a-4f09-8d90-9b150de7f2d7",
       "image": "/images/catapult.png",
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "name": "Catapult",
       "deck": "Northern Realms",
       "row": "siege",
@@ -54,7 +54,7 @@
     {
       "id": "381ca755-1c80-4b2c-b6bd-baf2291f9da4",
       "image": "/images/crinfrid-reavers-dragon-hunter.png",
-      "abilities": ["tight bond"],
+      "abilities": ["Tight Bond"],
       "name": "Crinfrid Reavers Dragon Hunter",
       "deck": "Northern Realms",
       "row": "ranged",
@@ -92,8 +92,8 @@
     },
     {
       "id": "b06f5ce2-c2ae-442d-9cfa-498a46036ba1",
-      "image": "/images/dun-banner-medic.png",
-      "abilities": ["medic"],
+      "image": "/images/dun-banner-Medic.png",
+      "abilities": ["Medic"],
       "name": "Dun Banner Medic",
       "deck": "Northern Realms",
       "row": "siege",
@@ -103,7 +103,7 @@
     {
       "id": "f78a6eeb-7966-4a75-a796-80478f947617",
       "image": "/images/esterad-thyssen.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Esterad Thyssen",
       "deck": "Northern Realms",
       "row": "close",
@@ -195,7 +195,7 @@
     {
       "id": "70c9cf72-3e1c-45d7-b411-857b70713e35",
       "image": "/images/john-natalis.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "John Natalis",
       "deck": "Northern Realms",
       "row": "close",
@@ -231,7 +231,7 @@
     {
       "id": "5d509af7-ced5-49ea-8da1-eaca0ec4034a",
       "image": "/images/philippa-eilhart.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Philippa Eilhart",
       "deck": "Northern Realms",
       "row": "ranged",
@@ -367,7 +367,7 @@
     {
       "id": "d366f6ac-7f36-4602-939c-9ccffa73a1af",
       "image": "/images/vernon-roche.png",
-      "abilities": ["hero"],
+      "abilities": ["Hero"],
       "name": "Vernon Roche",
       "deck": "Northern Realms",
       "row": "close",
