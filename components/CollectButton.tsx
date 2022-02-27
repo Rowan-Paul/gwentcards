@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 interface IButtonProps {
@@ -54,15 +55,20 @@ const CollectButton = ({ id, location }: IButtonProps): JSX.Element => {
   );
 
   return (
-    <button
-      className="text-center w-full bg-purple-500 drop-shadow-lg p-2 my-2 hover:bg-indigo-600 text-white"
-      onClick={() => {
-        // @ts-ignore
-        mutation.mutate({ id: id });
-      }}
-    >
-      {data?.collected.includes(id) ? `✅Collected` : `Collect #${location}`}
-    </button>
+    <div className="flex w-full bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid">
+      <div
+        className="grow text-center text-sm text-white p-2 hover:bg-indigo-600"
+        onClick={() => {
+          // @ts-ignore
+          mutation.mutate({ id: id });
+        }}
+      >
+        {data?.collected.includes(id) ? `✅ Collected` : `Collect ${location}`}
+      </div>
+      <div className="flex py-2 px-3 hover:bg-indigo-600">
+        <Image src="/open.svg" alt="Open location modal" width="12" height="12" />
+      </div>
+    </div>
   );
 };
 

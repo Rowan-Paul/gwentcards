@@ -11,21 +11,21 @@
       "locations": [
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "arinbjorn",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Arinbjorn",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "urialla village, an skellig",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Urialla village, an Skellig",
+          "character": "Innkeeper"
         },
         {
           "type": "buy",
-          "territory": "skellige",
-          "location": "svorlag, spikeroog",
-          "character": "innkeeper"
+          "territory": "Skellige",
+          "location": "Svorlag, Spikeroog",
+          "character": "Innkeeper"
         }
       ]
     },

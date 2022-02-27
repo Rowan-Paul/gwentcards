@@ -39,19 +39,22 @@ const Home = (): JSX.Element => {
       </Head>
 
       <ExpandedImage image={imageCard} showImage={showImage} setShowImage={() => setShowImage(!showImage)} />
-      <div className="p-2 md:p-10 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
-        {cardsQuery.data?.cards?.map((c) => {
-          return (
-            <Card
-              key={c.id}
-              card={c}
-              setImage={(img: string) => {
-                setImageCard(img);
-                setShowImage(true);
-              }}
-            />
-          );
-        })}
+      <div className="p-2 md:p-10">
+        <div>Total cards: {cardsQuery.data?.cards?.length}</div>
+        <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+          {cardsQuery.data?.cards?.map((c) => {
+            return (
+              <Card
+                key={c.id}
+                card={c}
+                setImage={(img: string) => {
+                  setImageCard(img);
+                  setShowImage(true);
+                }}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );
