@@ -43,6 +43,12 @@ const Home: NextPage = () => {
         Accept: 'application/json'
       }
     }).then((data) => data.json());
+    const nilfgaard = await fetch('/nilfgaard.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    }).then((data) => data.json());
 
     if (
       !scoiatael?.cards ||
@@ -50,13 +56,15 @@ const Home: NextPage = () => {
       !monsters?.cards ||
       monsters?.cards?.length < 1 ||
       !neutral?.cards ||
-      neutral?.cards?.length < 1
+      neutral?.cards?.length < 1 ||
+      !nilfgaard?.cards ||
+      nilfgaard?.cards?.length < 1
     ) {
       throw new Error('Cards request failed or no results');
     }
 
     return {
-      cards: [...scoiatael?.cards, ...monsters?.cards, ...neutral?.cards].sort(function (a, b) {
+      cards: [...scoiatael?.cards, ...monsters?.cards, ...neutral?.cards, ...nilfgaard?.cards].sort(function (a, b) {
         if (a.name < b.name) {
           return -1;
         }

@@ -1,0 +1,548 @@
+{
+  "cards": [
+    {
+      "id": "e2666d0a-d7d1-4790-ae3d-a16605653bdb",
+      "image": "/images/albrich.png",
+      "name": "Albrich",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 2,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crow's perch",
+          "character": "trader"
+        }
+      ]
+    },
+    {
+      "id": "e29a2985-3c10-4256-a892-bf2226915d46",
+      "image": "/images/assire-var-anahid.png",
+      "name": "Assire var Anahid",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 6,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "956ae7da-4193-4114-8b83-dc6af8ff1f0e",
+      "image": "/images/black-infantry-archer.png",
+      "name": "Black Infantry Archer",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 10,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "claywich village",
+          "character": "trader"
+        },
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "lindenvale",
+          "character": "merchant"
+        }
+      ],
+      "notes": "the claywich trader needs to be rescued first"
+    },
+    {
+      "id": "c25330e6-64db-45ec-9aad-ab096f3872bd",
+      "image": "/images/cahir-mawr-dyffryn-aep-ceallach.png",
+      "name": "Cahir Mawr Dyffryn aep Ceallach",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 6,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "f13d4455-f306-4f8d-8a94-6dfd3be87193",
+      "image": "/images/cynthia.png",
+      "name": "Cynthia",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 4,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crow's perch",
+          "character": "quartermasters baron's store"
+        }
+      ]
+    },
+    {
+      "id": "392d4373-0470-406b-8f55-920d1d292087",
+      "image": "/images/emhyr-var-emreis-emperor-of-nilfgaard.png",
+      "name": "Emhyr var Emreis: Emperor of Nilfgaard",
+      "deck": "Nilfgaard",
+      "row": "leader",
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crossroad inn",
+          "character": "innkeeper"
+        }
+      ],
+      "notes": "emperor of nilfgaard: look at 3 random cards from your opponent's hand."
+    },
+    {
+      "id": "72711b85-7659-4669-a63a-0a2385e6d1b7",
+      "image": "/images/emhyr-var-emreis-his-imperial-majesty.png",
+      "name": "Emhyr var Emreis: His Imperial Majesty",
+      "deck": "Nilfgaard",
+      "row": "leader",
+      "locations": [{ "type": "base deck" }],
+      "notes": "his imperial majesty: pick a torrential rain card from your deck and play it instantly."
+    },
+    {
+      "id": "eb8b3650-a3c0-49f6-845a-881c06abd83e",
+      "image": "/images/emhyr-var-emreis-invader-of-the-north.png",
+      "name": "Emhyr var Emreis: Invader of the North",
+      "deck": "Nilfgaard",
+      "row": "leader",
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "near carsten (nw) and west from vegelbud residence",
+          "character": "trader"
+        }
+      ],
+      "notes": "invader of the north: abilities that restore a unit to the battlefield restore a randomly-chosen unit. affects both players.",
+      "isDLC": true,
+      "expansion": "hearts of stone"
+    },
+    {
+      "id": "6c0e89e2-7076-445e-ba90-b7dd5411f069",
+      "image": "/images/emhyr-var-emreis-the-relentless.png",
+      "name": "Emhyr var Emreis: The Relentless",
+      "deck": "Nilfgaard",
+      "row": "leader",
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "novigrad",
+          "location": "passiflora",
+          "character": "sasha (quest high stakes)"
+        }
+      ],
+      "notes": "the relentless: draw a card from your opponent's discard pile."
+    },
+    {
+      "id": "3c16124a-bddb-4e7d-8c34-f285b6bec704",
+      "image": "/images/emhyr-var-emreis-the-white-flame.png",
+      "name": "Emhyr var Emreis: The White Flame",
+      "deck": "Nilfgaard",
+      "row": "leader",
+      "locations": [
+        {
+          "type": "quest",
+          "location": "won after completing gwent: skellige style"
+        }
+      ],
+      "notes": "the white flame: cancel your opponent's leader abilities."
+    },
+    {
+      "id": "cb93a4f4-94eb-459e-8789-aa4bf86e293b",
+      "image": "/images/etolian-auxiliary-archers.png",
+      "abilities": ["medic"],
+      "name": "Etolian Auxiliary Archers",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 1,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "lindenvale",
+          "character": "merchant"
+        },
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "claywhich village",
+          "character": "trader"
+        }
+      ],
+      "notes": "the merchant needs to be rescued first"
+    },
+    {
+      "id": "035f58e3-3032-40a2-9d40-42b3cfcc8ba1",
+      "image": "/images/fringilla-vigo.png",
+      "name": "Fringilla Vigo",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 6,
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "novigrad",
+          "location": "caesar bilzen's house (quest a dangerous game)"
+        }
+      ]
+    },
+    {
+      "id": "6227d0ba-ad84-4ae7-90fe-9cf051dd01d1",
+      "image": "/images/heavy-zerrikanian-fire-scorpion.png",
+      "name": "Heavy Zerrikanian Fire Scorpion",
+      "deck": "Nilfgaard",
+      "row": "siege",
+      "strength": 10,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "lindenvale",
+          "character": "trader"
+        }
+      ]
+    },
+    {
+      "id": "ed507d0d-a119-41ae-83f4-c9b11905031f",
+      "image": "/images/impera-brigade-guard.png",
+      "abilities": ["tight bond"],
+      "name": "Impera Brigade Guard",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 3,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crow's perch",
+          "character": "trader"
+        },
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crossroads inn",
+          "character": "innkeeper"
+        },
+        {
+          "type": "buy",
+          "territory": "novigrad",
+          "location": "seven cats inn",
+          "character": "innkeeper"
+        },
+        {
+          "type": "buy",
+          "territory": "novigrad",
+          "location": "cunny of the goose",
+          "character": "innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "ec2b7041-4ccf-4cb7-905e-a100f67612c2",
+      "image": "/images/letho-of-gulet.png",
+      "abilities": ["hero"],
+      "name": "Letho of Gulet",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 10,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "oreton",
+          "character": "boatbuilder"
+        }
+      ]
+    },
+    {
+      "id": "90c81f5d-2aca-4899-a8c8-c841aca22b20",
+      "image": "/images/menno-coehoorn.png",
+      "abilities": ["hero", "medic"],
+      "name": "Menno Coehoorn",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 10,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crow's perch",
+          "character": "quartermasters baron's store"
+        }
+      ]
+    },
+    {
+      "id": "08b610db-26c8-4b86-8c83-17e0a891d329",
+      "image": "/images/morteisen.png",
+      "name": "Morteisen",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 3,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "midcopse",
+          "character": "shopkeeper"
+        }
+      ]
+    },
+    {
+      "id": "34de95f1-9338-4828-86eb-d5879e296f8b",
+      "image": "/images/morvran-voorhis.png",
+      "abilities": ["hero"],
+      "name": "Morvran Voorhis",
+      "deck": "Nilfgaard",
+      "row": "siege",
+      "strength": 10,
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "novigrad",
+          "location": "passiflora",
+          "character": "marquise serenity (quest gwent: big city players)"
+        }
+      ]
+    },
+    {
+      "id": "160c34f4-0894-4b61-9837-cbd0c25a1b40",
+      "image": "/images/nausicaa-cavalry-rider.png",
+      "abilities": ["tight bond"],
+      "name": "Nausicaa Cavalry Rider",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 2,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crow's perch",
+          "character": "quartermasters baron's store"
+        },
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crossroad inn",
+          "character": "innkeeper"
+        },
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crow's perch",
+          "character": "trader"
+        }
+      ]
+    },
+    {
+      "id": "d5c82a94-f879-4c29-96cd-9d8d79289d77",
+      "image": "/images/puttkamer.png",
+      "name": "Puttkamer",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 3,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "claywich village",
+          "character": "trader"
+        }
+      ],
+      "notes": "the claywich trader needs to be rescued first"
+    },
+    {
+      "id": "95519a11-18a3-46f4-bfbc-3d978d7838b4",
+      "image": "/images/rainfarn.png",
+      "name": "Rainfarn",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 4,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "lindenvale",
+          "character": "merchant"
+        }
+      ],
+      "notes": "the claywich trader needs to be rescued first"
+    },
+    {
+      "id": "2e6fb264-289e-4728-8de8-8473dca670cf",
+      "image": "/images/renuald-aep-matsen.png",
+      "name": "Renuald aep Matsen",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 5,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "5cba1b05-4ef2-4b9d-8e86-31cbd50674f8",
+      "image": "/images/rotten-mangonel.png",
+      "name": "Rotten Mangonel",
+      "deck": "Nilfgaard",
+      "row": "siege",
+      "strength": 3,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "fc9448b5-f26f-4a3f-88d0-d98d3357c09c",
+      "image": "/images/shilard-fitz-oesterlen.png",
+      "abilities": ["spy"],
+      "name": "Shilard Fitz-Oesterlen",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 7,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "b0be0530-edee-44c6-8866-2f1dec6bc03f",
+      "image": "/images/siege-engineer.png",
+      "name": "Siege Engineer",
+      "deck": "Nilfgaard",
+      "row": "siege",
+      "strength": 6,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crossroad inn",
+          "character": "innkeeper"
+        },
+        {
+          "type": "buy",
+          "territory": "novigrad",
+          "location": "golden sturgeon",
+          "character": "innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "64c3dbe2-5976-465e-a66c-454201812639",
+      "image": "/images/siege-technician.png",
+      "abilities": ["medic"],
+      "name": "Siege Technician",
+      "deck": "Nilfgaard",
+      "row": "siege",
+      "strength": 0,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "novigrad or velen",
+          "location": "golden sturgeon or circus camp",
+          "character": "innkeeper or trader"
+        }
+      ]
+    },
+    {
+      "id": "18962ee3-f6a4-4887-80dc-18ce11384053",
+      "image": "/images/stefan-skellen.png",
+      "abilities": ["spy"],
+      "name": "Stefan Skellen",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 9,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "00c41ad4-bdef-4183-ae76-57d6f328f5b8",
+      "image": "/images/sweers.png",
+      "name": "Sweers",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 2,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "claywich village",
+          "character": "trader"
+        }
+      ],
+      "notes": "the claywich trader needs to be rescued first"
+    },
+    {
+      "id": "ab67ef7c-97c8-4f99-bc46-1c6098b6f89e",
+      "image": "/images/tibor-eggebracht.png",
+      "abilities": ["hero"],
+      "name": "Tibor Eggebracht",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 10,
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "novigrad",
+          "location": "kingfisher inn",
+          "character": "olivier (quest gwent: playing innkeeps)"
+        }
+      ]
+    },
+    {
+      "id": "0eee0d7a-b70b-49b9-90ad-119dd376ee86",
+      "image": "/images/vanhemar.png",
+      "name": "Vanhemar",
+      "deck": "Nilfgaard",
+      "row": "ranged",
+      "strength": 4,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "8a4293d2-7358-4d80-bde4-c85e620d8ef5",
+      "image": "/images/vattier-de-rideaux.png",
+      "abilities": ["spy"],
+      "name": "Vattier de Rideaux",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 4,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "82ed497d-b8e9-4b8b-8984-c61f80fcf91d",
+      "image": "/images/vreemde.png",
+      "name": "Vreemde",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 2,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "c52d8638-3b04-402e-9522-8e7a5210bbb2",
+      "image": "/images/young-emmisary.png",
+      "abilities": ["tight bond"],
+      "name": "Young Emmisary",
+      "deck": "Nilfgaard",
+      "row": "close",
+      "strength": 5,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "novigrad",
+          "location": "cunny of the goose",
+          "character": "innkeeper"
+        },
+        {
+          "type": "buy",
+          "territory": "novigrad",
+          "location": "seven cats inn",
+          "character": "innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "86552b79-b1fa-4745-b495-f3cf88244a2e",
+      "image": "/images/zerrikanian-fire-scorpion.png",
+      "name": "Zerrikanian Fire Scorpion",
+      "deck": "Nilfgaard",
+      "row": "siege",
+      "strength": 5,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "velen",
+          "location": "crow's perch",
+          "character": "trader"
+        }
+      ]
+    }
+  ]
+}
