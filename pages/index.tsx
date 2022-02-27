@@ -100,10 +100,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 m-2 md:m-10">
-        {cardsQuery.data?.cards?.map((c) => {
-          return <Card key={c.id} card={c} />;
-        })}
+      <div className="m-2 md:m-10">
+        <span>Total cards: {cardsQuery.data?.cards?.length}</span>
+        <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+          {cardsQuery.data?.cards?.map((c) => {
+            return <Card key={c.id} card={c} />;
+          })}
+        </div>
       </div>
     </>
   );
