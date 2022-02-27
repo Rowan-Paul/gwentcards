@@ -25,17 +25,11 @@ const Card = ({ card }: ICardProps) => {
   const [showImage, setShowImage] = useState(false);
   const wrapperRef: any = useRef(null);
 
-  const escFunction = useCallback(
+  const handleClose = useCallback(
     (event) => {
       if (event.key === 'Escape' && showImage) {
         setShowImage(false);
       }
-    },
-    [showImage]
-  );
-
-  const handleClickOutside = useCallback(
-    (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target) && showImage) {
         setShowImage(false);
       }
@@ -44,13 +38,13 @@ const Card = ({ card }: ICardProps) => {
   );
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', escFunction, false);
+    document.addEventListener('mousedown', handleClose);
+    document.addEventListener('keydown', handleClose, false);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', escFunction, false);
+      document.removeEventListener('mousedown', handleClose);
+      document.removeEventListener('keydown', handleClose, false);
     };
-  }, [wrapperRef, handleClickOutside, escFunction]);
+  }, [wrapperRef, handleClose]);
 
   useEffect(() => {
     if (showImage) {
