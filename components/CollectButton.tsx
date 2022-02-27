@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import LocationsModal from './LocationsModal';
 
 interface IButtonProps {
   id: string;
   location: string;
+  setShowLocations: any;
 }
 
-const CollectButton = ({ id, location }: IButtonProps): JSX.Element => {
+const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.Element => {
   const queryClient = useQueryClient();
 
   const getData = async () => {
@@ -65,7 +67,7 @@ const CollectButton = ({ id, location }: IButtonProps): JSX.Element => {
       >
         {data?.collected.includes(id) ? `✅ Collected` : `Collect ${location}`}
       </div>
-      <div className="flex py-2 px-3 hover:bg-indigo-600">
+      <div className="flex py-2 px-3 hover:bg-indigo-600" onClick={() => setShowLocations()}>
         <Image src="/open.svg" alt="Open location modal" width="12" height="12" />
       </div>
     </div>

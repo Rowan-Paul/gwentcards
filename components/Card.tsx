@@ -1,16 +1,12 @@
 import Image from 'next/image';
+import { useState } from 'react';
 
 import CollectButton from './CollectButton';
 
 interface ICardProps {
   card: ICard;
   setImage: any;
-}
-
-interface IColumnProps {
-  type: string;
-  value: string | number;
-  span?: number;
+  setLocations: any;
 }
 
 export interface ICard {
@@ -20,12 +16,7 @@ export interface ICard {
   deck: "Scoia'tael" | 'Monsters';
   strength?: number;
   row?: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
-  locations: {
-    type: string;
-    location?: string;
-    territory?: string;
-    character?: string;
-  }[];
+  locations: ILocation[];
   notes?: any;
   abilities?: any[];
   isDLC?: boolean;
@@ -33,7 +24,14 @@ export interface ICard {
   effect?: 'scorch' | 'weather' | "commander's horn" | 'summon avenger' | 'berserker' | 'mardroeme';
 }
 
-const Card = ({ card, setImage }: ICardProps): JSX.Element => {
+export interface ILocation {
+  type: string;
+  location?: string;
+  territory?: string;
+  character?: string;
+}
+
+const Card = ({ card, setImage, setLocations }: ICardProps): JSX.Element => {
   const { id, image, name, deck, strength, row, locations, notes, abilities, isDLC, expansion, effect } = card;
 
   return (
@@ -75,20 +73,16 @@ const Card = ({ card, setImage }: ICardProps): JSX.Element => {
         </div>
         <div className="flex gap-4">
           {locations.map((l: any, i: number) => (
-            <CollectButton key={`${id}-${i}`} id={id + i} location={`${i + 1}`} />
+            <CollectButton
+              key={`${id}-${i}`}
+              id={id + i}
+              location={`${i + 1}`}
+              setShowLocations={() => setLocations(locations)}
+            />
           ))}
         </div>
       </div>
     </>
-  );
-};
-
-const Column = ({ type, value, span }: IColumnProps) => {
-  return (
-    <div className={`flex flex-col col-span-${span || 1}`}>
-      <span className="font-bold">{type}</span>
-      <span>{value}</span>
-    </div>
   );
 };
 

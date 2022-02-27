@@ -2,8 +2,9 @@ import { useQuery } from 'react-query';
 import Head from 'next/head';
 import { useState } from 'react';
 
-import Card, { ICard } from '../components/Card';
+import Card, { ICard, ILocation } from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
+import LocationsModal from '../components/LocationsModal';
 
 interface ICards {
   cards: ICard[];
@@ -12,6 +13,8 @@ interface ICards {
 const Home = (): JSX.Element => {
   const [imageCard, setImageCard] = useState('');
   const [showImage, setShowImage] = useState(false);
+  const [showLocations, setShowLocations] = useState(false);
+  const [cardLocations, setCardLocations] = useState<ILocation[] | undefined>();
 
   const getCollectedData = () => {
     try {
@@ -39,6 +42,11 @@ const Home = (): JSX.Element => {
       </Head>
 
       <ExpandedImage image={imageCard} showImage={showImage} setShowImage={() => setShowImage(!showImage)} />
+      <LocationsModal
+        locations={cardLocations}
+        showLocations={showLocations}
+        setShowLocations={() => setShowLocations(!showLocations)}
+      />
       <div className="p-2 md:p-10">
         <div>Total cards: {cardsQuery.data?.cards?.length}</div>
         <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
@@ -50,6 +58,10 @@ const Home = (): JSX.Element => {
                 setImage={(img: string) => {
                   setImageCard(img);
                   setShowImage(true);
+                }}
+                setLocations={(locations: ILocation[]) => {
+                  setCardLocations(locations);
+                  setShowLocations(true);
                 }}
               />
             );
