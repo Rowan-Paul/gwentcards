@@ -1,9 +1,8 @@
 import { useQuery } from 'react-query';
-
-import Card from '../components/Card';
+import Head from 'next/head';
 
 import type { NextPage } from 'next';
-import Head from 'next/head';
+import Card from '../components/Card';
 
 interface ICards {
   cards: ICard[];

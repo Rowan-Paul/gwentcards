@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
+
 import CollectButton from './CollectButton';
 
 interface ICardProps {
@@ -91,10 +92,10 @@ const Card = ({ card }: ICardProps) => {
         <CollectButton id={id} />
       </div>
       <div
-        className={showImage ? 'absolute backdrop-blur w-screen h-screen z-40' : 'hidden'}
+        className={showImage ? 'fixed backdrop-blur w-screen h-screen z-40' : 'hidden'}
         onKeyPress={() => setShowImage(false)}
       >
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" ref={wrapperRef}>
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" ref={wrapperRef}>
           <Image src={image} alt={`${name} card`} width="250" height="500" />
         </div>
       </div>
