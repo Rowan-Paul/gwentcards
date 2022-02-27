@@ -15,7 +15,7 @@ interface ICard {
   name: string;
   deck: "Scoia'tael" | 'Monsters';
   strength?: number;
-  row: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
+  row?: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
   locations?: any;
   notes?: any;
   abilities?: any[];
@@ -38,13 +38,26 @@ const Home: NextPage = () => {
         Accept: 'application/json'
       }
     }).then((data) => data.json());
+    const neutral = await fetch('/neutral.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    }).then((data) => data.json());
 
-    if (!scoiatael?.cards || scoiatael?.cards?.length < 1 || !monsters?.cards || monsters?.cards?.length < 1) {
+    if (
+      !scoiatael?.cards ||
+      scoiatael?.cards?.length < 1 ||
+      !monsters?.cards ||
+      monsters?.cards?.length < 1 ||
+      !neutral?.cards ||
+      neutral?.cards?.length < 1
+    ) {
       throw new Error('Cards request failed or no results');
     }
 
     return {
-      cards: [...scoiatael?.cards, ...monsters?.cards].sort(function (a, b) {
+      cards: [...scoiatael?.cards, ...monsters?.cards, ...neutral?.cards].sort(function (a, b) {
         if (a.name < b.name) {
           return -1;
         }
