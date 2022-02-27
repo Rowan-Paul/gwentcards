@@ -55,7 +55,7 @@ const Home: NextPage = () => {
       </Head>
 
       <ExpandedImage image={imageCard} showImage={showImage} setShowImage={() => setShowImage(!showImage)} />
-      <div className="p-10 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+      <div className="p-2 md:p-10 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
         {cardsQuery.data?.cards?.map((c) => {
           return (
             <Card
@@ -104,6 +104,12 @@ const fetchCards = async (): Promise<ICards> => {
       Accept: 'application/json'
     }
   }).then((data) => data.json());
+  const skellige = await fetch('/skellige.json', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+  }).then((data) => data.json());
 
   if (
     !monsters?.cards ||
@@ -115,7 +121,9 @@ const fetchCards = async (): Promise<ICards> => {
     !northernRealms?.cards ||
     northernRealms?.cards?.length < 1 ||
     !scoiatael?.cards ||
-    scoiatael?.cards?.length < 1
+    scoiatael?.cards?.length < 1 ||
+    !skellige?.cards ||
+    skellige?.cards?.length < 1
   ) {
     throw new Error('Cards request failed or no results');
   }
@@ -126,7 +134,8 @@ const fetchCards = async (): Promise<ICards> => {
       ...monsters?.cards,
       ...neutral?.cards,
       ...nilfgaard?.cards,
-      ...northernRealms?.cards
+      ...northernRealms?.cards,
+      ...skellige?.cards
     ].sort(function (a, b) {
       if (a.name < b.name) {
         return -1;

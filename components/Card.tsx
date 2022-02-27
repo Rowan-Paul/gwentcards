@@ -27,7 +27,7 @@ const Card = ({ card, setImage }: ICardProps) => {
     <>
       <div className="bg-gradient-to-r from-cyan-400 to-blue-400 p-3 drop-shadow-md">
         <div className="hidden md:grid grid-cols-6 justify-center items-center gap-8">
-          <div onClick={() => setImage(image)}>
+          <div onClick={() => setImage(image)} className="cursor-pointer">
             <Image src={image} alt={`${name} card`} width="75" height="142" />
           </div>
           <Column type="Card" value={name} span={2} />
@@ -36,7 +36,7 @@ const Card = ({ card, setImage }: ICardProps) => {
           {row && <Column type="Row" value={row.charAt(0).toUpperCase() + row.slice(1)} />}
         </div>
         <div className="grid md:hidden grid-cols-4 justify-center items-center gap-4">
-          <div onClick={() => setImage(image)}>
+          <div onClick={() => setImage(image)} className="cursor-pointer">
             <Image src={image} alt={`${name} card`} width="75" height="142" />
           </div>
           <div className="flex flex-col gap-2 col-span-2">

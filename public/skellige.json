@@ -1,0 +1,391 @@
+{
+  "cards": [
+    {
+      "id": "9ce5b346-316e-491b-ac2e-134b7d4a2176",
+      "image": "/images/berserker.png",
+      "name": "Berserker",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 4,
+      "locations": [{ "type": "base deck" }],
+      "effect": "berserker",
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "a2fce733-a280-473d-9044-34394dce0e21",
+      "image": "/images/birna-bran.png",
+      "name": "Birna Bran",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 2,
+      "locations": [{ "type": "base deck" }],
+      "abilities": ["medic"],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "f6ad9723-c972-47a0-bf04-9986e7295603",
+      "image": "/images/blueboy-lugos.png",
+      "name": "Blueboy Lugos",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 6,
+      "locations": [{ "type": "base deck" }],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "d24b1754-c1f6-4417-a438-3096acd52175",
+      "image": "/images/cerys.png",
+      "name": "Cerys",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 4,
+      "locations": [
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "barrel and bung inn, flovile",
+          "character": "innkeep"
+        }
+      ],
+      "abilities": ["hero"],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "c5de3714-6878-4765-9190-62e07fa01b10",
+      "image": "/images/clan-brokvar-archer.png",
+      "name": "Clan Brokvar Archer",
+      "deck": "Skellige",
+      "row": "ranged",
+      "strength": 6,
+      "locations": [
+        { "type": "base deck" },
+        { "type": "base deck" },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "castel ravello vineyard",
+          "character": "herbalist"
+        }
+      ],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "a8367609-16f8-4b4d-9d33-6800d971f412",
+      "image": "/images/clan-dimun-pirate.png",
+      "name": "Clan Dimun Pirate",
+      "deck": "Skellige",
+      "row": "ranged",
+      "strength": 6,
+      "locations": [
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "shop next to grandmaster smith shop (east of the pheasantry)",
+          "character": "merchant"
+        }
+      ],
+      "effect": "scorch",
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "0b05b2de-e0b1-434e-a8e8-f4fc48b98c71",
+      "image": "/images/clan-drummond-shield-maiden.png",
+      "name": "Clan Drummond Shield Maiden",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 4,
+      "locations": [
+        { "type": "base deck" },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "the cockatrice inn",
+          "character": "innkeep"
+        },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "francollarts",
+          "character": "armorer"
+        }
+      ],
+      "abilities": ["tight bond"],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "76ced46a-7c92-4b62-b896-f65cc076b33e",
+      "image": "/images/clan-heymaey-skald.png",
+      "name": "Clan Heymaey Skald",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 4,
+      "locations": [{ "type": "base deck" }],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "eaf7ec72-79a6-4a8a-bea1-50fd9934bbd9",
+      "image": "/images/clan-an-craite-warrior.png",
+      "name": "Clan an Craite Warrior",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 6,
+      "locations": [{ "type": "base deck" }],
+      "abilities": ["tight bond"],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "d97b6bde-9154-421f-a3eb-b401186dfecc",
+      "image": "/images/crach-an-craite.png",
+      "name": "Crach an Craite",
+      "deck": "Skellige",
+      "locations": [{ "type": "base deck" }],
+      "notes": "shuffle all cards from each player's graveyard back into their decks.",
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "0e9b216d-63ac-44d0-b4a7-037de49edb13",
+      "image": "/images/donar-an-hindar.png",
+      "name": "Donar an Hindar",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 4,
+      "locations": [{ "type": "base deck" }],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "ba42f368-f582-4a52-8c6a-e4d0d7d02f52",
+      "image": "/images/draig-bon-dhu.png",
+      "name": "Draig Bon-Dhu",
+      "deck": "Skellige",
+      "row": "siege",
+      "strength": 2,
+      "locations": [
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "pheasantry",
+          "character": "innkeep"
+        }
+      ],
+      "effect": "commander's horn",
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "e4947c6c-6b2e-47a7-9aa2-196f4a111f04",
+      "image": "/images/ermion.png",
+      "name": "Ermion",
+      "deck": "Skellige",
+      "row": "ranged",
+      "strength": 8,
+      "locations": [
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "the scarlet cardinal inn, francollarts",
+          "character": "innkeepress"
+        }
+      ],
+      "abilities": ["hero"],
+      "effect": "mardroeme",
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "3803fc16-e5b9-4246-a8d0-ac57ba32926c",
+      "image": "/images/hjalmar.png",
+      "name": "Hjalmar",
+      "deck": "Skellige",
+      "row": "ranged",
+      "strength": 10,
+      "locations": [{ "type": "base deck" }],
+      "abilities": ["hero"],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "1d71881f-a3a1-4857-9522-59d74db5bd4b",
+      "image": "/images/holger-blackhand.png",
+      "name": "Holger Blackhand",
+      "deck": "Skellige",
+      "row": "siege",
+      "strength": 4,
+      "locations": [{ "type": "base deck" }],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "9c572a31-5b6d-4ff3-be8b-abac13c79d58",
+      "image": "/images/king-bran.png",
+      "name": "K  ing Bran",
+      "deck": "Skellige",
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "toussaint",
+          "location": "the pheasantry, hauteville",
+          "character": "ducal camerlengo (quest: gwent: turn, turn, tournament)"
+        }
+      ],
+      "notes": "units only lose half their strength in bad weather conditions.",
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "73c89871-6607-45f5-b1bb-4acc2a18a29e",
+      "image": "/images/light-longship.png",
+      "name": "Light Longship",
+      "deck": "Skellige",
+      "row": "ranged",
+      "strength": 4,
+      "locations": [
+        { "type": "base deck" },
+        { "type": "base deck" },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "alchemy shop north of the pheasantry",
+          "character": "perfumery merchant"
+        }
+      ],
+      "abilities": ["muster"],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "6eac146d-0966-474a-b7c8-7eb38636236e",
+      "image": "/images/madman-lugos.png",
+      "name": "Madman Lugos",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 6,
+      "locations": [{ "type": "base deck" }],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "aaf6df89-a607-418f-a62f-fa8f40b80a76",
+      "image": "/images/mardroeme.png",
+      "name": "Mardroeme",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 0,
+      "locations": [
+        { "type": "base deck" },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "east of grandmaster smith in beauclair",
+          "character": "herbalist"
+        },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "the belles of beauclair inkeep, san sebastian",
+          "character": "madame"
+        }
+      ],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "eebca258-5b2d-4de4-8475-407da1852b25",
+      "image": "/images/kambi.png",
+      "name": "Kambi",
+      "deck": "Skellige",
+      "row": "agile",
+      "strength": 12,
+      "locations": [
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "adder and jewels winery",
+          "character": "innkeep"
+        }
+      ],
+      "abilities": ["morale boost"],
+      "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed",
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "5d942543-49b5-4014-a856-d757e318b7b2",
+      "image": "/images/svanrige.png",
+      "name": "Svanrige",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 4,
+      "locations": [{ "type": "base deck" }],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "d9c07356-de78-4227-b744-85251b8f9249",
+      "image": "/images/udalryk.png",
+      "name": "Udalryk",
+      "deck": "Skellige",
+      "row": "close",
+      "strength": 4,
+      "locations": [{ "type": "base deck" }],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "82cd8620-5089-4df1-9785-f0558b5be6d0",
+      "image": "/images/wat-longship.png",
+      "name": "War Longship",
+      "deck": "Skellige",
+      "row": "siege",
+      "strength": 6,
+      "locations": [
+        { "type": "base deck" },
+        { "type": "base deck" },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "tourney grounds",
+          "character": "innkeep"
+        }
+      ],
+      "abilities": ["tight bond"],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    },
+    {
+      "id": "82c8e913-53d1-4386-ba4d-6c049600801f",
+      "image": "/images/young-berserker.png",
+      "name": "Young Berserker",
+      "deck": "Skellige",
+      "row": "ranged",
+      "strength": 2,
+      "locations": [
+        { "type": "base deck" },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "tourney grounds",
+          "character": "blacksmith"
+        },
+        {
+          "type": "win",
+          "territory": "toussaint",
+          "location": "tailor's workshop, beauclair market",
+          "character": "pierre"
+        }
+      ],
+      "isDLC": true,
+      "expansion": "blood and wine"
+    }
+  ]
+}
