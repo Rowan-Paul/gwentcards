@@ -71,7 +71,7 @@ const Card = ({ card, setImage, setLocations }: ICardProps): JSX.Element => {
             )}
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="md:flex gap-4">
           {locations.map((l: any, i: number) => (
             <CollectButton
               key={`${id}-${i}`}
