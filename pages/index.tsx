@@ -57,8 +57,6 @@ const Home: NextPage = () => {
     }).then((data) => data.json());
 
     if (
-      !scoiatael?.cards ||
-      scoiatael?.cards?.length < 1 ||
       !monsters?.cards ||
       monsters?.cards?.length < 1 ||
       !neutral?.cards ||
@@ -66,7 +64,9 @@ const Home: NextPage = () => {
       !nilfgaard?.cards ||
       nilfgaard?.cards?.length < 1 ||
       !northernRealms?.cards ||
-      northernRealms?.cards?.length < 1
+      northernRealms?.cards?.length < 1 ||
+      !scoiatael?.cards ||
+      scoiatael?.cards?.length < 1
     ) {
       throw new Error('Cards request failed or no results');
     }
@@ -114,12 +114,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="">
-        <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
-          {cardsQuery.data?.cards?.map((c) => {
-            return <Card key={c.id} card={c} />;
-          })}
-        </div>
+      <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+        {cardsQuery.data?.cards?.map((c) => {
+          return <Card key={c.id} card={c} />;
+        })}
       </div>
     </>
   );

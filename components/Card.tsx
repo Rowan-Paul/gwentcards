@@ -60,10 +60,6 @@ const Card = ({ card }: ICardProps) => {
     }
   }, [showImage]);
 
-  useEffect(() => {
-    return () => {};
-  }, []);
-
   return (
     <>
       <div className="bg-gradient-to-r from-cyan-400 to-blue-400 p-3 drop-shadow-md">
