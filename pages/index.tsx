@@ -89,6 +89,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>GWENTcards</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 m-2 md:m-10">

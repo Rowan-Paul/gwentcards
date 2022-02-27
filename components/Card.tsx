@@ -92,7 +92,7 @@ const Card = ({ card }: ICardProps) => {
         <CollectButton id={id} />
       </div>
       <div
-        className={showImage ? 'fixed backdrop-blur w-screen h-screen z-40' : 'hidden'}
+        className={showImage ? 'fixed backdrop-blur w-screen h-screen z-40 -mt-10' : 'hidden'}
         onKeyPress={() => setShowImage(false)}
       >
         <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" ref={wrapperRef}>
