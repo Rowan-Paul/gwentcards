@@ -59,7 +59,7 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
   return (
     <div className="flex w-full bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid">
       <div
-        className="grow text-center text-sm text-white p-2 hover:bg-indigo-600"
+        className="grow text-center text-sm text-white p-2 hover:bg-indigo-600 select-none"
         onClick={() => {
           // @ts-ignore
           mutation.mutate({ id: id });
