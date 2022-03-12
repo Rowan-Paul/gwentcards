@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Card, { ICard, ILocation } from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
 import LocationsModal from '../components/LocationsModal';
-import Filters from '../components/Filters';
+import Button from '../components/Button';
 
 interface ICards {
   cards: ICard[];
@@ -17,7 +17,6 @@ const Home = (): JSX.Element => {
   const [showLocations, setShowLocations] = useState(false);
   const [cardLocations, setCardLocations] = useState<ILocation[] | undefined>();
   const [filter, setFilter] = useState<string>();
-  const queryClient = useQueryClient();
 
   const getCollectedData = () => {
     try {
@@ -70,49 +69,14 @@ const Home = (): JSX.Element => {
       <div className="p-2 md:p-10">
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
 
-        <div className="flex gap-4">
-          <div
-            onClick={() => setFilter('')}
-            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
-          >
-            ALl
-          </div>
-          <div
-            onClick={() => setFilter('Monsters')}
-            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
-          >
-            Monsters
-          </div>
-          <div
-            onClick={() => setFilter('Neutral')}
-            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
-          >
-            Neutral
-          </div>
-          <div
-            onClick={() => setFilter('Nilfgaard')}
-            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
-          >
-            Nilfgaard
-          </div>
-          <div
-            onClick={() => setFilter('Northern Realms')}
-            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
-          >
-            Northern Realms
-          </div>
-          <div
-            onClick={() => setFilter("Scoia'tael")}
-            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
-          >
-            Scoia&apos;tael
-          </div>
-          <div
-            onClick={() => setFilter('Skellige')}
-            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
-          >
-            Skellige
-          </div>
+        <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 m-4 justify-center">
+          <Button onClick={() => setFilter(undefined)} title="Reset" />
+          <Button onClick={() => setFilter('Monsters')} title="Monsters" />
+          <Button onClick={() => setFilter('Neutral')} title="Neutral" />
+          <Button onClick={() => setFilter('Nilfgaard')} title="Nilfgaard" />
+          <Button onClick={() => setFilter('Northern Realms')} title="Northern Realms" />
+          <Button onClick={() => setFilter("Scoia'tael")} title="Scoia'tael" />
+          <Button onClick={() => setFilter('Skellige')} title="Skellige" />
         </div>
 
         <div>Total cards: {cardsQuery.data?.cards?.length}</div>
