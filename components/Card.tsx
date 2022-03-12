@@ -13,7 +13,7 @@ export interface ICard {
   id: string;
   image: string;
   name: string;
-  deck: "Scoia'tael" | 'Monsters';
+  deck: "Scoia'tael" | 'Monsters' | 'Nilfgaard' | 'Northern Realms' | 'Neutral' | 'Skellige';
   strength?: number;
   row?: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
   locations: ILocation[];
