@@ -71,12 +71,16 @@ const Home = (): JSX.Element => {
 
         <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 m-4 justify-center">
           <Button onClick={() => setFilter(undefined)} title="Reset" />
-          <Button onClick={() => setFilter('Monsters')} title="Monsters" />
-          <Button onClick={() => setFilter('Neutral')} title="Neutral" />
-          <Button onClick={() => setFilter('Nilfgaard')} title="Nilfgaard" />
-          <Button onClick={() => setFilter('Northern Realms')} title="Northern Realms" />
-          <Button onClick={() => setFilter("Scoia'tael")} title="Scoia'tael" />
-          <Button onClick={() => setFilter('Skellige')} title="Skellige" />
+          <Button onClick={() => setFilter('Monsters')} title="Monsters" selected={filter === 'Monsters'} />
+          <Button onClick={() => setFilter('Neutral')} title="Neutral" selected={filter === 'Neutral'} />
+          <Button onClick={() => setFilter('Nilfgaard')} title="Nilfgaard" selected={filter === 'Nilfgaard'} />
+          <Button
+            onClick={() => setFilter('Northern Realms')}
+            title="Northern Realms"
+            selected={filter === 'Northern Realms'}
+          />
+          <Button onClick={() => setFilter("Scoia'tael")} title="Scoia'tael" selected={filter === "Scoia'tael"} />
+          <Button onClick={() => setFilter('Skellige')} title="Skellige" selected={filter === 'Skellige'} />
         </div>
 
         <div>Total cards: {cardsQuery.data?.cards?.length}</div>
