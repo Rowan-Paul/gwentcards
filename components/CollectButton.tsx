@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { ICard } from './Card';
 import LocationsModal from './LocationsModal';
 
 interface IButtonProps {
@@ -46,16 +47,16 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
         const previousValue = queryClient.getQueryData('collected');
 
         if (previousValue) {
-          queryClient.setQueryData('collected', (old: any) => ({
+          queryClient.setQueryData('collected', (old) => ({
             collected: [...old?.collected, newItem]
           }));
         }
 
         return previousValue;
       },
-      onError: (previousValue) => {
+      onError: (previousValue: ICard[]) => {
         if (previousValue) {
-          queryClient.setQueryData<any>(['collected'], previousValue);
+          queryClient.setQueryData<ICard[]>(['collected'], previousValue);
         }
       },
       onSettled: () => {
