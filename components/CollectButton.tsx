@@ -47,7 +47,7 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
         const previousValue = queryClient.getQueryData('collected');
 
         if (previousValue) {
-          queryClient.setQueryData('collected', (old) => ({
+          queryClient.setQueryData('collected', (old: any) => ({
             collected: [...old?.collected, newItem]
           }));
         }

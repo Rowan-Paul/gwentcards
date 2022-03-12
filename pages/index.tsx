@@ -31,8 +31,34 @@ const Home = (): JSX.Element => {
     refetchOnWindowFocus: false
   });
 
-  if (collectedQuery.isError || cardsQuery.isError) return <>Something went wrong...</>;
-  if (collectedQuery.isLoading || cardsQuery.isLoading || !cardsQuery.data) return <>Loading cards...</>;
+  if (collectedQuery.isError || cardsQuery.isError)
+    return (
+      <>
+        <Head>
+          <title>GWENTcards</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+        <div className="p-2 md:p-10">
+          <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
+          <div className="text-center">Something went wrong...</div>
+        </div>
+      </>
+    );
+  if (collectedQuery.isLoading || cardsQuery.isLoading || !cardsQuery.data)
+    return (
+      <>
+        <Head>
+          <title>GWENTcards</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+        <div className="p-2 md:p-10">
+          <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
+          <div className="text-center">Loading...</div>
+        </div>
+      </>
+    );
 
   return (
     <>
