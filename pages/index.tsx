@@ -1,10 +1,11 @@
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import Head from 'next/head';
 import { useState } from 'react';
 
 import Card, { ICard, ILocation } from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
 import LocationsModal from '../components/LocationsModal';
+import Filters from '../components/Filters';
 
 interface ICards {
   cards: ICard[];
@@ -15,6 +16,8 @@ const Home = (): JSX.Element => {
   const [showImage, setShowImage] = useState(false);
   const [showLocations, setShowLocations] = useState(false);
   const [cardLocations, setCardLocations] = useState<ILocation[] | undefined>();
+  const [filter, setFilter] = useState<string>();
+  const queryClient = useQueryClient();
 
   const getCollectedData = () => {
     try {
@@ -24,7 +27,17 @@ const Home = (): JSX.Element => {
     }
   };
 
-  const cardsQuery = useQuery<ICards, Error>(['cards'], fetchCards, {
+  const getCards = async () => {
+    const data: any = await fetchCards();
+
+    if (filter) {
+      return { cards: data.cards.filter((card: ICard) => card.deck === filter && card) };
+    }
+
+    return data;
+  };
+
+  const cardsQuery = useQuery<ICards, Error>(['cards', filter], getCards, {
     refetchOnWindowFocus: false
   });
   const collectedQuery = useQuery('collected', getCollectedData, {
@@ -33,40 +46,21 @@ const Home = (): JSX.Element => {
 
   if (collectedQuery.isError || cardsQuery.isError)
     return (
-      <>
-        <Head>
-          <title>GWENTcards</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <div className="p-2 md:p-10">
-          <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
-          <div className="text-center">Something went wrong...</div>
-        </div>
-      </>
+      <div className="p-2 md:p-10">
+        <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
+        <div className="text-center">Something went wrong...</div>
+      </div>
     );
   if (collectedQuery.isLoading || cardsQuery.isLoading || !cardsQuery.data)
     return (
-      <>
-        <Head>
-          <title>GWENTcards</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <div className="p-2 md:p-10">
-          <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
-          <div className="text-center">Loading...</div>
-        </div>
-      </>
+      <div className="p-2 md:p-10">
+        <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
+        <div className="text-center">Loading...</div>
+      </div>
     );
 
   return (
     <>
-      <Head>
-        <title>GWENTcards</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <ExpandedImage image={imageCard} showImage={showImage} setShowImage={() => setShowImage(!showImage)} />
       <LocationsModal
         locations={cardLocations}
@@ -75,6 +69,51 @@ const Home = (): JSX.Element => {
       />
       <div className="p-2 md:p-10">
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
+
+        <div className="flex gap-4">
+          <div
+            onClick={() => setFilter('')}
+            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
+          >
+            ALl
+          </div>
+          <div
+            onClick={() => setFilter('Monsters')}
+            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
+          >
+            Monsters
+          </div>
+          <div
+            onClick={() => setFilter('Neutral')}
+            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
+          >
+            Neutral
+          </div>
+          <div
+            onClick={() => setFilter('Nilfgaard')}
+            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
+          >
+            Nilfgaard
+          </div>
+          <div
+            onClick={() => setFilter('Northern Realms')}
+            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
+          >
+            Northern Realms
+          </div>
+          <div
+            onClick={() => setFilter("Scoia'tael")}
+            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
+          >
+            Scoia&apos;tael
+          </div>
+          <div
+            onClick={() => setFilter('Skellige')}
+            className="block w-full text-center text-white p-2 bg-purple-500 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid"
+          >
+            Skellige
+          </div>
+        </div>
 
         <div>Total cards: {cardsQuery.data?.cards?.length}</div>
         <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
