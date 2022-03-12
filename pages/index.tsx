@@ -1,11 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import Head from 'next/head';
+import { useQuery, useQueryClient } from 'react-query';
 import { useState } from 'react';
 
 import Card, { ICard, ILocation } from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
 import LocationsModal from '../components/LocationsModal';
 import Button from '../components/Button';
+import DeckFilter from '../components/DeckFilter';
 
 interface ICards {
   cards: ICard[];
@@ -16,7 +16,7 @@ const Home = (): JSX.Element => {
   const [showImage, setShowImage] = useState(false);
   const [showLocations, setShowLocations] = useState(false);
   const [cardLocations, setCardLocations] = useState<ILocation[] | undefined>();
-  const [filter, setFilter] = useState<string>();
+  const [filter, setFilter] = useState<string[]>([]);
 
   const getCollectedData = () => {
     try {
@@ -29,8 +29,10 @@ const Home = (): JSX.Element => {
   const getCards = async () => {
     const data: any = await fetchCards();
 
-    if (filter) {
-      return { cards: data.cards.filter((card: ICard) => card.deck === filter && card) };
+    console.log('get cards');
+
+    if (filter.length > 0) {
+      return { cards: data.cards.filter((card: ICard) => filter.includes(card.deck) && card) };
     }
 
     return data;
@@ -43,20 +45,22 @@ const Home = (): JSX.Element => {
     refetchOnWindowFocus: false
   });
 
-  if (collectedQuery.isError || cardsQuery.isError)
+  if (collectedQuery.isError || cardsQuery.isError) {
     return (
       <div className="p-2 md:p-10">
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
         <div className="text-center">Something went wrong...</div>
       </div>
     );
-  if (collectedQuery.isLoading || cardsQuery.isLoading || !cardsQuery.data)
+  }
+  if (collectedQuery.isLoading || cardsQuery.isLoading || !cardsQuery.data) {
     return (
       <div className="p-2 md:p-10">
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
         <div className="text-center">Loading...</div>
       </div>
     );
+  }
 
   return (
     <>
@@ -70,17 +74,13 @@ const Home = (): JSX.Element => {
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
 
         <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 m-4 justify-center">
-          <Button onClick={() => setFilter(undefined)} title="Reset" />
-          <Button onClick={() => setFilter('Monsters')} title="Monsters" selected={filter === 'Monsters'} />
-          <Button onClick={() => setFilter('Neutral')} title="Neutral" selected={filter === 'Neutral'} />
-          <Button onClick={() => setFilter('Nilfgaard')} title="Nilfgaard" selected={filter === 'Nilfgaard'} />
-          <Button
-            onClick={() => setFilter('Northern Realms')}
-            title="Northern Realms"
-            selected={filter === 'Northern Realms'}
-          />
-          <Button onClick={() => setFilter("Scoia'tael")} title="Scoia'tael" selected={filter === "Scoia'tael"} />
-          <Button onClick={() => setFilter('Skellige')} title="Skellige" selected={filter === 'Skellige'} />
+          <Button onClick={() => setFilter([])} title="Reset" />
+          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Monsters" filter={filter} />
+          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Neutral" filter={filter} />
+          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Nilfgaard" filter={filter} />
+          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Northern Realms" filter={filter} />
+          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Scoia'tael" filter={filter} />
+          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Skellige" filter={filter} />
         </div>
 
         <div>Total cards: {cardsQuery.data?.cards?.length}</div>
