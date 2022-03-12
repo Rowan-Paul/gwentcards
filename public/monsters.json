@@ -1,0 +1,559 @@
+{
+  "cards": [
+    {
+      "id": "1fd12a58-c475-4b01-9bed-d9a7b61b9996",
+      "image": "/images/arachas.png",
+      "abilities": ["Muster"],
+      "name": "Arachas",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 4,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Arinbjorn",
+          "character": "Innkeeper"
+        },
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Urialla village, an Skellig",
+          "character": "Innkeeper"
+        },
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Svorlag, Spikeroog",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "83230973-e4af-418d-9ca9-8c2c842408d7",
+      "image": "/images/arachas-behemoth.png",
+      "name": "Arachas Behemoth",
+      "deck": "Monsters",
+      "row": "siege",
+      "strength": 6,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "e3e77a16-ce2f-43fc-acaf-9b84bfe43175",
+      "image": "/images/botchling.png",
+      "name": "Botchling",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 4,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "The New Port, Kaer Trolde harbor, Spikeroog",
+          "character": "Jonas the Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "e5953cbb-5072-4a69-8ba3-6d7f8ab3115d",
+      "image": "/images/celaeno-harpy.png",
+      "name": "Celaeno Harpy",
+      "deck": "Monsters",
+      "row": "agile",
+      "strength": 2,
+      "locations": [{ "type": "random" }],
+      "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed."
+    },
+    {
+      "id": "edc34053-748b-4abe-aa89-03d4c23b90d9",
+      "image": "/images/cockatrice.png",
+      "name": "Cockatrice",
+      "deck": "Monsters",
+      "row": "ranged",
+      "strength": 2,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "17ca0bfd-dc31-4a3d-a1de-ff8410c3d6fa",
+      "image": "/images/crone-brewess.png",
+      "abilities": ["Muster"],
+      "name": "Crone: Brewess",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 6,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "4f42108c-ebcc-4ca1-8dbe-c70284d150d0",
+      "image": "/images/crone-weavess.png",
+      "abilities": ["Muster"],
+      "name": "Crone: Weavess",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 6,
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "Velen",
+          "location": "Benek",
+          "character": "Seer (old sage)"
+        }
+      ]
+    },
+    {
+      "id": "096c467c-a889-41c3-9245-8cfaaa0b5f59",
+      "image": "/images/crone-whispess.png",
+      "abilities": ["Muster"],
+      "name": "Crone: Whispess",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 6,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Arinbjorn",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "631c2648-759e-4e35-8bd9-bed0f2ccfef7",
+      "image": "/images/draug.png",
+      "abilities": ["Hero"],
+      "name": "Draug",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 10,
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "Skellige",
+          "location": "Kaer Trolde, ard Skellige",
+          "character": "Crach an Craite"
+        }
+      ]
+    },
+    {
+      "id": "1cf1114f-35de-40ef-8276-97d24e0caeb1",
+      "image": "/images/earth-elemental.png",
+      "name": "Earth Elemental",
+      "deck": "Monsters",
+      "row": "siege",
+      "strength": 6,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "The New Port, Kaer Trolde harbor, Spikeroog",
+          "character": "Jonas the Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "f3e86c03-1f08-4ee2-86ff-d7f7cf0dca87",
+      "image": "/images/eredin-bréacc-glas-the-treacHerous.png",
+      "name": "Eredin Bréacc Glas: the TreacHerous",
+      "deck": "Monsters",
+      "row": "leader",
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Velen",
+          "location": "Upper mill",
+          "character": "Dulla Kh'amanni"
+        }
+      ],
+      "notes": "doubles the strength of all spy cards (affects both players).",
+      "isDLC": true,
+      "expansion": "hearts of stone"
+    },
+    {
+      "id": "994a0727-2c01-45c1-a132-75383e260e11",
+      "image": "/images/eredin-bringer-of-death.png",
+      "name": "Eredin: Bringer of Death",
+      "deck": "Monsters",
+      "row": "leader",
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "Velen",
+          "location": "Novigrad",
+          "character": "Count Tybalt (quest high stakes)"
+        }
+      ],
+      "notes": "restore a card from your discard pile to your hand."
+    },
+    {
+      "id": "d239b253-f693-4fd4-a6e5-f4a23a07e643",
+      "image": "/images/eredin-commander-of-the-red-riders.png",
+      "name": "Eredin: Commander of the Red Riders",
+      "deck": "Monsters",
+      "row": "leader",
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "The New Port, Kaer Trolde harbor, Spikeroog",
+          "character": "Jonas the Innkeeper"
+        }
+      ],
+      "notes": "double the strength of all your close combat units (unless a commander's horn is also present on that row)."
+    },
+    {
+      "id": "467d61dc-ea73-4b78-a6ef-8f5c29cbc34e",
+      "image": "/images/eredin-destroyer-of-worlds.png",
+      "name": "Eredin: Destroyer of Worlds",
+      "deck": "Monsters",
+      "row": "leader",
+      "locations": [
+        {
+          "type": "quest",
+          "location": "Won after completing GWENT: Velen players"
+        }
+      ],
+      "notes": "discard 2 card and draw 1 card of your choice from your deck."
+    },
+    {
+      "id": "78996828-b9af-42a4-abd5-ed6e39df1d76",
+      "image": "/images/eredin-king-of-the-wild-hunt.png",
+      "name": "Eredin: King of the Wild Hunt",
+      "deck": "Monsters",
+      "row": "leader",
+      "locations": [{ "type": "base deck" }],
+      "notes": "pick any weather card from your deck and play it instantly."
+    },
+    {
+      "id": "99cda34f-335d-4acb-8d9e-e7822990ba95",
+      "image": "/images/fiend.png",
+      "name": "Fiend",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 6,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Arinbjorn",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "c14b0452-fbbe-4390-aec8-57de18c5176d",
+      "image": "/images/fire-elemental.png",
+      "name": "Fire Elemental",
+      "deck": "Monsters",
+      "row": "siege",
+      "strength": 6,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "eb3afb4b-c423-4263-88c4-87836bc025a4",
+      "image": "/images/foglet.png",
+      "name": "Foglet",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 2,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Svorlag, Spikeroog",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "1652520e-c670-483a-982d-8719db2bf56e",
+      "image": "/images/forktail.png",
+      "name": "Forktail",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 5,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "6c242d45-9e8b-4971-9735-b30df33cf1c0",
+      "image": "/images/frightener.png",
+      "name": "Frightener",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 5,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "975d4548-7009-40de-943e-e54c12e032c4",
+      "image": "/images/gargoyle.png",
+      "name": "Gargoyle",
+      "deck": "Monsters",
+      "row": "ranged",
+      "strength": 2,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "733795a3-2b69-4b74-9879-f44f1cefaef5",
+      "image": "/images/ghoul.png",
+      "abilities": ["Muster"],
+      "name": "Ghoul",
+      "deck": "Monsters",
+      "row": "ranged",
+      "strength": 1,
+      "locations": [
+        { "type": "random" },
+        { "type": "random" },
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Harviken tavern, Faroe",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "78bcd9df-85e2-4cc5-891a-7b27de01def3",
+      "image": "/images/grave-hag.png",
+      "name": "Grave Hag",
+      "deck": "Monsters",
+      "row": "ranged",
+      "strength": 5,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "068a128e-004e-473a-9528-9951d8778d56",
+      "image": "/images/griffin.png",
+      "name": "Griffin",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 5,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "56e9cbf9-dc07-470a-b34d-75ebc1cd3888",
+      "image": "/images/harpy.png",
+      "name": "Harpy",
+      "deck": "Monsters",
+      "row": "agile",
+      "strength": 2,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Harviken tavern, Faroe",
+          "character": "Innkeeper"
+        }
+      ],
+      "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed."
+    },
+    {
+      "id": "58840c2f-cad7-46bc-9fc0-5bd0683bd8bd",
+      "image": "/images/ice-giant.png",
+      "name": "Ice Giant",
+      "deck": "Monsters",
+      "row": "siege",
+      "strength": 5,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Svorlag, Spikeroog",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "4d29dd73-fd19-4f1d-9a18-fd828535ec60",
+      "image": "/images/imlerith.png",
+      "abilities": ["Hero"],
+      "name": "Imlerith",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 10,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "552cb54b-397a-4a84-a81f-5ee174fb62f5",
+      "image": "/images/kayran.png",
+      "abilities": ["Hero"],
+      "name": "Kayran",
+      "deck": "Monsters",
+      "row": "agile",
+      "strength": 8,
+      "locations": [{ "type": "random" }],
+      "notes": "agile: can be placed in either the close combat or the ranged combat row. cannot be moved once placed."
+    },
+    {
+      "id": "a5897309-2456-4401-8cb4-db5a246c7385",
+      "image": "/images/leshen.png",
+      "abilities": ["Hero"],
+      "name": "Leshen",
+      "deck": "Monsters",
+      "row": "ranged",
+      "strength": 10,
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "Skellige",
+          "location": "Gedyneith, ard Skellig",
+          "character": "Ermion"
+        }
+      ]
+    },
+    {
+      "id": "265d3ba0-af0b-45f8-aa84-804f680b10f1",
+      "image": "/images/nekker.png",
+      "name": "Nekker",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 2,
+      "locations": [
+        { "type": "random" },
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Harviken, Faroe",
+          "character": "Innkeeper"
+        },
+        {
+          "type": "quest",
+          "territory": "Skellige",
+          "location": "Trottheim",
+          "character": "Hammonds Corpse"
+        }
+      ]
+    },
+    {
+      "id": "3cac714a-e5bd-405d-b1e4-0ee746d7fe43",
+      "image": "/images/plague-maiden.png",
+      "name": "Plague Maiden",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 5,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "e33a585b-e276-4950-844a-667d7b0e3408",
+      "image": "/images/toad.png",
+      "name": "Toad",
+      "deck": "Monsters",
+      "row": "ranged",
+      "strength": 7,
+      "locations": [{ "type": "win", "territory": "Velen", "character": "Olgierd von Everec" }],
+      "effect": "scorch",
+      "isDLC": true,
+      "expansion": "hearts of stone"
+    },
+    {
+      "id": "40855740-5e47-4d6a-a2ad-aaf3ce1bb650",
+      "image": "/images/vampire-bruxa.png",
+      "abilities": ["Muster"],
+      "name": "Vampire: Bruxa",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 4,
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "novigrad or toussaint",
+          "location": "Vegelbud estate or temple cementary",
+          "character": "Quest A Matter of Life and Death or removing Louis body in Till Death Do You Part"
+        }
+      ]
+    },
+    {
+      "id": "29cacf4c-8921-4add-b162-4cf2ec0356e1",
+      "image": "/images/vampire-ekimmara.png",
+      "abilities": ["Muster"],
+      "name": "Vampire: Ekimmara",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 4,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Svorlag, Spikeroog",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "75fe9f13-1e09-4de5-8fa1-01128a37ea3c",
+      "image": "/images/vampire-fleder.png",
+      "abilities": ["Muster"],
+      "name": "Vampire: Fleder",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 4,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Harviken tavern, Faroe",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "a2a829b3-cd40-4d54-9cdd-ad72e9a5b5a1",
+      "image": "/images/vampire-garkain.png",
+      "abilities": ["Muster"],
+      "name": "Vampire: Garkain",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 4,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "5df94676-f05f-4621-80cf-50e4689955bd",
+      "image": "/images/vampire-katakan.png",
+      "abilities": ["Muster"],
+      "name": "Vampire: Katakan",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 5,
+      "locations": [
+        {
+          "type": "quest",
+          "territory": "Skellige",
+          "location": "Kaer Muire, ard Skellig",
+          "character": "Jarl Madman Lugos"
+        }
+      ]
+    },
+    {
+      "id": "71eb350e-b286-4bfc-848c-d2ed201f5d29",
+      "image": "/images/werewolf.png",
+      "name": "Werewolf",
+      "deck": "Monsters",
+      "row": "close",
+      "strength": 5,
+      "locations": [
+        {
+          "type": "buy",
+          "territory": "Skellige",
+          "location": "Urialla Village, an Skellig",
+          "character": "Innkeeper"
+        }
+      ]
+    },
+    {
+      "id": "d3c53d67-d75e-450c-9978-c52b5b234aef",
+      "image": "/images/wyvern.png",
+      "name": "Wyvern",
+      "deck": "Monsters",
+      "row": "ranged",
+      "strength": 2,
+      "locations": [{ "type": "random" }]
+    },
+    {
+      "id": "bf9c0f80-c6c1-42de-933e-4247ac570eed",
+      "image": "/images/endrega.png",
+      "name": "Endrega",
+      "deck": "Monsters",
+      "row": "ranged",
+      "strength": 2,
+      "locations": [{ "type": "random" }]
+    }
+  ]
+}
