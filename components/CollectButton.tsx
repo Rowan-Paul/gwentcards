@@ -24,7 +24,7 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
   });
 
   const mutation = useMutation(
-    // @ts-ignore
+    //@ts-ignore
     () => {
       if (data?.collected.includes(id)) {
         const newCollected = data.collected;
@@ -34,24 +34,32 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
         }
 
         localStorage.setItem('collected', JSON.stringify({ collected: [...newCollected] }));
+        return JSON.stringify({ collected: [...newCollected] });
       } else {
         localStorage.setItem('collected', JSON.stringify({ collected: [...data?.collected, id] }));
+        return JSON.stringify({ collected: [...data?.collected, id] });
       }
     },
     {
-      onMutate: async (text) => {
+      onMutate: async (newItem: string) => {
         await queryClient.cancelQueries('collected');
         const previousValue = queryClient.getQueryData('collected');
 
-        queryClient.setQueryData('collected', (old: any) => ({
-          collected: [...old?.collected, text]
-        }));
+        if (previousValue) {
+          queryClient.setQueryData('collected', (old: any) => ({
+            collected: [...old?.collected, newItem]
+          }));
+        }
 
         return previousValue;
       },
-      onError: (err, variables, previousValue) => queryClient.setQueryData('collected', previousValue),
+      onError: (previousValue) => {
+        if (previousValue) {
+          queryClient.setQueryData<any>(['collected'], previousValue);
+        }
+      },
       onSettled: () => {
-        queryClient.invalidateQueries('collected');
+        queryClient.invalidateQueries(['collected']);
       }
     }
   );
@@ -61,8 +69,7 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
       <div
         className="grow text-center text-sm text-white p-2 hover:bg-indigo-600 select-none"
         onClick={() => {
-          // @ts-ignore
-          mutation.mutate({ id: id });
+          mutation.mutate(id);
         }}
       >
         {data?.collected.includes(id) ? `✅` : `${location}`}
