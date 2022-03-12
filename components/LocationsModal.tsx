@@ -60,10 +60,10 @@ const LocationsModal = ({ locations, showLocations, setShowLocations }: ILocatio
         ref={wrapperRef}
       >
         <div className="py-5 px-10 rounded bg-gradient-to-r text-white bg-indigo-400">
-          <div className="font-bold text-lg mb-2">Locations</div>
+          <div className="font-bold text-xl mb-2">Locations</div>
           {locations?.map((l, i) => (
             <div key={i} className="mb-4">
-              <div>Location {i + 1}</div>
+              <div className="font-bold">Location {i + 1}</div>
               <Row type="Type" value={l.type.charAt(0).toUpperCase() + l.type.slice(1)} />
               {l.territory && <Row type="Territory" value={l.territory} />}
               {l.location && <Row type="Location" value={l.location} />}
@@ -79,7 +79,7 @@ const LocationsModal = ({ locations, showLocations, setShowLocations }: ILocatio
 const Row = ({ type, value }: IRowProps): JSX.Element => {
   return (
     <div className="md:flex gap-8 mb-2">
-      <span className="font-bold">{type} </span>
+      <span>{type} </span>
       <br className="md:hidden"></br>
       <span className=" ml-auto text-right">{value}</span>
     </div>
