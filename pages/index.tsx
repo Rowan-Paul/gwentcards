@@ -48,9 +48,11 @@ const Home = (): JSX.Element => {
         setShowLocations={() => setShowLocations(!showLocations)}
       />
       <div className="p-2 md:p-10">
+        <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
+
         <div>Total cards: {cardsQuery.data?.cards?.length}</div>
         <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
-          {cardsQuery.data?.cards?.map((c) => {
+          {cardsQuery.data?.cards?.map((c: ICard) => {
             return (
               <Card
                 key={c.id}
