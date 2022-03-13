@@ -77,42 +77,52 @@ const Home = (): JSX.Element => {
         showLocations={showLocations}
         setShowLocations={() => setShowLocations(!showLocations)}
       />
-      <div className="p-2 md:p-10">
-        <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
+      <div className="flex flex-col min-h-screen">
+        <div className="p-2 md:p-10">
+          <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
 
-        <FiltersComponent
-          setFilterValues={(f: any) => setFilterValues(f)}
-          setHideDLC={(f: boolean) => setHideDLC(f)}
-          setShowCollected={(f: boolean) => setShowCollected(f)}
-          hideDLC={hideDLC}
-          showCollected={showCollected}
-        />
+          <FiltersComponent
+            setFilterValues={(f: any) => setFilterValues(f)}
+            setHideDLC={(f: boolean) => setHideDLC(f)}
+            setShowCollected={(f: boolean) => setShowCollected(f)}
+            hideDLC={hideDLC}
+            showCollected={showCollected}
+          />
 
-        {collectedQuery.isLoading || cardsQuery.isLoading || cardsQuery.isFetching ? (
-          <div className="text-center">Loading...</div>
-        ) : (
-          <>
-            <div>Total cards: {cardsQuery.data?.cards?.length}</div>
-            <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
-              {cardsQuery.data?.cards?.map((c: ICard) => {
-                return (
-                  <Card
-                    key={c.id}
-                    card={c}
-                    setImage={(img: string) => {
-                      setImageCard(img);
-                      setShowImage(true);
-                    }}
-                    setLocations={(locations: ILocation[]) => {
-                      setCardLocations(locations);
-                      setShowLocations(true);
-                    }}
-                  />
-                );
-              })}
-            </div>
-          </>
-        )}
+          {collectedQuery.isLoading || cardsQuery.isLoading || cardsQuery.isFetching ? (
+            <div className="text-center">Loading...</div>
+          ) : (
+            <>
+              <div>Total cards: {cardsQuery.data?.cards?.length}</div>
+              <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+                {cardsQuery.data?.cards?.map((c: ICard) => {
+                  return (
+                    <Card
+                      key={c.id}
+                      card={c}
+                      setImage={(img: string) => {
+                        setImageCard(img);
+                        setShowImage(true);
+                      }}
+                      setLocations={(locations: ILocation[]) => {
+                        setCardLocations(locations);
+                        setShowLocations(true);
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </div>
+        <div className="mt-auto my-4 text-center">
+          Made with ❤ by{' '}
+          <span className="underline">
+            <a href="https://rowanpaulflynn.com/" target="_blank" rel="noreferrer">
+              Rowan Paul Flynn
+            </a>
+          </span>
+        </div>
       </div>
     </>
   );
