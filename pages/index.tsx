@@ -29,6 +29,7 @@ const Home = (): JSX.Element => {
   const [strengthFilter, setStrengthFilter] = useState<IMultiSelect[]>([]);
   const [abilitiesFilter, setAbilitiesFilter] = useState<IMultiSelect[]>([]);
   const [hideDLC, setHideDLC] = useState<boolean>(false);
+  const [showCollected, setShowCollected] = useState<boolean>(false);
   const [filterValues, setFilterValues] = useState<any[]>([]);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ const Home = (): JSX.Element => {
     setAbilitiesFilter([]);
     setFilterValues([]);
     setHideDLC(false);
+    setShowCollected(false);
   };
 
   const getCollectedData = () => {
@@ -61,9 +63,11 @@ const Home = (): JSX.Element => {
   const getCards = async () => {
     const data: any = await fetchCards();
 
-    if (filterValues.length > 0 || hideDLC) {
+    if (filterValues.length > 0 || hideDLC || showCollected) {
       return {
         cards: data.cards.filter((card: ICard) => {
+          const locations = card.locations.map((l, i) => card.id + i);
+
           if (
             filterValues.includes(card.deck) ||
             filterValues.includes(card?.expansion as string) ||
@@ -71,7 +75,8 @@ const Home = (): JSX.Element => {
             filterValues.includes(card?.effect as string) ||
             filterValues.includes(card?.strength as number) ||
             card?.abilities?.some((ability) => filterValues.includes(ability)) ||
-            (hideDLC && !card?.isDLC)
+            (hideDLC && !card?.isDLC) ||
+            (showCollected && collectedQuery.data.collected.some((id: string) => locations.includes(id)))
           )
             return card;
         })
@@ -81,7 +86,7 @@ const Home = (): JSX.Element => {
     return data;
   };
 
-  const cardsQuery = useQuery<ICards, Error>(['cards', filterValues, hideDLC], getCards, {
+  const cardsQuery = useQuery<ICards, Error>(['cards', filterValues, hideDLC, showCollected], getCards, {
     refetchOnWindowFocus: false
   });
   const collectedQuery = useQuery('collected', getCollectedData, {
@@ -230,6 +235,22 @@ const Home = (): JSX.Element => {
               labelledBy="Select abilities"
               disableSearch
               disabled={hideDLC}
+            />
+          </div>
+          <div>
+            <span className="block font-bold">Show only collected cards:</span>
+            <ReactSwitch
+              onChange={() => setShowCollected(!showCollected)}
+              checked={showCollected}
+              onColor="#86d3ff"
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              activeBoxShadow="0px 0px 1px 5px rgba(0, 0, 0, 0.2)"
+              // disabled={expansionFilter.length > 0}
+              height={20}
+              width={48}
+              className="m-2"
             />
           </div>
           <div className="flex justify-center">
