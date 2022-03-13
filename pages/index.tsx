@@ -79,6 +79,7 @@ const Home = (): JSX.Element => {
       />
       <div className="p-2 md:p-10">
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
+
         <FiltersComponent
           setFilterValues={(f: any) => setFilterValues(f)}
           setHideDLC={(f: boolean) => setHideDLC(f)}
