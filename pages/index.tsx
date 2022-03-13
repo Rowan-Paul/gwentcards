@@ -123,15 +123,19 @@ const Home = (): JSX.Element => {
             />
           </div>
           <div>
-            <span className="font-bold">Expansion:</span>
+            <span className="font-bold">Abilities:</span>
             <MultiSelect
               options={[
-                { label: 'Hearts of Stone', value: 'hearts of stone' },
-                { label: 'Blood and Wine', value: 'blood and wine' }
+                { label: 'Hero', value: 'Hero' },
+                { label: 'Medic', value: 'Medic' },
+                { label: 'Moral boost', value: 'Moral boost' },
+                { label: 'Muster', value: 'Muster' },
+                { label: 'Spy', value: 'Spy' },
+                { label: 'Tight bond', value: 'Tight bond' }
               ]}
-              value={expansionFilter}
-              onChange={setExpansionFilter}
-              labelledBy="Select abilities"
+              value={abilitiesFilter}
+              onChange={setAbilitiesFilter}
+              labelledBy="Select ability"
               disableSearch
             />
           </div>
@@ -148,23 +152,6 @@ const Home = (): JSX.Element => {
               value={rowFilter}
               onChange={setRowFilter}
               labelledBy="Select row"
-              disableSearch
-            />
-          </div>
-          <div>
-            <span className="font-bold">Effect:</span>
-            <MultiSelect
-              options={[
-                { label: 'Scorch', value: 'scorch' },
-                { label: 'Weather', value: 'weather' },
-                { label: "Commander's horn", value: "commander's horn" },
-                { label: 'Summon avenger', value: 'summon avenger' },
-                { label: 'Mardroeme', value: 'mardroeme' },
-                { label: 'Decoy', value: 'decoy' }
-              ]}
-              value={effectFilter}
-              onChange={setEffectFilter}
-              labelledBy="Select effect"
               disableSearch
             />
           </div>
@@ -195,19 +182,32 @@ const Home = (): JSX.Element => {
             />
           </div>
           <div>
-            <span className="font-bold">Abilities:</span>
+            <span className="font-bold">Effect:</span>
             <MultiSelect
               options={[
-                { label: 'Hero', value: 'Hero' },
-                { label: 'Medic', value: 'Medic' },
-                { label: 'Moral boost', value: 'Moral boost' },
-                { label: 'Muster', value: 'Muster' },
-                { label: 'Spy', value: 'Spy' },
-                { label: 'Tight bond', value: 'Tight bond' }
+                { label: 'Scorch', value: 'scorch' },
+                { label: 'Weather', value: 'weather' },
+                { label: "Commander's horn", value: "commander's horn" },
+                { label: 'Summon avenger', value: 'summon avenger' },
+                { label: 'Mardroeme', value: 'mardroeme' },
+                { label: 'Decoy', value: 'decoy' }
               ]}
-              value={abilitiesFilter}
-              onChange={setAbilitiesFilter}
-              labelledBy="Select ability"
+              value={effectFilter}
+              onChange={setEffectFilter}
+              labelledBy="Select effect"
+              disableSearch
+            />
+          </div>
+          <div>
+            <span className="font-bold">Expansion:</span>
+            <MultiSelect
+              options={[
+                { label: 'Hearts of Stone', value: 'hearts of stone' },
+                { label: 'Blood and Wine', value: 'blood and wine' }
+              ]}
+              value={expansionFilter}
+              onChange={setExpansionFilter}
+              labelledBy="Select abilities"
               disableSearch
             />
           </div>
