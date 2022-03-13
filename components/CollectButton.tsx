@@ -72,10 +72,17 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
         onClick={() => {
           mutation.mutate(id);
         }}
+        onKeyPress={(e) => e.code === 'Enter' && mutation.mutate(id)}
+        tabIndex={0}
       >
         {data?.collected.includes(id) ? `✅` : `${location}`}
       </div>
-      <div className="flex py-2 px-3 hover:bg-indigo-600" onClick={() => setShowLocations()}>
+      <div
+        className="flex py-2 px-3 hover:bg-indigo-600"
+        onClick={() => setShowLocations()}
+        tabIndex={0}
+        onKeyPress={(e) => e.code === 'Enter' && setShowLocations()}
+      >
         <Image src="/open.svg" alt="Open location modal" width="12" height="12" />
       </div>
     </div>

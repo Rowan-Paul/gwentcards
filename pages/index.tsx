@@ -22,6 +22,13 @@ const Home = (): JSX.Element => {
   const [cardLocations, setCardLocations] = useState<ILocation[] | undefined>();
   const [deckFilter, setDeckFilter] = useState<IMultiSelect[]>([]);
   const [expansionFilter, setExpansionFilter] = useState<IMultiSelect[]>([]);
+  const [rowFilter, setRowFilter] = useState<IMultiSelect[]>([]);
+  const [effectFilter, setEffectFilter] = useState<IMultiSelect[]>([]);
+  const [filterValues, setFilterValues] = useState<string[]>([]);
+
+  useEffect(() => {
+    setFilterValues([...deckFilter, ...expansionFilter, ...rowFilter, ...effectFilter].map((item) => item.value));
+  }, [deckFilter, expansionFilter, rowFilter, effectFilter]);
 
   const getCollectedData = () => {
     try {
@@ -34,12 +41,16 @@ const Home = (): JSX.Element => {
   const getCards = async () => {
     const data: any = await fetchCards();
 
-    if (deckFilter.length > 0 || expansionFilter.length > 0) {
-      const filterValues = [...deckFilter, ...expansionFilter].map((item) => item.value);
-
+    if (filterValues.length > 0) {
       return {
         cards: data.cards.filter((card: ICard) => {
-          if (filterValues.includes(card.deck) || filterValues.includes(card?.expansion as string)) return card;
+          if (
+            filterValues.includes(card.deck) ||
+            filterValues.includes(card?.expansion as string) ||
+            filterValues.includes(card?.row as string) ||
+            filterValues.includes(card?.effect as string)
+          )
+            return card;
         })
       };
     }
@@ -47,7 +58,7 @@ const Home = (): JSX.Element => {
     return data;
   };
 
-  const cardsQuery = useQuery<ICards, Error>(['cards', deckFilter, expansionFilter], getCards, {
+  const cardsQuery = useQuery<ICards, Error>(['cards', filterValues], getCards, {
     refetchOnWindowFocus: false
   });
   const collectedQuery = useQuery('collected', getCollectedData, {
@@ -96,6 +107,31 @@ const Home = (): JSX.Element => {
             value={expansionFilter}
             onChange={setExpansionFilter}
             labelledBy="Select abilities"
+          />
+          <MultiSelect
+            options={[
+              { label: 'Close', value: 'close' },
+              { label: 'Agile', value: 'agile' },
+              { label: 'Ranged', value: 'ranged' },
+              { label: 'Siege', value: 'siege' },
+              { label: 'Leader', value: 'leader' }
+            ]}
+            value={rowFilter}
+            onChange={setRowFilter}
+            labelledBy="Select row"
+          />
+          <MultiSelect
+            options={[
+              { label: 'Scorch', value: 'scorch' },
+              { label: 'Weather', value: 'weather' },
+              { label: "Commander's horn", value: "commander's horn" },
+              { label: 'Summon avenger', value: 'summon avenger' },
+              { label: 'Mardroeme', value: 'mardroeme' },
+              { label: 'Decoy', value: 'decoy' }
+            ]}
+            value={effectFilter}
+            onChange={setEffectFilter}
+            labelledBy="Select effect"
           />
           {/* <MultiSelect
             options={[

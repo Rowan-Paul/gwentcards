@@ -20,7 +20,7 @@ export interface ICard {
   abilities?: ['Hero' | 'Medic' | 'Moral boost' | 'Muster' | 'Spy' | 'Tight bond'];
   isDLC?: boolean;
   expansion?: 'hearts of stone' | 'blood and wine';
-  effect?: 'scorch' | 'weather' | "commander's horn" | 'summon avenger' | 'berserker' | 'mardroeme';
+  effect?: 'scorch' | 'weather' | "commander's horn" | 'summon avenger' | 'berserker' | 'mardroeme' | 'decoy';
 }
 
 export interface ILocation {
