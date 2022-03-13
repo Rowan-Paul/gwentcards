@@ -11,6 +11,8 @@ const Button = ({ onClick, title, selected }: IButtonProps) => {
       className={`text-center text-white p-4 bg-purple-500 drop-shadow-lg my-2 cursor-pointer hover:bg-indigo-600 select-none ${
         selected && 'bg-purple-800'
       }`}
+      tabIndex={0}
+      onKeyPress={(e) => e.code === 'Enter' && onClick}
     >
       {title}
     </div>

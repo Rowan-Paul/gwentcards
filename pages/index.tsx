@@ -5,13 +5,14 @@ import Card, { ICard, ILocation } from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
 import LocationsModal from '../components/LocationsModal';
 import { MultiSelect } from 'react-multi-select-component';
+import Button from '../components/Button';
 
 interface ICards {
   cards: ICard[];
 }
 
 interface IMultiSelect {
-  value: string;
+  value: string | number;
   label: string;
 }
 
@@ -24,11 +25,27 @@ const Home = (): JSX.Element => {
   const [expansionFilter, setExpansionFilter] = useState<IMultiSelect[]>([]);
   const [rowFilter, setRowFilter] = useState<IMultiSelect[]>([]);
   const [effectFilter, setEffectFilter] = useState<IMultiSelect[]>([]);
-  const [filterValues, setFilterValues] = useState<string[]>([]);
+  const [strengthFilter, setStrengthFilter] = useState<IMultiSelect[]>([]);
+  const [abilitiesFilter, setAbilitiesFilter] = useState<IMultiSelect[]>([]);
+  const [filterValues, setFilterValues] = useState<any[]>([]);
 
   useEffect(() => {
-    setFilterValues([...deckFilter, ...expansionFilter, ...rowFilter, ...effectFilter].map((item) => item.value));
-  }, [deckFilter, expansionFilter, rowFilter, effectFilter]);
+    setFilterValues(
+      [...deckFilter, ...expansionFilter, ...rowFilter, ...effectFilter, ...strengthFilter, ...abilitiesFilter].map(
+        (item) => item.value
+      )
+    );
+  }, [deckFilter, expansionFilter, rowFilter, effectFilter, strengthFilter, abilitiesFilter]);
+
+  const resetFilters = () => {
+    setDeckFilter([]);
+    setExpansionFilter([]);
+    setRowFilter([]);
+    setEffectFilter([]);
+    setStrengthFilter([]);
+    setAbilitiesFilter([]);
+    setFilterValues([]);
+  };
 
   const getCollectedData = () => {
     try {
@@ -48,7 +65,9 @@ const Home = (): JSX.Element => {
             filterValues.includes(card.deck) ||
             filterValues.includes(card?.expansion as string) ||
             filterValues.includes(card?.row as string) ||
-            filterValues.includes(card?.effect as string)
+            filterValues.includes(card?.effect as string) ||
+            filterValues.includes(card?.strength as number) ||
+            card?.abilities?.some((ability) => filterValues.includes(ability))
           )
             return card;
         })
@@ -86,73 +105,118 @@ const Home = (): JSX.Element => {
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
 
         <div className="my-4 md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <MultiSelect
-            options={[
-              { label: 'Monsters', value: 'Monsters' },
-              { label: 'Neutral', value: 'Neutral' },
-              { label: 'Nilfgaard', value: 'Nilfgaard' },
-              { label: 'Northern Realms', value: 'Northern Realms' },
-              { label: "Scoia'tael", value: "Scoia'tael" },
-              { label: 'Skellige', value: 'Skellige' }
-            ]}
-            value={deckFilter}
-            onChange={setDeckFilter}
-            labelledBy="Select deck"
-            disableSearch
-          />
-          <MultiSelect
-            options={[
-              { label: 'Hearts of Stone', value: 'hearts of stone' },
-              { label: 'Blood and Wine', value: 'blood and wine' }
-            ]}
-            value={expansionFilter}
-            onChange={setExpansionFilter}
-            labelledBy="Select abilities"
-            disableSearch
-          />
-          <MultiSelect
-            options={[
-              { label: 'Close', value: 'close' },
-              { label: 'Agile', value: 'agile' },
-              { label: 'Ranged', value: 'ranged' },
-              { label: 'Siege', value: 'siege' },
-              { label: 'Leader', value: 'leader' }
-            ]}
-            value={rowFilter}
-            onChange={setRowFilter}
-            labelledBy="Select row"
-            disableSearch
-          />
-          <MultiSelect
-            options={[
-              { label: 'Scorch', value: 'scorch' },
-              { label: 'Weather', value: 'weather' },
-              { label: "Commander's horn", value: "commander's horn" },
-              { label: 'Summon avenger', value: 'summon avenger' },
-              { label: 'Mardroeme', value: 'mardroeme' },
-              { label: 'Decoy', value: 'decoy' }
-            ]}
-            value={effectFilter}
-            onChange={setEffectFilter}
-            labelledBy="Select effect"
-            disableSearch
-          />
-          {/* <MultiSelect
-            options={[
-              { label: 'Hero', value: 'Hero' },
-              { label: 'Medic', value: 'Medic' },
-              { label: 'Moral boost', value: 'Moral boost' },
-              { label: 'Muster', value: 'Muster' },
-              { label: 'Spy', value: 'Spy' },
-              { label: 'Tight bond', value: 'Tight bond' }
-            ]}
-            value={abilitiesFilter}
-            onChange={setAbilitiesFilter}
-            labelledBy="Select ability"
-          /> */}
+          <div>
+            <span className="font-bold">Deck:</span>
+            <MultiSelect
+              options={[
+                { label: 'Monsters', value: 'Monsters' },
+                { label: 'Neutral', value: 'Neutral' },
+                { label: 'Nilfgaard', value: 'Nilfgaard' },
+                { label: 'Northern Realms', value: 'Northern Realms' },
+                { label: "Scoia'tael", value: "Scoia'tael" },
+                { label: 'Skellige', value: 'Skellige' }
+              ]}
+              value={deckFilter}
+              onChange={setDeckFilter}
+              labelledBy="Select deck"
+              disableSearch
+            />
+          </div>
+          <div>
+            <span className="font-bold">Expansion:</span>
+            <MultiSelect
+              options={[
+                { label: 'Hearts of Stone', value: 'hearts of stone' },
+                { label: 'Blood and Wine', value: 'blood and wine' }
+              ]}
+              value={expansionFilter}
+              onChange={setExpansionFilter}
+              labelledBy="Select abilities"
+              disableSearch
+            />
+          </div>
+          <div>
+            <span className="font-bold">Row:</span>
+            <MultiSelect
+              options={[
+                { label: 'Close', value: 'close' },
+                { label: 'Agile', value: 'agile' },
+                { label: 'Ranged', value: 'ranged' },
+                { label: 'Siege', value: 'siege' },
+                { label: 'Leader', value: 'leader' }
+              ]}
+              value={rowFilter}
+              onChange={setRowFilter}
+              labelledBy="Select row"
+              disableSearch
+            />
+          </div>
+          <div>
+            <span className="font-bold">Effect:</span>
+            <MultiSelect
+              options={[
+                { label: 'Scorch', value: 'scorch' },
+                { label: 'Weather', value: 'weather' },
+                { label: "Commander's horn", value: "commander's horn" },
+                { label: 'Summon avenger', value: 'summon avenger' },
+                { label: 'Mardroeme', value: 'mardroeme' },
+                { label: 'Decoy', value: 'decoy' }
+              ]}
+              value={effectFilter}
+              onChange={setEffectFilter}
+              labelledBy="Select effect"
+              disableSearch
+            />
+          </div>
+          <div>
+            <span className="font-bold">Strength:</span>
+            <MultiSelect
+              options={[
+                { label: '1', value: 1 },
+                { label: '2', value: 2 },
+                { label: '3', value: 3 },
+                { label: '4', value: 4 },
+                { label: '5', value: 5 },
+                { label: '6', value: 6 },
+                { label: '7', value: 7 },
+                { label: '8', value: 8 },
+                { label: '9', value: 9 },
+                { label: '10', value: 10 },
+                { label: '11', value: 11 },
+                { label: '12', value: 12 },
+                { label: '13', value: 13 },
+                { label: '14', value: 14 },
+                { label: '15', value: 15 }
+              ]}
+              value={strengthFilter}
+              onChange={setStrengthFilter}
+              labelledBy="Select strength"
+              disableSearch
+            />
+          </div>
+          <div>
+            <span className="font-bold">Abilities:</span>
+            <MultiSelect
+              options={[
+                { label: 'Hero', value: 'Hero' },
+                { label: 'Medic', value: 'Medic' },
+                { label: 'Moral boost', value: 'Moral boost' },
+                { label: 'Muster', value: 'Muster' },
+                { label: 'Spy', value: 'Spy' },
+                { label: 'Tight bond', value: 'Tight bond' }
+              ]}
+              value={abilitiesFilter}
+              onChange={setAbilitiesFilter}
+              labelledBy="Select ability"
+              disableSearch
+            />
+          </div>
+          <div className="flex justify-center">
+            <Button title="Reset filters" onClick={resetFilters} />
+          </div>
         </div>
 
-        {collectedQuery.isLoading || cardsQuery.isLoading ? (
+        {collectedQuery.isLoading || cardsQuery.isLoading || cardsQuery.isFetching ? (
           <div className="text-center">Loading...</div>
         ) : (
           <>
