@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             property="og:description"
             content="Keep track of which cards you've collected for the Witcher 3 GWENT minigame."
           />
-          <meta property="og:image" content="icon.png" />
+          <meta property="og:image" content="/icon.png" />
           <meta property="og:url" content="https://gwentcards.net" />
         </Head>
 
