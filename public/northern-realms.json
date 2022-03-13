@@ -212,7 +212,7 @@
     {
       "id": "c6452abd-d34b-4895-b46f-8d2310ff57b1",
       "image": "/images/kaedweni-siege-expert.png",
-      "abilities": ["morale boost"],
+      "abilities": ["Morale boost"],
       "name": "Kaedweni Siege Expert",
       "deck": "Northern Realms",
       "row": "siege",

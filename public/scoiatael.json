@@ -296,7 +296,7 @@
     {
       "id": "DE3C0C25-EC12-44D3-8C33-2D23577EA169",
       "image": "/images/isengrim-faoiltiarna.png",
-      "abilities": ["Hero", "morale boost"],
+      "abilities": ["Hero", "Morale boost"],
       "name": "Isengrim Faoiltiarna",
       "deck": "Scoia'tael",
       "row": "close",
@@ -359,7 +359,7 @@
     {
       "id": "7D0F4BCA-1ED1-41E1-989C-B48FF9CBCF0B",
       "image": "/images/milva.png",
-      "abilities": ["morale boost"],
+      "abilities": ["Morale boost"],
       "name": "Milva",
       "deck": "Scoia'tael",
       "row": "ranged",
