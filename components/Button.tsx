@@ -12,7 +12,7 @@ const Button = ({ onClick, title, selected }: IButtonProps) => {
         selected && 'bg-purple-800'
       }`}
       tabIndex={0}
-      onKeyPress={(e) => e.code === 'Enter' && onClick}
+      onKeyPress={(e) => e.code === 'Enter' && onClick()}
     >
       {title}
     </div>

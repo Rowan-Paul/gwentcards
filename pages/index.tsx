@@ -6,6 +6,7 @@ import ExpandedImage from '../components/ExpandedImage';
 import LocationsModal from '../components/LocationsModal';
 import { MultiSelect } from 'react-multi-select-component';
 import Button from '../components/Button';
+import ReactSwitch from 'react-switch';
 
 interface ICards {
   cards: ICard[];
@@ -27,6 +28,7 @@ const Home = (): JSX.Element => {
   const [effectFilter, setEffectFilter] = useState<IMultiSelect[]>([]);
   const [strengthFilter, setStrengthFilter] = useState<IMultiSelect[]>([]);
   const [abilitiesFilter, setAbilitiesFilter] = useState<IMultiSelect[]>([]);
+  const [hideDLC, setHideDLC] = useState<boolean>(false);
   const [filterValues, setFilterValues] = useState<any[]>([]);
 
   useEffect(() => {
@@ -45,6 +47,7 @@ const Home = (): JSX.Element => {
     setStrengthFilter([]);
     setAbilitiesFilter([]);
     setFilterValues([]);
+    setHideDLC(false);
   };
 
   const getCollectedData = () => {
@@ -58,7 +61,7 @@ const Home = (): JSX.Element => {
   const getCards = async () => {
     const data: any = await fetchCards();
 
-    if (filterValues.length > 0) {
+    if (filterValues.length > 0 || hideDLC) {
       return {
         cards: data.cards.filter((card: ICard) => {
           if (
@@ -67,7 +70,8 @@ const Home = (): JSX.Element => {
             filterValues.includes(card?.row as string) ||
             filterValues.includes(card?.effect as string) ||
             filterValues.includes(card?.strength as number) ||
-            card?.abilities?.some((ability) => filterValues.includes(ability))
+            card?.abilities?.some((ability) => filterValues.includes(ability)) ||
+            (hideDLC && !card?.isDLC)
           )
             return card;
         })
@@ -77,7 +81,7 @@ const Home = (): JSX.Element => {
     return data;
   };
 
-  const cardsQuery = useQuery<ICards, Error>(['cards', filterValues], getCards, {
+  const cardsQuery = useQuery<ICards, Error>(['cards', filterValues, hideDLC], getCards, {
     refetchOnWindowFocus: false
   });
   const collectedQuery = useQuery('collected', getCollectedData, {
@@ -199,6 +203,22 @@ const Home = (): JSX.Element => {
             />
           </div>
           <div>
+            <span className="block font-bold">Hide DLC cards:</span>
+            <ReactSwitch
+              onChange={() => setHideDLC(!hideDLC)}
+              checked={hideDLC}
+              onColor="#86d3ff"
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              activeBoxShadow="0px 0px 1px 5px rgba(0, 0, 0, 0.2)"
+              disabled={expansionFilter.length > 0}
+              height={20}
+              width={48}
+              className="m-2"
+            />
+          </div>
+          <div>
             <span className="font-bold">Expansion:</span>
             <MultiSelect
               options={[
@@ -209,6 +229,7 @@ const Home = (): JSX.Element => {
               onChange={setExpansionFilter}
               labelledBy="Select abilities"
               disableSearch
+              disabled={hideDLC}
             />
           </div>
           <div className="flex justify-center">
