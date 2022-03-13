@@ -62,10 +62,22 @@ const Card = ({ card, setImage, setLocations }: ICardProps): JSX.Element => {
           </div>
           <div className="ml-auto">
             {isDLC && expansion === 'blood and wine' ? (
-              <Image src="/blood-and-wine.png" alt="Blood and wine icon" width="72" height="72" />
+              <Image
+                src="/blood-and-wine.png"
+                alt="Blood and wine icon"
+                width="72"
+                height="72"
+                title="Blood and Wine DLC"
+              />
             ) : (
               expansion === 'hearts of stone' && (
-                <Image src="/hearts-of-stone.png" alt="Hearts of stone icon" width="72" height="72" />
+                <Image
+                  src="/hearts-of-stone.png"
+                  alt="Hearts of stone icon"
+                  width="72"
+                  height="72"
+                  title="Hearts of Stone DLC"
+                />
               )
             )}
           </div>
