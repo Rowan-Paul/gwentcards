@@ -1,14 +1,18 @@
 import { useQuery, useQueryClient } from 'react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Card, { ICard, ILocation } from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
 import LocationsModal from '../components/LocationsModal';
-import Button from '../components/Button';
-import DeckFilter from '../components/DeckFilter';
+import { MultiSelect } from 'react-multi-select-component';
 
 interface ICards {
   cards: ICard[];
+}
+
+interface IMultiSelect {
+  value: string;
+  label: string;
 }
 
 const Home = (): JSX.Element => {
@@ -16,7 +20,8 @@ const Home = (): JSX.Element => {
   const [showImage, setShowImage] = useState(false);
   const [showLocations, setShowLocations] = useState(false);
   const [cardLocations, setCardLocations] = useState<ILocation[] | undefined>();
-  const [filter, setFilter] = useState<string[]>([]);
+  const [deckFilter, setDeckFilter] = useState<IMultiSelect[]>([]);
+  const [expansionFilter, setExpansionFilter] = useState<IMultiSelect[]>([]);
 
   const getCollectedData = () => {
     try {
@@ -29,16 +34,20 @@ const Home = (): JSX.Element => {
   const getCards = async () => {
     const data: any = await fetchCards();
 
-    console.log('get cards');
+    if (deckFilter.length > 0 || expansionFilter.length > 0) {
+      const filterValues = [...deckFilter, ...expansionFilter].map((item) => item.value);
 
-    if (filter.length > 0) {
-      return { cards: data.cards.filter((card: ICard) => filter.includes(card.deck) && card) };
+      return {
+        cards: data.cards.filter((card: ICard) => {
+          if (filterValues.includes(card.deck) || filterValues.includes(card?.expansion as string)) return card;
+        })
+      };
     }
 
     return data;
   };
 
-  const cardsQuery = useQuery<ICards, Error>(['cards', filter], getCards, {
+  const cardsQuery = useQuery<ICards, Error>(['cards', deckFilter, expansionFilter], getCards, {
     refetchOnWindowFocus: false
   });
   const collectedQuery = useQuery('collected', getCollectedData, {
@@ -50,14 +59,6 @@ const Home = (): JSX.Element => {
       <div className="p-2 md:p-10">
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
         <div className="text-center">Something went wrong...</div>
-      </div>
-    );
-  }
-  if (collectedQuery.isLoading || cardsQuery.isLoading || !cardsQuery.data) {
-    return (
-      <div className="p-2 md:p-10">
-        <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
-        <div className="text-center">Loading...</div>
       </div>
     );
   }
@@ -73,35 +74,69 @@ const Home = (): JSX.Element => {
       <div className="p-2 md:p-10">
         <h1 className="text-2xl font-bold text-center">GWENTcards</h1>
 
-        <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 m-4 justify-center">
-          <Button onClick={() => setFilter([])} title="Reset" />
-          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Monsters" filter={filter} />
-          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Neutral" filter={filter} />
-          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Nilfgaard" filter={filter} />
-          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Northern Realms" filter={filter} />
-          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Scoia'tael" filter={filter} />
-          <DeckFilter setFilter={(f: string[]) => setFilter(f)} title="Skellige" filter={filter} />
+        <div className="my-4 md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <MultiSelect
+            options={[
+              { label: 'Monsters', value: 'Monsters' },
+              { label: 'Neutral', value: 'Neutral' },
+              { label: 'Nilfgaard', value: 'Nilfgaard' },
+              { label: 'Northern Realms', value: 'Northern Realms' },
+              { label: "Scoia'tael", value: "Scoia'tael" },
+              { label: 'Skellige', value: 'Skellige' }
+            ]}
+            value={deckFilter}
+            onChange={setDeckFilter}
+            labelledBy="Select deck"
+          />
+          <MultiSelect
+            options={[
+              { label: 'Hearts of Stone', value: 'hearts of stone' },
+              { label: 'Blood and Wine', value: 'blood and wine' }
+            ]}
+            value={expansionFilter}
+            onChange={setExpansionFilter}
+            labelledBy="Select abilities"
+          />
+          {/* <MultiSelect
+            options={[
+              { label: 'Hero', value: 'Hero' },
+              { label: 'Medic', value: 'Medic' },
+              { label: 'Moral boost', value: 'Moral boost' },
+              { label: 'Muster', value: 'Muster' },
+              { label: 'Spy', value: 'Spy' },
+              { label: 'Tight bond', value: 'Tight bond' }
+            ]}
+            value={abilitiesFilter}
+            onChange={setAbilitiesFilter}
+            labelledBy="Select ability"
+          /> */}
         </div>
 
-        <div>Total cards: {cardsQuery.data?.cards?.length}</div>
-        <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
-          {cardsQuery.data?.cards?.map((c: ICard) => {
-            return (
-              <Card
-                key={c.id}
-                card={c}
-                setImage={(img: string) => {
-                  setImageCard(img);
-                  setShowImage(true);
-                }}
-                setLocations={(locations: ILocation[]) => {
-                  setCardLocations(locations);
-                  setShowLocations(true);
-                }}
-              />
-            );
-          })}
-        </div>
+        {collectedQuery.isLoading || cardsQuery.isLoading ? (
+          <div className="text-center">Loading...</div>
+        ) : (
+          <>
+            <div>Total cards: {cardsQuery.data?.cards?.length}</div>
+            <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+              {cardsQuery.data?.cards?.map((c: ICard) => {
+                return (
+                  <Card
+                    key={c.id}
+                    card={c}
+                    setImage={(img: string) => {
+                      setImageCard(img);
+                      setShowImage(true);
+                    }}
+                    setLocations={(locations: ILocation[]) => {
+                      setCardLocations(locations);
+                      setShowLocations(true);
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </>
+        )}
       </div>
     </>
   );

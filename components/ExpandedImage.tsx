@@ -51,7 +51,7 @@ const ExpandedImage = ({ image, showImage, setShowImage }: IExpandedImageProps):
       onKeyPress={() => setShowImage(false)}
     >
       <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" ref={wrapperRef}>
-        <Image src={image ? image : '/favicon.ico'} alt={`${name} card`} width="250" height="500" />
+        <Image src={image ? image : '/favicon.ico'} alt={`Card`} width="250" height="500" />
       </div>
     </div>
   );

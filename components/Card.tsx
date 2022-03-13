@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useState } from 'react';
 
 import CollectButton from './CollectButton';
 
@@ -18,7 +17,7 @@ export interface ICard {
   row?: 'close' | 'agile' | 'ranged' | 'siege' | 'leader';
   locations: ILocation[];
   notes?: any;
-  abilities?: any[];
+  abilities?: ['Hero' | 'Medic' | 'Moral boost' | 'Muster' | 'Spy' | 'Tight bond'];
   isDLC?: boolean;
   expansion?: 'hearts of stone' | 'blood and wine';
   effect?: 'scorch' | 'weather' | "commander's horn" | 'summon avenger' | 'berserker' | 'mardroeme';
