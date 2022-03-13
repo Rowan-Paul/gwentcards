@@ -16,7 +16,21 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Head>
           <title>GWENTcards</title>
           <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="description"
+            content="Keep track of which cards you've collected for the Witcher 3 GWENT minigame."
+          />
+          <meta name="keywords" content="GWENT, cards, minigame, witcher,the witcher 3, game, card, collect, filter" />
+          <meta property="og:site_name" content="GWENTcards" />
+          <meta property="og:title" content="GWENTcards: collect cards for the Witcher 3 mini game" />
+          <meta
+            property="og:description"
+            content="Keep track of which cards you've collected for the Witcher 3 GWENT minigame."
+          />
+          <meta property="og:image" content="icon.png" />
+          <meta property="og:url" content="https://gwentcards.net" />
         </Head>
+
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen={false} />
       </Hydrate>
