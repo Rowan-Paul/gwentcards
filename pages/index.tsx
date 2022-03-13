@@ -98,6 +98,7 @@ const Home = (): JSX.Element => {
             value={deckFilter}
             onChange={setDeckFilter}
             labelledBy="Select deck"
+            disableSearch
           />
           <MultiSelect
             options={[
@@ -107,6 +108,7 @@ const Home = (): JSX.Element => {
             value={expansionFilter}
             onChange={setExpansionFilter}
             labelledBy="Select abilities"
+            disableSearch
           />
           <MultiSelect
             options={[
@@ -119,6 +121,7 @@ const Home = (): JSX.Element => {
             value={rowFilter}
             onChange={setRowFilter}
             labelledBy="Select row"
+            disableSearch
           />
           <MultiSelect
             options={[
@@ -132,6 +135,7 @@ const Home = (): JSX.Element => {
             value={effectFilter}
             onChange={setEffectFilter}
             labelledBy="Select effect"
+            disableSearch
           />
           {/* <MultiSelect
             options={[
