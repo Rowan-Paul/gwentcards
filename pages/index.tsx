@@ -1,5 +1,6 @@
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 import Card, { ICard, ILocation } from '../components/Card';
 import ExpandedImage from '../components/ExpandedImage';
@@ -18,6 +19,8 @@ const Home = (): JSX.Element => {
   const [filterValues, setFilterValues] = useState<any[]>([]);
   const [hideDLC, setHideDLC] = useState<boolean>(false);
   const [showCollected, setShowCollected] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [pagination, setPagination] = useState<any[]>([]);
 
   const getCollectedData = () => {
     try {
@@ -29,6 +32,7 @@ const Home = (): JSX.Element => {
 
   const getCards = async () => {
     const data: any = await fetchCards();
+    setPage(1);
 
     if (filterValues.length > 0 || hideDLC || showCollected) {
       return {
@@ -59,6 +63,29 @@ const Home = (): JSX.Element => {
   const collectedQuery = useQuery('collected', getCollectedData, {
     refetchOnWindowFocus: false
   });
+
+  useEffect(() => {
+    const pageAmount = Math.ceil((cardsQuery.data?.cards.length || 0) / 20);
+    const tempArray = [];
+
+    for (let i = 0; i < pageAmount; i++) {
+      let classes = 'md:mr-5 p-2 cursor-pointer inline-block';
+      if (i === page - 1) {
+        classes = 'p-2 cursor-pointer inline-block underline';
+      }
+
+      tempArray.push(
+        <Link href="#" key={i}>
+          <a>
+            <span onClick={() => setPage(i + 1)} className={classes}>
+              {i + 1}
+            </span>
+          </a>
+        </Link>
+      );
+    }
+    setPagination(tempArray);
+  }, [cardsQuery.data?.cards, page]);
 
   if (collectedQuery.isError || cardsQuery.isError) {
     return (
@@ -93,9 +120,10 @@ const Home = (): JSX.Element => {
             <div className="text-center">Loading...</div>
           ) : (
             <>
+              <div className="flex gap-4 p-4 flex-wrap justify-center">{pagination}</div>
               <div>Total cards: {cardsQuery.data?.cards?.length}</div>
               <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
-                {cardsQuery.data?.cards?.map((c: ICard) => {
+                {getPaginatedCards(cardsQuery.data?.cards || [], page).map((c: ICard, i) => {
                   return (
                     <Card
                       key={c.id}
@@ -112,6 +140,7 @@ const Home = (): JSX.Element => {
                   );
                 })}
               </div>
+              <div className="flex gap-4 p-4 flex-wrap justify-center">{pagination}</div>
             </>
           )}
         </div>
@@ -126,6 +155,24 @@ const Home = (): JSX.Element => {
       </div>
     </>
   );
+};
+
+const getPaginatedCards = (dataSet: any[], page: number) => {
+  let index, offSet;
+  const perPage = 20;
+
+  if (page == 1 || page <= 0) {
+    index = 0;
+    offSet = perPage;
+  } else if (page > dataSet.length) {
+    index = page - 1;
+    offSet = dataSet.length;
+  } else {
+    index = page * perPage - perPage;
+    offSet = index + perPage;
+  }
+
+  return dataSet.slice(index, offSet);
 };
 
 const fetchCards = async (): Promise<ICards> => {
