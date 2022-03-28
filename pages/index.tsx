@@ -65,7 +65,7 @@ const Home = (): JSX.Element => {
   });
 
   useEffect(() => {
-    const pageAmount = Math.ceil((cardsQuery.data?.cards.length || 0) / 20);
+    const pageAmount = Math.ceil((cardsQuery.data?.cards.length || 0) / 21);
     const tempArray = [];
 
     for (let i = 0; i < pageAmount; i++) {
@@ -159,7 +159,7 @@ const Home = (): JSX.Element => {
 
 const getPaginatedCards = (dataSet: any[], page: number) => {
   let index, offSet;
-  const perPage = 20;
+  const perPage = 21;
 
   if (page == 1 || page <= 0) {
     index = 0;
