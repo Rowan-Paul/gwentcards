@@ -82,7 +82,7 @@ const Card = ({ card, setImage, setLocations }: ICardProps): JSX.Element => {
             )}
           </div>
         </div>
-        <div className="md:flex basis-1/2 grow shrink-0 gap-4">
+        <div className={locations.length > 1 ? 'md:grid grid-cols-2 gap-4' : ''}>
           {locations.map((l: ILocation, i: number) => (
             <CollectButton
               key={`${id}-${i}`}

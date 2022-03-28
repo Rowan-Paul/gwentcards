@@ -66,7 +66,7 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
   );
 
   return (
-    <div className="flex w-full bg-purple-600 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid">
+    <div className="flex bg-purple-600 drop-shadow-lg my-2 cursor-pointer divide-purple-400 divide-x divide-solid">
       <div
         className="grow text-center text-sm text-white p-2 hover:bg-indigo-600 select-none"
         onClick={() => {
@@ -75,7 +75,7 @@ const CollectButton = ({ id, location, setShowLocations }: IButtonProps): JSX.El
         onKeyPress={(e) => e.code === 'Enter' && mutation.mutate(id)}
         tabIndex={0}
       >
-        {data?.collected.includes(id) ? `✅` : `${location}`}
+        {data?.collected.includes(id) ? `✅ Collected` : `${location}`}
       </div>
       <div
         className="flex py-2 px-3 hover:bg-indigo-600"
