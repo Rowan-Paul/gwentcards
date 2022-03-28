@@ -1,6 +1,6 @@
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
 import type { AppProps } from 'next/app';
@@ -9,6 +9,11 @@ import '/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
+  const [hideBanner, setHideBanner] = useState<boolean>(true);
+
+  useEffect(() => {
+    setHideBanner(localStorage.hideBanner);
+  }, [hideBanner]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -31,6 +36,23 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta property="og:url" content="https://gwentcards.net" />
         </Head>
 
+        {!hideBanner && (
+          <div className="bg-gradient-to-r from-cyan-700 to-indigo-400 p-3 flex justify-end text-white">
+            <a href="https://old.gwentcards.net/" className="mr-auto justify-center">
+              Looking for the old site with accounts and offline functionality? Go to&nbsp;
+              <span className="underline">old.gwentcards.net</span>.
+            </a>
+            <span
+              className="text-sm cursor-pointer"
+              onClick={() => {
+                localStorage.setItem('hideBanner', 'true');
+                setHideBanner(true);
+              }}
+            >
+              (close)
+            </span>
+          </div>
+        )}
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen={false} />
       </Hydrate>
