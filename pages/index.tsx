@@ -69,9 +69,9 @@ const Home = (): JSX.Element => {
     const tempArray = [];
 
     for (let i = 0; i < pageAmount; i++) {
-      let classes = 'md:mr-5 p-2 cursor-pointer inline-block';
+      let classes = 'p-2 cursor-pointer inline-block';
       if (i === page - 1) {
-        classes = 'md:mr-5 p-2 cursor-pointer inline-block underline';
+        classes = 'p-2 cursor-pointer font-bold inline-block underline';
       }
 
       tempArray.push(
@@ -86,6 +86,38 @@ const Home = (): JSX.Element => {
     }
     setPagination(tempArray);
   }, [cardsQuery.data?.cards, page]);
+
+  const Pagination = () => (
+    <div className="flex md:flex-row flex-col justify-center text-center my-2">
+      <div>
+        {page > 1 ? (
+          <Link href="#">
+            <a>
+              <span onClick={() => setPage(page - 1)} className="p-2 cursor-pointer inline-block">
+                Previous
+              </span>
+            </a>
+          </Link>
+        ) : (
+          <span className="p-2 text-gray-300 select-none inline-block">Previous</span>
+        )}
+      </div>
+      <div className="ml-auto mr-auto flex gap-4 flex-wrap justify-center">{pagination}</div>
+      <div>
+        {page < Math.ceil((cardsQuery.data?.cards.length || 0) / 21) ? (
+          <Link href="#">
+            <a>
+              <span onClick={() => setPage(page + 1)} className="p-2 cursor-pointer inline-block">
+                Next
+              </span>
+            </a>
+          </Link>
+        ) : (
+          <span className="p-2 text-gray-300 select-none inline-block">Next</span>
+        )}
+      </div>
+    </div>
+  );
 
   if (collectedQuery.isError || cardsQuery.isError) {
     return (
@@ -120,27 +152,7 @@ const Home = (): JSX.Element => {
             <div className="text-center">Loading...</div>
           ) : (
             <>
-              <div className="flex gap-4 p-4 flex-wrap justify-center">
-                {page > 1 && (
-                  <Link href="#">
-                    <a>
-                      <span onClick={() => setPage(page - 1)} className="md:mr-5 p-2 cursor-pointer inline-block">
-                        Previous
-                      </span>
-                    </a>
-                  </Link>
-                )}
-                {pagination}
-                {page < Math.ceil((cardsQuery.data?.cards.length || 0) / 21) && (
-                  <Link href="#">
-                    <a>
-                      <span onClick={() => setPage(page + 1)} className="md:mr-5 p-2 cursor-pointer inline-block">
-                        Next
-                      </span>
-                    </a>
-                  </Link>
-                )}
-              </div>
+              <Pagination />
               <div>Total cards: {cardsQuery.data?.cards?.length}</div>
               <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
                 {getPaginatedCards(cardsQuery.data?.cards || [], page).map((c: ICard, i) => {
@@ -160,23 +172,7 @@ const Home = (): JSX.Element => {
                   );
                 })}
               </div>
-              <div className="flex gap-4 p-4 flex-wrap justify-center">
-                <Link href="#">
-                  <a>
-                    <span onClick={() => setPage(page - 1)} className="md:mr-5 p-2 cursor-pointer inline-block">
-                      Previous
-                    </span>
-                  </a>
-                </Link>
-                {pagination}
-                <Link href="#">
-                  <a>
-                    <span onClick={() => setPage(page + 1)} className="md:mr-5 p-2 cursor-pointer inline-block">
-                      Next
-                    </span>
-                  </a>
-                </Link>
-              </div>
+              <Pagination />
             </>
           )}
         </div>
