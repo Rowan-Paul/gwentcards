@@ -160,20 +160,22 @@ const FiltersComponent = ({
           />
         </div>
         <div>
-          <span className="block font-bold">Hide DLC cards:</span>
-          <ReactSwitch
-            onChange={() => setHideDLC(!hideDLC)}
-            checked={hideDLC}
-            onColor="#86d3ff"
-            uncheckedIcon={false}
-            checkedIcon={false}
-            boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-            activeBoxShadow="0px 0px 1px 5px rgba(0, 0, 0, 0.2)"
-            disabled={expansionFilter.length > 0}
-            height={20}
-            width={48}
-            className="m-2"
-          />
+          <label>
+            <span className="block font-bold">Hide DLC cards:</span>
+            <ReactSwitch
+              onChange={() => setHideDLC(!hideDLC)}
+              checked={hideDLC}
+              onColor="#86d3ff"
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              activeBoxShadow="0px 0px 1px 5px rgba(0, 0, 0, 0.2)"
+              disabled={expansionFilter.length > 0}
+              height={20}
+              width={48}
+              className="m-2"
+            />
+          </label>
         </div>
         <div>
           <span className="font-bold">Expansion:</span>
@@ -190,20 +192,22 @@ const FiltersComponent = ({
           />
         </div>
         <div>
-          <span className="block font-bold">Show only collected cards:</span>
-          <ReactSwitch
-            onChange={() => setShowCollected(!showCollected)}
-            checked={showCollected}
-            onColor="#86d3ff"
-            uncheckedIcon={false}
-            checkedIcon={false}
-            boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-            activeBoxShadow="0px 0px 1px 5px rgba(0, 0, 0, 0.2)"
-            // disabled={expansionFilter.length > 0}
-            height={20}
-            width={48}
-            className="m-2"
-          />
+          <label>
+            <span className="block font-bold">Show only collected cards:</span>
+            <ReactSwitch
+              onChange={() => setShowCollected(!showCollected)}
+              checked={showCollected}
+              onColor="#86d3ff"
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              activeBoxShadow="0px 0px 1px 5px rgba(0, 0, 0, 0.2)"
+              // disabled={expansionFilter.length > 0}
+              height={20}
+              width={48}
+              className="m-2"
+            />
+          </label>
         </div>
         <div className="flex justify-center">
           <Button title="Reset filters" onClick={resetFilters} />
