@@ -120,7 +120,27 @@ const Home = (): JSX.Element => {
             <div className="text-center">Loading...</div>
           ) : (
             <>
-              <div className="flex gap-4 p-4 flex-wrap justify-center">{pagination}</div>
+              <div className="flex gap-4 p-4 flex-wrap justify-center">
+                {page > 1 && (
+                  <Link href="#">
+                    <a>
+                      <span onClick={() => setPage(page - 1)} className="md:mr-5 p-2 cursor-pointer inline-block">
+                        Previous
+                      </span>
+                    </a>
+                  </Link>
+                )}
+                {pagination}
+                {page < Math.ceil((cardsQuery.data?.cards.length || 0) / 21) && (
+                  <Link href="#">
+                    <a>
+                      <span onClick={() => setPage(page + 1)} className="md:mr-5 p-2 cursor-pointer inline-block">
+                        Next
+                      </span>
+                    </a>
+                  </Link>
+                )}
+              </div>
               <div>Total cards: {cardsQuery.data?.cards?.length}</div>
               <div className=" mt-2 grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
                 {getPaginatedCards(cardsQuery.data?.cards || [], page).map((c: ICard, i) => {
@@ -140,7 +160,23 @@ const Home = (): JSX.Element => {
                   );
                 })}
               </div>
-              <div className="flex gap-4 p-4 flex-wrap justify-center">{pagination}</div>
+              <div className="flex gap-4 p-4 flex-wrap justify-center">
+                <Link href="#">
+                  <a>
+                    <span onClick={() => setPage(page - 1)} className="md:mr-5 p-2 cursor-pointer inline-block">
+                      Previous
+                    </span>
+                  </a>
+                </Link>
+                {pagination}
+                <Link href="#">
+                  <a>
+                    <span onClick={() => setPage(page + 1)} className="md:mr-5 p-2 cursor-pointer inline-block">
+                      Next
+                    </span>
+                  </a>
+                </Link>
+              </div>
             </>
           )}
         </div>
