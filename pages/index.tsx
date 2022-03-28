@@ -71,7 +71,7 @@ const Home = (): JSX.Element => {
     for (let i = 0; i < pageAmount; i++) {
       let classes = 'md:mr-5 p-2 cursor-pointer inline-block';
       if (i === page - 1) {
-        classes = 'p-2 cursor-pointer inline-block underline';
+        classes = 'md:mr-5 p-2 cursor-pointer inline-block underline';
       }
 
       tempArray.push(
