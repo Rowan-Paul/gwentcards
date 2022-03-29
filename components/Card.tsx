@@ -82,7 +82,7 @@ const Card = ({ card, setImage, setLocations }: ICardProps): JSX.Element => {
             )}
           </div>
         </div>
-        <div className={locations.length > 1 ? 'md:grid grid-cols-2 gap-4' : ''}>
+        <div className={locations.length > 1 ? 'md:grid grid-cols-2 gap-4 my-2' : 'my-2'}>
           {locations.map((l: ILocation, i: number) => (
             <CollectButton
               key={`${id}-${i}`}
