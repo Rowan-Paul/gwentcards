@@ -1,7 +1,8 @@
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
+import { Analytics } from '@vercel/analytics/react';
 
 import type { AppProps } from 'next/app';
 
@@ -30,8 +31,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta property="og:image" content="/icon.png" />
           <meta property="og:url" content="https://gwentcards.net" />
         </Head>
-        
+
         <Component {...pageProps} />
+        <Analytics />
         <ReactQueryDevtools initialIsOpen={false} />
       </Hydrate>
     </QueryClientProvider>
