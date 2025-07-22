@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type JSX } from 'react';
 
 interface IExpandedImageProps {
   image: string;

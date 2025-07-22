@@ -3,6 +3,8 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { ICard } from './Card';
 import LocationsModal from './LocationsModal';
 
+import type { JSX } from "react";
+
 interface IButtonProps {
   id: string;
   location: string;

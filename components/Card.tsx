@@ -2,6 +2,8 @@ import Image from 'next/image';
 
 import CollectButton from './CollectButton';
 
+import type { JSX } from "react";
+
 interface ICardProps {
   card: ICard;
   setImage: any;
