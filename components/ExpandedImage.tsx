@@ -11,7 +11,7 @@ const ExpandedImage = ({ image, showImage, setShowImage }: IExpandedImageProps):
   const wrapperRef: any = useRef(null);
 
   const escFunction = useCallback(
-    (event) => {
+    (event: any) => {
       if (event.key === 'Escape' && showImage) {
         setShowImage(false);
       }
@@ -20,7 +20,7 @@ const ExpandedImage = ({ image, showImage, setShowImage }: IExpandedImageProps):
   );
 
   const handleClickOutside = useCallback(
-    (event) => {
+    (event: any) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target) && showImage) {
         setShowImage(false);
       }
@@ -50,7 +50,7 @@ const ExpandedImage = ({ image, showImage, setShowImage }: IExpandedImageProps):
       className={showImage ? 'fixed backdrop-blur w-screen h-screen z-40' : 'hidden'}
       onKeyPress={() => setShowImage(false)}
     >
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50" ref={wrapperRef}>
+      <div className="fixed z-50 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" ref={wrapperRef}>
         <Image src={image ? image : '/favicon.ico'} alt={`Card`} width="250" height="500" />
       </div>
     </div>

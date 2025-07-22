@@ -372,7 +372,6 @@ export default function Home() {
                   <Card key={card.id} className="overflow-hidden card-enhanced">
                     <CardContent className="p-4 sm:p-6">
                       <div className="flex gap-3 sm:gap-4">
-                        {/* Card Image */}
                         <div
                           className="flex-shrink-0 transition-transform duration-200 cursor-pointer hover:scale-105"
                           onClick={() => {

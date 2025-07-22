@@ -43,6 +43,7 @@ export function CardFilters({
   const expansions = ["hearts of stone", "blood and wine"]
 
   const toggleFilter = (filterType: string, value: string | number) => {
+    // @ts-ignore
     const currentFilter = {
       deck: deckFilter,
       expansion: expansionFilter,
@@ -56,6 +57,7 @@ export function CardFilters({
       ? currentFilter.filter((item) => item !== value)
       : [...currentFilter, value]
 
+    // @ts-ignore
     onUpdateFilters({ [filterType]: newFilter, page: 1 })
   }
 
@@ -87,10 +89,10 @@ export function CardFilters({
     <Card className="mb-4 sm:mb-6 card-enhanced">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
-          <CardHeader className="cursor-pointer hover:bg-muted/30 transition-colors duration-200 py-3 sm:py-6">
+          <CardHeader className="py-3 transition-colors duration-200 cursor-pointer hover:bg-muted/30 sm:py-6">
             <CardTitle className="flex items-center justify-between text-base sm:text-lg">
               <div className="flex items-center gap-2">
-                <Filter className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                <Filter className="w-4 h-4 sm:h-5 sm:w-5 text-primary" />
                 Filters
                 {hasActiveFilters && (
                   <Badge variant="secondary" className="ml-2 text-xs bg-primary/10 text-primary border-primary/20">
@@ -104,19 +106,19 @@ export function CardFilters({
         </CollapsibleTrigger>
 
         <CollapsibleContent>
-          <CardContent className="space-y-4 sm:space-y-6 pt-0">
+          <CardContent className="pt-0 space-y-4 sm:space-y-6">
             {/* Active Filters */}
             {hasActiveFilters && (
               <div className="space-y-2">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <Label className="text-sm font-medium">Active Filters:</Label>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={clearAllFilters}
-                    className="self-start sm:self-auto bg-background/50 hover:bg-destructive/10 hover:text-destructive hover:border-destructive/20 transition-colors duration-200"
+                    className="self-start transition-colors duration-200 sm:self-auto bg-background/50 hover:bg-destructive/10 hover:text-destructive hover:border-destructive/20"
                   >
-                    <X className="h-4 w-4 mr-1" />
+                    <X className="w-4 h-4 mr-1" />
                     Clear All
                   </Button>
                 </div>
@@ -125,78 +127,78 @@ export function CardFilters({
                     <Badge
                       key={deck}
                       variant="secondary"
-                      className="cursor-pointer text-xs bg-secondary/80 hover:bg-destructive/10 hover:text-destructive transition-colors duration-200"
+                      className="text-xs transition-colors duration-200 cursor-pointer bg-secondary/80 hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => toggleFilter("deck", deck)}
                     >
-                      {deck} <X className="h-3 w-3 ml-1" />
+                      {deck} <X className="w-3 h-3 ml-1" />
                     </Badge>
                   ))}
                   {expansionFilter.map((expansion) => (
                     <Badge
                       key={expansion}
                       variant="secondary"
-                      className="cursor-pointer text-xs bg-secondary/80 hover:bg-destructive/10 hover:text-destructive transition-colors duration-200"
+                      className="text-xs transition-colors duration-200 cursor-pointer bg-secondary/80 hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => toggleFilter("expansion", expansion)}
                     >
-                      {expansion} <X className="h-3 w-3 ml-1" />
+                      {expansion} <X className="w-3 h-3 ml-1" />
                     </Badge>
                   ))}
                   {rowFilter.map((row) => (
                     <Badge
                       key={row}
                       variant="secondary"
-                      className="cursor-pointer text-xs bg-secondary/80 hover:bg-destructive/10 hover:text-destructive transition-colors duration-200"
+                      className="text-xs transition-colors duration-200 cursor-pointer bg-secondary/80 hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => toggleFilter("row", row)}
                     >
-                      {row} <X className="h-3 w-3 ml-1" />
+                      {row} <X className="w-3 h-3 ml-1" />
                     </Badge>
                   ))}
                   {effectFilter.map((effect) => (
                     <Badge
                       key={effect}
                       variant="secondary"
-                      className="cursor-pointer text-xs bg-secondary/80 hover:bg-destructive/10 hover:text-destructive transition-colors duration-200"
+                      className="text-xs transition-colors duration-200 cursor-pointer bg-secondary/80 hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => toggleFilter("effect", effect)}
                     >
-                      {effect} <X className="h-3 w-3 ml-1" />
+                      {effect} <X className="w-3 h-3 ml-1" />
                     </Badge>
                   ))}
                   {strengthFilter.map((strength) => (
                     <Badge
                       key={strength}
                       variant="secondary"
-                      className="cursor-pointer text-xs bg-secondary/80 hover:bg-destructive/10 hover:text-destructive transition-colors duration-200"
+                      className="text-xs transition-colors duration-200 cursor-pointer bg-secondary/80 hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => toggleFilter("strength", strength)}
                     >
-                      {strength} <X className="h-3 w-3 ml-1" />
+                      {strength} <X className="w-3 h-3 ml-1" />
                     </Badge>
                   ))}
                   {abilitiesFilter.map((ability) => (
                     <Badge
                       key={ability}
                       variant="secondary"
-                      className="cursor-pointer text-xs bg-secondary/80 hover:bg-destructive/10 hover:text-destructive transition-colors duration-200"
+                      className="text-xs transition-colors duration-200 cursor-pointer bg-secondary/80 hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => toggleFilter("abilities", ability)}
                     >
-                      {ability} <X className="h-3 w-3 ml-1" />
+                      {ability} <X className="w-3 h-3 ml-1" />
                     </Badge>
                   ))}
                   {hideDLC && (
                     <Badge
                       variant="secondary"
-                      className="cursor-pointer text-xs bg-secondary/80 hover:bg-destructive/10 hover:text-destructive transition-colors duration-200"
+                      className="text-xs transition-colors duration-200 cursor-pointer bg-secondary/80 hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => onUpdateFilters({ hideDLC: false, page: 1 })}
                     >
-                      Hide DLC <X className="h-3 w-3 ml-1" />
+                      Hide DLC <X className="w-3 h-3 ml-1" />
                     </Badge>
                   )}
                   {showCollected && (
                     <Badge
                       variant="secondary"
-                      className="cursor-pointer text-xs bg-secondary/80 hover:bg-destructive/10 hover:text-destructive transition-colors duration-200"
+                      className="text-xs transition-colors duration-200 cursor-pointer bg-secondary/80 hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => onUpdateFilters({ showCollected: false, page: 1 })}
                     >
-                      Show Collected <X className="h-3 w-3 ml-1" />
+                      Show Collected <X className="w-3 h-3 ml-1" />
                     </Badge>
                   )}
                 </div>
@@ -207,7 +209,7 @@ export function CardFilters({
             <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {/* Deck Filter */}
               <div className="space-y-2">
-                <Label className="font-medium text-sm">Deck</Label>
+                <Label className="text-sm font-medium">Deck</Label>
                 <div className="flex flex-wrap gap-1">
                   {decks.map((deck) => (
                     <Button
@@ -215,7 +217,7 @@ export function CardFilters({
                       variant={deckFilter.includes(deck) ? "default" : "outline"}
                       size="sm"
                       onClick={() => toggleFilter("deck", deck)}
-                      className="text-xs h-8 transition-all duration-200 hover:scale-105"
+                      className="h-8 text-xs transition-all duration-200 hover:scale-105"
                     >
                       {deck}
                     </Button>
@@ -225,7 +227,7 @@ export function CardFilters({
 
               {/* Abilities Filter */}
               <div className="space-y-2">
-                <Label className="font-medium text-sm">Abilities</Label>
+                <Label className="text-sm font-medium">Abilities</Label>
                 <div className="flex flex-wrap gap-1">
                   {abilities.map((ability) => (
                     <Button
@@ -233,7 +235,7 @@ export function CardFilters({
                       variant={abilitiesFilter.includes(ability) ? "default" : "outline"}
                       size="sm"
                       onClick={() => toggleFilter("abilities", ability)}
-                      className="text-xs h-8 transition-all duration-200 hover:scale-105"
+                      className="h-8 text-xs transition-all duration-200 hover:scale-105"
                     >
                       {ability}
                     </Button>
@@ -243,7 +245,7 @@ export function CardFilters({
 
               {/* Row Filter */}
               <div className="space-y-2">
-                <Label className="font-medium text-sm">Row</Label>
+                <Label className="text-sm font-medium">Row</Label>
                 <div className="flex flex-wrap gap-1">
                   {rows.map((row) => (
                     <Button
@@ -251,7 +253,7 @@ export function CardFilters({
                       variant={rowFilter.includes(row) ? "default" : "outline"}
                       size="sm"
                       onClick={() => toggleFilter("row", row)}
-                      className="text-xs capitalize h-8 transition-all duration-200 hover:scale-105"
+                      className="h-8 text-xs capitalize transition-all duration-200 hover:scale-105"
                     >
                       {row}
                     </Button>
@@ -261,7 +263,7 @@ export function CardFilters({
 
               {/* Strength Filter */}
               <div className="space-y-2">
-                <Label className="font-medium text-sm">Strength</Label>
+                <Label className="text-sm font-medium">Strength</Label>
                 <div className="flex flex-wrap gap-1">
                   {strengths.map((strength) => (
                     <Button
@@ -279,7 +281,7 @@ export function CardFilters({
 
               {/* Effect Filter */}
               <div className="space-y-2">
-                <Label className="font-medium text-sm">Effect</Label>
+                <Label className="text-sm font-medium">Effect</Label>
                 <div className="flex flex-wrap gap-1">
                   {effects.map((effect) => (
                     <Button
@@ -287,7 +289,7 @@ export function CardFilters({
                       variant={effectFilter.includes(effect) ? "default" : "outline"}
                       size="sm"
                       onClick={() => toggleFilter("effect", effect)}
-                      className="text-xs capitalize h-8 transition-all duration-200 hover:scale-105"
+                      className="h-8 text-xs capitalize transition-all duration-200 hover:scale-105"
                     >
                       {effect}
                     </Button>
@@ -297,7 +299,7 @@ export function CardFilters({
 
               {/* Expansion Filter */}
               <div className="space-y-2">
-                <Label className="font-medium text-sm">Expansion</Label>
+                <Label className="text-sm font-medium">Expansion</Label>
                 <div className="flex flex-wrap gap-1">
                   {expansions.map((expansion) => (
                     <Button
@@ -305,7 +307,7 @@ export function CardFilters({
                       variant={expansionFilter.includes(expansion) ? "default" : "outline"}
                       size="sm"
                       onClick={() => toggleFilter("expansion", expansion)}
-                      className="text-xs capitalize h-8 transition-all duration-200 hover:scale-105"
+                      className="h-8 text-xs capitalize transition-all duration-200 hover:scale-105"
                       disabled={hideDLC}
                     >
                       {expansion}

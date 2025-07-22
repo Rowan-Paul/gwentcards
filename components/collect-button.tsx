@@ -28,7 +28,7 @@ export function CollectButton({ id, location, onShowLocations }: CollectButtonPr
   })
 
   const mutation = useMutation({
-    mutationFn: () => {
+    mutationFn: async () => {
       if (data?.collected.includes(id)) {
         const newCollected = data.collected.filter((collectedId: string) => collectedId !== id)
         localStorage.setItem("collected", JSON.stringify({ collected: newCollected }))
@@ -57,7 +57,7 @@ export function CollectButton({ id, location, onShowLocations }: CollectButtonPr
       >
         {isCollected ? (
           <>
-            <Check className="h-4 w-4 mr-2" />
+            <Check className="w-4 h-4 mr-2" />
             Collected
           </>
         ) : (
@@ -65,7 +65,7 @@ export function CollectButton({ id, location, onShowLocations }: CollectButtonPr
         )}
       </Button>
       <Button variant="outline" size="sm" onClick={onShowLocations}>
-        <MapPin className="h-4 w-4" />
+        <MapPin className="w-4 h-4" />
       </Button>
     </div>
   )
